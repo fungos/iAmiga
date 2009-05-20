@@ -35,8 +35,8 @@
 #include "execlib.h"
 
 
-char prefs_df[NUM_DRIVES][128];
-char changed_df[NUM_DRIVES][128];
+char prefs_df[NUM_DRIVES][256];
+char changed_df[NUM_DRIVES][256];
 char romfile[64];
 int real_changed_df[NUM_DRIVES]={0,0};
 

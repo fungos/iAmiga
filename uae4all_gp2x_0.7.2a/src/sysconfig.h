@@ -418,7 +418,7 @@
 
 #define NO_THREADS
 #define OS_WITHOUT_MEMORY_MANAGEMENT
-#define NO_SOUND
+//#define NO_SOUND
 #define UNROLL_LOOPS
 #define NO_MAIN_IN_MAIN_C
 

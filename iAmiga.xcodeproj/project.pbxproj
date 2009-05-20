@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0552BD230F3D797C005B30DF /* audio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BC9C0F3D797C005B30DF /* audio.cpp */; };
 		0552BD240F3D797C005B30DF /* autoconf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BC9D0F3D797C005B30DF /* autoconf.cpp */; };
 		0552BD250F3D797C005B30DF /* blitfunc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BC9E0F3D797C005B30DF /* blitfunc.cpp */; };
 		0552BD260F3D797C005B30DF /* blittable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BC9F0F3D797C005B30DF /* blittable.cpp */; };
@@ -34,15 +33,22 @@
 		0552BD4F0F3D797C005B30DF /* od-joy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD150F3D797C005B30DF /* od-joy.cpp */; };
 		0552BD500F3D797C005B30DF /* savedisk.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD170F3D797C005B30DF /* savedisk.cpp */; };
 		0552BD510F3D797C005B30DF /* sdlgfx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD190F3D797C005B30DF /* sdlgfx.cpp */; };
-		0552BD520F3D797C005B30DF /* sound.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD1A0F3D797C005B30DF /* sound.cpp */; };
 		0552BD540F3D797C005B30DF /* vkbd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD1F0F3D797C005B30DF /* vkbd.cpp */; };
 		0552BD550F3D797C005B30DF /* writelog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD210F3D797C005B30DF /* writelog.cpp */; };
 		0552BD560F3D797C005B30DF /* zfile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD220F3D797C005B30DF /* zfile.cpp */; };
 		05743FC50FC293FD003BE251 /* iphone_main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 05743FC40FC293FD003BE251 /* iphone_main.mm */; };
-		0574402C0FC29FBE003BE251 /* SDL.c in Sources */ = {isa = PBXBuildFile; fileRef = 0574402B0FC29FBE003BE251 /* SDL.c */; };
+		0574402C0FC29FBE003BE251 /* SDL.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0574402B0FC29FBE003BE251 /* SDL.mm */; };
 		057440690FC2A243003BE251 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 057440680FC2A243003BE251 /* libz.1.2.3.dylib */; };
 		057440D60FC2A4A7003BE251 /* kick.rom in Resources */ = {isa = PBXBuildFile; fileRef = 057440D50FC2A4A7003BE251 /* kick.rom */; };
-		1D3623260D0F684500981E51 /* iAmigaAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* iAmigaAppDelegate.m */; };
+		057442820FC3C25B003BE251 /* DisplayView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 057442810FC3C25B003BE251 /* DisplayView.mm */; };
+		0574432A0FC3C94F003BE251 /* kick13.rom in Resources */ = {isa = PBXBuildFile; fileRef = 057443290FC3C94F003BE251 /* kick13.rom */; };
+		057443570FC3CA04003BE251 /* BEAST1-1.ADF in Resources */ = {isa = PBXBuildFile; fileRef = 057443550FC3CA04003BE251 /* BEAST1-1.ADF */; };
+		057443580FC3CA04003BE251 /* BEAST1-2.ADF in Resources */ = {isa = PBXBuildFile; fileRef = 057443560FC3CA04003BE251 /* BEAST1-2.ADF */; };
+		05E6A31D0FC3D93B0086151B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E6A31C0FC3D93B0086151B /* AudioToolbox.framework */; };
+		05E6A3260FC3DAA90086151B /* sound_iphone.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05E6A3250FC3DAA90086151B /* sound_iphone.cpp */; };
+		05FE7F280FC3EDBF00DBFECF /* AudioQueueManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05FE7F270FC3EDBF00DBFECF /* AudioQueueManager.cpp */; };
+		05FE7F310FC3EF9900DBFECF /* audio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BC9C0F3D797C005B30DF /* audio.cpp */; };
+		1D3623260D0F684500981E51 /* iAmigaAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* iAmigaAppDelegate.mm */; };
 		1D60589B0D05DD56006BFB54 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.mm */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -176,12 +182,22 @@
 		05743FC30FC293FD003BE251 /* iphone_main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iphone_main.h; sourceTree = "<group>"; };
 		05743FC40FC293FD003BE251 /* iphone_main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = iphone_main.mm; sourceTree = "<group>"; };
 		05743FDA0FC299FE003BE251 /* SDL_endian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_endian.h; sourceTree = "<group>"; };
-		0574402B0FC29FBE003BE251 /* SDL.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SDL.c; sourceTree = "<group>"; };
+		0574402B0FC29FBE003BE251 /* SDL.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SDL.mm; sourceTree = "<group>"; };
 		057440680FC2A243003BE251 /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		057440D50FC2A4A7003BE251 /* kick.rom */ = {isa = PBXFileReference; lastKnownFileType = file; path = kick.rom; sourceTree = "<group>"; };
+		057442800FC3C25B003BE251 /* DisplayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayView.h; sourceTree = "<group>"; };
+		057442810FC3C25B003BE251 /* DisplayView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DisplayView.mm; sourceTree = "<group>"; };
+		057443290FC3C94F003BE251 /* kick13.rom */ = {isa = PBXFileReference; lastKnownFileType = file; path = kick13.rom; sourceTree = "<group>"; };
+		057443550FC3CA04003BE251 /* BEAST1-1.ADF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BEAST1-1.ADF"; sourceTree = "<group>"; };
+		057443560FC3CA04003BE251 /* BEAST1-2.ADF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BEAST1-2.ADF"; sourceTree = "<group>"; };
+		05E6A31C0FC3D93B0086151B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		05E6A3250FC3DAA90086151B /* sound_iphone.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sound_iphone.cpp; sourceTree = "<group>"; };
+		05FE7F260FC3EDBF00DBFECF /* AudioQueueManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioQueueManager.h; sourceTree = "<group>"; };
+		05FE7F270FC3EDBF00DBFECF /* AudioQueueManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioQueueManager.cpp; sourceTree = "<group>"; };
+		05FE7F290FC3EDC800DBFECF /* RingQ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RingQ.h; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* iAmigaAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iAmigaAppDelegate.h; sourceTree = "<group>"; };
-		1D3623250D0F684500981E51 /* iAmigaAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iAmigaAppDelegate.m; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* iAmigaAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = iAmigaAppDelegate.mm; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* iAmiga.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iAmiga.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -200,6 +216,7 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				057440690FC2A243003BE251 /* libz.1.2.3.dylib in Frameworks */,
+				05E6A31D0FC3D93B0086151B /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,6 +267,7 @@
 				0552BD170F3D797C005B30DF /* savedisk.cpp */,
 				0552BD190F3D797C005B30DF /* sdlgfx.cpp */,
 				0552BD1A0F3D797C005B30DF /* sound.cpp */,
+				05E6A3250FC3DAA90086151B /* sound_iphone.cpp */,
 				0552BD1B0F3D797C005B30DF /* sound_gp2x.cpp */,
 				0552BD1D0F3D797C005B30DF /* target.h */,
 				0552BD210F3D797C005B30DF /* writelog.cpp */,
@@ -411,8 +429,9 @@
 		05743F6C0FC28C5C003BE251 /* iphone */ = {
 			isa = PBXGroup;
 			children = (
+				05E6A30D0FC3D8EA0086151B /* audio */,
 				05743F6D0FC28C6A003BE251 /* SDL.h */,
-				0574402B0FC29FBE003BE251 /* SDL.c */,
+				0574402B0FC29FBE003BE251 /* SDL.mm */,
 				05743FDA0FC299FE003BE251 /* SDL_endian.h */,
 				05743FC30FC293FD003BE251 /* iphone_main.h */,
 				05743FC40FC293FD003BE251 /* iphone_main.mm */,
@@ -431,15 +450,45 @@
 			isa = PBXGroup;
 			children = (
 				057440D50FC2A4A7003BE251 /* kick.rom */,
+				057443290FC3C94F003BE251 /* kick13.rom */,
 			);
 			path = roms;
+			sourceTree = "<group>";
+		};
+		057443530FC3CA04003BE251 /* disks */ = {
+			isa = PBXGroup;
+			children = (
+				057443540FC3CA04003BE251 /* s */,
+			);
+			path = disks;
+			sourceTree = "<group>";
+		};
+		057443540FC3CA04003BE251 /* s */ = {
+			isa = PBXGroup;
+			children = (
+				057443550FC3CA04003BE251 /* BEAST1-1.ADF */,
+				057443560FC3CA04003BE251 /* BEAST1-2.ADF */,
+			);
+			path = s;
+			sourceTree = "<group>";
+		};
+		05E6A30D0FC3D8EA0086151B /* audio */ = {
+			isa = PBXGroup;
+			children = (
+				05FE7F260FC3EDBF00DBFECF /* AudioQueueManager.h */,
+				05FE7F270FC3EDBF00DBFECF /* AudioQueueManager.cpp */,
+				05FE7F290FC3EDC800DBFECF /* RingQ.h */,
+			);
+			name = audio;
 			sourceTree = "<group>";
 		};
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
 				1D3623240D0F684500981E51 /* iAmigaAppDelegate.h */,
-				1D3623250D0F684500981E51 /* iAmigaAppDelegate.m */,
+				1D3623250D0F684500981E51 /* iAmigaAppDelegate.mm */,
+				057442800FC3C25B003BE251 /* DisplayView.h */,
+				057442810FC3C25B003BE251 /* DisplayView.mm */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -460,6 +509,7 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				05E6A31C0FC3D93B0086151B /* AudioToolbox.framework */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -478,6 +528,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				057443530FC3CA04003BE251 /* disks */,
 				057440D40FC2A4A7003BE251 /* roms */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* Info.plist */,
@@ -543,6 +594,9 @@
 				0552BD3F0F3D797C005B30DF /* sysconfig.h.win32 in Resources */,
 				0552BD400F3D797C005B30DF /* sysconfig.h.xf86os2 in Resources */,
 				057440D60FC2A4A7003BE251 /* kick.rom in Resources */,
+				0574432A0FC3C94F003BE251 /* kick13.rom in Resources */,
+				057443570FC3CA04003BE251 /* BEAST1-1.ADF in Resources */,
+				057443580FC3CA04003BE251 /* BEAST1-2.ADF in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -553,9 +607,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05FE7F310FC3EF9900DBFECF /* audio.cpp in Sources */,
 				1D60589B0D05DD56006BFB54 /* main.mm in Sources */,
-				1D3623260D0F684500981E51 /* iAmigaAppDelegate.m in Sources */,
-				0552BD230F3D797C005B30DF /* audio.cpp in Sources */,
+				1D3623260D0F684500981E51 /* iAmigaAppDelegate.mm in Sources */,
 				0552BD240F3D797C005B30DF /* autoconf.cpp in Sources */,
 				0552BD250F3D797C005B30DF /* blitfunc.cpp in Sources */,
 				0552BD260F3D797C005B30DF /* blittable.cpp in Sources */,
@@ -579,12 +633,14 @@
 				0552BD4F0F3D797C005B30DF /* od-joy.cpp in Sources */,
 				0552BD500F3D797C005B30DF /* savedisk.cpp in Sources */,
 				0552BD510F3D797C005B30DF /* sdlgfx.cpp in Sources */,
-				0552BD520F3D797C005B30DF /* sound.cpp in Sources */,
+				05E6A3260FC3DAA90086151B /* sound_iphone.cpp in Sources */,
 				0552BD540F3D797C005B30DF /* vkbd.cpp in Sources */,
 				0552BD550F3D797C005B30DF /* writelog.cpp in Sources */,
 				0552BD560F3D797C005B30DF /* zfile.cpp in Sources */,
 				05743FC50FC293FD003BE251 /* iphone_main.mm in Sources */,
-				0574402C0FC29FBE003BE251 /* SDL.c in Sources */,
+				0574402C0FC29FBE003BE251 /* SDL.mm in Sources */,
+				057442820FC3C25B003BE251 /* DisplayView.mm in Sources */,
+				05FE7F280FC3EDBF00DBFECF /* AudioQueueManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -622,8 +678,13 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_CHAR_IS_UNSIGNED_CHAR = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_FAST_MATH = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = IPHONE;
+				GCC_THREADSAFE_STATICS = NO;
+				GCC_THUMB_SUPPORT = NO;
+				GCC_UNROLL_LOOPS = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
@@ -631,6 +692,7 @@
 					uae4all_gp2x_0.7.2a/src/iphone,
 				);
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "";
 				PREBINDING = NO;
 				SDKROOT = iphoneos2.2.1;
 			};
@@ -641,13 +703,27 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_CHAR_IS_UNSIGNED_CHAR = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_DYNAMIC_NO_PIC = YES;
+				GCC_FAST_MATH = YES;
+				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PREPROCESSOR_DEFINITIONS = IPHONE;
+				GCC_THREADSAFE_STATICS = NO;
+				GCC_THUMB_SUPPORT = NO;
+				GCC_UNROLL_LOOPS = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					uae4all_gp2x_0.7.2a/src,
 					uae4all_gp2x_0.7.2a/src/iphone,
+				);
+				OTHER_CFLAGS = (
+					"-finline-functions",
+					"-fno-PIE",
+					"-fomit-frame-pointer",
+					"-falign-loops=16",
 				);
 				PREBINDING = NO;
 				SDKROOT = iphoneos2.2.1;

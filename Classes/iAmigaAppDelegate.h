@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class DisplayView;
+
 @interface iAmigaAppDelegate : NSObject <UIApplicationDelegate> {
-    UIWindow *window;
+    UIWindow					*window;
+	NSThread					*emulationThread;
+	DisplayView					*_displayView;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;

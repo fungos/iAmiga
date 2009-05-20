@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "uae.h"
+//#import "uae.h"
 
 int main(int argc, char *argv[]) {
     
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-    //int retVal = UIApplicationMain(argc, argv, nil, nil);
-	int retVal = 0;
-	real_main(argc, argv);
+    int retVal = UIApplicationMain(argc, argv, nil, nil);
+	//int retVal = 0;
+	//real_main(argc, argv);
     [pool release];
     return retVal;
 }

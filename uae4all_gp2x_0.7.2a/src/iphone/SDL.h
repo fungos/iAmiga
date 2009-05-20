@@ -271,6 +271,7 @@ typedef enum {
 } SDLKey;
 
 typedef unsigned int Uint32;
+typedef unsigned Uint8;
 
 typedef struct SDL_Color {
 	unsigned r,g,b;
@@ -307,7 +308,15 @@ typedef union SDL_Event {
 	struct tagJoystick jbutton;
 } SDL_Event;
 
+typedef void (*sound_callback_t)(void *userdata, Uint8 *stream, int len);
+	
 typedef struct SDL_AudioSpec {
+	int freq;
+    int format;
+    int channels;
+    int samples;
+    sound_callback_t callback;
+    void *userdata;
 } SDL_AudioSpec;
 
 typedef struct tagFormat {
@@ -347,12 +356,17 @@ extern int SDL_JoystickClose(SDL_Joystick*);
 extern int SDL_Init(int);
 extern SDL_Surface* SDL_SetVideoMode(int, int, int, int);
 extern char* SDL_GetError();
+extern int SDL_OpenAudio(SDL_AudioSpec*,void*);
+extern void SDL_CloseAudio();
+extern void SDL_PauseAudio(int);
 
 
 #define SDL_ENABLE 1
 #define SDL_DISABLE 0
 #define SDL_INIT_VIDEO 0
 #define SDL_HWSURFACE 1
+#define AUDIO_S16 0
+#define AUDIO_U8 0
 
 extern int SDL_ShowCursor(int);
 

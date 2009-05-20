@@ -103,7 +103,8 @@ void default_prefs ()
 
     prefs_gfx_framerate = 2;
 
-    strcpy (prefs_df[0], ROM_PATH_PREFIX "df0.adf");
+	strcpy (prefs_df[0], get_df0_path());
+    //strcpy (prefs_df[0], ROM_PATH_PREFIX "df0.adf");
     strcpy (prefs_df[1], ROM_PATH_PREFIX "df1.adf");
 
 #if defined(DREAMCAST)

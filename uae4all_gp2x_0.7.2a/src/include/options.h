@@ -18,8 +18,8 @@ extern long int version;
 
 extern int produce_sound;
 extern int changed_produce_sound;
-extern char prefs_df[NUM_DRIVES][128];
-extern char changed_df[NUM_DRIVES][128];
+extern char prefs_df[NUM_DRIVES][256];
+extern char changed_df[NUM_DRIVES][256];
 extern int real_changed_df[NUM_DRIVES];
 extern char romfile[64];
 extern unsigned prefs_chipmem_size;
