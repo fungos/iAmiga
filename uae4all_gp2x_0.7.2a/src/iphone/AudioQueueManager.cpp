@@ -169,7 +169,11 @@ void CAudioQueueManager::_HandleOutputBuffer(AudioQueueBufferRef outBuffer) {
 			bytesInBuffer += _bytesPerQueueBuffer;
 		}
 		
-		outBuffer->mAudioDataByteSize = bytesInBuffer;	
+		outBuffer->mAudioDataByteSize = bytesInBuffer;
+#if defined(DEBUG)
+		if (outBuffer->mAudioDataByteSize == 0)
+			printf("audio buffer underrun.");
+#endif
 	}
 	
 	OSStatus res = AudioQueueEnqueueBuffer(_queue, outBuffer, 0, NULL);

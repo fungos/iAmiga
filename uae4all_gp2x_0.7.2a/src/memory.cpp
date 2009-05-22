@@ -1108,8 +1108,8 @@ static void reload_kickstart(void)
 {
     load_extendedkickstart ();
     if (!load_kickstart ()) {
-	init_ersatz_rom (kickmemory);
-	ersatzkickfile = 1;
+		init_ersatz_rom (kickmemory);
+		ersatzkickfile = 1;
     }
     swab_kickstart();
     kickmem_checksum=get_kickmem_checksum();

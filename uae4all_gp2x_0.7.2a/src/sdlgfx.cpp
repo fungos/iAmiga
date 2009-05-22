@@ -1,18 +1,18 @@
- /*
-  * UAE - The Un*x Amiga Emulator
-  *
-  * SDL interface
-  *
-  * Copyright 2001 Bernd Lachner (EMail: dev@lachner-net.de)
-  *
-  * Partialy based on the UAE X interface (xwin.c)
-  *
-  * Copyright 1995, 1996 Bernd Schmidt
-  * Copyright 1996 Ed Hanway, Andre Beck, Samuel Devulder, Bruno Coste
-  * Copyright 1998 Marcus Sundberg
-  * DGA support by Kai Kollmorgen
-  * X11/DGA merge, hotkeys and grabmouse by Marcus Sundberg
-  */
+/*
+ * UAE - The Un*x Amiga Emulator
+ *
+ * SDL interface
+ *
+ * Copyright 2001 Bernd Lachner (EMail: dev@lachner-net.de)
+ *
+ * Partialy based on the UAE X interface (xwin.c)
+ *
+ * Copyright 1995, 1996 Bernd Schmidt
+ * Copyright 1996 Ed Hanway, Andre Beck, Samuel Devulder, Bruno Coste
+ * Copyright 1998 Marcus Sundberg
+ * DGA support by Kai Kollmorgen
+ * X11/DGA merge, hotkeys and grabmouse by Marcus Sundberg
+ */
 
 void carga(void);
 void guarda(void);
@@ -194,13 +194,13 @@ void flush_block (int ystart, int ystop)
 #endif
     if (drawfinished)
     {
-	drawfinished=0;
+		drawfinished=0;
 #if !defined (GP2X) && !defined (PSP) && !defined (GIZMONDO)
-	if (vkbd_mode)
-		vkbd_key=vkbd_process();
+		if (vkbd_mode)
+			vkbd_key=vkbd_process();
 #endif
 #ifdef DOUBLEBUFFER
-	SDL_Flip(prSDLScreen);
+		SDL_Flip(prSDLScreen);
 #endif
     }
 #ifndef DREAMCAST
@@ -217,7 +217,7 @@ void black_screen_now(void)
 #else
 	SDL_UpdateRect(prSDLScreen, 0, 0, 320, 240);
 #endif
-
+	
 }
 
 static __inline__ int bitsInMask (unsigned long mask)
@@ -249,12 +249,12 @@ static int get_color (int r, int g, int b, xcolnr *cnp)
 #ifdef DEBUG_GFX
 	dbg("Function: get_color");
 #endif
-
+	
 	*cnp = SDL_MapRGB(prSDLScreen->format, r, g, b);
 	arSDLColors[ncolors].r = r;
 	arSDLColors[ncolors].g = g;
 	arSDLColors[ncolors].b = b;
-
+	
 	ncolors++;
 	return 1;
 }
@@ -262,22 +262,22 @@ static int get_color (int r, int g, int b, xcolnr *cnp)
 static int init_colors (void)
 {
 	int i;
-
+	
 #ifdef DEBUG_GFX
 	dbg("Function: init_colors");
 #endif
-
-		/* Truecolor: */
-		red_bits = bitsInMask(prSDLScreen->format->Rmask);
-		green_bits = bitsInMask(prSDLScreen->format->Gmask);
-		blue_bits = bitsInMask(prSDLScreen->format->Bmask);
-		red_shift = maskShift(prSDLScreen->format->Rmask);
-		green_shift = maskShift(prSDLScreen->format->Gmask);
-		blue_shift = maskShift(prSDLScreen->format->Bmask);
-		alloc_colors64k (red_bits, green_bits, blue_bits, red_shift, green_shift, blue_shift);
-		for (i = 0; i < 4096; i++)
-			xcolors[i] = xcolors[i] * 0x00010001;
-
+	
+	/* Truecolor: */
+	red_bits = bitsInMask(prSDLScreen->format->Rmask);
+	green_bits = bitsInMask(prSDLScreen->format->Gmask);
+	blue_bits = bitsInMask(prSDLScreen->format->Bmask);
+	red_shift = maskShift(prSDLScreen->format->Rmask);
+	green_shift = maskShift(prSDLScreen->format->Gmask);
+	blue_shift = maskShift(prSDLScreen->format->Bmask);
+	alloc_colors64k (red_bits, green_bits, blue_bits, red_shift, green_shift, blue_shift);
+	for (i = 0; i < 4096; i++)
+		xcolors[i] = xcolors[i] * 0x00010001;
+	
 	return 1;
 }
 
@@ -286,14 +286,14 @@ int graphics_setup (void)
 #ifdef DEBUG_GFX
     dbg("Function: graphics_setup");
 #endif
-
+	
     /* Initialize the SDL library */
     if ( SDL_Init(SDL_INIT_VIDEO) < 0 )
     {
         fprintf(stderr, "Unable to init SDL: %s\n", SDL_GetError());
         return 0;
     }
-
+	
     return 1;
 }
 
@@ -301,22 +301,22 @@ int graphics_setup (void)
 static void graphics_subinit (void)
 {
 	Uint32 uiSDLVidModFlags;
-
+	
 #ifdef DEBUG_GFX
 	dbg("Function: graphics_subinit");
 #endif
-
+	
 	/* Open SDL Window in current mode */
 	uiSDLVidModFlags = SDL_HWSURFACE; //SDL_SWSURFACE;
 #ifdef DEBUG_GFX
 	dbgf("Resolution: %d x %d\n", current_width, current_height);
 #endif
-
+	
 	if (prSDLScreen==NULL)
 #ifdef DREAMCAST
 		prSDLScreen = SDL_SetVideoMode(current_width, current_height, 16, uiSDLVidModFlags|VIDEO_FLAGS);
 #else
-		prSDLScreen = SDL_SetVideoMode(current_width, current_height, 16, uiSDLVidModFlags|VIDEO_FLAGS);
+	prSDLScreen = SDL_SetVideoMode(current_width, current_height, 16, uiSDLVidModFlags|VIDEO_FLAGS);
 #endif
 	if (prSDLScreen == NULL)
 	{
@@ -374,24 +374,24 @@ int graphics_init (void)
 	gp2xButtonRemappingOn = 0;
 	show_volumecontrol = 0;
 #endif 
-
+	
 #ifdef DEBUG_GFX
 	dbg("Function: graphics_init");
 #endif
-
+	
 	current_width = PREFS_GFX_WIDTH;
 	current_height = PREFS_GFX_HEIGHT;
-
+	
 	graphics_subinit ();
-
-
+	
+	
     if (!init_colors ())
 		return 0;
-
+	
     buttonstate[0] = buttonstate[1] = buttonstate[2] = 0;
     for (i = 256; i--;)
-	uae4all_keystate[i] = 0;
-
+		uae4all_keystate[i] = 0;
+	
 #ifdef DEBUG_FRAMERATE
     uae4all_update_time();
 #endif
@@ -403,7 +403,7 @@ static void graphics_subshutdown (void)
 #ifdef DEBUG_GFX
     dbg("Function: graphics_subshutdown");
 #endif
-
+	
     SDL_FreeSurface(prSDLScreen);
 }
 
@@ -412,11 +412,11 @@ void graphics_leave (void)
 #ifdef DEBUG_GFX
     dbg("Function: graphics_leave");
 #endif
-
+	
     graphics_subshutdown ();
-
+	
 	SDL_VideoQuit();
-
+	
     dumpcustom ();
 }
 
@@ -426,95 +426,95 @@ static int kc_decode (SDL_keysym *prKeySym)
 {
     switch (prKeySym->sym)
     {
-    case SDLK_b: return AK_B;
-    case SDLK_c: return AK_C;
-    case SDLK_d: return AK_D;
-    case SDLK_e: return AK_E;
-    case SDLK_f: return AK_F;
-    case SDLK_g: return AK_G;
-    case SDLK_h: return AK_H;
-    case SDLK_i: return AK_I;
-    case SDLK_j: return AK_J;
-    case SDLK_k: return AK_K;
-    case SDLK_l: return AK_L;
-    case SDLK_n: return AK_N;
-    case SDLK_o: return AK_O;
-    case SDLK_p: return AK_P;
-    case SDLK_r: return AK_R;
-    case SDLK_s: return AK_S;
-    case SDLK_t: return AK_T;
-    case SDLK_u: return AK_U;
-    case SDLK_v: return AK_V;
-    case SDLK_x: return AK_X;
-
-    case SDLK_0: return AK_0;
-    case SDLK_1: return AK_1;
-    case SDLK_2: return AK_2;
-    case SDLK_3: return AK_3;
-    case SDLK_4: return AK_4;
-    case SDLK_5: return AK_5;
-    case SDLK_6: return AK_6;
-    case SDLK_7: return AK_7;
-    case SDLK_8: return AK_8;
-    case SDLK_9: return AK_9;
-
-    case SDLK_KP0: return AK_NP0;
-    case SDLK_KP1: return AK_NP1;
-    case SDLK_KP2: return AK_NP2;
-    case SDLK_KP3: return AK_NP3;
-    case SDLK_KP4: return AK_NP4;
-    case SDLK_KP5: return AK_NP5;
-    case SDLK_KP6: return AK_NP6;
-    case SDLK_KP7: return AK_NP7;
-    case SDLK_KP8: return AK_NP8;
-    case SDLK_KP9: return AK_NP9;
-    case SDLK_KP_DIVIDE: return AK_NPDIV;
-    case SDLK_KP_MULTIPLY: return AK_NPMUL;
-    case SDLK_KP_MINUS: return AK_NPSUB;
-    case SDLK_KP_PLUS: return AK_NPADD;
-    case SDLK_KP_PERIOD: return AK_NPDEL;
-    case SDLK_KP_ENTER: return AK_ENT;
-
-    case SDLK_F1: return AK_F1;
-    case SDLK_F2: return AK_F2;
-    case SDLK_F3: return AK_F3;
-    case SDLK_F4: return AK_F4;
-    case SDLK_F5: return AK_F5;
-    case SDLK_F6: return AK_F6;
-    case SDLK_F7: return AK_F7;
-    case SDLK_F8: return AK_F8;
-    case SDLK_F9: return AK_F9;
-    case SDLK_F10: return AK_F10;
-
-    case SDLK_BACKSPACE: return AK_BS;
-    case SDLK_DELETE: return AK_DEL;
-    case SDLK_LCTRL: return AK_CTRL;
-    case SDLK_RCTRL: return AK_RCTRL;
-    case SDLK_TAB: return AK_TAB;
-    case SDLK_LALT: return AK_LALT;
-    case SDLK_RALT: return AK_RALT;
-    case SDLK_RMETA: return AK_RAMI;
-    case SDLK_LMETA: return AK_LAMI;
-    case SDLK_RETURN: return AK_RET;
-    case SDLK_SPACE: return AK_SPC;
-    case SDLK_LSHIFT: return AK_LSH;
-    case SDLK_RSHIFT: return AK_RSH;
-    case SDLK_ESCAPE: return AK_ESC;
-
-    case SDLK_INSERT: return AK_HELP;
-    case SDLK_HOME: return AK_NPLPAREN;
-    case SDLK_END: return AK_NPRPAREN;
-    case SDLK_CAPSLOCK: return AK_CAPSLOCK;
-
-    case SDLK_UP: return AK_UP;
-    case SDLK_DOWN: return AK_DN;
-    case SDLK_LEFT: return AK_LF;
-    case SDLK_RIGHT: return AK_RT;
-
-    case SDLK_PAGEUP: return AK_RAMI;          /* PgUp mapped to right amiga */
-    case SDLK_PAGEDOWN: return AK_LAMI;        /* PgDn mapped to left amiga */
-
-    default: return -1;
+		case SDLK_b: return AK_B;
+		case SDLK_c: return AK_C;
+		case SDLK_d: return AK_D;
+		case SDLK_e: return AK_E;
+		case SDLK_f: return AK_F;
+		case SDLK_g: return AK_G;
+		case SDLK_h: return AK_H;
+		case SDLK_i: return AK_I;
+		case SDLK_j: return AK_J;
+		case SDLK_k: return AK_K;
+		case SDLK_l: return AK_L;
+		case SDLK_n: return AK_N;
+		case SDLK_o: return AK_O;
+		case SDLK_p: return AK_P;
+		case SDLK_r: return AK_R;
+		case SDLK_s: return AK_S;
+		case SDLK_t: return AK_T;
+		case SDLK_u: return AK_U;
+		case SDLK_v: return AK_V;
+		case SDLK_x: return AK_X;
+			
+		case SDLK_0: return AK_0;
+		case SDLK_1: return AK_1;
+		case SDLK_2: return AK_2;
+		case SDLK_3: return AK_3;
+		case SDLK_4: return AK_4;
+		case SDLK_5: return AK_5;
+		case SDLK_6: return AK_6;
+		case SDLK_7: return AK_7;
+		case SDLK_8: return AK_8;
+		case SDLK_9: return AK_9;
+			
+		case SDLK_KP0: return AK_NP0;
+		case SDLK_KP1: return AK_NP1;
+		case SDLK_KP2: return AK_NP2;
+		case SDLK_KP3: return AK_NP3;
+		case SDLK_KP4: return AK_NP4;
+		case SDLK_KP5: return AK_NP5;
+		case SDLK_KP6: return AK_NP6;
+		case SDLK_KP7: return AK_NP7;
+		case SDLK_KP8: return AK_NP8;
+		case SDLK_KP9: return AK_NP9;
+		case SDLK_KP_DIVIDE: return AK_NPDIV;
+		case SDLK_KP_MULTIPLY: return AK_NPMUL;
+		case SDLK_KP_MINUS: return AK_NPSUB;
+		case SDLK_KP_PLUS: return AK_NPADD;
+		case SDLK_KP_PERIOD: return AK_NPDEL;
+		case SDLK_KP_ENTER: return AK_ENT;
+			
+		case SDLK_F1: return AK_F1;
+		case SDLK_F2: return AK_F2;
+		case SDLK_F3: return AK_F3;
+		case SDLK_F4: return AK_F4;
+		case SDLK_F5: return AK_F5;
+		case SDLK_F6: return AK_F6;
+		case SDLK_F7: return AK_F7;
+		case SDLK_F8: return AK_F8;
+		case SDLK_F9: return AK_F9;
+		case SDLK_F10: return AK_F10;
+			
+		case SDLK_BACKSPACE: return AK_BS;
+		case SDLK_DELETE: return AK_DEL;
+		case SDLK_LCTRL: return AK_CTRL;
+		case SDLK_RCTRL: return AK_RCTRL;
+		case SDLK_TAB: return AK_TAB;
+		case SDLK_LALT: return AK_LALT;
+		case SDLK_RALT: return AK_RALT;
+		case SDLK_RMETA: return AK_RAMI;
+		case SDLK_LMETA: return AK_LAMI;
+		case SDLK_RETURN: return AK_RET;
+		case SDLK_SPACE: return AK_SPC;
+		case SDLK_LSHIFT: return AK_LSH;
+		case SDLK_RSHIFT: return AK_RSH;
+		case SDLK_ESCAPE: return AK_ESC;
+			
+		case SDLK_INSERT: return AK_HELP;
+		case SDLK_HOME: return AK_NPLPAREN;
+		case SDLK_END: return AK_NPRPAREN;
+		case SDLK_CAPSLOCK: return AK_CAPSLOCK;
+			
+		case SDLK_UP: return AK_UP;
+		case SDLK_DOWN: return AK_DN;
+		case SDLK_LEFT: return AK_LF;
+		case SDLK_RIGHT: return AK_RT;
+			
+		case SDLK_PAGEUP: return AK_RAMI;          /* PgUp mapped to right amiga */
+		case SDLK_PAGEDOWN: return AK_LAMI;        /* PgDn mapped to left amiga */
+			
+		default: return -1;
     }
 }
 
@@ -522,26 +522,26 @@ static int decode_us (SDL_keysym *prKeySym)
 {
     switch(prKeySym->sym)
     {
-	/* US specific */
-    case SDLK_a: return AK_A;
-    case SDLK_m: return AK_M;
-    case SDLK_q: return AK_Q;
-    case SDLK_y: return AK_Y;
-    case SDLK_w: return AK_W;
-    case SDLK_z: return AK_Z;
-    case SDLK_LEFTBRACKET: return AK_LBRACKET;
-    case SDLK_RIGHTBRACKET: return AK_RBRACKET;
-    case SDLK_COMMA: return AK_COMMA;
-    case SDLK_PERIOD: return AK_PERIOD;
-    case SDLK_SLASH: return AK_SLASH;
-    case SDLK_SEMICOLON: return AK_SEMICOLON;
-    case SDLK_MINUS: return AK_MINUS;
-    case SDLK_EQUALS: return AK_EQUAL;
-	/* this doesn't work: */
-    case SDLK_BACKQUOTE: return AK_QUOTE;
-    case SDLK_QUOTE: return AK_BACKQUOTE;
-    case SDLK_BACKSLASH: return AK_BACKSLASH;
-    default: return -1;
+			/* US specific */
+		case SDLK_a: return AK_A;
+		case SDLK_m: return AK_M;
+		case SDLK_q: return AK_Q;
+		case SDLK_y: return AK_Y;
+		case SDLK_w: return AK_W;
+		case SDLK_z: return AK_Z;
+		case SDLK_LEFTBRACKET: return AK_LBRACKET;
+		case SDLK_RIGHTBRACKET: return AK_RBRACKET;
+		case SDLK_COMMA: return AK_COMMA;
+		case SDLK_PERIOD: return AK_PERIOD;
+		case SDLK_SLASH: return AK_SLASH;
+		case SDLK_SEMICOLON: return AK_SEMICOLON;
+		case SDLK_MINUS: return AK_MINUS;
+		case SDLK_EQUALS: return AK_EQUAL;
+			/* this doesn't work: */
+		case SDLK_BACKQUOTE: return AK_QUOTE;
+		case SDLK_QUOTE: return AK_BACKQUOTE;
+		case SDLK_BACKSLASH: return AK_BACKSLASH;
+		default: return -1;
     }
 }
 
@@ -549,7 +549,7 @@ int keycode2amiga(SDL_keysym *prKeySym)
 {
     int iAmigaKeycode = kc_decode(prKeySym);
     if (iAmigaKeycode == -1)
-            return decode_us(prKeySym);
+		return decode_us(prKeySym);
     return iAmigaKeycode;
 }
 
@@ -564,12 +564,12 @@ void handle_events (void)
 #ifdef DEBUG_EVENTS
     dbg("Function: handle_events");
 #endif
-
-
+	
+	
 #ifdef MAX_AUTOEVENTS
 	{
 		static unsigned cuenta=0;
-// /*
+		// /*
 		switch(cuenta&63)
 		{
 			case 8:
@@ -589,7 +589,7 @@ void handle_events (void)
 			case 62:
 				joy1dir=0; break;
 		}
-//		lastmy+=8;
+		//		lastmy+=8;
 		switch(cuenta&127)
 		{
 			case 20:
@@ -601,57 +601,57 @@ void handle_events (void)
 			case 80:
 				record_key(0x89); break;
 		}
-if (cuenta==7700)
-{
-strcpy(changed_df[0],"prueba2.adz");
-real_changed_df[0]=1;
-joy1button=1;
-}
-// */
-
-// Defender of the Crown
- /*
-switch(cuenta)
-{
-case 2600:
-lastmx+=80;
-break;
-case 2610:
-buttonstate[0]=1; break;
-break;
-case 2615:
-buttonstate[0]=0; break;
-break;
-case 4500:
-lastmy+=100;
-break;
-case 4510:
-buttonstate[0]=1; break;
-break;
-case 4515:
-buttonstate[0]=0; break;
-break;
-case 4640:
-lastmy-=60;
-lastmx+=550;
-break;
-case 4700:
-lastmx+=200;
-break;
-case 4710:
-buttonstate[0]=1; break;
-break;
-case 4715:
-buttonstate[0]=0; break;
-break;
-
-
-}
-// printf("%i -> %.8X\n",cuenta,chipmem_checksum());
- */
-printf("%i\n",cuenta); fflush(stdout);
-
-
+		if (cuenta==7700)
+		{
+			strcpy(changed_df[0],"prueba2.adz");
+			real_changed_df[0]=1;
+			joy1button=1;
+		}
+		// */
+		
+		// Defender of the Crown
+		/*
+		 switch(cuenta)
+		 {
+		 case 2600:
+		 lastmx+=80;
+		 break;
+		 case 2610:
+		 buttonstate[0]=1; break;
+		 break;
+		 case 2615:
+		 buttonstate[0]=0; break;
+		 break;
+		 case 4500:
+		 lastmy+=100;
+		 break;
+		 case 4510:
+		 buttonstate[0]=1; break;
+		 break;
+		 case 4515:
+		 buttonstate[0]=0; break;
+		 break;
+		 case 4640:
+		 lastmy-=60;
+		 lastmx+=550;
+		 break;
+		 case 4700:
+		 lastmx+=200;
+		 break;
+		 case 4710:
+		 buttonstate[0]=1; break;
+		 break;
+		 case 4715:
+		 buttonstate[0]=0; break;
+		 break;
+		 
+		 
+		 }
+		 // printf("%i -> %.8X\n",cuenta,chipmem_checksum());
+		 */
+		printf("%i\n",cuenta); fflush(stdout);
+		
+		
 #ifdef START_DEBUG
 		if (cuenta>START_DEBUG)
 			DEBUG_AHORA=1;
@@ -668,350 +668,350 @@ printf("%i\n",cuenta); fflush(stdout);
 #else
     /* Handle GUI events */
     gui_handle_events ();
-
+	
     while (SDL_PollEvent(&rEvent))
     {
-	switch (rEvent.type)
-	{
-	case SDL_QUIT:
+		switch (rEvent.type)
+		{
+			case SDL_QUIT:
 #ifdef DEBUG_EVENTS
-	    dbg("Event: quit");
+				dbg("Event: quit");
 #endif
-	    uae_quit();
-	    break;
-	    break;
-	case SDL_JOYBUTTONDOWN:
+				uae_quit();
+				break;
+				break;
+			case SDL_JOYBUTTONDOWN:
 #if defined (GP2X) || defined (PSP) || defined (GIZMONDO)
-		if (gp2xButtonRemappingOn && is_overridden_button(rEvent.jbutton.button))
-		{
-			// handle the buttons as specified
-			handle_remapped_button_down(rEvent.jbutton.button);
-		}
-#ifdef GP2X
-		else if (rEvent.jbutton.button==GP2X_BUTTON_A)
-#else
-#ifdef GIZMONDO
-		else if (rEvent.jbutton.button==GIZ_BACK)
-#else
-		else if (rEvent.jbutton.button==PSP_BUTTON_SQUARE)
-#endif
-#endif
-		{
-			// critical: temporary hack to send return and space when the A button
-			// is pressed
-			if (!uae4all_keystate[AK_RET])
-			{
-				uae4all_keystate[AK_RET] = 1;
-				record_key(AK_RET << 1);
-			}
-			if (!uae4all_keystate[AK_SPC])
-			{
-				uae4all_keystate[AK_SPC] = 1;
-				record_key(AK_SPC << 1);
-			}
-		}
-#ifdef GP2X
-		else if (rEvent.jbutton.button==GP2X_BUTTON_START)
-#else
-#ifdef GIZMONDO
-		else if (rEvent.jbutton.button==GIZ_STOP)
-#else
-		else if (rEvent.jbutton.button==PSP_BUTTON_START)
-#endif
-#endif
-		{
-			if (!vkbd_mode)
-			{
-				// only do this if the virtual keyboard isn't visible
-				
-				// state moves thus:
-				// joystick mode (with virt keyboard on L and R)
-				// mouse mode (with mouse buttons on L and R)
-				// if specified:
-				// remapping mode (with whatever's been supplied)
-				// back to start of state
-				if (!hasGp2xButtonRemapping)
+				if (gp2xButtonRemappingOn && is_overridden_button(rEvent.jbutton.button))
 				{
-					// skip the remapping state
-					gp2xMouseEmuOn = !gp2xMouseEmuOn;
+					// handle the buttons as specified
+					handle_remapped_button_down(rEvent.jbutton.button);
+				}
+#ifdef GP2X
+				else if (rEvent.jbutton.button==GP2X_BUTTON_A)
+#else
+#ifdef GIZMONDO
+					else if (rEvent.jbutton.button==GIZ_BACK)
+#else
+						else if (rEvent.jbutton.button==PSP_BUTTON_SQUARE)
+#endif
+#endif
+						{
+							// critical: temporary hack to send return and space when the A button
+							// is pressed
+							if (!uae4all_keystate[AK_RET])
+							{
+								uae4all_keystate[AK_RET] = 1;
+								record_key(AK_RET << 1);
+							}
+							if (!uae4all_keystate[AK_SPC])
+							{
+								uae4all_keystate[AK_SPC] = 1;
+								record_key(AK_SPC << 1);
+							}
+						}
+#ifdef GP2X
+						else if (rEvent.jbutton.button==GP2X_BUTTON_START)
+#else
+#ifdef GIZMONDO
+							else if (rEvent.jbutton.button==GIZ_STOP)
+#else
+								else if (rEvent.jbutton.button==PSP_BUTTON_START)
+#endif
+#endif
+								{
+									if (!vkbd_mode)
+									{
+										// only do this if the virtual keyboard isn't visible
+										
+										// state moves thus:
+										// joystick mode (with virt keyboard on L and R)
+										// mouse mode (with mouse buttons on L and R)
+										// if specified:
+										// remapping mode (with whatever's been supplied)
+										// back to start of state
+										if (!hasGp2xButtonRemapping)
+										{
+											// skip the remapping state
+											gp2xMouseEmuOn = !gp2xMouseEmuOn;
+										}
+										else
+										{
+											// start condition is gp2xMouseEmuOn = 0, gp2xButtonRemappingOn = 0
+											if (!gp2xButtonRemappingOn && !gp2xMouseEmuOn)
+											{
+												// move to mouse emu mode
+												gp2xMouseEmuOn = 1;
+												gp2xButtonRemappingOn = 0;
+											}
+											else if (gp2xMouseEmuOn && !gp2xButtonRemappingOn)
+											{
+												// move to button remapping mode
+												gp2xMouseEmuOn = 0;
+												gp2xButtonRemappingOn = 1;
+											}
+											else if (!gp2xMouseEmuOn && gp2xButtonRemappingOn)
+											{
+												gp2xMouseEmuOn = 0;
+												gp2xButtonRemappingOn = 0;
+											}
+										}
+										
+										show_inputmode = 1;
+									}			
+								}
+								else if (gp2xMouseEmuOn)
+								{
+#ifdef GP2X
+									if (rEvent.jbutton.button==GP2X_BUTTON_L)
+										buttonstate[0] = 1;
+									
+									if (rEvent.jbutton.button==GP2X_BUTTON_R)
+										buttonstate[2] = 1;
+#else
+#ifdef GIZMONDO
+									if (rEvent.jbutton.button==GIZ_LTRIG)
+										buttonstate[0] = 1;
+									
+									if (rEvent.jbutton.button==GIZ_RTRIG)
+										buttonstate[2] = 1;
+									
+#else
+									if (rEvent.jbutton.button==PSP_BUTTON_L)
+										buttonstate[0] = 1;
+									
+									if (rEvent.jbutton.button==PSP_BUTTON_R)
+										buttonstate[2] = 1;
+									
+#endif
+#endif
+								}
+				
+								else if ((!gp2xMouseEmuOn) && (!gp2xButtonRemappingOn) && (!vkbd_mode) && (vkbd_button2!=(SDLKey)0))
+								{
+									if (vkbd_button2)
+										rEvent.key.keysym.sym=vkbd_button2;
+									else
+										break;
+								}
+#ifdef GP2X
+				if (rEvent.jbutton.button==GP2X_BUTTON_VOLUP)
+				{
+					if (soundVolume <100)
+					{
+						soundVolume+= 10;
+						
+						gp2x_set_volume(soundVolume);
+					}
+					show_volumecontrol = 1;
+				}
+				else if (rEvent.jbutton.button==GP2X_BUTTON_VOLDOWN)
+				{
+					int vol;
+					
+					if (soundVolume > 0)
+					{
+						soundVolume-= 10;
+						gp2x_set_volume(soundVolume);
+					}
+					show_volumecontrol = 1;
+				}
+#endif
+#else         
+				if ((rEvent.jbutton.button==6) && (!vkbd_mode) && (vkbd_button2!=(SDLKey)0))
+				{
+					if (vkbd_button2)
+						rEvent.key.keysym.sym=vkbd_button2;
+					else
+						break;
+				}
+#endif
+				else
+					break;
+			case SDL_KEYDOWN:
+#ifdef DEBUG_EVENTS
+				dbg("Event: key down");
+#endif
+#if !defined (DREAMCAST) && !defined (GP2X)
+				if ((rEvent.key.keysym.sym!=SDLK_F11)&&(rEvent.key.keysym.sym!=SDLK_F12)&&(rEvent.key.keysym.sym!=SDLK_PAGEUP))
+#endif
+				{
+					iAmigaKeyCode = keycode2amiga(&(rEvent.key.keysym));
+					if (iAmigaKeyCode >= 0)
+					{
+						if (!uae4all_keystate[iAmigaKeyCode])
+						{
+							uae4all_keystate[iAmigaKeyCode] = 1;
+							record_key(iAmigaKeyCode << 1);
+						}
+					}
+				}
+				break;
+			case SDL_JOYBUTTONUP:
+#if defined (GP2X) || defined (PSP) || defined (GIZMONDO)
+				if (gp2xButtonRemappingOn && is_overridden_button(rEvent.jbutton.button))
+				{
+					// handle the buttons as specified
+					handle_remapped_button_up(rEvent.jbutton.button);
+				}
+#ifdef GP2X
+				else if (rEvent.jbutton.button==GP2X_BUTTON_A)
+#else
+#ifdef GIZMONDO
+					else if (rEvent.jbutton.button==GIZ_BACK)
+#else
+						else if (rEvent.jbutton.button==PSP_BUTTON_SQUARE)
+#endif
+#endif
+						{
+							// critical: temporary hack to send return and space when the A button
+							// is pressed
+							uae4all_keystate[AK_RET] = 0;
+							record_key((AK_RET << 1) | 1);
+							
+							uae4all_keystate[AK_SPC] = 0;
+							record_key((AK_SPC << 1) | 1);
+						}
+						else if (gp2xMouseEmuOn)
+						{
+#ifdef GP2X
+							if (rEvent.jbutton.button==GP2X_BUTTON_L)
+							{
+								buttonstate[0] = 0;
+							}
+							else if (rEvent.jbutton.button==GP2X_BUTTON_R)
+							{
+								buttonstate[2] = 0;
+							}
+#else
+#ifdef GIZMONDO
+							if (rEvent.jbutton.button==GIZ_LTRIG)
+							{
+								buttonstate[0] = 0;
+							}
+							else if (rEvent.jbutton.button==GIZ_RTRIG)
+							{
+								buttonstate[2] = 0;
+							}
+#else
+							if (rEvent.jbutton.button==PSP_BUTTON_L)
+							{
+								buttonstate[0] = 0;
+							}
+							else if (rEvent.jbutton.button==PSP_BUTTON_R)
+							{
+								buttonstate[2] = 0;
+							}
+#endif
+#endif
+						}
+#ifdef GP2X
+				if (rEvent.jbutton.button==GP2X_BUTTON_VOLDOWN || rEvent.jbutton.button==GP2X_BUTTON_VOLUP)
+				{
+					show_volumecontrol = 0;
+				}
+#endif
+#ifdef GP2X
+				if (rEvent.jbutton.button==GP2X_BUTTON_START)
+#else
+#ifdef GIZMONDO
+					if (rEvent.jbutton.button==GIZ_STOP)
+#else
+						if (rEvent.jbutton.button==PSP_BUTTON_START)
+#endif
+#endif
+						{
+							show_inputmode = 0;
+						}
+				
+#else         
+				if ((rEvent.jbutton.button==6) && (!vkbd_mode) && (vkbd_button2!=(SDLKey)0))
+				{
+					if (vkbd_button2)
+						rEvent.key.keysym.sym=vkbd_button2;
+					else
+						break;
+				}
+#endif
+				else
+					break;
+			case SDL_KEYUP:
+#ifdef DEBUG_EVENTS
+				dbg("Event: key up");
+#endif
+#if !defined (DREAMCAST) && !defined (GP2X)
+				if ((rEvent.key.keysym.sym!=SDLK_F11)&&(rEvent.key.keysym.sym!=SDLK_F12)&&(rEvent.key.keysym.sym!=SDLK_PAGEUP))
+#endif
+				{
+					iAmigaKeyCode = keycode2amiga(&(rEvent.key.keysym));
+					if (iAmigaKeyCode >= 0)
+					{
+						uae4all_keystate[iAmigaKeyCode] = 0;
+						record_key((iAmigaKeyCode << 1) | 1);
+					}
+				}
+				break;
+			case SDL_MOUSEBUTTONDOWN:
+#ifdef DEBUG_EVENTS
+				dbg("Event: mouse button down");
+#endif
+#ifdef DREAMCAST
+				if (__sdl_dc_emulate_mouse)
+				{
+					if (rEvent.button.button==5)
+						buttonstate[0] = 1;
+					else if (rEvent.button.button==1)
+						buttonstate[2] = 1;
 				}
 				else
+					if (rEvent.button.button)
+						buttonstate[2]=1;
+					else
+						buttonstate[0]=1;
+#else
+				buttonstate[(rEvent.button.button-1)%3] = 1;
+#endif
+				break;
+			case SDL_MOUSEBUTTONUP:
+#ifdef DEBUG_EVENTS
+				dbg("Event: mouse button up");
+#endif
+#ifdef DREAMCAST
+				if (__sdl_dc_emulate_mouse)
 				{
-					// start condition is gp2xMouseEmuOn = 0, gp2xButtonRemappingOn = 0
-					if (!gp2xButtonRemappingOn && !gp2xMouseEmuOn)
-					{
-						// move to mouse emu mode
-						gp2xMouseEmuOn = 1;
-						gp2xButtonRemappingOn = 0;
-					}
-					else if (gp2xMouseEmuOn && !gp2xButtonRemappingOn)
-					{
-						// move to button remapping mode
-						gp2xMouseEmuOn = 0;
-						gp2xButtonRemappingOn = 1;
-					}
-					else if (!gp2xMouseEmuOn && gp2xButtonRemappingOn)
-					{
-						gp2xMouseEmuOn = 0;
-						gp2xButtonRemappingOn = 0;
-					}
+					if (rEvent.button.button==5)
+						buttonstate[0] = 0;
+					else if (rEvent.button.button==1)
+						buttonstate[2] = 0;
 				}
-
-				show_inputmode = 1;
-			}			
-		}
-		else if (gp2xMouseEmuOn)
-		{
-#ifdef GP2X
-			if (rEvent.jbutton.button==GP2X_BUTTON_L)
-				buttonstate[0] = 1;
-			
-			if (rEvent.jbutton.button==GP2X_BUTTON_R)
-				buttonstate[2] = 1;
+				else
+					if (rEvent.button.button)
+						buttonstate[2]=0;
+					else
+						buttonstate[0]=0;
+				
 #else
-#ifdef GIZMONDO
-			if (rEvent.jbutton.button==GIZ_LTRIG)
-				buttonstate[0] = 1;
-			
-			if (rEvent.jbutton.button==GIZ_RTRIG)
-				buttonstate[2] = 1;
-
-#else
-			if (rEvent.jbutton.button==PSP_BUTTON_L)
-				buttonstate[0] = 1;
-			
-			if (rEvent.jbutton.button==PSP_BUTTON_R)
-				buttonstate[2] = 1;
-
+				buttonstate[(rEvent.button.button-1)%3] = 0;
 #endif
+				break;
+			case SDL_MOUSEMOTION:
+#ifdef DEBUG_EVENTS
+				dbg("Event: mouse motion");
 #endif
-		}
-		
-		else if ((!gp2xMouseEmuOn) && (!gp2xButtonRemappingOn) && (!vkbd_mode) && (vkbd_button2!=(SDLKey)0))
-		{
-			if (vkbd_button2)
-				rEvent.key.keysym.sym=vkbd_button2;
-			else
+				lastmx += rEvent.motion.xrel<<1;
+				lastmy += rEvent.motion.yrel<<1;
+				newmousecounters = 1;
 				break;
 		}
-#ifdef GP2X
-		if (rEvent.jbutton.button==GP2X_BUTTON_VOLUP)
-		{
-			if (soundVolume <100)
-			{
-				soundVolume+= 10;
-				
-				gp2x_set_volume(soundVolume);
-			}
-			show_volumecontrol = 1;
-		}
-		else if (rEvent.jbutton.button==GP2X_BUTTON_VOLDOWN)
-		{
-			int vol;
-
-			if (soundVolume > 0)
-			{
-				soundVolume-= 10;
-				gp2x_set_volume(soundVolume);
-			}
-			show_volumecontrol = 1;
-		}
-#endif
-#else         
-	    if ((rEvent.jbutton.button==6) && (!vkbd_mode) && (vkbd_button2!=(SDLKey)0))
-	    {
-		    if (vkbd_button2)
-			    rEvent.key.keysym.sym=vkbd_button2;
-		    else
-			    break;
-            }
-#endif
-	    else
-	    	break;
-        case SDL_KEYDOWN:
-#ifdef DEBUG_EVENTS
-	    dbg("Event: key down");
-#endif
-#if !defined (DREAMCAST) && !defined (GP2X)
-	    if ((rEvent.key.keysym.sym!=SDLK_F11)&&(rEvent.key.keysym.sym!=SDLK_F12)&&(rEvent.key.keysym.sym!=SDLK_PAGEUP))
-#endif
-	    {
-		iAmigaKeyCode = keycode2amiga(&(rEvent.key.keysym));
-		if (iAmigaKeyCode >= 0)
-		{
-		    if (!uae4all_keystate[iAmigaKeyCode])
-		    {
-			uae4all_keystate[iAmigaKeyCode] = 1;
-			record_key(iAmigaKeyCode << 1);
-		    }
-		}
-	    }
-	    break;
-	case SDL_JOYBUTTONUP:
-#if defined (GP2X) || defined (PSP) || defined (GIZMONDO)
-			if (gp2xButtonRemappingOn && is_overridden_button(rEvent.jbutton.button))
-			{
-				// handle the buttons as specified
-				handle_remapped_button_up(rEvent.jbutton.button);
-			}
-#ifdef GP2X
-        	else if (rEvent.jbutton.button==GP2X_BUTTON_A)
-#else
-#ifdef GIZMONDO
-			else if (rEvent.jbutton.button==GIZ_BACK)
-#else
-			else if (rEvent.jbutton.button==PSP_BUTTON_SQUARE)
-#endif
-#endif
-			{
-				// critical: temporary hack to send return and space when the A button
-				// is pressed
-				uae4all_keystate[AK_RET] = 0;
-				record_key((AK_RET << 1) | 1);
-				
-				uae4all_keystate[AK_SPC] = 0;
-				record_key((AK_SPC << 1) | 1);
-			}
-			else if (gp2xMouseEmuOn)
-			{
-#ifdef GP2X
-				if (rEvent.jbutton.button==GP2X_BUTTON_L)
-				{
-					buttonstate[0] = 0;
-				}
-				else if (rEvent.jbutton.button==GP2X_BUTTON_R)
-				{
-					buttonstate[2] = 0;
-				}
-#else
-#ifdef GIZMONDO
-				if (rEvent.jbutton.button==GIZ_LTRIG)
-				{
-					buttonstate[0] = 0;
-				}
-				else if (rEvent.jbutton.button==GIZ_RTRIG)
-				{
-					buttonstate[2] = 0;
-				}
-#else
-				if (rEvent.jbutton.button==PSP_BUTTON_L)
-				{
-					buttonstate[0] = 0;
-				}
-				else if (rEvent.jbutton.button==PSP_BUTTON_R)
-				{
-					buttonstate[2] = 0;
-				}
-#endif
-#endif
-			}
-#ifdef GP2X
-			if (rEvent.jbutton.button==GP2X_BUTTON_VOLDOWN || rEvent.jbutton.button==GP2X_BUTTON_VOLUP)
-			{
-				show_volumecontrol = 0;
-			}
-#endif
-#ifdef GP2X
-			if (rEvent.jbutton.button==GP2X_BUTTON_START)
-#else
-#ifdef GIZMONDO
-			if (rEvent.jbutton.button==GIZ_STOP)
-#else
-			if (rEvent.jbutton.button==PSP_BUTTON_START)
-#endif
-#endif
-			{
-				show_inputmode = 0;
-			}
-
-#else         
-	    if ((rEvent.jbutton.button==6) && (!vkbd_mode) && (vkbd_button2!=(SDLKey)0))
-	    {
-		    if (vkbd_button2)
-			    rEvent.key.keysym.sym=vkbd_button2;
-		    else
-			    break;
-            }
-#endif
-	    else
-	    	break;
-	case SDL_KEYUP:
-#ifdef DEBUG_EVENTS
-	    dbg("Event: key up");
-#endif
-#if !defined (DREAMCAST) && !defined (GP2X)
-	    if ((rEvent.key.keysym.sym!=SDLK_F11)&&(rEvent.key.keysym.sym!=SDLK_F12)&&(rEvent.key.keysym.sym!=SDLK_PAGEUP))
-#endif
-	    {
-		iAmigaKeyCode = keycode2amiga(&(rEvent.key.keysym));
-		if (iAmigaKeyCode >= 0)
-		{
-		    uae4all_keystate[iAmigaKeyCode] = 0;
-		    record_key((iAmigaKeyCode << 1) | 1);
-		}
-	    }
-	    break;
-	case SDL_MOUSEBUTTONDOWN:
-#ifdef DEBUG_EVENTS
-	    dbg("Event: mouse button down");
-#endif
-#ifdef DREAMCAST
-	    if (__sdl_dc_emulate_mouse)
-	    {
-	    	if (rEvent.button.button==5)
-			    buttonstate[0] = 1;
-	    	else if (rEvent.button.button==1)
-		 	   buttonstate[2] = 1;
-	    }
-	    else
-	    	if (rEvent.button.button)
-			buttonstate[2]=1;
-		else
-			buttonstate[0]=1;
-#else
-	    	buttonstate[(rEvent.button.button-1)%3] = 1;
-#endif
-	    break;
-	case SDL_MOUSEBUTTONUP:
-#ifdef DEBUG_EVENTS
-	    dbg("Event: mouse button up");
-#endif
-#ifdef DREAMCAST
-	    if (__sdl_dc_emulate_mouse)
-	    {
-	    	if (rEvent.button.button==5)
-			    buttonstate[0] = 0;
-	    	else if (rEvent.button.button==1)
-			    buttonstate[2] = 0;
-	    }
-	    else
-	    	if (rEvent.button.button)
-			buttonstate[2]=0;
-		else
-			buttonstate[0]=0;
-				
-#else
-	    	buttonstate[(rEvent.button.button-1)%3] = 0;
-#endif
-	    break;
-	case SDL_MOUSEMOTION:
-#ifdef DEBUG_EVENTS
-	    dbg("Event: mouse motion");
-#endif
-	    lastmx += rEvent.motion.xrel<<1;
-	    lastmy += rEvent.motion.yrel<<1;
-	    newmousecounters = 1;
-	    break;
-	}
     }
 #endif
-
-
+	
+	
     /* Handle UAE reset */
-/*
-    if ((uae4all_keystate[AK_CTRL] || uae4all_keystate[AK_RCTRL]) && uae4all_keystate[AK_LAMI] && uae4all_keystate[AK_RAMI])
-	uae_reset ();
-*/
+	/*
+	 if ((uae4all_keystate[AK_CTRL] || uae4all_keystate[AK_RCTRL]) && uae4all_keystate[AK_LAMI] && uae4all_keystate[AK_RAMI])
+	 uae_reset ();
+	 */
 #ifdef DEBUG_EVENTS
     dbg(" handle_events -> terminado");
 #endif

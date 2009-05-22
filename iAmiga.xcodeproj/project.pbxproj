@@ -22,7 +22,7 @@
 		0552BD3F0F3D797C005B30DF /* sysconfig.h.win32 in Resources */ = {isa = PBXBuildFile; fileRef = 0552BCF10F3D797C005B30DF /* sysconfig.h.win32 */; };
 		0552BD400F3D797C005B30DF /* sysconfig.h.xf86os2 in Resources */ = {isa = PBXBuildFile; fileRef = 0552BCF20F3D797C005B30DF /* sysconfig.h.xf86os2 */; };
 		0552BD410F3D797C005B30DF /* keybuf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BCFA0F3D797C005B30DF /* keybuf.cpp */; };
-		0552BD450F3D797C005B30DF /* famec.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD060F3D797C005B30DF /* famec.cpp */; };
+		0552BD450F3D797C005B30DF /* famec.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD060F3D797C005B30DF /* famec.cpp */; settings = {COMPILER_FLAGS = "-O0 -fdefer-pop -fguess-branch-probability -fcprop-registers -fif-conversion -fif-conversion2 -ftree-ccp -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-ter -ftree-lrs -ftree-sra -ftree-copyrename -ftree-fre -ftree-ch -funit-at-a-time -fmerge-constants -fstrict-aliasing -falign-jumps -ftree-copy-prop -ftree-store-copy-prop -fif-conversion2 -fif-conversion"; }; };
 		0552BD470F3D797C005B30DF /* m68k_intrf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD090F3D797C005B30DF /* m68k_intrf.cpp */; };
 		0552BD480F3D797C005B30DF /* m68k_cmn_intrf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD0A0F3D797C005B30DF /* m68k_cmn_intrf.cpp */; };
 		0552BD490F3D797C005B30DF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD0C0F3D797C005B30DF /* main.cpp */; };
@@ -48,6 +48,7 @@
 		05E6A3260FC3DAA90086151B /* sound_iphone.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05E6A3250FC3DAA90086151B /* sound_iphone.cpp */; };
 		05FE7F280FC3EDBF00DBFECF /* AudioQueueManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05FE7F270FC3EDBF00DBFECF /* AudioQueueManager.cpp */; };
 		05FE7F310FC3EF9900DBFECF /* audio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BC9C0F3D797C005B30DF /* audio.cpp */; };
+		05FE829E0FC68EED00DBFECF /* Turrican II.adf in Resources */ = {isa = PBXBuildFile; fileRef = 05FE829D0FC68EED00DBFECF /* Turrican II.adf */; };
 		1D3623260D0F684500981E51 /* iAmigaAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* iAmigaAppDelegate.mm */; };
 		1D60589B0D05DD56006BFB54 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.mm */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -195,6 +196,7 @@
 		05FE7F260FC3EDBF00DBFECF /* AudioQueueManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioQueueManager.h; sourceTree = "<group>"; };
 		05FE7F270FC3EDBF00DBFECF /* AudioQueueManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioQueueManager.cpp; sourceTree = "<group>"; };
 		05FE7F290FC3EDC800DBFECF /* RingQ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RingQ.h; sourceTree = "<group>"; };
+		05FE829D0FC68EED00DBFECF /* Turrican II.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Turrican II.adf"; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* iAmigaAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iAmigaAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* iAmigaAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = iAmigaAppDelegate.mm; sourceTree = "<group>"; };
@@ -458,6 +460,7 @@
 		057443530FC3CA04003BE251 /* disks */ = {
 			isa = PBXGroup;
 			children = (
+				05FE82980FC68EE000DBFECF /* t */,
 				057443540FC3CA04003BE251 /* s */,
 			);
 			path = disks;
@@ -480,6 +483,14 @@
 				05FE7F290FC3EDC800DBFECF /* RingQ.h */,
 			);
 			name = audio;
+			sourceTree = "<group>";
+		};
+		05FE82980FC68EE000DBFECF /* t */ = {
+			isa = PBXGroup;
+			children = (
+				05FE829D0FC68EED00DBFECF /* Turrican II.adf */,
+			);
+			name = t;
 			sourceTree = "<group>";
 		};
 		080E96DDFE201D6D7F000001 /* Classes */ = {
@@ -509,7 +520,6 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				05E6A31C0FC3D93B0086151B /* AudioToolbox.framework */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -539,6 +549,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				05E6A31C0FC3D93B0086151B /* AudioToolbox.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
@@ -597,6 +608,7 @@
 				0574432A0FC3C94F003BE251 /* kick13.rom in Resources */,
 				057443570FC3CA04003BE251 /* BEAST1-1.ADF in Resources */,
 				057443580FC3CA04003BE251 /* BEAST1-2.ADF in Resources */,
+				05FE829E0FC68EED00DBFECF /* Turrican II.adf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -681,7 +693,10 @@
 				GCC_CHAR_IS_UNSIGNED_CHAR = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_FAST_MATH = NO;
-				GCC_PREPROCESSOR_DEFINITIONS = IPHONE;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					IPHONE,
+					DEBUG,
+				);
 				GCC_THREADSAFE_STATICS = NO;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_UNROLL_LOOPS = NO;
@@ -708,7 +723,10 @@
 				GCC_DYNAMIC_NO_PIC = YES;
 				GCC_FAST_MATH = YES;
 				GCC_OPTIMIZATION_LEVEL = 3;
-				GCC_PREPROCESSOR_DEFINITIONS = IPHONE;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					IPHONE,
+					NDEBUG,
+				);
 				GCC_THREADSAFE_STATICS = NO;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_UNROLL_LOOPS = YES;

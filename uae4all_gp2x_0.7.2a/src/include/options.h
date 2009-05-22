@@ -76,37 +76,37 @@ static __inline__ void fuzzy_memset_1 (void *p, uae_u32 c, int offset, int len)
     int a = len & 7;
     len >>= 3;
     switch (a) {
-     case 7: p2--; goto l1;
-     case 6: p2-=2; goto l2;
-     case 5: p2-=3; goto l3;
-     case 4: p2-=4; goto l4;
-     case 3: p2-=5; goto l5;
-     case 2: p2-=6; goto l6;
-     case 1: p2-=7; goto l7;
-     case 0: if (!--len) return; break;
+		case 7: p2--; goto l1;
+		case 6: p2-=2; goto l2;
+		case 5: p2-=3; goto l3;
+		case 4: p2-=4; goto l4;
+		case 3: p2-=5; goto l5;
+		case 2: p2-=6; goto l6;
+		case 1: p2-=7; goto l7;
+		case 0: if (!--len) return; break;
     }
-
+	
     for (;;) {
-	p2[0] = c;
+		p2[0] = c;
 	l1:
-	p2[1] = c;
+		p2[1] = c;
 	l2:
-	p2[2] = c;
+		p2[2] = c;
 	l3:
-	p2[3] = c;
+		p2[3] = c;
 	l4:
-	p2[4] = c;
+		p2[4] = c;
 	l5:
-	p2[5] = c;
+		p2[5] = c;
 	l6:
-	p2[6] = c;
+		p2[6] = c;
 	l7:
-	p2[7] = c;
-
-	if (!len)
-	    break;
-	len--;
-	p2 += 8;
+		p2[7] = c;
+		
+		if (!len)
+			break;
+		len--;
+		p2 += 8;
     }
 }
 

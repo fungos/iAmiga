@@ -10,8 +10,8 @@
 
 
 // #define UNROLL_LOOPS
-#define UNROLL_AUDIO_HANDLER
-#define UNROLL_AHI_HANDLER
+// #define UNROLL_AUDIO_HANDLER
+// #define UNROLL_AHI_HANDLER
 // #define SOUND_PREFETCHS
 
 #include "sysconfig.h"
@@ -75,7 +75,7 @@ typedef uae_s8 sample8_t;
 #define CHECK_SOUND_BUFFERS() \
 { \
     if ((unsigned)sndbufpt - (unsigned)render_sndbuff >= SNDBUFFER_LEN) { \
-	finish_sound_buffer (); \
+		finish_sound_buffer (); \
     } \
 } \
 
@@ -321,85 +321,85 @@ static __inline__ void audio_handler (int nr)
 {
     struct audio_channel_data *cdp = audio_channel + nr;
     switch (audio_channel_state[nr]) {
-     case 0:
-	write_log ("Bug in sound code\n");
-	break;
-     case 1:
-	audio_channel_evtime[nr] = maxhpos * CYCLE_UNIT;
-	audio_channel_state[nr] = 5;
-	INTREQ(0x8000 | (0x80 << nr));
-	if (cdp->wlen != 1)
-	    cdp->wlen = (cdp->wlen - 1) & 0xFFFF;
-	cdp->nextdat = CHIPMEM_WGET (cdp->pt);
-	cdp->pt += 2;
-	break;
-     case 5:
-	audio_channel_evtime[nr] = cdp->per;
-	cdp->dat = cdp->nextdat;
-	cdp->last_sample = audio_channel_current_sample[nr];
-	audio_channel_current_sample[nr] = (sample8_t)(cdp->dat >> 8);
-	audio_channel_state[nr] = 2;
-	{
-	    int audav = adkcon & (1 << nr);
-	    int audap = adkcon & (16 << nr);
-	    int napnav = (!audav && !audap) || audav;
-	    if (napnav)
-		cdp->data_written = 2;
-	}
-	break;
-     case 2:
-	cdp->last_sample = audio_channel_current_sample[nr];
-	audio_channel_current_sample[nr] = (sample8_t)(cdp->dat & 0xFF);
-	audio_channel_evtime[nr] = cdp->per;
-	audio_channel_state[nr] = 3;
-	if (adkcon & (0x10 << nr)) {
-	    if (cdp->intreq2 && cdp->dmaen)
-		INTREQ (0x8000 | (0x80 << nr));
-	    cdp->intreq2 = 0;
-	    cdp->dat = cdp->nextdat;
-	    if (cdp->dmaen)
-		cdp->data_written = 2;
-	    if (nr < 3) {
-		if (cdp->dat == 0)
-		    (cdp+1)->per = PERIOD_MAX;
-		else if (cdp->dat < maxhpos * CYCLE_UNIT / 2)
-		    (cdp+1)->per = maxhpos * CYCLE_UNIT / 2;
-		else
-		    (cdp+1)->per = cdp->dat * CYCLE_UNIT;
-	    }
-	}
-	break;
-     case 3:
-	audio_channel_evtime[nr] = cdp->per;
-	if ((INTREQR() & (0x80 << nr)) && !cdp->dmaen) {
-	    audio_channel_state[nr] = 0;
-	    cdp->last_sample = 0;
-	    audio_channel_current_sample[nr] = 0;
-	    break;
-	} else {
-	    int audav = adkcon & (1 << nr);
-	    int audap = adkcon & (16 << nr);
-	    int napnav = (!audav && !audap) || audav;
-	    audio_channel_state[nr] = 2;
-	    if ((cdp->intreq2 && cdp->dmaen && napnav)
-		|| (napnav && !cdp->dmaen))
-		INTREQ(0x8000 | (0x80 << nr));
-	    cdp->intreq2 = 0;
-	    cdp->dat = cdp->nextdat;
-	    cdp->last_sample = audio_channel_current_sample[nr];
-	    audio_channel_current_sample[nr] = (sample8_t)(cdp->dat >> 8);
-	    if (cdp->dmaen && napnav)
-		cdp->data_written = 2;
-	    if (audav) {
-		if (nr < 3) {
-		    audio_channel_vol[nr+1] = cdp->dat;
+		case 0:
+			write_log ("Bug in sound code\n");
+			break;
+		case 1:
+			audio_channel_evtime[nr] = maxhpos * CYCLE_UNIT;
+			audio_channel_state[nr] = 5;
+			INTREQ(0x8000 | (0x80 << nr));
+			if (cdp->wlen != 1)
+				cdp->wlen = (cdp->wlen - 1) & 0xFFFF;
+			cdp->nextdat = CHIPMEM_WGET (cdp->pt);
+			cdp->pt += 2;
+			break;
+		case 5:
+			audio_channel_evtime[nr] = cdp->per;
+			cdp->dat = cdp->nextdat;
+			cdp->last_sample = audio_channel_current_sample[nr];
+			audio_channel_current_sample[nr] = (sample8_t)(cdp->dat >> 8);
+			audio_channel_state[nr] = 2;
+		{
+			int audav = adkcon & (1 << nr);
+			int audap = adkcon & (16 << nr);
+			int napnav = (!audav && !audap) || audav;
+			if (napnav)
+				cdp->data_written = 2;
 		}
-	    }
-	}
-	break;
-     default:
-	audio_channel_state[nr] = 0;
-	break;
+			break;
+		case 2:
+			cdp->last_sample = audio_channel_current_sample[nr];
+			audio_channel_current_sample[nr] = (sample8_t)(cdp->dat & 0xFF);
+			audio_channel_evtime[nr] = cdp->per;
+			audio_channel_state[nr] = 3;
+			if (adkcon & (0x10 << nr)) {
+				if (cdp->intreq2 && cdp->dmaen)
+					INTREQ (0x8000 | (0x80 << nr));
+				cdp->intreq2 = 0;
+				cdp->dat = cdp->nextdat;
+				if (cdp->dmaen)
+					cdp->data_written = 2;
+				if (nr < 3) {
+					if (cdp->dat == 0)
+						(cdp+1)->per = PERIOD_MAX;
+					else if (cdp->dat < maxhpos * CYCLE_UNIT / 2)
+						(cdp+1)->per = maxhpos * CYCLE_UNIT / 2;
+					else
+						(cdp+1)->per = cdp->dat * CYCLE_UNIT;
+				}
+			}
+			break;
+		case 3:
+			audio_channel_evtime[nr] = cdp->per;
+			if ((INTREQR() & (0x80 << nr)) && !cdp->dmaen) {
+				audio_channel_state[nr] = 0;
+				cdp->last_sample = 0;
+				audio_channel_current_sample[nr] = 0;
+				break;
+			} else {
+				int audav = adkcon & (1 << nr);
+				int audap = adkcon & (16 << nr);
+				int napnav = (!audav && !audap) || audav;
+				audio_channel_state[nr] = 2;
+				if ((cdp->intreq2 && cdp->dmaen && napnav)
+					|| (napnav && !cdp->dmaen))
+					INTREQ(0x8000 | (0x80 << nr));
+				cdp->intreq2 = 0;
+				cdp->dat = cdp->nextdat;
+				cdp->last_sample = audio_channel_current_sample[nr];
+				audio_channel_current_sample[nr] = (sample8_t)(cdp->dat >> 8);
+				if (cdp->dmaen && napnav)
+					cdp->data_written = 2;
+				if (audav) {
+					if (nr < 3) {
+						audio_channel_vol[nr+1] = cdp->dat;
+					}
+				}
+			}
+			break;
+		default:
+			audio_channel_state[nr] = 0;
+			break;
     }
 }
 
@@ -479,35 +479,35 @@ static __inline__ void ahi_handler (int nr)
 {
     struct audio_channel_data *cdp = audio_channel + nr;
     switch (audio_channel_state[nr]) {
-    case 0:
-	write_log ("Bug in sound code\n");
-	break;
-    case 1:
-	audio_channel_evtime[nr] = cdp->per;
-	cdp->intreq2 = 0;
-	audio_channel_state[nr] = 2;
-	if (cdp->wlen != 1)
-	    cdp->wlen = (cdp->wlen - 1) & 0xFFFF;
-	cdp->dat = CHIPMEM_WGET (cdp->pt);
-	cdp->pt += 2;
-	break;
-    case 2:
-	if (nr == 4 && cdp->intreq2)
-	    INTREQ (0x8080);
-	cdp->intreq2 = 0;
-	audio_channel_evtime[nr] = cdp->per;
-	cdp->dat = CHIPMEM_WGET (cdp->pt);
-	cdp->pt += 2;
-	if (cdp->wlen == 1) {
-	    cdp->pt = cdp->lc;
-	    cdp->wlen = cdp->len;
-	    cdp->intreq2 = 1;
-	} else
-	    cdp->wlen = (cdp->wlen - 1) & 0xFFFF;
-	break;
-    default:
-	audio_channel_state[nr] = 0;
-	break;
+		case 0:
+			write_log ("Bug in sound code\n");
+			break;
+		case 1:
+			audio_channel_evtime[nr] = cdp->per;
+			cdp->intreq2 = 0;
+			audio_channel_state[nr] = 2;
+			if (cdp->wlen != 1)
+				cdp->wlen = (cdp->wlen - 1) & 0xFFFF;
+			cdp->dat = CHIPMEM_WGET (cdp->pt);
+			cdp->pt += 2;
+			break;
+		case 2:
+			if (nr == 4 && cdp->intreq2)
+				INTREQ (0x8080);
+			cdp->intreq2 = 0;
+			audio_channel_evtime[nr] = cdp->per;
+			cdp->dat = CHIPMEM_WGET (cdp->pt);
+			cdp->pt += 2;
+			if (cdp->wlen == 1) {
+				cdp->pt = cdp->lc;
+				cdp->wlen = cdp->len;
+				cdp->intreq2 = 1;
+			} else
+				cdp->wlen = (cdp->wlen - 1) & 0xFFFF;
+			break;
+		default:
+			audio_channel_state[nr] = 0;
+			break;
     }
 }
 
@@ -774,24 +774,24 @@ void AUDxLCL (int nr, uae_u16 v)
 void AUDxPER (int nr, uae_u16 v)
 {
     unsigned long per = v * CYCLE_UNIT;
-
+	
     if (produce_sound)
     	update_audio ();
-
+	
     if (per == 0)
-	per = PERIOD_MAX;
-
+		per = PERIOD_MAX;
+	
     if (per < maxhpos * CYCLE_UNIT / 2)
-	per = maxhpos * CYCLE_UNIT / 2;
-
+		per = maxhpos * CYCLE_UNIT / 2;
+	
     if (audio_channel[nr].per == PERIOD_MAX
-	&& per != PERIOD_MAX)
+		&& per != PERIOD_MAX)
     {
-	audio_channel_evtime[nr] = CYCLE_UNIT;
-	if (produce_sound > 0) {
-	    schedule_audio ();
-	    events_schedule ();
-	}
+		audio_channel_evtime[nr] = CYCLE_UNIT;
+		if (produce_sound > 0) {
+			schedule_audio ();
+			events_schedule ();
+		}
     }
     audio_channel[nr].per = per;
 }
@@ -817,11 +817,11 @@ int init_audio (void)
 {
     int retval;
     /* Some backward compatibility hacks until every port initializes
-       scaled_sample_evtime...  */
+	 scaled_sample_evtime...  */
     scaled_sample_evtime_ok = 0;
     retval = init_sound ();
     if (! scaled_sample_evtime_ok)
-	scaled_sample_evtime = sample_evtime * CYCLE_UNIT;
+		scaled_sample_evtime = sample_evtime * CYCLE_UNIT;
     return retval;
 }
 

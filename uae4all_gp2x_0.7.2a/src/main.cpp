@@ -93,6 +93,8 @@ void discard_prefs ()
 {
 }
 
+extern int timeslice_mode;
+
 void default_prefs ()
 {
 #ifdef NO_SOUND
@@ -112,11 +114,26 @@ void default_prefs ()
 #elif defined(IPHONE)
 	strcpy(romfile, get_rom_path());
 #else
-//    strcpy (romfile, "/cdrom/kick.rom");
     strcpy (romfile, "kick.rom");
 #endif
 
-    prefs_chipmem_size=0x00100000;
+    //prefs_chipmem_size=0x00100000;
+	prefs_chipmem_size=0x00080000;		// 512kb
+	
+	// o "System clock" (m68k_speed), which allows you to underclock the whole system to improve emulation performance, but breaks sound pitch. 
+	// o "Sync threshold" (timeslice_mode), which allows to reduce amount of synchronization between 68k and other chips to also improve performance. 
+	// Set both to 100 for best compatibility
+	
+	// 0 = 100%
+	// 1 = 75%
+	// 2 = 50%
+	// 3 = 25%
+	timeslice_mode = 0;
+	
+	// 0 = 100%
+	// 2 = 83%
+	// 4 = 75%
+	m68k_speed = 0;
 }
 
 int quit_program = 0;

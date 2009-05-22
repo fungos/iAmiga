@@ -4,7 +4,7 @@
 /* Autor: Oscar Orallo Pelaez                                               */
 /* Fecha de comienzo: 03-10-2006                                            */
 /* Ultima actualizacion: 08-10-2006                                         */
-/* Based on the excellent FAMEC emulator by Stèphane Dallongueville          */
+/* Based on the excellent FAMEC emulator by StÃ‹phane Dallongueville          */
 /****************************************************************************/
 
 #include <stdio.h>
@@ -20,7 +20,7 @@
 #define FAMEC_USE_DATA_BANKS
 // #define FAMEC_EXTRA_INLINE
 // #define FAMEC_DEBUG
-#define FAMEC_NO_GOTOS
+// #define FAMEC_NO_GOTOS
 #define FAMEC_ADR_BITS  24
 #define FAMEC_FETCHBITS 8
 #define FAMEC_DATABITS  8
@@ -1729,7 +1729,7 @@ static u32 Opcode;
 /***************************************************************************/
 /* m68k_emulate()                                                          */
 /* Parametros: Numero de ciclos a ejecutar                                 */
-/* Retorno: Exito de la operación                                          */
+/* Retorno: Exito de la operaciÃ›n                                          */
 /*          0  La operacion se ha realizado satisfactoriamente             */
 /*          -1 La CPU esta detenida debido a un ERROR DE BUS DOBLE (linea) */
 /*             El PC ha salido de los limites (bucle no en linea)          */
