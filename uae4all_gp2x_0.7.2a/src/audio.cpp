@@ -592,27 +592,27 @@ static __inline__ int sound_prefs_changed (void)
 void check_prefs_changed_audio (void)
 {
     if (sound_available && sound_prefs_changed ()) {
-	close_sound ();
-
-	produce_sound = changed_produce_sound;
-	if (produce_sound) {
-	    if (init_audio ()) {
-		last_cycles = get_cycles () - 1;
-		next_sample_evtime = scaled_sample_evtime;
-	    } else
-		if (! sound_available) {
-		    write_log ("Sound is not supported.\n");
-		} else {
-		    write_log ("Sorry, can't initialize sound.\n");
-		    produce_sound = 0;
-		    /* So we don't do this every frame */
-		    produce_sound = 0;
+		close_sound ();
+		
+		produce_sound = changed_produce_sound;
+		if (produce_sound) {
+			if (init_audio ()) {
+				last_cycles = get_cycles () - 1;
+				next_sample_evtime = scaled_sample_evtime;
+			} else
+				if (! sound_available) {
+					write_log ("Sound is not supported.\n");
+				} else {
+					write_log ("Sorry, can't initialize sound.\n");
+					produce_sound = 0;
+					/* So we don't do this every frame */
+					produce_sound = 0;
+				}
 		}
-	}
     }
     if (!produce_sound) {
-	eventtab[ev_audio].active = 0;
-	events_schedule ();
+		eventtab[ev_audio].active = 0;
+		events_schedule ();
     }
 }
 
@@ -701,28 +701,28 @@ void check_prefs_changed_audio (void)
 void update_audio (void)
 {
     unsigned long int n_cycles;
-
+	
     uae4all_prof_start(4);
     n_cycles = get_cycles () - last_cycles;
     if (sound_ahi_enabled)
-	for (;;) {
-		DEFINE_STATE
-		CHECK_STATE
-		SUB_EVTIME
-		IF_SAMPLE_AHI
-		RUN_HANDLERS
-	}
+		for (;;) {
+			DEFINE_STATE
+			CHECK_STATE
+			SUB_EVTIME
+			IF_SAMPLE_AHI
+			RUN_HANDLERS
+		}
     else
-	for (;;) {
-		DEFINE_STATE
-		CHECK_STATE
-		SUB_EVTIME
-		IF_SAMPLE
-		RUN_HANDLERS
-	}
-
+		for (;;) {
+			DEFINE_STATE
+			CHECK_STATE
+			SUB_EVTIME
+			IF_SAMPLE
+			RUN_HANDLERS
+		}
+	
 	last_cycles = get_cycles () - n_cycles;
-
+	
     uae4all_prof_end(4);
 }
 
@@ -740,18 +740,18 @@ void audio_evhandler (void)
 void AUDxDAT (int nr, uae_u16 v)
 {
     struct audio_channel_data *cdp = audio_channel + nr;
-
+	
     if (produce_sound)
     	update_audio ();
-
+	
     cdp->dat = v;
     if (audio_channel_state[nr] == 0 && !(INTREQR() & (0x80 << nr))) {
-	audio_channel_state[nr] = 2;
-	INTREQ(0x8000 | (0x80 << nr));
-	/* data_written = 2 ???? */
-	audio_channel_evtime[nr] = cdp->per;
-	schedule_audio ();
-	events_schedule ();
+		audio_channel_state[nr] = 2;
+		INTREQ(0x8000 | (0x80 << nr));
+		/* data_written = 2 ???? */
+		audio_channel_evtime[nr] = cdp->per;
+		schedule_audio ();
+		events_schedule ();
     }
 }
 

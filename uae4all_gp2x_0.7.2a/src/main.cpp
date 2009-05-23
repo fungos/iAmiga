@@ -120,6 +120,12 @@ void default_prefs ()
     //prefs_chipmem_size=0x00100000;
 	prefs_chipmem_size=0x00080000;		// 512kb
 	
+	// emu bias -> system clock | sync threshold
+	// X O O O O -> 100 | 50
+	// O X O O O -> 83 | 100
+	// O O X O O -> 83 | 50
+	// O O O X O -> 75 | 50
+	// O O O O X -> 75 | 25
 	// o "System clock" (m68k_speed), which allows you to underclock the whole system to improve emulation performance, but breaks sound pitch. 
 	// o "Sync threshold" (timeslice_mode), which allows to reduce amount of synchronization between 68k and other chips to also improve performance. 
 	// Set both to 100 for best compatibility
@@ -238,33 +244,33 @@ void leave_program (void)
 void real_main (int argc, char **argv)
 {
 #ifdef USE_SDL
-//    SDL_Init (SDL_INIT_EVERYTHING | SDL_INIT_NOPARACHUTE);
+	//    SDL_Init (SDL_INIT_EVERYTHING | SDL_INIT_NOPARACHUTE);
     SDL_Init (SDL_INIT_VIDEO | SDL_INIT_JOYSTICK 
 #if !defined(NO_SOUND) && !defined(GP2X)
- 			| SDL_INIT_AUDIO
+			  | SDL_INIT_AUDIO
 #endif
-	);
+			  );
 #endif
-
+	
     default_prefs ();
 #ifdef GP2X
     gp2x_init(argc, argv);
 #endif
     
     if (! graphics_setup ()) {
-	exit (1);
+		exit (1);
     }
-
+	
     rtarea_init ();
-
+	
     machdep_init ();
-
+	
     if (! setup_sound ()) {
-	write_log ("Sound driver unavailable: Sound output disabled\n");
-	produce_sound = 0;
+		write_log ("Sound driver unavailable: Sound output disabled\n");
+		produce_sound = 0;
     }
     init_joystick ();
-
+	
 	int err = gui_init ();
 	if (err == -1) {
 	    write_log ("Failed to initialize the GUI\n");
@@ -272,26 +278,26 @@ void real_main (int argc, char **argv)
 	    exit (0);
 	}
     if (sound_available && produce_sound > 1 && ! init_audio ()) {
-	write_log ("Sound driver unavailable: Sound output disabled\n");
-	produce_sound = 0;
+		write_log ("Sound driver unavailable: Sound output disabled\n");
+		produce_sound = 0;
     }
-
+	
     /* Install resident module to get 8MB chipmem, if requested */
     rtarea_setup ();
-
+	
     keybuf_init (); /* Must come after init_joystick */
-
+	
     memory_init ();
-
+	
     custom_init (); /* Must come after memory_init */
     DISK_init ();
-
+	
     init_m68k();
 #ifndef USE_FAME_CORE
     compiler_init ();
 #endif
     gui_update ();
-
+	
 #ifdef GP2X
     switch_to_hw_sdl(1);
 #else

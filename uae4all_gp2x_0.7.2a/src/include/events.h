@@ -53,29 +53,29 @@ static __inline__ void events_schedule (void)
 static __inline__ void do_cycles_slow (unsigned long cycles_to_add)
 {
 #ifdef DEBUG_M68K
-//    dbgf("do_cycles(%i)\n",cycles_to_add);
+	//    dbgf("do_cycles(%i)\n",cycles_to_add);
 #endif
     while ((nextevent - currcycle) <= cycles_to_add) {
         int i;
         cycles_to_add -= (nextevent - currcycle);
         currcycle = nextevent;
-
+		
         for (i = 0; i < ev_max; i++) {
-	    if (eventtab[i].active && eventtab[i].evtime == currcycle) {
+			if (eventtab[i].active && eventtab[i].evtime == currcycle) {
 #ifdef DEBUG_M68K
-		    dbgf("EVENTO %i\n",i);
+				dbgf("EVENTO %i\n",i);
 #endif
-		(*eventtab[i].handler)();
+				(*eventtab[i].handler)();
 #ifdef DEBUG_M68K
-		    dbgf("!EVENTO %i\n",i);
+				dbgf("!EVENTO %i\n",i);
 #endif
-	    }
-	}
+			}
+		}
         events_schedule();
     }
     currcycle += cycles_to_add;
 #ifdef DEBUG_M68K
-//    dbg("!do_cycles");
+	//    dbg("!do_cycles");
 #endif
 }
 
@@ -87,9 +87,9 @@ static __inline__ void handle_active_events (void)
 {
     int i;
     for (i = 0; i < ev_max; i++) {
-	if (eventtab[i].active && eventtab[i].evtime == currcycle) {
-	    (*eventtab[i].handler)();
-	}
+		if (eventtab[i].active && eventtab[i].evtime == currcycle) {
+			(*eventtab[i].handler)();
+		}
     }
 }
 

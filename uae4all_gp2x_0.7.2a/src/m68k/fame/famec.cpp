@@ -20,10 +20,12 @@
 #define FAMEC_USE_DATA_BANKS
 // #define FAMEC_EXTRA_INLINE
 // #define FAMEC_DEBUG
-// #define FAMEC_NO_GOTOS
+#define FAMEC_NO_GOTOS
 #define FAMEC_ADR_BITS  24
 #define FAMEC_FETCHBITS 8
 #define FAMEC_DATABITS  8
+
+// -O0 -fdefer-pop -fguess-branch-probability -fcprop-registers -fif-conversion -fif-conversion2 -ftree-ccp -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-ter -ftree-lrs -ftree-sra -ftree-copyrename -ftree-fre -ftree-ch -funit-at-a-time -fmerge-constants -fstrict-aliasing -falign-jumps -fif-conversion2 -fif-conversion
 
 // #define USE_CYCLONE_TIMING
 // #define USE_CYCLONE_TIMING_DIV

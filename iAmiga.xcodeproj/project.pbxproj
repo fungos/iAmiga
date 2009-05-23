@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0542F18E0FC7E00F00126562 /* IK+.adf in Resources */ = {isa = PBXBuildFile; fileRef = 0542F18D0FC7E00F00126562 /* IK+.adf */; };
+		0542F2810FC8892800126562 /* Prefs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0542F27E0FC8892800126562 /* Prefs.cpp */; };
+		0542F2820FC8892800126562 /* Amiga.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0542F2800FC8892800126562 /* Amiga.cpp */; };
+		0542F2850FC8893600126562 /* Graphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0542F2840FC8893600126562 /* Graphics.cpp */; };
+		0542F2CA0FC88AD000126562 /* AmigaBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0542F2C90FC88AD000126562 /* AmigaBase.cpp */; };
+		0542F2D90FC88C0A00126562 /* AutoConfiguration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0542F2D80FC88C0A00126562 /* AutoConfiguration.cpp */; };
 		0552BD240F3D797C005B30DF /* autoconf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BC9D0F3D797C005B30DF /* autoconf.cpp */; };
 		0552BD250F3D797C005B30DF /* blitfunc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BC9E0F3D797C005B30DF /* blitfunc.cpp */; };
 		0552BD260F3D797C005B30DF /* blittable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BC9F0F3D797C005B30DF /* blittable.cpp */; };
@@ -18,11 +24,8 @@
 		0552BD2C0F3D797C005B30DF /* drawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BCA60F3D797C005B30DF /* drawing.cpp */; };
 		0552BD2D0F3D797C005B30DF /* ersatz.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BCA70F3D797C005B30DF /* ersatz.cpp */; };
 		0552BD2E0F3D797C005B30DF /* gfxutil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BCA80F3D797C005B30DF /* gfxutil.cpp */; };
-		0552BD3E0F3D797C005B30DF /* sysconfig.h.acorn in Resources */ = {isa = PBXBuildFile; fileRef = 0552BCF00F3D797C005B30DF /* sysconfig.h.acorn */; };
-		0552BD3F0F3D797C005B30DF /* sysconfig.h.win32 in Resources */ = {isa = PBXBuildFile; fileRef = 0552BCF10F3D797C005B30DF /* sysconfig.h.win32 */; };
-		0552BD400F3D797C005B30DF /* sysconfig.h.xf86os2 in Resources */ = {isa = PBXBuildFile; fileRef = 0552BCF20F3D797C005B30DF /* sysconfig.h.xf86os2 */; };
 		0552BD410F3D797C005B30DF /* keybuf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BCFA0F3D797C005B30DF /* keybuf.cpp */; };
-		0552BD450F3D797C005B30DF /* famec.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD060F3D797C005B30DF /* famec.cpp */; settings = {COMPILER_FLAGS = "-O0 -fdefer-pop -fguess-branch-probability -fcprop-registers -fif-conversion -fif-conversion2 -ftree-ccp -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-ter -ftree-lrs -ftree-sra -ftree-copyrename -ftree-fre -ftree-ch -funit-at-a-time -fmerge-constants -fstrict-aliasing -falign-jumps -ftree-copy-prop -ftree-store-copy-prop -fif-conversion2 -fif-conversion"; }; };
+		0552BD450F3D797C005B30DF /* famec.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD060F3D797C005B30DF /* famec.cpp */; };
 		0552BD470F3D797C005B30DF /* m68k_intrf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD090F3D797C005B30DF /* m68k_intrf.cpp */; };
 		0552BD480F3D797C005B30DF /* m68k_cmn_intrf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD0A0F3D797C005B30DF /* m68k_cmn_intrf.cpp */; };
 		0552BD490F3D797C005B30DF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD0C0F3D797C005B30DF /* main.cpp */; };
@@ -58,6 +61,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0542F18D0FC7E00F00126562 /* IK+.adf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "IK+.adf"; path = "../IK+.adf"; sourceTree = "<group>"; };
+		0542F27D0FC8892800126562 /* Prefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefs.h; sourceTree = "<group>"; };
+		0542F27E0FC8892800126562 /* Prefs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Prefs.cpp; sourceTree = "<group>"; };
+		0542F27F0FC8892800126562 /* Amiga.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Amiga.h; sourceTree = "<group>"; };
+		0542F2800FC8892800126562 /* Amiga.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Amiga.cpp; sourceTree = "<group>"; };
+		0542F2830FC8893600126562 /* Graphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Graphics.h; sourceTree = "<group>"; };
+		0542F2840FC8893600126562 /* Graphics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Graphics.cpp; sourceTree = "<group>"; };
+		0542F2C80FC88AD000126562 /* AmigaBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmigaBase.h; sourceTree = "<group>"; };
+		0542F2C90FC88AD000126562 /* AmigaBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AmigaBase.cpp; sourceTree = "<group>"; };
+		0542F2D70FC88C0A00126562 /* AutoConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoConfiguration.h; sourceTree = "<group>"; };
+		0542F2D80FC88C0A00126562 /* AutoConfiguration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AutoConfiguration.cpp; sourceTree = "<group>"; };
 		0552BC9C0F3D797C005B30DF /* audio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = audio.cpp; sourceTree = "<group>"; };
 		0552BC9D0F3D797C005B30DF /* autoconf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = autoconf.cpp; sourceTree = "<group>"; };
 		0552BC9E0F3D797C005B30DF /* blitfunc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = blitfunc.cpp; sourceTree = "<group>"; };
@@ -225,23 +239,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0552BC9A0F3D7968005B30DF /* uae */ = {
+		0542F18F0FC7E01A00126562 /* i */ = {
 			isa = PBXGroup;
 			children = (
-				0552BC9B0F3D797C005B30DF /* src */,
+				0542F18D0FC7E00F00126562 /* IK+.adf */,
 			);
-			name = uae;
+			name = i;
 			sourceTree = "<group>";
 		};
-		0552BC9B0F3D797C005B30DF /* src */ = {
+		0542F1DE0FC7E51300126562 /* kickstart */ = {
 			isa = PBXGroup;
 			children = (
-				05743F6C0FC28C5C003BE251 /* iphone */,
-				0552BCA90F3D797C005B30DF /* gp2x */,
-				0552BCFC0F3D797C005B30DF /* m68k */,
-				0552BD0F0F3D797C005B30DF /* menu */,
-				0552BD1E0F3D797C005B30DF /* vkbd */,
-				0552BCC20F3D797C005B30DF /* include */,
+				0542F27F0FC8892800126562 /* Amiga.h */,
+				0542F2800FC8892800126562 /* Amiga.cpp */,
+				0542F2C80FC88AD000126562 /* AmigaBase.h */,
+				0542F2C90FC88AD000126562 /* AmigaBase.cpp */,
+				0542F2D70FC88C0A00126562 /* AutoConfiguration.h */,
+				0542F2D80FC88C0A00126562 /* AutoConfiguration.cpp */,
+				0542F2830FC8893600126562 /* Graphics.h */,
+				0542F2840FC8893600126562 /* Graphics.cpp */,
+				0542F27D0FC8892800126562 /* Prefs.h */,
+				0542F27E0FC8892800126562 /* Prefs.cpp */,
+			);
+			path = kickstart;
+			sourceTree = "<group>";
+		};
+		0542F2610FC8852A00126562 /* uae-src */ = {
+			isa = PBXGroup;
+			children = (
 				0552BC9C0F3D797C005B30DF /* audio.cpp */,
 				0552BC9D0F3D797C005B30DF /* autoconf.cpp */,
 				0552BC9E0F3D797C005B30DF /* blitfunc.cpp */,
@@ -274,6 +299,28 @@
 				0552BD1D0F3D797C005B30DF /* target.h */,
 				0552BD210F3D797C005B30DF /* writelog.cpp */,
 				0552BD220F3D797C005B30DF /* zfile.cpp */,
+			);
+			name = "uae-src";
+			sourceTree = "<group>";
+		};
+		0552BC9A0F3D7968005B30DF /* uae */ = {
+			isa = PBXGroup;
+			children = (
+				0552BC9B0F3D797C005B30DF /* src */,
+			);
+			name = uae;
+			sourceTree = "<group>";
+		};
+		0552BC9B0F3D797C005B30DF /* src */ = {
+			isa = PBXGroup;
+			children = (
+				05743F6C0FC28C5C003BE251 /* iphone */,
+				0552BCA90F3D797C005B30DF /* gp2x */,
+				0552BCFC0F3D797C005B30DF /* m68k */,
+				0552BD0F0F3D797C005B30DF /* menu */,
+				0552BD1E0F3D797C005B30DF /* vkbd */,
+				0552BCC20F3D797C005B30DF /* include */,
+				0542F2610FC8852A00126562 /* uae-src */,
 			);
 			name = src;
 			path = uae4all_gp2x_0.7.2a/src;
@@ -441,13 +488,6 @@
 			path = iphone;
 			sourceTree = "<group>";
 		};
-		05743FD80FC297BE003BE251 /* agnus */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = agnus;
-			sourceTree = "<group>";
-		};
 		057440D40FC2A4A7003BE251 /* roms */ = {
 			isa = PBXGroup;
 			children = (
@@ -460,6 +500,7 @@
 		057443530FC3CA04003BE251 /* disks */ = {
 			isa = PBXGroup;
 			children = (
+				0542F18F0FC7E01A00126562 /* i */,
 				05FE82980FC68EE000DBFECF /* t */,
 				057443540FC3CA04003BE251 /* s */,
 			);
@@ -527,7 +568,7 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				05743FD80FC297BE003BE251 /* agnus */,
+				0542F1DE0FC7E51300126562 /* kickstart */,
 				0552BC9A0F3D7968005B30DF /* uae */,
 				32CA4F630368D1EE00C91783 /* iAmiga_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.mm */,
@@ -601,14 +642,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
-				0552BD3E0F3D797C005B30DF /* sysconfig.h.acorn in Resources */,
-				0552BD3F0F3D797C005B30DF /* sysconfig.h.win32 in Resources */,
-				0552BD400F3D797C005B30DF /* sysconfig.h.xf86os2 in Resources */,
 				057440D60FC2A4A7003BE251 /* kick.rom in Resources */,
 				0574432A0FC3C94F003BE251 /* kick13.rom in Resources */,
 				057443570FC3CA04003BE251 /* BEAST1-1.ADF in Resources */,
 				057443580FC3CA04003BE251 /* BEAST1-2.ADF in Resources */,
 				05FE829E0FC68EED00DBFECF /* Turrican II.adf in Resources */,
+				0542F18E0FC7E00F00126562 /* IK+.adf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -653,6 +692,11 @@
 				0574402C0FC29FBE003BE251 /* SDL.mm in Sources */,
 				057442820FC3C25B003BE251 /* DisplayView.mm in Sources */,
 				05FE7F280FC3EDBF00DBFECF /* AudioQueueManager.cpp in Sources */,
+				0542F2810FC8892800126562 /* Prefs.cpp in Sources */,
+				0542F2820FC8892800126562 /* Amiga.cpp in Sources */,
+				0542F2850FC8893600126562 /* Graphics.cpp in Sources */,
+				0542F2CA0FC88AD000126562 /* AmigaBase.cpp in Sources */,
+				0542F2D90FC88C0A00126562 /* AutoConfiguration.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

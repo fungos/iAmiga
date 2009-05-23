@@ -341,28 +341,28 @@ FILE *zfile_open (const char *name, const char *mode)
     	if (uae4all_disk_memory[i]==NULL)
     	{
 #ifndef DREAMCAST
-		uae4all_disk_memory[i]=malloc(MAX_DISK_LEN);
+			uae4all_disk_memory[i]=malloc(MAX_DISK_LEN);
 #else
-		uae4all_disk_memory[i]=(void *)(DC_VRAM+(MAX_DISK_LEN*(i+1)));
+			uae4all_disk_memory[i]=(void *)(DC_VRAM+(MAX_DISK_LEN*(i+1)));
 #endif
-		bzero(uae4all_disk_memory[i],MAX_DISK_LEN);
-		uae4all_disk_used[i]=0;
+			bzero(uae4all_disk_memory[i],MAX_DISK_LEN);
+			uae4all_disk_used[i]=0;
         }
     if (uae4all_extra_buffer==NULL)
 #ifndef DREAMCAST
 		uae4all_extra_buffer=malloc(MAX_DISK_LEN);
 #else
-		uae4all_extra_buffer=(void *)(DC_VRAM+(MAX_DISK_LEN*(NUM_DRIVES+1)));
+	uae4all_extra_buffer=(void *)(DC_VRAM+(MAX_DISK_LEN*(NUM_DRIVES+1)));
 #endif
     for(i=0;i<NUM_DRIVES;i++)
-	if (!uae4all_disk_used[i])
-		break;
+		if (!uae4all_disk_used[i])
+			break;
     if (i>=NUM_DRIVES)
-	return NULL;
-
+		return NULL;
+	
     if (try_to_read_disk(i,name))
     {
-
+		
 	    uae4all_disk_pos[i]=0;
 	    uae4all_disk_writed[i]=0;
 	    uae4all_disk_used[i]=1;

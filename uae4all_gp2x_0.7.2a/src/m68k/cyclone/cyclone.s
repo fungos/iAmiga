@@ -79,7 +79,7 @@ CycloneEndNoBack:
 
 CycloneInit:
 ;@ decompress jump table
-  ldr r12,=CycloneJumpTab
+  ldr r12,CycloneJumpTab
   add r0,r12,#0xe000*4 ;@ ctrl code pointer
   ldr r1,[r0,#-4]
   tst r1,r1

@@ -1,11 +1,11 @@
- /*
-  * UAE - The Un*x Amiga Emulator
-  *
-  * AutoConfig devices
-  *
-  * Copyright 1995, 1996 Bernd Schmidt
-  * Copyright 1996 Ed Hanway
-  */
+/*
+ * UAE - The Un*x Amiga Emulator
+ *
+ * AutoConfig devices
+ *
+ * Copyright 1995, 1996 Bernd Schmidt
+ * Copyright 1996 Ed Hanway
+ */
 
 #include "sysconfig.h"
 #include "sysdeps.h"
@@ -76,9 +76,9 @@ static void *get_extra_stack (void)
 {
     void *s = extra_stack_list;
     if (s)
-	extra_stack_list = *(void **)s;
+		extra_stack_list = *(void **)s;
     if (!s)
-	s = xmalloc (EXTRA_STACK_SIZE);
+		s = xmalloc (EXTRA_STACK_SIZE);
     return s;
 }
 
@@ -106,38 +106,38 @@ static void do_stack_magic (TrapFunction f, void *s, int has_retval)
     uaecptr a7;
     jmp_buf *j = (jmp_buf *)s;
     switch (setjmp (j[0])) {
-     case 0:
-	/* Returning directly */
-	current_extra_stack = s;
-	if (has_retval == -1) {
-	    /*write_log ("finishing m68k mode return\n");*/
-	    longjmp (j[1], 1);
-	}
-	/*write_log ("calling native function\n");*/
-	transfer_control (s, EXTRA_STACK_SIZE, stack_stub, f, has_retval);
-	/* not reached */
-	return;
-
-     case 1:
-	/*write_log ("native function complete\n");*/
-	/* Returning normally. */
-	if (stack_has_retval (s, EXTRA_STACK_SIZE))
-	    _68k_dreg (0) = get_retval_from_stack (s, EXTRA_STACK_SIZE);
-	free_extra_stack (s);
-	break;
-
-     case 2:
-	/* Returning to do a m68k call. We're now back on the main stack. */
-	a7 = _68k_areg(7) -= (sizeof (void *) + 7) & ~3;
-	/* Save stack to restore */
-	*((void **)get_real_address (a7 + 4)) = s;
-	/* Save special return address: this address contains a
-	 * calltrap that will longjmp to the right stack. */
-	put_long (_68k_areg (7), RTAREA_BASE + 0xFF00);
-	_68k_setpc (m68k_calladdr);
-	fill_prefetch_0 ();
-	/*write_log ("native function calls m68k\n");*/
-	break;
+		case 0:
+			/* Returning directly */
+			current_extra_stack = s;
+			if (has_retval == -1) {
+				/*write_log ("finishing m68k mode return\n");*/
+				longjmp (j[1], 1);
+			}
+			/*write_log ("calling native function\n");*/
+			transfer_control (s, EXTRA_STACK_SIZE, stack_stub, f, has_retval);
+			/* not reached */
+			return;
+			
+		case 1:
+			/*write_log ("native function complete\n");*/
+			/* Returning normally. */
+			if (stack_has_retval (s, EXTRA_STACK_SIZE))
+				_68k_dreg (0) = get_retval_from_stack (s, EXTRA_STACK_SIZE);
+			free_extra_stack (s);
+			break;
+			
+		case 2:
+			/* Returning to do a m68k call. We're now back on the main stack. */
+			a7 = _68k_areg(7) -= (sizeof (void *) + 7) & ~3;
+			/* Save stack to restore */
+			*((void **)get_real_address (a7 + 4)) = s;
+			/* Save special return address: this address contains a
+			 * calltrap that will longjmp to the right stack. */
+			put_long (_68k_areg (7), RTAREA_BASE + 0xFF00);
+			_68k_setpc (m68k_calladdr);
+			fill_prefetch_0 ();
+			/*write_log ("native function calls m68k\n");*/
+			break;
     }
     current_extra_stack = 0;
 #endif
@@ -169,28 +169,28 @@ static uae_u32 call_m68k (uaecptr addr, int saveuae_regs)
     volatile uae_u32 retval = 0;
     volatile int do_save = saveuae_regs;
     if (current_extra_stack == NULL)
-	return 0;
+		return 0;
 #ifdef CAN_DO_STACK_MAGIC
     {
-	volatile struct uae_regstruct saved_uae_regs;
-	jmp_buf *j = (jmp_buf *)current_extra_stack;
-
-	if (do_save)
-	    saved_uae_regs = uae_regs;
-	m68k_calladdr = addr;
-	switch (setjmp(j[1])) {
-	 case 0:
-	    /*write_log ("doing call\n");*/
-	    /* Returning directly: now switch to main stack and do the call */
-	    longjmp (j[0], 2);
-	 case 1:
-	    /*write_log ("returning from call\n");*/
-	    retval = _68k_dreg (0);
-	    if (do_save)
-		uae_regs = saved_uae_regs;
-	    /* Returning after the call. */
-	    break;
-	}
+		volatile struct uae_regstruct saved_uae_regs;
+		jmp_buf *j = (jmp_buf *)current_extra_stack;
+		
+		if (do_save)
+			saved_uae_regs = uae_regs;
+		m68k_calladdr = addr;
+		switch (setjmp(j[1])) {
+			case 0:
+				/*write_log ("doing call\n");*/
+				/* Returning directly: now switch to main stack and do the call */
+				longjmp (j[0], 2);
+			case 1:
+				/*write_log ("returning from call\n");*/
+				retval = _68k_dreg (0);
+				if (do_save)
+					uae_regs = saved_uae_regs;
+				/* Returning after the call. */
+				break;
+		}
     }
 #endif
     return retval;
@@ -203,8 +203,8 @@ uae_u32 CallLib (uaecptr base, uae_s16 offset)
     uae_u32 retval;
 #if 0
     for (i = 0; i < n_libpatches; i++) {
-	if (libpatches[i].libbase == base && libpatches[i].functions[-offset/6] != NULL)
-	    return (*libpatches[i].functions[-offset/6])();
+		if (libpatches[i].libbase == base && libpatches[i].functions[-offset/6] != NULL)
+			return (*libpatches[i].functions[-offset/6])();
     }
 #endif
     _68k_areg(6) = base;
@@ -234,9 +234,9 @@ static void rtarea_bput (uaecptr, uae_u32) REGPARAM;
 static uae_u8 *rtarea_xlate (uaecptr) REGPARAM;
 
 addrbank rtarea_bank = {
-    rtarea_lget, rtarea_wget, rtarea_bget,
-    rtarea_lput, rtarea_wput, rtarea_bput,
-    rtarea_xlate, default_check, NULL
+rtarea_lget, rtarea_wget, rtarea_bget,
+rtarea_lput, rtarea_wput, rtarea_bput,
+rtarea_xlate, default_check, NULL
 };
 
 uae_u8 REGPARAM2 *rtarea_xlate (uaecptr addr)
@@ -307,33 +307,33 @@ void REGPARAM2 call_calltrap(int func)
     uae_u32 retval = 0;
     int has_retval = (trapmode[func] & TRAPFLAG_NO_RETVAL) == 0;
     int implicit_rts = (trapmode[func] & TRAPFLAG_DORET) != 0;
-
+	
     if (*trapstr[func] != 0 && trace_traps)
-	write_log ("TRAP: %s\n", trapstr[func]);
-
+		write_log ("TRAP: %s\n", trapstr[func]);
+	
     /* For monitoring only? */
     if (traps[func] == NULL) {
-	_68k_setpc(trapoldfunc[func]);
-	fill_prefetch_0 ();
-	return;
+		_68k_setpc(trapoldfunc[func]);
+		fill_prefetch_0 ();
+		return;
     }
-
+	
     if (func < max_trap) {
-	if (trapmode[func] & TRAPFLAG_EXTRA_STACK) {
-	    execute_fn_on_extra_stack(traps[func], has_retval);
-	    return;
-	}
-	retval = (*traps[func])();
+		if (trapmode[func] & TRAPFLAG_EXTRA_STACK) {
+			execute_fn_on_extra_stack(traps[func], has_retval);
+			return;
+		}
+		retval = (*traps[func])();
     } else
-	write_log ("illegal emulator trap\n");
-
+		write_log ("illegal emulator trap\n");
+	
     if (has_retval)
-	_68k_dreg(0) = retval;
+		_68k_dreg(0) = retval;
     if (implicit_rts) {
 #ifndef USE_FAME_CORE
-	m68k_do_rts ();
+		m68k_do_rts ();
 #endif
-	fill_prefetch_0 ();
+		fill_prefetch_0 ();
     }
 }
 
@@ -341,7 +341,7 @@ void REGPARAM2 call_calltrap(int func)
 static volatile int four = 4;
 
 uaecptr libemu_InstallFunctionFlags (TrapFunction f, uaecptr libbase, int offset,
-				     int flags, const char *tracename)
+									 int flags, const char *tracename)
 {
     int i;
     uaecptr retval;
@@ -350,24 +350,24 @@ uaecptr libemu_InstallFunctionFlags (TrapFunction f, uaecptr libbase, int offset
     uaecptr addr = here();
     calltrap (trnum = deftrap2 (f, flags, tracename));
     dw (RTS);
-
+	
     _68k_areg(1) = libbase;
     _68k_areg(0) = offset;
     _68k_dreg(0) = addr;
     retval = CallLib (execbase, -420);
-
+	
     trapoldfunc[trnum] = retval;
 #if 0
     for (i = 0; i < n_libpatches; i++) {
-	if (libpatches[i].libbase == libbase)
-	    break;
+		if (libpatches[i].libbase == libbase)
+			break;
     }
     if (i == n_libpatches) {
-	int j;
-	libpatches[i].libbase = libbase;
-	for (j = 0; j < 300; j++)
-	    libpatches[i].functions[j] = NULL;
-	n_libpatches++;
+		int j;
+		libpatches[i].libbase = libbase;
+		for (j = 0; j < 300; j++)
+			libpatches[i].functions[j] = NULL;
+		n_libpatches++;
     }
     libpatches[i].functions[-offset/6] = f;
 #endif
@@ -412,10 +412,10 @@ void dl (uae_u32 data)
 uae_u32 ds (char *str)
 {
     int len = strlen (str) + 1;
-
+	
     rt_straddr -= len;
     strcpy ((char *)rtarea + rt_straddr, str);
-
+	
     return addr (rt_straddr);
 }
 
@@ -476,45 +476,45 @@ static void rtarea_init_mem (void)
 {
     rtarea = mapped_malloc (0x10000, "rtarea");
     if (!rtarea) {
-	write_log ("virtual memory exhausted (rtarea)!\n");
-	return;
+		write_log ("virtual memory exhausted (rtarea)!\n");
+		return;
     }
-//    rtarea_bank.baseaddr = rtarea;
+	//    rtarea_bank.baseaddr = rtarea;
 }
 
 void rtarea_init (void)
 {
     rtarea_init_mem ();
-
+	
 #ifdef USE_AUTOCONFIG
     uae_u32 a;
     char uaever[100];
     sprintf (uaever, "uae-%d.%d.%d", UAEMAJOR, UAEMINOR, UAESUBREV);
-
+	
     EXPANSION_uaeversion = ds (uaever);
     EXPANSION_explibname = ds ("expansion.library");
     EXPANSION_doslibname = ds ("dos.library");
     EXPANSION_uaedevname = ds ("uae.device");
-
+	
     deftrap (NULL); /* Generic emulator trap */
     lasttrap = 0;
-
+	
     EXPANSION_nullfunc = here ();
     calltrap (deftrap (nullfunc));
     dw (RTS);
-
+	
     a = here();
     /* Standard "return from 68k mode" trap */
     org (RTAREA_BASE + 0xFF00);
     calltrap (deftrap2 (m68k_mode_return, TRAPFLAG_NO_RETVAL, ""));
-
+	
     org (RTAREA_BASE + 0xFF80);
     calltrap (deftrap2 (getchipmemsize, TRAPFLAG_DORET, ""));
-
+	
     org (RTAREA_BASE + 0xFF10);
     calltrap (deftrap2 (uae_puts, TRAPFLAG_NO_RETVAL, ""));
     dw (RTS);
-
+	
     org (a);
 #endif
 }

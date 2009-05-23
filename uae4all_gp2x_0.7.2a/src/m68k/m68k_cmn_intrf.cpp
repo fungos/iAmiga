@@ -243,7 +243,7 @@ static void m68k_run (void)
 #ifdef DEBUG_M68K
 		dbg_cycle(m68k_fetch(m68k_get_pc(),0));
 		m68k_emulate(1);
-
+		
 #else
 		uae4all_prof_start(0);
 		cycles = nextevent - currcycle;
@@ -275,20 +275,20 @@ static void m68k_run (void)
 		}
 #endif
 #ifdef DEBUG_M68K
-
+		
 		if (M68KCONTEXT.execinfo & 0x0080)
 			mispcflags|=SPCFLAG_STOP;
 #endif
-                uae4all_prof_start(1);
-
+		uae4all_prof_start(1);
+		
 		//cycles=((unsigned)(((double)(M68KCONTEXT.cycles_counter-cycles_actual))*cycles_factor))<<8;
 		cycles=(M68KCONTEXT.cycles_counter-cycles_actual) * cycles_factor;
-
+		
 #ifdef DEBUG_INTERRUPTS
 		dbgf("cycles=%i (%i) -> PC=%.6x\n",cycles>>8,nextevent - currcycle, _68k_getpc());
 #endif
-
-
+		
+		
 #ifdef NO_SHORT_EVENTS
 #ifdef PROTECT_INFINITE
 		unsigned cuentalo=0;
@@ -310,11 +310,11 @@ static void m68k_run (void)
 				return;
 			}
 #endif
-		}while((nextevent - currcycle)<=2048);
+		} while((nextevent - currcycle)<=2048);
 #endif
 		cycles_actual=M68KCONTEXT.cycles_counter;
 #endif
-                uae4all_prof_end(1);
+		uae4all_prof_end(1);
 	}
 }
 
@@ -329,7 +329,7 @@ void m68k_go (int may_quit)
 #endif
         return;
     }
-
+	
     in_m68k_go++;
 #endif
     quit_program = 2;
@@ -340,14 +340,14 @@ void m68k_go (int may_quit)
             quit_program = 0;
             reset_all_systems ();
             customreset ();
-	    check_prefs_changed_cpu ();
-	    sound_default_evtime ();
+			check_prefs_changed_cpu ();
+			sound_default_evtime ();
             /* We may have been restoring state, but we're done now.  */
             handle_active_events ();
             if (mispcflags)
                 do_specialties (0);
         }
-
+		
         m68k_run();
     }
 #if !defined(DREAMCAST) || defined(DEBUG_UAE4ALL)
