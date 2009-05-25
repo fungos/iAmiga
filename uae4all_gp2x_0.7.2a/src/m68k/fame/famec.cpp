@@ -499,7 +499,7 @@ typedef struct
 
 	#define READ_LONG_DEC_F(A, D)       \
 		D = Read_Word((A)) & 0xFFFF;   \
-    		D |= Read_Word((A) + 2) << 16;
+    	D |= Read_Word((A) + 2) << 16;
 
 	#define READSX_LONG_F(A, D)         \
 		D = Read_Word((A)) & 0xFFFF;   \
