@@ -38,7 +38,7 @@
 #include "iphone_main.h"
 #endif
 
-uae emulator;
+uae g_emulator;
 
 uae::uae() {
 	quit_program = 0;

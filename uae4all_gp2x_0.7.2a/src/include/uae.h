@@ -30,5 +30,5 @@ private:
 
 };
 
-extern uae emulator;
+extern uae g_emulator;
 

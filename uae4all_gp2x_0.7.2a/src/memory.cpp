@@ -744,7 +744,7 @@ int REGPARAM2 default_check (uaecptr a, uae_u32 b)
 uae_u8 REGPARAM2 *default_xlate (uaecptr a)
 {
     write_log ("Your Amiga program just did something terribly stupid\n");
-    emulator.uae_reset ();
+    g_emulator.uae_reset ();
     return kickmem_xlate (get_long (0xF80000));	/* So we don't crash. */
 }
 

@@ -8,15 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@class DisplayView;
+@class EmulationViewController;
 
 @interface iAmigaAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow					*window;
-	NSThread					*emulationThread;
-	DisplayView					*_displayView;
+	EmulationViewController		*_emulationView;
+	UITabBarController			*_mainController;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
+@property (nonatomic, retain) IBOutlet UITabBarController *mainController;
 
 @end
 

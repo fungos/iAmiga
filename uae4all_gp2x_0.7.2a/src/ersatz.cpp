@@ -101,7 +101,7 @@ static void ersatz_init (void)
 
     if (disk_empty (0)) {
 	write_log ("You need to have a diskfile in DF0 to use the Kickstart replacement!\n");
-	emulator.uae_quit ();
+	g_emulator.uae_quit ();
 	_68k_setpc (0xF80010);
 	return;
     }
@@ -167,7 +167,7 @@ static void ersatz_init (void)
 
 	_68k_setpc (0xFC0002);
 	fill_prefetch_0 ();
-	emulator.uae_reset ();
+	g_emulator.uae_reset ();
 	ersatzkickfile = 0;
 	return;
     }
@@ -227,7 +227,7 @@ void ersatz_perform (uae_u16 what)
 
      case EOP_NIMP:
 	write_log ("Unimplemented Kickstart function called\n");
-	emulator.uae_quit ();
+	g_emulator.uae_quit ();
 	
 	/* fall through */
      case EOP_LOOP:

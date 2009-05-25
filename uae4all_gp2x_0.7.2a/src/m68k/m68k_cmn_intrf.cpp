@@ -303,7 +303,7 @@ static void m68k_run (void)
 #ifdef PROTECT_INFINITE
 			cuentalo++;
 			if (cuentalo>1024) {
-				emulator.quit_program=2;
+				g_emulator.quit_program=2;
 				return;
 			}
 #endif
@@ -329,13 +329,13 @@ void m68k_go (int may_quit)
 	
     in_m68k_go++;
 #endif
-    emulator.quit_program = 2;
+    g_emulator.quit_program = 2;
     for (;;) {
-        if (emulator.quit_program > 0) {
-            if (emulator.quit_program == 1)
+        if (g_emulator.quit_program > 0) {
+            if (g_emulator.quit_program == 1)
                 break;
-            emulator.quit_program = 0;
-            emulator.reset_all_systems ();
+            g_emulator.quit_program = 0;
+            g_emulator.reset_all_systems ();
             customreset ();
 			check_prefs_changed_cpu ();
 			sound_default_evtime ();

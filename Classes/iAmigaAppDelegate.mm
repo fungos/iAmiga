@@ -7,45 +7,26 @@
 //
 
 #import "iAmigaAppDelegate.h"
-#import "DisplayView.h"
-#import "uae.h"
-
-@interface iAmigaAppDelegate()
-
-- (void)startEmulator;
-- (void)runEmulator;
-
-@end
+#import "EmulationViewController.h"
+#import <AudioToolbox/AudioServices.h>
 
 @implementation iAmigaAppDelegate
 
-@synthesize window;
-
+@synthesize window, mainController=_mainController;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
 
-	_displayView = [[DisplayView alloc] initWithFrame:CGRectMake(0, 0, 320, 240)];
-	[window addSubview:_displayView];
-	[self startEmulator];
-	
+	//_emulationView = [EmulationViewController new];
+	[window addSubview:self.mainController.view];	
 	
     // Override point for customization after application launch
     [window makeKeyAndVisible];
-}
 	
-- (void)startEmulator {
-	emulationThread = [[NSThread alloc] initWithTarget:self selector:@selector(runEmulator) object:nil];
-	[emulationThread start];
-	[_displayView startTimer];
+	OSStatus res = AudioSessionInitialize(NULL, NULL, NULL, NULL);
+	UInt32 sessionCategory = kAudioSessionCategory_AmbientSound;
+	res = AudioSessionSetProperty(kAudioSessionProperty_AudioCategory, sizeof(sessionCategory), &sessionCategory);
+	res = AudioSessionSetActive(true);
 }
-
-- (void)runEmulator {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	[NSThread setThreadPriority:0.7];
-	emulator.real_main();
-	[pool release];
-}
-
 
 - (void)dealloc {
     [window release];

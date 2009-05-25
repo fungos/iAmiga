@@ -3264,7 +3264,7 @@ static void vsync_handler (void)
 	
     vsync_handle_redraw (lof, lof_changed);
 	
-    if (emulator.quit_program > 0)
+    if (g_emulator.quit_program > 0)
     {
 		uae4all_prof_end(7);
 		return;

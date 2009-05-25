@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0504155C0FCB46F000F46828 /* EmulationViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0504155B0FCB46F000F46828 /* EmulationViewController.mm */; };
+		050415610FCB475C00F46828 /* InputControllerView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0504155E0FCB475C00F46828 /* InputControllerView.mm */; };
+		050415620FCB475C00F46828 /* JoystickViewLandscape.mm in Sources */ = {isa = PBXBuildFile; fileRef = 050415600FCB475C00F46828 /* JoystickViewLandscape.mm */; };
+		0504156B0FCB4BD400F46828 /* CocoaUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 0504156A0FCB4BD400F46828 /* CocoaUtility.m */; };
+		050416410FCB566500F46828 /* ls-fullscreen_bottomBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 0504162D0FCB566500F46828 /* ls-fullscreen_bottomBtn.png */; };
+		050416420FCB566500F46828 /* ls-instructions_overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 0504162E0FCB566500F46828 /* ls-instructions_overlay.png */; };
+		050416430FCB566500F46828 /* ls-overlay-skin.png in Resources */ = {isa = PBXBuildFile; fileRef = 0504162F0FCB566500F46828 /* ls-overlay-skin.png */; };
+		050416440FCB566500F46828 /* ls-bgimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 050416300FCB566500F46828 /* ls-bgimage.png */; };
+		050416450FCB566500F46828 /* ls-fire.png in Resources */ = {isa = PBXBuildFile; fileRef = 050416310FCB566500F46828 /* ls-fire.png */; };
+		050416460FCB566500F46828 /* ls-joystick_active.png in Resources */ = {isa = PBXBuildFile; fileRef = 050416320FCB566500F46828 /* ls-joystick_active.png */; };
+		050416470FCB566500F46828 /* ls-joystick_rest.png in Resources */ = {isa = PBXBuildFile; fileRef = 050416330FCB566500F46828 /* ls-joystick_rest.png */; };
+		0504166C0FCB571B00F46828 /* IK+.adf in Resources */ = {isa = PBXBuildFile; fileRef = 0542F18D0FC7E00F00126562 /* IK+.adf */; };
+		050416780FCB588E00F46828 /* Turrican II.adf in Resources */ = {isa = PBXBuildFile; fileRef = 05FE829D0FC68EED00DBFECF /* Turrican II.adf */; };
 		0542F2810FC8892800126562 /* Prefs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0542F27E0FC8892800126562 /* Prefs.cpp */; };
 		0542F2820FC8892800126562 /* Amiga.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0542F2800FC8892800126562 /* Amiga.cpp */; };
 		0542F2850FC8893600126562 /* Graphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0542F2840FC8893600126562 /* Graphics.cpp */; };
@@ -56,6 +69,24 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0504155A0FCB46F000F46828 /* EmulationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmulationViewController.h; sourceTree = "<group>"; };
+		0504155B0FCB46F000F46828 /* EmulationViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EmulationViewController.mm; sourceTree = "<group>"; };
+		0504155D0FCB475C00F46828 /* InputControllerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputControllerView.h; sourceTree = "<group>"; };
+		0504155E0FCB475C00F46828 /* InputControllerView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = InputControllerView.mm; sourceTree = "<group>"; };
+		0504155F0FCB475C00F46828 /* JoystickViewLandscape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoystickViewLandscape.h; sourceTree = "<group>"; };
+		050415600FCB475C00F46828 /* JoystickViewLandscape.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = JoystickViewLandscape.mm; sourceTree = "<group>"; };
+		050415630FCB47B200F46828 /* CGVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGVector.h; sourceTree = "<group>"; };
+		050415640FCB47B200F46828 /* touchstick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = touchstick.h; sourceTree = "<group>"; };
+		050415690FCB4BD400F46828 /* CocoaUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaUtility.h; sourceTree = "<group>"; };
+		0504156A0FCB4BD400F46828 /* CocoaUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaUtility.m; sourceTree = "<group>"; };
+		0504156C0FCB4BE600F46828 /* debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = debug.h; sourceTree = "<group>"; };
+		0504162D0FCB566500F46828 /* ls-fullscreen_bottomBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ls-fullscreen_bottomBtn.png"; sourceTree = "<group>"; };
+		0504162E0FCB566500F46828 /* ls-instructions_overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ls-instructions_overlay.png"; sourceTree = "<group>"; };
+		0504162F0FCB566500F46828 /* ls-overlay-skin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ls-overlay-skin.png"; sourceTree = "<group>"; };
+		050416300FCB566500F46828 /* ls-bgimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ls-bgimage.png"; sourceTree = "<group>"; };
+		050416310FCB566500F46828 /* ls-fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ls-fire.png"; sourceTree = "<group>"; };
+		050416320FCB566500F46828 /* ls-joystick_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ls-joystick_active.png"; sourceTree = "<group>"; };
+		050416330FCB566500F46828 /* ls-joystick_rest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ls-joystick_rest.png"; sourceTree = "<group>"; };
 		0542F18D0FC7E00F00126562 /* IK+.adf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "IK+.adf"; path = "../IK+.adf"; sourceTree = "<group>"; };
 		0542F27D0FC8892800126562 /* Prefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefs.h; sourceTree = "<group>"; };
 		0542F27E0FC8892800126562 /* Prefs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Prefs.cpp; sourceTree = "<group>"; };
@@ -210,6 +241,61 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		050414C40FCB455500F46828 /* Emulator */ = {
+			isa = PBXGroup;
+			children = (
+				057442800FC3C25B003BE251 /* DisplayView.h */,
+				057442810FC3C25B003BE251 /* DisplayView.mm */,
+				0504155A0FCB46F000F46828 /* EmulationViewController.h */,
+				0504155B0FCB46F000F46828 /* EmulationViewController.mm */,
+				0504155D0FCB475C00F46828 /* InputControllerView.h */,
+				0504155E0FCB475C00F46828 /* InputControllerView.mm */,
+				0504155F0FCB475C00F46828 /* JoystickViewLandscape.h */,
+				050415600FCB475C00F46828 /* JoystickViewLandscape.mm */,
+			);
+			name = Emulator;
+			sourceTree = "<group>";
+		};
+		050415680FCB4BC300F46828 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				050415690FCB4BD400F46828 /* CocoaUtility.h */,
+				0504156A0FCB4BD400F46828 /* CocoaUtility.m */,
+				0504156C0FCB4BE600F46828 /* debug.h */,
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
+		0504161C0FCB566500F46828 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				0504161D0FCB566500F46828 /* emulator */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		0504161D0FCB566500F46828 /* emulator */ = {
+			isa = PBXGroup;
+			children = (
+				0504162B0FCB566500F46828 /* landscape */,
+				050416300FCB566500F46828 /* ls-bgimage.png */,
+				050416310FCB566500F46828 /* ls-fire.png */,
+				050416320FCB566500F46828 /* ls-joystick_active.png */,
+				050416330FCB566500F46828 /* ls-joystick_rest.png */,
+			);
+			path = emulator;
+			sourceTree = "<group>";
+		};
+		0504162B0FCB566500F46828 /* landscape */ = {
+			isa = PBXGroup;
+			children = (
+				0504162D0FCB566500F46828 /* ls-fullscreen_bottomBtn.png */,
+				0504162E0FCB566500F46828 /* ls-instructions_overlay.png */,
+				0504162F0FCB566500F46828 /* ls-overlay-skin.png */,
+			);
+			path = landscape;
+			sourceTree = "<group>";
+		};
 		0542F18F0FC7E01A00126562 /* i */ = {
 			isa = PBXGroup;
 			children = (
@@ -423,8 +509,8 @@
 		0552BD1E0F3D797C005B30DF /* vkbd */ = {
 			isa = PBXGroup;
 			children = (
-				0552BD1F0F3D797C005B30DF /* vkbd.cpp */,
 				0552BD200F3D797C005B30DF /* vkbd.h */,
+				0552BD1F0F3D797C005B30DF /* vkbd.cpp */,
 			);
 			path = vkbd;
 			sourceTree = "<group>";
@@ -438,6 +524,8 @@
 				05743FDA0FC299FE003BE251 /* SDL_endian.h */,
 				05743FC30FC293FD003BE251 /* iphone_main.h */,
 				05743FC40FC293FD003BE251 /* iphone_main.mm */,
+				050415630FCB47B200F46828 /* CGVector.h */,
+				050415640FCB47B200F46828 /* touchstick.h */,
 			);
 			path = iphone;
 			sourceTree = "<group>";
@@ -492,10 +580,10 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				050415680FCB4BC300F46828 /* Utility */,
+				050414C40FCB455500F46828 /* Emulator */,
 				1D3623240D0F684500981E51 /* iAmigaAppDelegate.h */,
 				1D3623250D0F684500981E51 /* iAmigaAppDelegate.mm */,
-				057442800FC3C25B003BE251 /* DisplayView.h */,
-				057442810FC3C25B003BE251 /* DisplayView.mm */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -536,6 +624,7 @@
 			children = (
 				057443530FC3CA04003BE251 /* disks */,
 				057440D40FC2A4A7003BE251 /* roms */,
+				0504161C0FCB566500F46828 /* images */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 			);
@@ -600,6 +689,15 @@
 				057440D60FC2A4A7003BE251 /* kick.rom in Resources */,
 				0574432A0FC3C94F003BE251 /* kick13.rom in Resources */,
 				0542F40B0FC8B99100126562 /* Odyssey-1.adf in Resources */,
+				050416780FCB588E00F46828 /* Turrican II.adf in Resources */,
+				0504166C0FCB571B00F46828 /* IK+.adf in Resources */,
+				050416410FCB566500F46828 /* ls-fullscreen_bottomBtn.png in Resources */,
+				050416420FCB566500F46828 /* ls-instructions_overlay.png in Resources */,
+				050416430FCB566500F46828 /* ls-overlay-skin.png in Resources */,
+				050416440FCB566500F46828 /* ls-bgimage.png in Resources */,
+				050416450FCB566500F46828 /* ls-fire.png in Resources */,
+				050416460FCB566500F46828 /* ls-joystick_active.png in Resources */,
+				050416470FCB566500F46828 /* ls-joystick_rest.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -647,6 +745,10 @@
 				0542F2850FC8893600126562 /* Graphics.cpp in Sources */,
 				0542F2CA0FC88AD000126562 /* AmigaBase.cpp in Sources */,
 				0542F2D90FC88C0A00126562 /* AutoConfiguration.cpp in Sources */,
+				0504155C0FCB46F000F46828 /* EmulationViewController.mm in Sources */,
+				050415610FCB475C00F46828 /* InputControllerView.mm in Sources */,
+				050415620FCB475C00F46828 /* JoystickViewLandscape.mm in Sources */,
+				0504156B0FCB4BD400F46828 /* CocoaUtility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

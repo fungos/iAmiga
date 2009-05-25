@@ -633,7 +633,7 @@ void handle_events (void)
 #ifdef DEBUG_EVENTS
 				dbg("Event: quit");
 #endif
-				emulator.uae_quit();
+				g_emulator.uae_quit();
 				break;
 				break;
 			case SDL_JOYBUTTONDOWN:
