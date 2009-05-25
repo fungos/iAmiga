@@ -21,7 +21,6 @@
 #include "audio.h"
 
 #include "custom.h"
-#include "xwin.h"
 #include "drawing.h"
 
 #ifdef DREAMCAST

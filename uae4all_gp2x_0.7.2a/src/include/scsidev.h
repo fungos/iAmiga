@@ -1,3 +1,0 @@
- /*
-  * NO SCSI device
-  */

@@ -161,8 +161,7 @@ static _INLINE_ void blitter_dofast(void)
 		dbgf("blitfunc_dofast[%i](0x%X,0x%X,0x%X,0x%X)\n",mt,bltadatptr, bltbdatptr, bltcdatptr, bltddatptr);
 #endif
 		(*blitfunc_dofast[mt])(bltadatptr, bltbdatptr, bltcdatptr, bltddatptr, &blt_info);
-    }
-    else {
+    } else {
 		uae_u32 blitbhold = blt_info.bltbhold;
 		uae_u32 preva = 0, prevb = 0;
 		uaecptr dstp = 0;

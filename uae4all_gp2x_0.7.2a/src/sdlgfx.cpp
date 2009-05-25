@@ -37,7 +37,6 @@ void guarda(void);
 #include "keyboard.h"
 #include "keybuf.h"
 #include "gui.h"
-#include "debug.h"
 
 #include "vkbd/vkbd.h"
 
@@ -553,8 +552,6 @@ int keycode2amiga(SDL_keysym *prKeySym)
     return iAmigaKeycode;
 }
 
-static int refresh_necessary = 0;
-
 void handle_events (void)
 {
     SDL_Event rEvent;
@@ -607,48 +604,7 @@ void handle_events (void)
 			real_changed_df[0]=1;
 			joy1button=1;
 		}
-		// */
 		
-		// Defender of the Crown
-		/*
-		 switch(cuenta)
-		 {
-		 case 2600:
-		 lastmx+=80;
-		 break;
-		 case 2610:
-		 buttonstate[0]=1; break;
-		 break;
-		 case 2615:
-		 buttonstate[0]=0; break;
-		 break;
-		 case 4500:
-		 lastmy+=100;
-		 break;
-		 case 4510:
-		 buttonstate[0]=1; break;
-		 break;
-		 case 4515:
-		 buttonstate[0]=0; break;
-		 break;
-		 case 4640:
-		 lastmy-=60;
-		 lastmx+=550;
-		 break;
-		 case 4700:
-		 lastmx+=200;
-		 break;
-		 case 4710:
-		 buttonstate[0]=1; break;
-		 break;
-		 case 4715:
-		 buttonstate[0]=0; break;
-		 break;
-		 
-		 
-		 }
-		 // printf("%i -> %.8X\n",cuenta,chipmem_checksum());
-		 */
 		printf("%i\n",cuenta); fflush(stdout);
 		
 		
@@ -677,7 +633,7 @@ void handle_events (void)
 #ifdef DEBUG_EVENTS
 				dbg("Event: quit");
 #endif
-				uae_quit();
+				emulator.uae_quit();
 				break;
 				break;
 			case SDL_JOYBUTTONDOWN:
@@ -1020,11 +976,6 @@ void handle_events (void)
 int check_prefs_changed_gfx (void)
 {
 	return 0;
-}
-
-int debuggable (void)
-{
-    return 1;
 }
 
 int needmousehack (void)

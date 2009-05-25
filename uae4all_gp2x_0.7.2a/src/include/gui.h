@@ -20,8 +20,6 @@ extern void gui_unlock (void);
 
 extern unsigned int gui_ledstate;
 
-extern int no_gui;
-
 struct gui_info
 {
     uae_u8 drive_motor[4];          /* motor on off */

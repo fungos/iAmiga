@@ -42,7 +42,7 @@
 - (void)runEmulator {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	[NSThread setThreadPriority:0.7];
-	real_main(0, NULL);
+	emulator.real_main();
 	[pool release];
 }
 

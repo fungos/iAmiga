@@ -16,9 +16,7 @@
 #include "memory.h"
 #include "custom.h"
 #include "m68k/m68k_intrf.h"
-#include "compiler.h"
 #include "autoconf.h"
-#include "exectasks.h"
 
 #include "debug_uae4all.h"
 
@@ -337,7 +335,7 @@ void REGPARAM2 call_calltrap(int func)
     }
 }
 
-/* @$%&§ compiler bugs */
+/* @$%&ÃŸ compiler bugs */
 static volatile int four = 4;
 
 uaecptr libemu_InstallFunctionFlags (TrapFunction f, uaecptr libbase, int offset,

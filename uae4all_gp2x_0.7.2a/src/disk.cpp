@@ -31,7 +31,6 @@
 #include "autoconf.h"
 #include "m68k/m68k_intrf.h"
 #include "xwin.h"
-#include "osemu.h"
 #include "execlib.h"
 
 

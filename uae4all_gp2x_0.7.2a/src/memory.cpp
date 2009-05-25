@@ -744,7 +744,7 @@ int REGPARAM2 default_check (uaecptr a, uae_u32 b)
 uae_u8 REGPARAM2 *default_xlate (uaecptr a)
 {
     write_log ("Your Amiga program just did something terribly stupid\n");
-    uae_reset ();
+    emulator.uae_reset ();
     return kickmem_xlate (get_long (0xF80000));	/* So we don't crash. */
 }
 
@@ -818,36 +818,36 @@ static int read_kickstart (FILE *f, uae_u8 *mem, int size, int dochecksum, int *
 {
     unsigned char buffer[20];
     int i, cr = 0;
-
+	
     if (cloanto_rom)
-	*cloanto_rom = 0;
+		*cloanto_rom = 0;
     i = uae4all_rom_fread (buffer, 1, 11, f);
     if (strncmp ((char *) buffer, "AMIROMTYPE1", 11) != 0) {
-	uae4all_rom_fseek (f, 0, SEEK_SET);
+		uae4all_rom_fseek (f, 0, SEEK_SET);
     } else {
-	cr = 1;
+		cr = 1;
     }
-
+	
     i = uae4all_rom_fread (mem, 1, size, f);
     if (i == 8192) {
-	a1000_bootrom = (uae_u8*)xmalloc (8192);
-	memcpy (a1000_bootrom, kickmemory, 8192);
-	a1000_handle_kickstart (1);
+		a1000_bootrom = (uae_u8*)xmalloc (8192);
+		memcpy (a1000_bootrom, kickmemory, 8192);
+		a1000_handle_kickstart (1);
     } else if (i == size / 2) {
-	memcpy (mem + size / 2, mem, i);
+		memcpy (mem + size / 2, mem, i);
     } else if (i != size) {
-	write_log ("Error while reading Kickstart.\n");
-	uae4all_rom_fclose (f);
-	return 0;
+		write_log ("Error while reading Kickstart.\n");
+		uae4all_rom_fclose (f);
+		return 0;
     }
     uae4all_rom_fclose (f);
-
+	
     if (cr)
-	decode_cloanto_rom (mem, size, i);
+		decode_cloanto_rom (mem, size, i);
     if (dochecksum && i >= 262144)
-	kickstart_checksum (mem, size);
+		kickstart_checksum (mem, size);
     if (cloanto_rom)
-	*cloanto_rom = cr;
+		*cloanto_rom = cr;
     return 1;
 }
 
@@ -1032,29 +1032,29 @@ uae_u8 *mapped_malloc (size_t s, char *file)
     int id;
     void *answer;
     shmpiece *x;
-
+	
     if (!canbang)
-	return xmalloc (s);
-
+		return xmalloc (s);
+	
     id = shmget (IPC_PRIVATE, s, 0x1ff, file);
     if (id == 1) {
-	canbang = 0;
-	return mapped_malloc (s, file);
+		canbang = 0;
+		return mapped_malloc (s, file);
     }
     answer = shmat (id, 0, 0);
     shmctl (id, IPC_RMID, NULL);
     if (answer != (void *) -1) {
-	x = xmalloc (sizeof (shmpiece));
-	x->native_address = answer;
-	x->id = id;
-	x->size = s;
-	x->next = shm_start;
-	x->prev = NULL;
-	if (x->next)
-	    x->next->prev = x;
-	shm_start = x;
-
-	return answer;
+		x = xmalloc (sizeof (shmpiece));
+		x->native_address = answer;
+		x->id = id;
+		x->size = s;
+		x->next = shm_start;
+		x->prev = NULL;
+		if (x->next)
+			x->next->prev = x;
+		shm_start = x;
+		
+		return answer;
     }
     canbang = 0;
     return mapped_malloc (s, file);
@@ -1064,7 +1064,7 @@ void mapped_free (uae_u8 *base)
 {
     shmpiece *x = find_shmpiece (base);
     if (!x)
-	return;
+		return;
     shmdt (x->native_address);
 }
 
@@ -1074,7 +1074,7 @@ static void init_mem_banks (void)
 {
     int i;
     for (i = 0; i < 65536; i++)
-	put_mem_bank (i << 16, &dummy_bank, 0);
+		put_mem_bank (i << 16, &dummy_bank, 0);
 #ifdef USE_FAME_CORE
     init_memmaps(&dummy_bank);
 #endif
@@ -1083,22 +1083,22 @@ static void init_mem_banks (void)
 static void allocate_memory (void)
 {
     if (allocated_chipmem != prefs_chipmem_size) {
-	if (chipmemory)
-	    mapped_free (chipmemory);
-	chipmemory = 0;
-
-	allocated_chipmem = prefs_chipmem_size;
-	chipmem_mask = allocated_chipmem - 1;
-
-	chipmemory = mapped_malloc (allocated_chipmem, "chip");
-
-	if (chipmemory == 0) {
-	    write_log ("Fatal error: out of memory for chipmem.\n");
-	    allocated_chipmem = 0;
-	} else
-	    do_put_mem_long ((uae_u32 *)(chipmemory + 4), swab_l(0));
+		if (chipmemory)
+			mapped_free (chipmemory);
+		chipmemory = 0;
+		
+		allocated_chipmem = prefs_chipmem_size;
+		chipmem_mask = allocated_chipmem - 1;
+		
+		chipmemory = mapped_malloc (allocated_chipmem, "chip");
+		
+		if (chipmemory == 0) {
+			write_log ("Fatal error: out of memory for chipmem.\n");
+			allocated_chipmem = 0;
+		} else
+			do_put_mem_long ((uae_u32 *)(chipmemory + 4), swab_l(0));
     }
-
+	
     chipmem_bank.baseaddr = chipmemory;
     bogomem_bank.baseaddr = bogomemory;
     chipmemory_word=(uae_u16 *)chipmemory;
@@ -1118,7 +1118,7 @@ static void reload_kickstart(void)
 void memory_reset (void)
 {
     int i, custom_start;
-
+	
 #ifdef DEBUG_MEMORY
     dbg("memory_reset!");
 #endif
@@ -1126,24 +1126,24 @@ void memory_reset (void)
     delete_shmmaps (0, 0xFFFF0000);
 #endif
     init_mem_banks ();
-
+	
     memset(chipmemory,0,allocated_chipmem);
 #ifdef USE_FAME_CORE
     clear_fame_mem_dummy();
 #endif
     rtarea_cleanup();
-
+	
     allocate_memory ();
-
+	
     /* Map the chipmem into all of the lower 8MB */
     i = allocated_chipmem > 0x200000 ? (allocated_chipmem >> 16) : 32;
 #ifdef DEBUG_MEMORY
     dbg("map_banks : chipmem_bank");
 #endif
     map_banks (&chipmem_bank, 0x00, i, allocated_chipmem);
-
+	
     custom_start = 0xC0;
-
+	
 #ifdef DEBUG_MEMORY
     dbg("map_banks : custom_bank");
 #endif
@@ -1156,78 +1156,78 @@ void memory_reset (void)
     dbg("map_banks : clock_bank");
 #endif
     map_banks (&clock_bank, 0xDC, 1, 0);
-
+	
     /* @@@ Does anyone have a clue what should be in the 0x200000 - 0xA00000
      * range on an Amiga without expansion memory?  */
     custom_start = allocated_chipmem >> 16;
     if (custom_start < 0x20)
-	custom_start = 0x20;
+		custom_start = 0x20;
 #ifdef DEBUG_MEMORY
     dbg("map_banks : dummy_bank");
 #endif
     map_banks (&dummy_bank, custom_start, 0xA0 - custom_start, 0);
     /*map_banks (&mbres_bank, 0xDE, 1); */
-
+	
     if (bogomemory != 0) {
-	int t = allocated_bogomem >> 16;
-	if (t > 0x1C)
-	    t = 0x1C;
+		int t = allocated_bogomem >> 16;
+		if (t > 0x1C)
+			t = 0x1C;
 #ifdef DEBUG_MEMORY
-    dbg("map_banks : bogomem_bank");
+		dbg("map_banks : bogomem_bank");
 #endif
-	map_banks (&bogomem_bank, 0xC0, t, allocated_bogomem);
+		map_banks (&bogomem_bank, 0xC0, t, allocated_bogomem);
     }
     if (a3000memory != 0)
     {
 #ifdef DEBUG_MEMORY
-	dbg("map_banks : a3000mem_bank");
+		dbg("map_banks : a3000mem_bank");
 #endif
-	map_banks (&a3000mem_bank, a3000mem_start >> 16, allocated_a3000mem >> 16, allocated_a3000mem);
+		map_banks (&a3000mem_bank, a3000mem_start >> 16, allocated_a3000mem >> 16, allocated_a3000mem);
     }
-
+	
 #ifdef DEBUG_MEMORY
     dbg("map_banks : rtarea_bank");
 #endif
     map_banks (&rtarea_bank, RTAREA_BASE >> 16, 1, 0);
-
+	
 #ifdef DEBUG_MEMORY
     dbg("map_banks : kickmem_bank");
 #endif
     map_banks (&kickmem_bank, 0xF8, 8, 0);
     if (a1000_bootrom)
-	a1000_handle_kickstart (1);
-
+		a1000_handle_kickstart (1);
+	
     switch (extromtype ()) {
-    case EXTENDED_ROM_CDTV:
+		case EXTENDED_ROM_CDTV:
 #ifdef DEBUG_MEMORY
-	dbg("map_banks : extendedkickmem_bank");
+			dbg("map_banks : extendedkickmem_bank");
 #endif
-	map_banks (&extendedkickmem_bank, 0xF0, 4, 0);
-	break;
-    case EXTENDED_ROM_CD32:
+			map_banks (&extendedkickmem_bank, 0xF0, 4, 0);
+			break;
+		case EXTENDED_ROM_CD32:
 #ifdef DEBUG_MEMORY
-	dbg("map_banks : extendedkickmem_bank");
+			dbg("map_banks : extendedkickmem_bank");
 #endif
-	map_banks (&extendedkickmem_bank, 0xE0, 8, 0);
-	break;
-    default:
-	if (cloanto_rom)
-	{
+			map_banks (&extendedkickmem_bank, 0xE0, 8, 0);
+			break;
+		default:
+			if (cloanto_rom)
+			{
 #ifdef DEBUG_MEMORY
-	    dbg("map_banks : kickmem_bank");
+				dbg("map_banks : kickmem_bank");
 #endif
-	    map_banks (&kickmem_bank, 0xE0, 8, 0);
-	}
+				map_banks (&kickmem_bank, 0xE0, 8, 0);
+			}
     }
     if (kickmem_checksum!=get_kickmem_checksum())
     {
-	unsigned chksum=kickmem_checksum;
-	reload_kickstart();
-	if (chksum!=kickmem_checksum)
-	{
-		uae4all_rom_reinit();
+		unsigned chksum=kickmem_checksum;
 		reload_kickstart();
-	}
+		if (chksum!=kickmem_checksum)
+		{
+			uae4all_rom_reinit();
+			reload_kickstart();
+		}
     }
 }
 
@@ -1261,16 +1261,16 @@ void memory_init (void)
 void memory_cleanup (void)
 {
     if (a3000memory)
-	mapped_free (a3000memory);
+		mapped_free (a3000memory);
     if (bogomemory)
-	mapped_free (bogomemory);
+		mapped_free (bogomemory);
     if (kickmemory)
-	mapped_free (kickmemory);
+		mapped_free (kickmemory);
     if (a1000_bootrom)
-	free (a1000_bootrom);
+		free (a1000_bootrom);
     if (chipmemory)
-	mapped_free (chipmemory);
-
+		mapped_free (chipmemory);
+	
     a3000memory = 0;
     bogomemory = 0;
     kickmemory = 0;
@@ -1284,7 +1284,7 @@ void map_banks (addrbank *bank, int start, int size, int realsize)
     unsigned long int hioffs = 0, endhioffs = 0x100;
     addrbank *orgbank = bank;
     uae_u32 realstart = start;
-
+	
 #ifdef DEBUG_MEMORY
     dbg("Map");
 #endif
@@ -1292,55 +1292,55 @@ void map_banks (addrbank *bank, int start, int size, int realsize)
 #ifdef NATMEM_OFFSET
     delete_shmmaps (start << 16, size << 16);
 #endif
-
+	
     if (!realsize)
-	realsize = size << 16;
-
+		realsize = size << 16;
+	
     if ((size << 16) < realsize) {
-	write_log ("Please report to bmeyer@cs.monash.edu.au, and mention:\n");
-	write_log ("Broken mapping, size=%x, realsize=%x\n", size, realsize);
-	write_log ("Start is %x\n", start);
-	write_log ("Reducing memory sizes, especially chipmem, may fix this problem\n");
-	return;
+		write_log ("Please report to bmeyer@cs.monash.edu.au, and mention:\n");
+		write_log ("Broken mapping, size=%x, realsize=%x\n", size, realsize);
+		write_log ("Start is %x\n", start);
+		write_log ("Reducing memory sizes, especially chipmem, may fix this problem\n");
+		return;
     }
-
+	
     if (start >= 0x100) {
-	int real_left = 0;
-	for (bnr = start; bnr < start + size; bnr++) {
-	    if (!real_left) {
-		realstart = bnr;
-		real_left = realsize >> 16;
+		int real_left = 0;
+		for (bnr = start; bnr < start + size; bnr++) {
+			if (!real_left) {
+				realstart = bnr;
+				real_left = realsize >> 16;
 #ifdef NATMEM_OFFSET
-		add_shmmaps (realstart << 16, bank);
+				add_shmmaps (realstart << 16, bank);
 #endif
-	    }
-	    put_mem_bank (bnr << 16, bank, realstart << 16);
+			}
+			put_mem_bank (bnr << 16, bank, realstart << 16);
 #ifdef USE_FAME_CORE
-	    map_zone(bnr,bank,realstart);
+			map_zone(bnr,bank,realstart);
 #endif
-	    real_left--;
-	}
+			real_left--;
+		}
 #ifdef DEBUG_MEMORY
-	dbg("!Map");
+		dbg("!Map");
 #endif
-	return;
+		return;
     }
     for (hioffs = 0; hioffs < endhioffs; hioffs += 0x100) {
-	int real_left = 0;
-	for (bnr = start; bnr < start + size; bnr++) {
-	    if (!real_left) {
-		realstart = bnr + hioffs;
-		real_left = realsize >> 16;
+		int real_left = 0;
+		for (bnr = start; bnr < start + size; bnr++) {
+			if (!real_left) {
+				realstart = bnr + hioffs;
+				real_left = realsize >> 16;
 #ifdef NATMEM_OFFSET
-		add_shmmaps (realstart << 16, bank);
+				add_shmmaps (realstart << 16, bank);
 #endif
-	    }
-	    put_mem_bank ((bnr + hioffs) << 16, bank, realstart << 16);
+			}
+			put_mem_bank ((bnr + hioffs) << 16, bank, realstart << 16);
 #ifdef USE_FAME_CORE
-	    map_zone(bnr+hioffs,bank,realstart);
+			map_zone(bnr+hioffs,bank,realstart);
 #endif
-	    real_left--;
-	}
+			real_left--;
+		}
     }
 #ifdef DEBUG_MEMORY
     dbg("!Map!");

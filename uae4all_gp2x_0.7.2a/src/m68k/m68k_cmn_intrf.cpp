@@ -19,10 +19,8 @@
 #include "custom.h"
 #include "autoconf.h"
 #include "ersatz.h"
-#include "debug.h"
-#include "compiler.h"
 #include "gui.h"
-#include "savestate.h"
+//#include "savestate.h"
 #include "blitter.h"
 #include "events.h"
 #include "sound.h"
@@ -304,9 +302,8 @@ static void m68k_run (void)
 			cycles=2048;
 #ifdef PROTECT_INFINITE
 			cuentalo++;
-			if (cuentalo>1024)
-			{
-				quit_program=2;
+			if (cuentalo>1024) {
+				emulator.quit_program=2;
 				return;
 			}
 #endif
@@ -332,13 +329,13 @@ void m68k_go (int may_quit)
 	
     in_m68k_go++;
 #endif
-    quit_program = 2;
+    emulator.quit_program = 2;
     for (;;) {
-        if (quit_program > 0) {
-            if (quit_program == 1)
+        if (emulator.quit_program > 0) {
+            if (emulator.quit_program == 1)
                 break;
-            quit_program = 0;
-            reset_all_systems ();
+            emulator.quit_program = 0;
+            emulator.reset_all_systems ();
             customreset ();
 			check_prefs_changed_cpu ();
 			sound_default_evtime ();

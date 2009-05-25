@@ -191,7 +191,6 @@ static int open_sound (void)
     sound_default_evtime();
 	
     have_sound = 1;
-    scaled_sample_evtime_ok = 1;
     sound_available = 1;
 	
 #ifdef DEBUG_SOUND

@@ -49,7 +49,7 @@ char* get_rom_path() {
 
 char* get_df0_path() {
 	NSString *bp = [[NSBundle mainBundle] bundlePath];
-	bp = [bp stringByAppendingPathComponent:@"IK+.adf"];
+	bp = [bp stringByAppendingPathComponent:@"Odyssey-1.adf"];
 	
 	static char df0Path[500];
 	

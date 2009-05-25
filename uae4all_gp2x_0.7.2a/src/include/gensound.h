@@ -13,8 +13,7 @@ extern int sound_ahi_enabled;
 /* sample_evtime is in normal Amiga cycles; scaled_sample_evtime is in our
    event cycles.  scaled_sample_evtime_ok is set to 1 by init_sound if the
    port understands scaled_sample_evtime and set it to something sensible.  */
-extern unsigned long sample_evtime, scaled_sample_evtime;
-extern int scaled_sample_evtime_ok;
+extern unsigned long scaled_sample_evtime;
 
 /* Determine if we can produce any sound at all.  This can be only a guess;
  * if unsure, say yes.  Any call to init_sound may change the value.  */

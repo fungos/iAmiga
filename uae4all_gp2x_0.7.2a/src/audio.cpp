@@ -58,8 +58,7 @@ int sound_ahi_enabled;
    left channel raised an interrupt.  */
 static int ahi_interrupt_state;
 
-unsigned long sample_evtime, scaled_sample_evtime;
-int scaled_sample_evtime_ok;
+unsigned long scaled_sample_evtime;
 
 static unsigned long last_cycles;
 unsigned long next_sample_evtime;
@@ -816,12 +815,7 @@ void AUDxVOL (int nr, uae_u16 v)
 int init_audio (void)
 {
     int retval;
-    /* Some backward compatibility hacks until every port initializes
-	 scaled_sample_evtime...  */
-    scaled_sample_evtime_ok = 0;
     retval = init_sound ();
-    if (! scaled_sample_evtime_ok)
-		scaled_sample_evtime = sample_evtime * CYCLE_UNIT;
     return retval;
 }
 

@@ -2134,8 +2134,8 @@ void vsync_handle_redraw (int long_frame, int lof_changed)
 		 * done at other times.
 		 */
 		
-		if (quit_program < 0) {
-			quit_program = -quit_program;
+		if (emulator.quit_program < 0) {
+			emulator.quit_program = -emulator.quit_program;
 			set_inhibit_frame (IHF_QUIT_PROGRAM);
 			set_special (SPCFLAG_BRK);
 #ifdef USE_FAME_CORE

@@ -34,19 +34,6 @@ extern void check_prefs_changed_cpu (void);
 extern void check_prefs_changed_audio (void);
 extern int check_prefs_changed_gfx (void);
 
-/*
-#define JSEM_DECODEVAL(n) ((n) == 0 ? 2 : 0)
-#define JSEM_ISJOY0(n) (JSEM_DECODEVAL(n) == 0)
-#define JSEM_ISJOY1(n) (JSEM_DECODEVAL(n) == 1)
-#define JSEM_ISMOUSE(n) (JSEM_DECODEVAL(n) == 2)
-#define JSEM_ISNUMPAD(n) (JSEM_DECODEVAL(n) == 3)
-#define JSEM_ISCURSOR(n) (JSEM_DECODEVAL(n) == 4)
-#define JSEM_ISSOMEWHEREELSE(n) (JSEM_DECODEVAL(n) == 5)
-extern const char *gameport_state (int n);
-*/
-
-extern void machdep_init (void);
-
 /* AIX doesn't think it is Unix. Neither do I. */
 #if defined(_ALL_SOURCE) || defined(_AIX)
 #undef __unix

@@ -21,7 +21,6 @@
 #include "memory.h"
 #include "custom.h"
 #include "cia.h"
-#include "serial.h"
 #include "disk.h"
 #include "xwin.h"
 #include "keybuf.h"

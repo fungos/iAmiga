@@ -1,4 +1,0 @@
- /*
-  * NO Call Amiga Exec
-  */
-
