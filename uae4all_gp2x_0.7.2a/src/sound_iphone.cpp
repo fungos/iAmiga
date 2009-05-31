@@ -3,6 +3,8 @@
  * (c) notaz, 2007
  */
 
+#define DEBUG_SOUND
+
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
@@ -20,6 +22,8 @@
 #include "gensound.h"
 #include "sound.h"
 #include "custom.h"
+
+#include "MMStopWatch.h"
 
 
 extern unsigned long next_sample_evtime;
@@ -140,7 +144,9 @@ void finish_sound_buffer (void)
 {
 	static int usingTemp = 0;
 #ifdef DEBUG_SOUND
-	dbg("sound.c : finish_sound_buffer");
+	//dbg("sound.c : finish_sound_buffer");
+	static Uint32 timer = GetTicks();
+	static Uint32 counter = 0;
 #endif
 	
 	if (!usingTemp)
@@ -153,9 +159,16 @@ void finish_sound_buffer (void)
 		usingTemp = 1;
 		sndbufpt = render_sndbuff = sndbuffer[0];
 	}
-	
+		
 #ifdef DEBUG_SOUND
-	dbg(" sound.c : ! finish_sound_buffer");
+	counter++;
+	Uint32 now = GetTicks();
+	if (now - timer > 1000) {
+		printf("called finish_sound_buffer %dx / sec\r\n", counter);
+		timer = now;
+		counter=0;
+	}
+	//dbg(" sound.c : ! finish_sound_buffer");
 #endif
 }
 

@@ -21,7 +21,7 @@
 #ifdef WIN32
 #define SNDBUFFER_LEN (PRE_SNDBUFFER_LEN*2)
 #else
-#define SNDBUFFER_LEN PRE_SNDBUFFER_LEN
+#define SNDBUFFER_LEN (PRE_SNDBUFFER_LEN)
 #endif
 
 extern unsigned sound_quality;
