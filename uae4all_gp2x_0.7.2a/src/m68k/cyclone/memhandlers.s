@@ -1,18 +1,23 @@
+#if 0
+.set device, 0
+.set device, __arm__
+
+.if device
+
 @ vim:filetype=armasm
 @ memory handlers for uae4all and Cyclone
 @ (c) notaz, 2007
 
-.extern baseaddr
-.global cyclone_read8
-.global cyclone_read16
-.global cyclone_read32
-.global cyclone_write8
-.global cyclone_write16
-.global cyclone_write32
+.globl cyclone_read8
+.globl cyclone_read16
+.globl cyclone_read32
+.globl cyclone_write8
+.globl cyclone_write16
+.globl cyclone_write32
 
 
 .macro get_base
-	ldr	r2,=baseaddr
+	ldr	r2,baseaddr
 	bic	r0,r0,#0xff000000
 	mov	r3,r0,lsr #16
 	ldr	r3,[r2,r3,lsl #2]
@@ -83,4 +88,10 @@ cyclone_write32:
 	strh	r1,[r3,#2]
 	bx	lr
 
+	.non_lazy_symbol_pointer
+baseaddr:
+	.indirect_symbol _baseaddr
+	.long	0
 
+.endif
+#endif

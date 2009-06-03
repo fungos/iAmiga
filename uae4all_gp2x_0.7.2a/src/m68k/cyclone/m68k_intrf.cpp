@@ -1,4 +1,7 @@
 #include "sysconfig.h"
+
+#ifdef USE_CYCLONE_CORE
+
 #include "sysdeps.h"
 #include "memory.h"
 #include "custom.h"
@@ -220,7 +223,7 @@ static int unrecognized_callback(void)
 		dprintfu("  68020");
 		write_log("Your Kickstart requires a 68020 CPU. Giving up.\n");
 		set_special (SPCFLAG_BRK);
-		quit_program = 1;
+		g_emulator.quit_program = 1;
 		m68k_context.cycles = 0;
 		return 1;
 	}
@@ -282,7 +285,7 @@ static int unrecognized_callback(void)
 
 /* memory handlers */
 #ifndef USE_CYCLONE_MEMHANDLERS
-static unsigned char cyclone_read8(unsigned int a)
+static unsigned int cyclone_read8(unsigned int a)
 {
 	a &= ~0xff000000;
 	uae_u8 *p = baseaddr[a>>16];
@@ -300,7 +303,7 @@ static unsigned char cyclone_read8(unsigned int a)
 	}
 }
 
-static unsigned short cyclone_read16(unsigned int a)
+static unsigned int cyclone_read16(unsigned int a)
 {
 	a &= ~0xff000000;
 	uae_u16 *p = (uae_u16 *) baseaddr[a>>16];
@@ -414,3 +417,4 @@ void clear_fame_mem_dummy(void)
 {
 }
 
+#endif

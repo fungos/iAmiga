@@ -1,6 +1,6 @@
 
 
-#if defined(USE_FAME_CORE)
+//#if defined(USE_FAME_CORE)
 
 /* defined in m68k_cmn_intrf.cpp */
 extern int uae4all_go_interrupt;
@@ -16,7 +16,7 @@ void init_m68k(void);
 #define dump_counts()
 #define flush_icache(X)
 
-#endif
+//#endif
 
 
 #if defined(USE_FAME_CORE) && !defined(USE_CYCLONE_CORE)

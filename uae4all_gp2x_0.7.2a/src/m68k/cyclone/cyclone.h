@@ -50,10 +50,10 @@ struct Cyclone
 };
 
 // Initialize. Used only if Cyclone was compiled with compressed jumptable, see config.h
-void CycloneInit(void);
+extern "C" void CycloneInit(void);
 
 // Run cyclone. Cycles should be specified in context (pcy->cycles)
-void CycloneRun(struct Cyclone *pcy);
+extern "C" void CycloneRun(struct Cyclone *pcy);
 
 // Utility functions to get and set SR
 void CycloneSetSr(struct Cyclone *pcy, unsigned int sr);

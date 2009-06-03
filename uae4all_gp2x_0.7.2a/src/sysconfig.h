@@ -413,8 +413,21 @@
 
 #ifdef IPHONE
 
+#include "TargetConditionals.h"
+
+#if TARGET_IPHONE_SIMULATOR
+
 #define USE_FAME_CORE
 #define USE_FAME_CORE_C
+
+#else
+
+#define USE_FAME_CORE
+#define USE_FAME_CORE_C
+//#define USE_CYCLONE_CORE
+//#define USE_CYCLONE_MEMHANDLERS
+
+#endif
 
 #define NO_THREADS
 #define OS_WITHOUT_MEMORY_MANAGEMENT

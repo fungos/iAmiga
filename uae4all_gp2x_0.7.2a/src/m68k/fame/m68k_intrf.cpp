@@ -1,10 +1,9 @@
-#ifdef DREAMCAST
-#include <kos.h>
-#endif
+#include "sysconfig.h"
+
+#ifdef USE_FAME_CORE
 
 #include <string.h>
 
-#include "sysconfig.h"
 #include "sysdeps.h"
 #include "debug_uae4all.h"
 #include "config.h"
@@ -337,3 +336,4 @@ void map_zone(unsigned addr, addrbank* banco, unsigned realstart)
 	m68k_set_context(&micontexto);
 }
 
+#endif

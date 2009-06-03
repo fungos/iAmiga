@@ -114,7 +114,7 @@ static void ersatz_init (void)
     _68k_ispreg = _68k_mspreg = _68k_uspreg = 0x800;
     _68k_areg(7) = 0x80000;
 #ifndef USE_FAME_CORE
-    _68k_intmask = 0;
+    //TODO: why does this have to be commented out: _68k_intmask = 0;
 #endif
 
     /* Build a dummy execbase */
