@@ -15,7 +15,7 @@ extern void finish_sound_buffer (void);
 
 #define DEFAULT_SOUND_BITS 16
 
-#if defined(NO_THREADS) || defined(WIN32) || defined (GIZMONDO) || defined (PSP)
+#if defined(NO_THREADS) || defined(WIN32) || defined (GIZMONDO) || defined (PSP) || defined (__SYMBIAN32__)
 #define DEFAULT_SOUND_FREQ 22050
 #else
 #define DEFAULT_SOUND_FREQ 44100

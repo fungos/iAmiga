@@ -82,7 +82,7 @@ const double kDefaultAnimationDuration					= 250.0 / 1000.0;
 	[self.inputController addSubview:self.landscapeJoystickView];
 		
     self.view = view;
-	view.isUserInteractionEnabled = NO;
+	[view setUserInteractionEnabled:NO];
     [view release];
 	
 	// monitor device rotation
@@ -172,7 +172,7 @@ const double kDefaultAnimationDuration					= 250.0 / 1000.0;
 #pragma mark Emulator Functions
 
 - (void)enableUserInteraction {
-	self.view.isUserInteractionEnabled = YES;
+	[self.view setUserInteractionEnabled:YES];
 }
 
 - (void)startEmulator {

@@ -12,6 +12,8 @@
 
 #include <stdio.h>
 
+//#define DEBUG_UAE4ALL
+
 // note: Shadow of the beast intentionally causes address errors
 // Project-X uses trace mode.
 
@@ -20,18 +22,20 @@
 //#define dprintf(f,...) \
 if (verb) \
 printf("%05i| %s: " f "\n",M68KCONTEXT.cycles_counter,__FUNCTION__,##__VA_ARGS__)
-#define mdprintf(...)
+
 //#define mdprintf(f,...) \
 if (verb) \
 printf("%05i|%03i: %06x: %s: " f "\n",M68KCONTEXT.cycles_counter,m68k_context.cycles,m68k_context.pc-m68k_context.membase,__FUNCTION__,##__VA_ARGS__)
 #if defined(DEBUG_UAE4ALL) || defined(UAE_CONSOLE)
 #define dprintfu dprintf_al
+#define mdprintf dprintf_al
 #else
 #define dprintfu(...)
+#define mdprintf(...)
 #endif
 
 // for easier sync with FAMEC
-//#define SPLIT_32_2_16
+#define SPLIT_32_2_16
 
 struct Cyclone m68k_context;
 M68KCONTEXT_t M68KCONTEXT;
@@ -105,9 +109,10 @@ int m68k_reset(void)
 	m68k_context.osp = 0;
 	m68k_context.srh = 0x27; // Supervisor mode
 	m68k_context.flags = 0;
-//	m68k_context.irq = 0;
-//	m68k_context.a[7] = m68k_context.read32(0); // Stack Pointer, set by caller
-//	m68k_context.membase=0;
+	//m68k_context.irq = 0;
+	//m68k_context.a[7] = m68k_context.read32(0); // Stack Pointer, set by caller
+	//m68k_context.membase=0;
+	//m68k_context.pc = m68k_context.checkpc(m68k_context.read32(4)); // Program Counter, set by caller
 //	m68k_context.pc = m68k_context.checkpc(PicoCpu.read32(4)); // Program Counter, set by caller
 
 	return 0;
@@ -324,7 +329,7 @@ static unsigned int cyclone_read16(unsigned int a)
 static unsigned int cyclone_read32(unsigned int a)
 {
 #ifdef SPLIT_32_2_16
-	return (read16(a)<<16) | read16(a+2);
+	return (cyclone_read16(a)<<16) | cyclone_read16(a+2);
 #else
 	a &= ~0xff000000;
 	uae_u16 *p = (uae_u16 *) baseaddr[a>>16];
@@ -381,8 +386,8 @@ static void cyclone_write16(unsigned int a,unsigned short d)
 static void cyclone_write32(unsigned int a,unsigned int d)
 {
 #ifdef SPLIT_32_2_16
-	write16(a, d>>16);
-	write16(a+2, d);
+	cyclone_write16(a, d>>16);
+	cyclone_write16(a+2, d);
 #else
 	a &= ~0xff000000;
 	uae_u16 *p = (uae_u16 *) baseaddr[a>>16];

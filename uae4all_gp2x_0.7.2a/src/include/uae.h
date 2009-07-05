@@ -6,7 +6,7 @@
   * Copyright 1996 Bernd Schmidt
   */
 
-#define NUM_DRIVES 2
+#define NUM_DRIVES 1
 
 class uae {
 public:

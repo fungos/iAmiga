@@ -1,6 +1,6 @@
 #include "sysconfig.h"
 
-#ifdef USE_FAME_CORE
+#ifdef USE_FAME_CORE_C
 
 #include <string.h>
 

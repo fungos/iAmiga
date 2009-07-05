@@ -21,7 +21,7 @@
 #include "RingQ.h"
 #include <libkern/OSAtomic.h>
 
-const int kMinimumBufferSize = 2048;
+const int kMinimumBufferSize = 1920;
 
 CAudioQueueManager::CAudioQueueManager(float sampleFrequency, int sampleFrameCount, SoundChannels channels)
 :_sampleFrequency(sampleFrequency), _sampleFrameCount(sampleFrameCount), _samplesInQueue(0), _runLoop(NULL), _soundThread(NULL),
@@ -173,6 +173,8 @@ void CAudioQueueManager::_HandleOutputBuffer(AudioQueueBufferRef outBuffer) {
 #if defined(DEBUG)
 		if (outBuffer->mAudioDataByteSize == 0)
 			printf("audio buffer underrun.");
+		else if (outBuffer->mAudioDataByteSize < outBuffer->mAudioDataBytesCapacity) 
+			printf("audio buffer less than capacity %d < %d.", outBuffer->mAudioDataByteSize, outBuffer->mAudioDataBytesCapacity);
 #endif
 	}
 	

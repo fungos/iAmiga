@@ -8,7 +8,9 @@
   */
 
 extern int sound_available;
+#ifdef ENABLE_AHI_SOUND
 extern int sound_ahi_enabled;
+#endif
 
 /* sample_evtime is in normal Amiga cycles; scaled_sample_evtime is in our
    event cycles.  scaled_sample_evtime_ok is set to 1 by init_sound if the

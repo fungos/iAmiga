@@ -8,16 +8,17 @@
 @ memory handlers for uae4all and Cyclone
 @ (c) notaz, 2007
 
-.globl cyclone_read8
-.globl cyclone_read16
-.globl cyclone_read32
-.globl cyclone_write8
-.globl cyclone_write16
-.globl cyclone_write32
+.globl _cyclone_read8
+.globl _cyclone_read16
+.globl _cyclone_read32
+.globl _cyclone_write8
+.globl _cyclone_write16
+.globl _cyclone_write32
 
 
 .macro get_base
-	ldr	r2,baseaddr
+	ldr	r2,baseaddr1
+	ldr r2, [r2]
 	bic	r0,r0,#0xff000000
 	mov	r3,r0,lsr #16
 	ldr	r3,[r2,r3,lsl #2]
@@ -28,7 +29,7 @@
 .align 4
 
 
-cyclone_read8:
+_cyclone_read8:
 	get_base
 	eor	r2,r0,#1
 	tst	r3,#1
@@ -37,7 +38,7 @@ cyclone_read8:
 	ldr	pc,[r3,#7]	@ bget
 
 
-cyclone_read16:
+_cyclone_read16:
 	get_base
 	bic	r0,r0,#1
 	tst	r3,#1
@@ -46,7 +47,7 @@ cyclone_read16:
 	ldr	pc,[r3,#3]	@ wget
 
 
-cyclone_read32:
+_cyclone_read32:
 	get_base
 	bic	r0,r0,#1
 	tst	r3,#1
@@ -57,7 +58,7 @@ cyclone_read32:
 	bx	lr
 
 
-cyclone_write8:
+_cyclone_write8:
 	get_base
 	eor	r2,r0,#1
 	tst	r3,#1
@@ -67,7 +68,7 @@ cyclone_write8:
 	ldr	pc,[r3,#0x13]	@ bput
 
 
-cyclone_write16:
+_cyclone_write16:
 	get_base
 	bic	r0,r0,#1
 	tst	r3,#1
@@ -78,7 +79,7 @@ cyclone_write16:
 	ldr	pc,[r3,#0x0f]	@ wput
 
 
-cyclone_write32:
+_cyclone_write32:
 	get_base
 	bic	r0,r0,#1
 	tst	r3,#1
@@ -88,10 +89,13 @@ cyclone_write32:
 	strh	r1,[r3,#2]
 	bx	lr
 
+baseaddr1:
+	.long	L_baseaddr$non_lazy_ptr
 	.non_lazy_symbol_pointer
-baseaddr:
+L_baseaddr$non_lazy_ptr:
 	.indirect_symbol _baseaddr
 	.long	0
+	.subsections_via_symbols
 
 .endif
 #endif

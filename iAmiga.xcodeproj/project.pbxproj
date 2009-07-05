@@ -20,7 +20,6 @@
 		050416470FCB566500F46828 /* ls-joystick_rest.png in Resources */ = {isa = PBXBuildFile; fileRef = 050416330FCB566500F46828 /* ls-joystick_rest.png */; };
 		0504166C0FCB571B00F46828 /* IK+.adf in Resources */ = {isa = PBXBuildFile; fileRef = 0542F18D0FC7E00F00126562 /* IK+.adf */; };
 		050416780FCB588E00F46828 /* Turrican II.adf in Resources */ = {isa = PBXBuildFile; fileRef = 05FE829D0FC68EED00DBFECF /* Turrican II.adf */; };
-		0529314B0FD49F6B00563123 /* cyclone.s in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD000F3D797C005B30DF /* cyclone.s */; };
 		0542F2810FC8892800126562 /* Prefs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0542F27E0FC8892800126562 /* Prefs.cpp */; };
 		0542F2820FC8892800126562 /* Amiga.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0542F2800FC8892800126562 /* Amiga.cpp */; };
 		0542F2850FC8893600126562 /* Graphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0542F2840FC8893600126562 /* Graphics.cpp */; };
@@ -58,9 +57,9 @@
 		057442820FC3C25B003BE251 /* DisplayView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 057442810FC3C25B003BE251 /* DisplayView.mm */; };
 		0574432A0FC3C94F003BE251 /* kick13.rom in Resources */ = {isa = PBXBuildFile; fileRef = 057443290FC3C94F003BE251 /* kick13.rom */; };
 		057B0D4C0FD0D0ED00D549AD /* MMStopWatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 057B0D4B0FD0D0ED00D549AD /* MMStopWatch.m */; };
+		057BB6F50FF8A7AE00B26E3F /* cyclone.s in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD000F3D797C005B30DF /* cyclone.s */; };
 		05B7066E0FD282230081B5C3 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 05B7066D0FD282230081B5C3 /* Entitlements.plist */; };
 		05D5D74C0FD5E38400B91C98 /* m68k_intrf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD010F3D797C005B30DF /* m68k_intrf.cpp */; };
-		05D5D8420FD5E83600B91C98 /* memhandlers.s in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD020F3D797C005B30DF /* memhandlers.s */; };
 		05E6A31D0FC3D93B0086151B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E6A31C0FC3D93B0086151B /* AudioToolbox.framework */; };
 		05E6A3260FC3DAA90086151B /* sound_iphone.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05E6A3250FC3DAA90086151B /* sound_iphone.cpp */; };
 		05FE7F280FC3EDBF00DBFECF /* AudioQueueManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05FE7F270FC3EDBF00DBFECF /* AudioQueueManager.cpp */; };
@@ -400,6 +399,7 @@
 		0552BCA90F3D797C005B30DF /* gp2x */ = {
 			isa = PBXGroup;
 			children = (
+				0552BCB70F3D797C005B30DF /* menu */,
 				0552BCB00F3D797C005B30DF /* gp2x.cpp */,
 				0552BCB10F3D797C005B30DF /* gp2x.h */,
 				0552BCB20F3D797C005B30DF /* gp2xutil.h */,
@@ -407,7 +407,6 @@
 				0552BCB40F3D797C005B30DF /* inputmode.h */,
 				0552BCB50F3D797C005B30DF /* memcpy.s */,
 				0552BCB60F3D797C005B30DF /* memset.s */,
-				0552BCB70F3D797C005B30DF /* menu */,
 				0552BCBF0F3D797C005B30DF /* volumecontrol.cpp */,
 				0552BCC00F3D797C005B30DF /* volumecontrol.h */,
 			);
@@ -720,12 +719,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05D5D8420FD5E83600B91C98 /* memhandlers.s in Sources */,
+				057BB6F50FF8A7AE00B26E3F /* cyclone.s in Sources */,
 				05D5D74C0FD5E38400B91C98 /* m68k_intrf.cpp in Sources */,
 				05FE7F310FC3EF9900DBFECF /* audio.cpp in Sources */,
 				1D60589B0D05DD56006BFB54 /* main.mm in Sources */,
 				1D3623260D0F684500981E51 /* iAmigaAppDelegate.mm in Sources */,
-				0529314B0FD49F6B00563123 /* cyclone.s in Sources */,
 				0552BD240F3D797C005B30DF /* autoconf.cpp in Sources */,
 				0552BD250F3D797C005B30DF /* blitfunc.cpp in Sources */,
 				0552BD260F3D797C005B30DF /* blittable.cpp in Sources */,
@@ -774,7 +772,7 @@
 		05B706690FD282000081B5C3 /* Distribution */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Manomio LLC";
 				GCC_CHAR_IS_UNSIGNED_CHAR = YES;
@@ -791,6 +789,7 @@
 				GCC_UNROLL_LOOPS = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					uae4all_gp2x_0.7.2a/src,
@@ -804,7 +803,7 @@
 				);
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A1F886C2-3619-4A8A-B980-3DFB8F12AFDB";
-				SDKROOT = iphoneos2.2.1;
+				SDKROOT = iphoneos3.0;
 			};
 			name = Distribution;
 		};
@@ -849,7 +848,7 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_CHAR_IS_UNSIGNED_CHAR = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -863,6 +862,8 @@
 				GCC_THUMB_SUPPORT = NO;
 				GCC_UNROLL_LOOPS = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					uae4all_gp2x_0.7.2a/src,
@@ -871,7 +872,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
 				PREBINDING = NO;
-				SDKROOT = iphoneos2.2.1;
+				SDKROOT = iphoneos3.0;
 			};
 			name = Debug;
 		};
@@ -889,11 +890,13 @@
 					IPHONE,
 					NDEBUG,
 				);
+				GCC_STRICT_ALIASING = YES;
 				GCC_THREADSAFE_STATICS = NO;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_UNROLL_LOOPS = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					uae4all_gp2x_0.7.2a/src,
@@ -906,7 +909,7 @@
 					"-falign-loops=16",
 				);
 				PREBINDING = NO;
-				SDKROOT = iphoneos2.2.1;
+				SDKROOT = iphoneos3.0;
 			};
 			name = Release;
 		};

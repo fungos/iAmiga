@@ -433,5 +433,6 @@
 #define OS_WITHOUT_MEMORY_MANAGEMENT
 //#define NO_SOUND
 #define NO_MAIN_IN_MAIN_C
+//#define ENABLE_AHI_SOUND
 
 #endif

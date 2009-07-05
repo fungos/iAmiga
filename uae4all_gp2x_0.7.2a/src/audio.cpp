@@ -50,13 +50,16 @@ int sound_available = 0;
 int sound_available = 1;
 #endif
 
+#ifdef ENABLE_AHI_SOUND
 /* Zero if we want to produce Paula output, nonzero if we want to produce
    AHI output.  */
 int sound_ahi_enabled;
 
+
 /* Bit 0 is set if the right channel raised an interrupt, bit 1 is set if the
    left channel raised an interrupt.  */
 static int ahi_interrupt_state;
+#endif
 
 unsigned long scaled_sample_evtime;
 
@@ -576,8 +579,10 @@ void audio_reset (void)
     audio_channel[5].per = PERIOD_MAX;
 
     last_cycles = 0;
+#ifdef ENABLE_AHI_SOUND
     sound_ahi_enabled = 0;
     ahi_interrupt_state = 0;
+#endif
     next_sample_evtime = scaled_sample_evtime;
 
     schedule_audio ();
@@ -703,6 +708,7 @@ void update_audio (void)
 	
     uae4all_prof_start(4);
     n_cycles = get_cycles () - last_cycles;
+#ifdef ENABLE_AHI_SOUND
     if (sound_ahi_enabled)
 		for (;;) {
 			DEFINE_STATE
@@ -712,6 +718,7 @@ void update_audio (void)
 			RUN_HANDLERS
 		}
     else
+#endif
 		for (;;) {
 			DEFINE_STATE
 			CHECK_STATE

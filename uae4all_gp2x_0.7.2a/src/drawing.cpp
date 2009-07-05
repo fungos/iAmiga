@@ -174,13 +174,13 @@ int framecnt = 0, fs_framecnt = 0;
 static int frame_redraw_necessary;
 
 #ifdef NO_THREADS
-#define UMBRAL_PAL   21<<8
+#define THRESHOLD_PAL   21<<8
 #else
-#define UMBRAL_PAL   ((1000<<8)/50)
+#define THRESHOLD_PAL   ((1000<<8)/50)
 #endif
-#define UMBRAL_NTSC  ((1000<<8)/60+1)
-#define PARTIDA_PAL  (UMBRAL_PAL/2)
-#define PARTIDA_NTSC (UMBRAL_NTSC/2+1)
+#define THRESHOLD_NTSC  ((1000<<8)/60+1)
+#define PARTIDA_PAL  (THRESHOLD_PAL/2)
+#define PARTIDA_NTSC (THRESHOLD_NTSC/2+1)
 
 extern Uint32 uae4all_numframes;
 
@@ -189,13 +189,13 @@ extern Uint32 uae4all_frameskipped;
 extern double uae4all_framerate;
 #endif
 
-static Uint32 proximo_frameskip;
+static Uint32 next_frameskip;
 extern int *tabla_ajuste;
 
 void reset_frameskip(void)
 {
 	// will reset ticks automatically
-	proximo_frameskip=0;
+	next_frameskip=0;
 	//	proximo_frameskip=SDL_GetTicks()<<8;
 }
 
@@ -274,14 +274,14 @@ static __inline__ void count_frame (void)
 	
 	
     Uint32 partida = (beamcon0 & 0x20) ? PARTIDA_PAL : PARTIDA_NTSC;
-    Uint32 ahora = SDL_GetTicks() << 8;
+    Uint32 time_now = SDL_GetTicks() << 8;
 	
-    proximo_frameskip += (beamcon0 & 0x20) ? UMBRAL_PAL : UMBRAL_NTSC;
+    next_frameskip += (beamcon0 & 0x20) ? THRESHOLD_PAL : THRESHOLD_NTSC;
 	
-    if (ahora - (100<<8) > proximo_frameskip)
+    if (time_now - (100<<8) > next_frameskip)
     {
 	    // out of sync
-	    proximo_frameskip = ahora;
+	    next_frameskip = time_now;
     }
 	
     if (prefs_gfx_framerate>=0)
@@ -294,12 +294,12 @@ static __inline__ void count_frame (void)
 			uae4all_frameskipped++;
 #endif
 		// limiter..
-		if ((ahora+partida)<proximo_frameskip)
+		if ((time_now+partida)<next_frameskip)
 		{
 #ifdef DREAMCAST
 			//		SDL_Delay(proximo_frameskip-ahora-PARTIDA+1);
 #else
-			SDL_Delay((proximo_frameskip-ahora)>>8);
+			SDL_Delay((next_frameskip-time_now)>>8);
 #endif
 		}
     }
@@ -310,16 +310,16 @@ static __inline__ void count_frame (void)
 		
 #ifdef NO_THREADS
 		if (!produce_sound)
-			proximo_frameskip--;
+			next_frameskip--;
 		else
-			proximo_frameskip+=(tabla_ajuste[uae4all_numframes%9]);
+			next_frameskip+=(tabla_ajuste[uae4all_numframes%9]);
 #endif
-		if ((ahora-partida)>proximo_frameskip)
+		if ((time_now-partida)>next_frameskip)
 		{	
 			cuantos++;
 			if (cuantos>5) // auto FS limit
 			{
-				proximo_frameskip=ahora+(1<<8);
+				next_frameskip=time_now+(1<<8);
 				fs_framecnt=0;
 				cuantos=0;
 			}
@@ -333,12 +333,12 @@ static __inline__ void count_frame (void)
 		}
 		else
 		{
-			if ((ahora+partida)<proximo_frameskip)
+			if ((time_now+partida)<next_frameskip)
 			{
 #ifdef DREAMCAST
 				//			SDL_Delay(proximo_frameskip-ahora-PARTIDA+1);
 #else
-				SDL_Delay((proximo_frameskip-ahora)>>8);
+				SDL_Delay((next_frameskip-time_now)>>8);
 #endif
 				//proximo_frameskip=SDL_GetTicks() << 8;
 			}

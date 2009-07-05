@@ -5,7 +5,7 @@ static __inline__ int LNAME (int spix, int dpix, int stoppos)
 	
 	/* CASO DUAL */
 	
-    unsigned short *buf = ((unsigned short *)xlinebuffer);
+    unsigned short * __restrict__ buf = ((unsigned short *)xlinebuffer);
 	
     if (bpldualpf) {
 	    // OCS/ECS Dual playfield 
@@ -145,10 +145,21 @@ static __inline__ int LNAME (int spix, int dpix, int stoppos)
 	    }
 		
 #else
+			
+		// SGC: optimizations using the __restrict__ keyword
+		long int * __restrict__ acolors = (long int *)&colors_for_drawing.acolors;
+		uae_u8 * __restrict__ apixels = (uae_u8 *)&pixdata.apixels;
+		while (dpix < stoppos) {
+			buf[dpix++] = (acolors[apixels[spix]]);
+			spix += SRC_INC;
+		}
+		
+		/*
 		while (dpix < stoppos) {
 			buf[dpix++]= (colors_for_drawing.acolors[pixdata.apixels[spix]]);
 			spix += SRC_INC;
 		}
+		 */
 #endif
     }
     return spix;

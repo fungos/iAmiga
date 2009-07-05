@@ -31,7 +31,7 @@ extern unsigned long next_sample_evtime;
 int produce_sound=0;
 int changed_produce_sound=0;
 
-unsigned int sound_rate=DEFAULT_SOUND_FREQ;
+const unsigned int sound_rate=DEFAULT_SOUND_FREQ;
 
 static uae_u16 sndbuffer[4][SNDBUFFER_LEN+32] UAE4ALL_ALIGN;
 unsigned n_callback_sndbuff, n_render_sndbuff;
@@ -108,31 +108,31 @@ void sound_default_evtime(void)
 	switch(m68k_speed)
 	{
 		case 6:
-			scaled_sample_evtime=(unsigned)(MAXHPOS_PAL*MAXVPOS_PAL*VBLANK_HZ_PAL*CYCLE_UNIT/1.86)/sound_rate;
+			scaled_sample_evtime=(unsigned)(MAXHPOS_PAL*MAXVPOS_PAL*VBLANK_HZ_PAL*CYCLE_UNIT/1.86)/DEFAULT_SOUND_FREQ;
 			break;
 			
 		case 5:
 		case 4: // ~4/3 234
 			if (pal)
-				scaled_sample_evtime=(MAXHPOS_PAL*244*VBLANK_HZ_PAL*CYCLE_UNIT)/sound_rate; // ???
+				scaled_sample_evtime=(MAXHPOS_PAL*244*VBLANK_HZ_PAL*CYCLE_UNIT)/DEFAULT_SOUND_FREQ; // ???
 			else
-				scaled_sample_evtime=(MAXHPOS_NTSC*255*VBLANK_HZ_NTSC*CYCLE_UNIT)/sound_rate;
+				scaled_sample_evtime=(MAXHPOS_NTSC*255*VBLANK_HZ_NTSC*CYCLE_UNIT)/DEFAULT_SOUND_FREQ;
 			break;
 			
 		case 3:
 		case 2: // ~8/7 273
 			if (pal)
-				scaled_sample_evtime=(MAXHPOS_PAL*270*VBLANK_HZ_PAL*CYCLE_UNIT)/sound_rate;
+				scaled_sample_evtime=(MAXHPOS_PAL*270*VBLANK_HZ_PAL*CYCLE_UNIT)/DEFAULT_SOUND_FREQ;
 			else
-				scaled_sample_evtime=(MAXHPOS_NTSC*255*VBLANK_HZ_NTSC*CYCLE_UNIT)/sound_rate;
+				scaled_sample_evtime=(MAXHPOS_NTSC*255*VBLANK_HZ_NTSC*CYCLE_UNIT)/DEFAULT_SOUND_FREQ;
 			break;
 			
 		case 1:
 		default: // MAXVPOS_PAL?
 			if (pal)
-				scaled_sample_evtime=(MAXHPOS_PAL*313*VBLANK_HZ_PAL*CYCLE_UNIT)/sound_rate;
+				scaled_sample_evtime=(MAXHPOS_PAL*313*VBLANK_HZ_PAL*CYCLE_UNIT)/DEFAULT_SOUND_FREQ;
 			else
-				scaled_sample_evtime=(MAXHPOS_NTSC*MAXVPOS_NTSC*VBLANK_HZ_NTSC*CYCLE_UNIT)/sound_rate + 1;
+				scaled_sample_evtime=(MAXHPOS_NTSC*MAXVPOS_NTSC*VBLANK_HZ_NTSC*CYCLE_UNIT)/DEFAULT_SOUND_FREQ + 1;
 			break;
 	}
 	
@@ -180,7 +180,7 @@ int setup_sound (void)
     dbg("sound.c : setup_sound");
 #endif
 	
-    //if (gp2x_start_sound(sound_rate, 16, 0) != 0)
+    //if (gp2x_start_sound(DEFAULT_SOUND_FREQ, 16, 0) != 0)
 	//    return 0;
 	
 #ifdef DEBUG_SOUND
@@ -195,10 +195,10 @@ static int open_sound (void)
     dbg("sound.c : open_sound");
 #endif
 	
-	g_audioQueue = new CAudioQueueManager(sound_rate, SNDBUFFER_LEN>>1, MonoSound);
+	g_audioQueue = new CAudioQueueManager(DEFAULT_SOUND_FREQ, SNDBUFFER_LEN>>1, MonoSound);
 	g_audioQueue->start();
 	sndbufpt = render_sndbuff = (uae_u16*)g_audioQueue->getNextBuffer();
-    //if (gp2x_start_sound(sound_rate, 16, 0) != 0)
+    //if (gp2x_start_sound(DEFAULT_SOUND_FREQ, 16, 0) != 0)
 	//    return 0;
 	
     sound_default_evtime();

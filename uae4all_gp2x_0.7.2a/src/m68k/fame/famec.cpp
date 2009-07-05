@@ -18,7 +18,7 @@
 #define FAMEC_IRQ_CYCLES
 #define FAMEC_CHECK_BRANCHES
 #define FAMEC_USE_DATA_BANKS
-// #define FAMEC_EXTRA_INLINE
+//#define FAMEC_EXTRA_INLINE
 // #define FAMEC_DEBUG
 #define FAMEC_NO_GOTOS
 #define FAMEC_ADR_BITS  24
@@ -290,8 +290,7 @@ typedef struct
 } M68K_DATA;
 
 /* M68K CPU CONTEXT */
-typedef struct
-{
+typedef struct {
 	M68K_PROGRAM *fetch;
 	M68K_DATA *read_byte;
 	M68K_DATA *read_word;
@@ -312,11 +311,11 @@ typedef struct
 	u32 *icust_handler;
 	famec_union32   dreg[8];
 	famec_union32   areg[8];
-	u32 asp;
-	u32  pc;
-	u32 cycles_counter;
-	u8  interrupts[8];
-	u16 sr;
+	u32				asp;
+	u32				pc;
+	u32				cycles_counter;
+	u8				interrupts[8];
+	u16				sr;
 	u16 execinfo;
 } M68K_CONTEXT;
 
@@ -702,8 +701,9 @@ typedef void (*icust_handler_func)(u32 vector);
 
 /* Main CPU context */
 
-/* static */ M68K_CONTEXT m68kcontext;
+/* static */ M68K_CONTEXT m68kcontext __attribute__((aligned(32)));
 /* static */ s32 io_cycle_counter;
+u32 Opcode;// asm("r8");
 
 static s32 cycles_needed=0;
 static u16 *PC;
@@ -1330,10 +1330,10 @@ s32 m68k_get_register(m68k_register reg)
 
 /***********************************************************************/
 /*  m68k_set_register(register,value)                                  */
-/*  Parametros: Registro (indice) y valor a asignar                    */
-/*  Retorno: Exito de la operacion                                     */
-/*           0  La operacion se ha realizado satisfactoriamente        */
-/*           1  El indice del registro no es valido (fuera de limites) */
+/*  Parametros: Register (index) and value to assign                   */
+/*  Retorno: Successful operation                                      */
+/*           0  The operation has been successful					   */
+/*           1  The register index is invalid (out of bounds)		   */
 /***********************************************************************/
 s32 m68k_set_register(m68k_register reg, u32 value)
 {
@@ -1389,9 +1389,9 @@ s32 m68k_set_register(m68k_register reg, u32 value)
 
 /*********************************************************/
 /*  m68k_fetch(address,access_type)                      */
-/*  Lee una palabra del espacio de memoria del 68k       */
-/*  Parametro: Direccion de la palabra y tipo de acceso  */
-/*  Retorno: La palabra o -1 en caso de dir. no valida   */
+/*  Read a word of the memory space of 68k				 */
+/*  Parametro: Address of the word and type of access    */
+/*  Retorno: The word or -1 if dir. not valid            */
 /*********************************************************/
 s32 m68k_fetch(u32 addr, u32 memory_space)
 {
@@ -1713,9 +1713,6 @@ static FAMEC_EXTRA_INLINE void execute_exception_group_0(s32 vect, u16 inst_reg,
 		PUSH_16_F(spec_info);
 	}
 }
-
-
-static u32 Opcode;
 
 #ifdef FAMEC_NO_GOTOS
 

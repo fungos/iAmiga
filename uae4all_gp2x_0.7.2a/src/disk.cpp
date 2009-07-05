@@ -37,7 +37,7 @@
 char prefs_df[NUM_DRIVES][256];
 char changed_df[NUM_DRIVES][256];
 char romfile[64];
-int real_changed_df[NUM_DRIVES]={0,0};
+int real_changed_df[NUM_DRIVES]={0};
 
 /* writable track length with normal 2us bitcell/300RPM motor */
 #define FLOPPY_WRITE_LEN (12650 / 2)
@@ -896,18 +896,19 @@ void DISK_select (uae_u8 data)
 		}
     }
     for (dr = 0; dr < NUM_DRIVES; dr++) {
+		drive *drv = floppy + dr;
 		/* motor on/off workings tested with small assembler code on real Amiga 1200. */
 		/* motor flipflop is set only when drive select goes from high to low */ 
 		if (!(selected & (1 << dr)) && (lastselected & (1 << dr)) ) {
-			if (floppy[dr].motoroff) {
-				/* motor off: if motor bit = 0 in prevdata or data -> turn motor on */
-				if ((prevdata & 0x80) == 0 || (data & 0x80) == 0)
-					drive_motor (floppy + dr, 0);
+			//if (floppy[dr].motoroff) {
+			/* motor off: if motor bit = 0 in prevdata or data -> turn motor on */
+			if ((prevdata & 0x80) == 0 || (data & 0x80) == 0) {
+					drive_motor (drv, 0);
 			} else {
 				/* motor on: if motor bit = 1 in prevdata only (motor flag state in data has no effect)
 				 -> turn motor off */
 				if (prevdata & 0x80)
-					drive_motor (floppy + dr, 1);
+					drive_motor (drv, 1);
 			}
 		}
     }
@@ -1223,6 +1224,39 @@ void DISK_update (void)
 #ifdef DEBUG_DISK
     dbg("disc.c : DISK_update");
 #endif
+	
+#if NUM_DRIVES == 1
+	drive *drv = floppy;
+	if (drv->steplimit)
+		drv->steplimit--;
+    if (linecounter) {
+		linecounter--;
+		if (! linecounter)
+			disk_dmafinished ();
+		return;
+    }
+	
+    dodmafetch ();
+	
+	if (drv->motoroff)
+		return;
+	if (selected & (1 << dr)) {
+		drv->mfmpos += (maxhpos << 8) / drv->trackspeed;
+		drv->mfmpos %= drv->tracklen;
+		return;
+	}
+	drive_fill_bigbuf (drv);
+	drv->mfmpos %= drv->tracklen;
+	if (dskdmaen > 1)
+		disk_data_used = 0;
+	
+	if (dskdmaen == 3)
+		disk_doupdate_write (drv);
+	else if (1 || disk_data_used < MAXVPOS * 50 * 2) {
+		disk_data_used++;
+		disk_doupdate_read (drv);
+	}
+#else
     for (dr = 0; dr < NUM_DRIVES; dr++) {
 		drive *drv = &floppy[dr];
 		if (drv->steplimit)
@@ -1259,6 +1293,7 @@ void DISK_update (void)
 		}
 		return;
     }
+#endif
 }
 
 void DSKLEN (uae_u16 v, int hpos)
