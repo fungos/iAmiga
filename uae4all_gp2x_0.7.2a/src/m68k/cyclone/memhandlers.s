@@ -1,4 +1,4 @@
-#if 0
+//#if 0
 .set device, 0
 .set device, __arm__
 
@@ -98,4 +98,4 @@ L_baseaddr$non_lazy_ptr:
 	.subsections_via_symbols
 
 .endif
-#endif
+//#endif

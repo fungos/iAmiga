@@ -1743,10 +1743,6 @@ static __inline__ uae_u16 INTENAR (void)
 {
     return intena;
 }
-uae_u16 INTREQR (void)
-{
-    return intreq;
-}
 static __inline__ uae_u16 ADKCONR (void)
 {
     return adkcon;
@@ -2115,8 +2111,8 @@ static __inline__ void INTENA (uae_u16 v)
 }
 
 #define INTREQ_COMMON(VCLR) \
-setclr(&intreq,VCLR); \
-SET_INTERRUPT(); \
+	setclr(&intreq,VCLR); \
+	SET_INTERRUPT(); \
 
 void INTREQ_0 (uae_u16 v)
 {
@@ -3334,7 +3330,6 @@ static void hsync_handler (void)
 #ifdef DEBUG_CUSTOM
     dbgf("vpos=%i, maxvpos=%i, lof=%i\n",vpos,maxvpos,lof);
 #endif
-	
     vpos=next_vpos[vpos];
     if (vpos  >= (maxvpos + (lof != 0)))
     {

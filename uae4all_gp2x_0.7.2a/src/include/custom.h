@@ -66,7 +66,11 @@ extern int joy0button, joy1button;
 
 extern void INTREQ (uae_u16);
 extern void INTREQ_0 (uae_u16);
-extern uae_u16 INTREQR (void);
+//extern uae_u16 INTREQR (void);
+uae_u16 __inline__ INTREQR (void) {
+    return intreq;
+}
+
 
 /* maximums for statically allocated tables */
 

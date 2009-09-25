@@ -415,18 +415,15 @@
 
 #include "TargetConditionals.h"
 
-#if TARGET_IPHONE_SIMULATOR
+#define NDEBUG_CPU
 
 #define USE_FAME_CORE
-#define USE_FAME_CORE_C
 
+#if TARGET_CPU_ARM
+#define USE_FAME_CORE_ARM2
+//#define USE_FAME_CORE_C
 #else
-
-#define USE_FAME_CORE
 #define USE_FAME_CORE_C
-//#define USE_CYCLONE_CORE
-//#define USE_CYCLONE_MEMHANDLERS
-
 #endif
 
 #define NO_THREADS

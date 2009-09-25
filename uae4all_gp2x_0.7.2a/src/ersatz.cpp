@@ -106,7 +106,11 @@ static void ersatz_init (void)
 	return;
     }
 
+#if defined(USE_FAME_CORE_ARM2)
+	_68k_set_sr(0);
+#else
     _68k_sreg = 0;
+#endif
     /* Set some interrupt vectors */
     for (a = 8; a < 0xC0; a += 4) {
 	put_long (a, 0xF8001A);

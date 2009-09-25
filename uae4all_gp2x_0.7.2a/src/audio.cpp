@@ -31,18 +31,30 @@
 #include "audio.h"
 #include "debug_uae4all.h"
 
+#ifdef NO_AHI_CHANNELS
+#define NUMBER_CHANNELS		4
+#else
+#define NUMBER_CHANNELS		6
+#endif
+
 #if defined(DREAMCAST) && defined(SOUND_PREFETCHS)
 #define AUDIO_PREFETCH(ADR) asm("pref @%0" : : "r" (ADR))
+#elif defined(__arm__)
+#define AUDIO_PREFETCH(ADR) asm("pld [%0]" : : "r" (ADR))
 #else
 #define AUDIO_PREFETCH(ADR)
 #endif
 
-struct audio_channel_data audio_channel[6] UAE4ALL_ALIGN;
-int audio_channel_current_sample[6] UAE4ALL_ALIGN;
-int audio_channel_vol[6] UAE4ALL_ALIGN;
-unsigned long audio_channel_adk_mask[6] UAE4ALL_ALIGN;
-int audio_channel_state[6] UAE4ALL_ALIGN;
-unsigned long audio_channel_evtime[6] UAE4ALL_ALIGN;
+#define USE_MAX_EV
+
+#define MAX_EV ~0ul
+
+struct audio_channel_data audio_channel[NUMBER_CHANNELS] UAE4ALL_ALIGN;
+int audio_channel_current_sample[NUMBER_CHANNELS] UAE4ALL_ALIGN;
+int audio_channel_vol[NUMBER_CHANNELS] UAE4ALL_ALIGN;
+unsigned long audio_channel_adk_mask[NUMBER_CHANNELS] UAE4ALL_ALIGN;
+int audio_channel_state[NUMBER_CHANNELS] UAE4ALL_ALIGN;
+unsigned long audio_channel_evtime[NUMBER_CHANNELS] UAE4ALL_ALIGN;
 
 #ifdef NO_SOUND
 int sound_available = 0;
@@ -79,7 +91,7 @@ typedef uae_s8 sample8_t;
     if ((unsigned)sndbufpt - (unsigned)render_sndbuff >= SNDBUFFER_LEN) { \
 		finish_sound_buffer (); \
     } \
-} \
+}
 
 
 #define SAMPLE_HANDLER_AHI \
@@ -89,7 +101,7 @@ typedef uae_s8 sample8_t;
 		word >>= 1; \
 		PUT_SOUND_WORD (word) \
     		CHECK_SOUND_BUFFERS(); \
-	} \
+	}
 
 
 #define SAMPLE_HANDLER \
@@ -110,16 +122,29 @@ typedef uae_s8 sample8_t;
 		d3 &= audio_channel_adk_mask[3]; \
 	    	PUT_SOUND_WORD (d0+d1+d2+d3) \
     		CHECK_SOUND_BUFFERS(); \
-	} \
+	}
 
+#ifdef USE_MAX_EV
+
+#define SCHEDULE_AUDIO(CHN) \
+	if (audio_channel_evtime[CHN] != MAX_EV) { \
+	    if (best > audio_channel_evtime[CHN]) { \
+			best = audio_channel_evtime[CHN]; \
+			eventtab[ev_audio].active = 1; \
+	    } \
+	}
+
+#else
 
 #define SCHEDULE_AUDIO(CHN) \
 	if (audio_channel_state[CHN]) { \
 	    if (best > audio_channel_evtime[CHN]) { \
-		best = audio_channel_evtime[CHN]; \
-		eventtab[ev_audio].active = 1; \
+			best = audio_channel_evtime[CHN]; \
+			eventtab[ev_audio].active = 1; \
 	    } \
 	}
+
+#endif
 
 void schedule_audio (void)
 {
@@ -132,17 +157,19 @@ void schedule_audio (void)
     SCHEDULE_AUDIO(1)
     SCHEDULE_AUDIO(2)
     SCHEDULE_AUDIO(3)
+#ifndef NO_AHI_CHANNELS
     SCHEDULE_AUDIO(4)
     SCHEDULE_AUDIO(5)
+#endif
     eventtab[ev_audio].evtime = get_cycles () + best;
 #else
-    unsigned long best = ~0ul;
+    unsigned long best = MAX_EV;
     int i;
-
+	
     eventtab[ev_audio].active = 0;
     eventtab[ev_audio].oldcycles = get_cycles ();
-    for (i = 0; i < 6; i++) {
-	struct audio_channel_data *cdp;
+    for (i = 0; i < NUMBER_CHANNELS; i++) {
+		//struct audio_channel_data *cdp;
     	SCHEDULE_AUDIO(i)
     }
     eventtab[ev_audio].evtime = get_cycles () + best;
@@ -322,9 +349,12 @@ static audio_handler_func audio3_table[8] UAE4ALL_ALIGN = {
 static __inline__ void audio_handler (int nr)
 {
     struct audio_channel_data *cdp = audio_channel + nr;
+	int evtime = audio_channel_evtime[nr];
+	audio_channel_evtime[nr] = MAX_EV;
+	
     switch (audio_channel_state[nr]) {
 		case 0:
-			write_log ("Bug in sound code\n");
+			//write_log ("Bug in sound code\n");
 			break;
 		case 1:
 			audio_channel_evtime[nr] = maxhpos * CYCLE_UNIT;
@@ -341,13 +371,13 @@ static __inline__ void audio_handler (int nr)
 			cdp->last_sample = audio_channel_current_sample[nr];
 			audio_channel_current_sample[nr] = (sample8_t)(cdp->dat >> 8);
 			audio_channel_state[nr] = 2;
-		{
-			int audav = adkcon & (1 << nr);
-			int audap = adkcon & (16 << nr);
-			int napnav = (!audav && !audap) || audav;
-			if (napnav)
-				cdp->data_written = 2;
-		}
+			{
+				int audav = adkcon & (1 << nr);
+				int audap = adkcon & (16 << nr);
+				int napnav = (!audav && !audap) || audav;
+				if (napnav)
+					cdp->data_written = 2;
+			}
 			break;
 		case 2:
 			cdp->last_sample = audio_channel_current_sample[nr];
@@ -537,12 +567,12 @@ void aud3_handler (void) {
 { \
     struct audio_channel_data *cdp = &audio_channel[NCHAN]; \
     if (audio_channel_state[NCHAN] == 0) { \
-	audio_channel_state[NCHAN] = 1; \
-	cdp->pt = cdp->lc; \
-	cdp->wper = cdp->per; \
-	cdp->wlen = cdp->len; \
-	cdp->data_written = 2; \
-	audio_channel_evtime[NCHAN] = eventtab[ev_hsync].evtime - get_cycles (); \
+		audio_channel_state[NCHAN] = 1; \
+		cdp->pt = cdp->lc; \
+		cdp->wper = cdp->per; \
+		cdp->wlen = cdp->len; \
+		cdp->data_written = 2; \
+		audio_channel_evtime[NCHAN] = eventtab[ev_hsync].evtime - get_cycles (); \
     } \
 }
 
@@ -555,9 +585,9 @@ void audio_channel_enable_dma(int n_channel)
 { \
     struct audio_channel_data *cdp = &audio_channel[NCHAN]; \
     if (audio_channel_state[NCHAN] == 1 || audio_channel_state[NCHAN] == 5) { \
-	audio_channel_state[NCHAN] = 0; \
-	cdp->last_sample = 0; \
-	audio_channel_current_sample[NCHAN] = 0; \
+		audio_channel_state[NCHAN] = 0; \
+		cdp->last_sample = 0; \
+		audio_channel_current_sample[NCHAN] = 0; \
     } \
 }
 
@@ -573,10 +603,11 @@ void audio_reset (void)
     audio_channel[1].per = PERIOD_MAX;
     audio_channel[2].per = PERIOD_MAX;
     audio_channel[3].per = PERIOD_MAX;
-
+#ifndef NO_AHI_CHANNELS
     memset (audio_channel + 4, 0, 2 * sizeof *audio_channel);
     audio_channel[4].per = PERIOD_MAX;
     audio_channel[5].per = PERIOD_MAX;
+#endif
 
     last_cycles = 0;
 #ifdef ENABLE_AHI_SOUND
@@ -620,12 +651,23 @@ void check_prefs_changed_audio (void)
     }
 }
 
+#ifdef USE_MAX_EV
+
+#define STATE0 (audio_channel_evtime[0] != MAX_EV)
+#define STATE1 (audio_channel_evtime[1] != MAX_EV)
+#define STATE2 (audio_channel_evtime[2] != MAX_EV)
+#define STATE3 (audio_channel_evtime[3] != MAX_EV)
+
+#else
+
 #define STATE0 audio_channel_state[0]
 #define STATE1 audio_channel_state[1]
 #define STATE2 audio_channel_state[2]
 #define STATE3 audio_channel_state[3]
 #define STATE4 audio_channel_state[4]
 #define STATE5 audio_channel_state[5]
+
+#endif
 
 #define EVTIME0 audio_channel_evtime[0]
 #define EVTIME1 audio_channel_evtime[1]
@@ -638,6 +680,43 @@ void check_prefs_changed_audio (void)
 #define DEFINE_STATE \
 	register unsigned long int best_evtime = n_cycles + 1; \
 
+
+#ifdef NO_AHI_CHANNELS
+
+#define CHECK_STATE \
+	if (STATE0 && best_evtime > EVTIME0) \
+	    best_evtime = EVTIME0; \
+	if (STATE1 && best_evtime > EVTIME1) \
+	    best_evtime = EVTIME1; \
+	if (STATE2 && best_evtime > EVTIME2) \
+	    best_evtime = EVTIME2; \
+	if (STATE3 && best_evtime > EVTIME3) \
+	    best_evtime = EVTIME3; \
+	if (best_evtime > next_sample_evtime) \
+	    best_evtime = next_sample_evtime; \
+	if (best_evtime > n_cycles) \
+	    break;
+
+
+#define SUB_EVTIME \
+	next_sample_evtime -= best_evtime; \
+	EVTIME0 -= best_evtime; \
+	EVTIME1 -= best_evtime; \
+	EVTIME2 -= best_evtime; \
+	EVTIME3 -= best_evtime; \
+	n_cycles -= best_evtime; 
+
+#define RUN_HANDLERS \
+	if (!EVTIME0 && STATE0) \
+	    audio_handler_0(); \
+	if (!EVTIME1 && STATE1) \
+	    audio_handler_1(); \
+	if (!EVTIME2 && STATE2) \
+	    audio_handler_2(); \
+	if (!EVTIME3 && STATE3) \
+	    audio_handler_3(); \
+
+#else
 
 #define CHECK_STATE \
 	if (STATE0 && best_evtime > EVTIME0) \
@@ -668,6 +747,21 @@ void check_prefs_changed_audio (void)
 	EVTIME5 -= best_evtime; \
 	n_cycles -= best_evtime; \
 
+#define RUN_HANDLERS \
+	if (!EVTIME0 && STATE0) \
+	    audio_handler_0(); \
+	if (!EVTIME1 && STATE1) \
+	    audio_handler_1(); \
+	if (!EVTIME2 && STATE2) \
+	    audio_handler_2(); \
+	if (!EVTIME3 && STATE3) \
+	    audio_handler_3(); \
+	if (!EVTIME4 && STATE4) \
+	    ahi_handler_4(); \
+	if (!EVTIME5 && STATE5) \
+	    ahi_handler_5(); \
+
+#endif
 
 #define IF_SAMPLE \
 	if (!next_sample_evtime) { \
@@ -685,22 +779,6 @@ void check_prefs_changed_audio (void)
 			SAMPLE_HANDLER_AHI \
 		} \
 	} \
-
-
-#define RUN_HANDLERS \
-	if (!EVTIME0 && STATE0) \
-	    audio_handler_0(); \
-	if (!EVTIME1 && STATE1) \
-	    audio_handler_1(); \
-	if (!EVTIME2 && STATE2) \
-	    audio_handler_2(); \
-	if (!EVTIME3 && STATE3) \
-	    audio_handler_3(); \
-	if (!EVTIME4 && STATE4) \
-	    ahi_handler_4(); \
-	if (!EVTIME5 && STATE5) \
-	    ahi_handler_5(); \
-
 
 void update_audio (void)
 {

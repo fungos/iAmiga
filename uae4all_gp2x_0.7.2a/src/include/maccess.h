@@ -12,10 +12,18 @@
 static __inline__ uae_u32 do_get_mem_long(uae_u32 *_GCCRES_ a)
 {
 #ifdef USE_FAME_CORE
+
+//#ifdef __arm__ && 0
+//	uae_u32 d = *a;
+//	ROL16(d);
+//	return d;
+//#else
     register uae_u16 *b=(uae_u16 *)a;
     register uae_u32 b1=b[0];
     b1<<=16;
     return (b1|b[1]);
+//#endif
+	
 #else
     uae_u8 *b = (uae_u8 *)a;
     
@@ -47,9 +55,16 @@ static __inline__ uae_u8 do_get_mem_byte(uae_u8 *_GCCRES_ a)
 static __inline__ void do_put_mem_long(uae_u32 *_GCCRES_ a, uae_u32 v)
 {
 #ifdef USE_FAME_CORE
+
+//#ifdef __arm__ && 0
+//	ROL16(v);
+	*a = v;
+//#else
     register uae_u16 *b=(uae_u16 *)a;
     b[0]=(v>>16)&0xffff;
     b[1]=v&0xffff;
+//#endif
+	
 #else
     uae_u8 *b = (uae_u8 *)a;
     

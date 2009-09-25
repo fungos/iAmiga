@@ -50,6 +50,7 @@ char* get_rom_path() {
 char* get_df0_path() {
 	NSString *bp = [[NSBundle mainBundle] bundlePath];
 	bp = [bp stringByAppendingPathComponent:@"IK+.adf"];
+	//bp = [bp stringByAppendingPathComponent:@"Turrican II.adf"];
 	
 	static char df0Path[500];
 	

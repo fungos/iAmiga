@@ -241,6 +241,9 @@ static void CIA_calctimers (void)
 	if (ciabtimea != -1 && ciabtimea < ciatime) ciatime = ciabtimea;
 	if (ciabtimeb != -1 && ciabtimeb < ciatime) ciatime = ciabtimeb;
 	eventtab[ev_cia].evtime = ciatime + get_cycles ();
+		//if (eventtab[ev_cia].evtime >= 1710000000 && eventtab[ev_cia].evtime <= 1880000000) {
+//			printf("uh oh\n");
+//		}
     }
     events_schedule();
 }

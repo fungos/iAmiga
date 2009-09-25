@@ -1219,7 +1219,7 @@ static int linecounter;
 
 void DISK_update (void)
 {
-    int dr;
+    int dr = 0;
 	
 #ifdef DEBUG_DISK
     dbg("disc.c : DISK_update");

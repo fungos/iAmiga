@@ -208,10 +208,16 @@ static int do_specialties (int cycles)
     return 0;
 }
 
+#define DEBUG_CPU
+#ifdef DEBUG_CPU
+extern int do_debug;
+
+#endif
+
 static void uae4all_reset(void)
 {
     int i;
-#ifndef USE_CYCLONE_CORE
+#if !defined(USE_CYCLONE_CORE) && !defined(USE_FAME_CORE_ARM2) 
     m68k_set_context(&micontexto);
 #endif
     m68k_reset();
@@ -254,12 +260,32 @@ static void m68k_run (void)
 #ifdef DEBUG_TIMESLICE
 		unsigned ts=cycles;
 #endif
+
+#define NDEBUG_CYCLES
+#ifdef DEBUG_CYCLES
+		static unsigned next_cycles = 60000000;
+		if (M68KCONTEXT.cycles_counter > next_cycles) { 
+			next_cycles += 100000;
+			printf("cycles=%9d|%03i|%03i, pc=%.6x\n", M68KCONTEXT.cycles_counter, cycles, IO_CYCLE, _68k_getpc());
+		}
+		
+		if (M68KCONTEXT.cycles_counter > 80000000) {
+			exit(0);
+		}
+		
+		if (M68KCONTEXT.cycles_counter >= 500000000) {
+			do_debug = 1;
+		}
+		
+#endif
+
 #if defined(FAME_INTERRUPTS_SECURE_PATCH) && defined(FAME_INTERRUPTS_PATCH)
 		if (uae4all_go_interrupt)
 			m68k_emulate(FAME_INTERRUPTS_PATCH);
 		else
 #endif
 			m68k_emulate(cycles);
+	
 		uae4all_prof_end(0);
 #endif
 #if 0 // def FAME_INTERRUPTS_PATCH

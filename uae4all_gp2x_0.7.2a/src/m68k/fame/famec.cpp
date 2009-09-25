@@ -10,7 +10,35 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "sysconfig.h"
 
+
+#ifdef USE_FAME_CORE_C
+
+#pragma mark -
+#pragma mark debug routines
+
+#ifdef DEBUG_CPU
+
+#define CHECK_BREAKPOINTS check_breakpoint();
+
+int io_cycles_before;
+#define STORE_COUNTER io_cycles_before = io_cycle_counter;
+
+#define insdebug(CYC) \
+if (do_debug) \
+	printf("%05i|%03i: %06x: OP_%04x (%02i) r=%08x|irq=%02i %s: \n",m68kcontext.cycles_counter,io_cycle_counter+cycles_needed,(u32)PC - BasePC,Opcode,io_cycles_before - io_cycle_counter,res, ((m68kcontext.sr>>8) & 7), __FUNCTION__)
+
+int do_debug = 0;
+#else
+#define CHECK_BREAKPOINTS
+#define STORE_COUNTER
+#define insdebug(CYC)
+#endif
+
+
+#pragma mark -
+#pragma mark options
 
 // Options //
 #define FAMEC_ROLL_INLINE
@@ -380,12 +408,15 @@ typedef struct {
 
 #define NEXT \
     do{ \
+		CHECK_BREAKPOINTS; \
     	FETCH_WORD(Opcode); \
+		STORE_COUNTER; \
     	JumpTable[Opcode](); \
     }while(io_cycle_counter>0); 
 
 #define RET(A) \
     io_cycle_counter -= (A);  \
+	insdebug(A); \
     return;
 
 #endif
@@ -706,7 +737,7 @@ typedef void (*icust_handler_func)(u32 vector);
 u32 Opcode;// asm("r8");
 
 static s32 cycles_needed=0;
-static u16 *PC;
+static u16 *PC;// asm("r8");
 static u32 BasePC;
 static u32 Fetch[M68K_FETCHBANK];
 
@@ -1058,6 +1089,18 @@ static FAMEC_EXTRA_INLINE void Write_Long(const u32 addr, u32 data)
 	Write_Word(addr, data >> 16);
 	Write_Word(addr + 2, data & 0xFFFF);
 #endif
+}
+
+#pragma mark -
+#pragma mark BREAKPOINTS
+
+void check_breakpoint() {
+	u32 cPC = GET_PC;
+	switch (cPC) {
+		case 0x017c3a:
+			printf("break\n");
+			break;
+	}
 }
 
 
@@ -5897,3 +5940,4 @@ famec_Exec_End:
 }
 
 
+#endif

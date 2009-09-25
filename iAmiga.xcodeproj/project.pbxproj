@@ -37,7 +37,7 @@
 		0552BD2D0F3D797C005B30DF /* ersatz.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BCA70F3D797C005B30DF /* ersatz.cpp */; };
 		0552BD2E0F3D797C005B30DF /* gfxutil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BCA80F3D797C005B30DF /* gfxutil.cpp */; };
 		0552BD410F3D797C005B30DF /* keybuf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BCFA0F3D797C005B30DF /* keybuf.cpp */; };
-		0552BD450F3D797C005B30DF /* famec.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD060F3D797C005B30DF /* famec.cpp */; };
+		0552BD450F3D797C005B30DF /* famec.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD060F3D797C005B30DF /* famec.cpp */; settings = {COMPILER_FLAGS = "-Wno-unused"; }; };
 		0552BD470F3D797C005B30DF /* m68k_intrf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD090F3D797C005B30DF /* m68k_intrf.cpp */; };
 		0552BD480F3D797C005B30DF /* m68k_cmn_intrf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD0A0F3D797C005B30DF /* m68k_cmn_intrf.cpp */; };
 		0552BD490F3D797C005B30DF /* uae.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD0C0F3D797C005B30DF /* uae.cpp */; };
@@ -57,7 +57,8 @@
 		057442820FC3C25B003BE251 /* DisplayView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 057442810FC3C25B003BE251 /* DisplayView.mm */; };
 		0574432A0FC3C94F003BE251 /* kick13.rom in Resources */ = {isa = PBXBuildFile; fileRef = 057443290FC3C94F003BE251 /* kick13.rom */; };
 		057B0D4C0FD0D0ED00D549AD /* MMStopWatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 057B0D4B0FD0D0ED00D549AD /* MMStopWatch.m */; };
-		057BB6F50FF8A7AE00B26E3F /* cyclone.s in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD000F3D797C005B30DF /* cyclone.s */; };
+		059E3A2710636CBA0056A577 /* fame_arm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A2410636CBA0056A577 /* fame_arm.cpp */; settings = {COMPILER_FLAGS = "-frename-registers -Wno-unused"; }; };
+		059E3A2810636CBA0056A577 /* m68k_interface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A2610636CBA0056A577 /* m68k_interface.cpp */; };
 		05B7066E0FD282230081B5C3 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 05B7066D0FD282230081B5C3 /* Entitlements.plist */; };
 		05D5D74C0FD5E38400B91C98 /* m68k_intrf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD010F3D797C005B30DF /* m68k_intrf.cpp */; };
 		05E6A31D0FC3D93B0086151B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E6A31C0FC3D93B0086151B /* AudioToolbox.framework */; };
@@ -213,6 +214,27 @@
 		057443560FC3CA04003BE251 /* BEAST1-2.ADF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BEAST1-2.ADF"; sourceTree = "<group>"; };
 		057B0D4A0FD0D0ED00D549AD /* MMStopWatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMStopWatch.h; sourceTree = "<group>"; };
 		057B0D4B0FD0D0ED00D549AD /* MMStopWatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMStopWatch.m; sourceTree = "<group>"; };
+		059E3A2410636CBA0056A577 /* fame_arm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fame_arm.cpp; sourceTree = "<group>"; };
+		059E3A2510636CBA0056A577 /* fame_arm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fame_arm.h; sourceTree = "<group>"; };
+		059E3A2610636CBA0056A577 /* m68k_interface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = m68k_interface.cpp; sourceTree = "<group>"; };
+		059E3A3010636CC60056A577 /* c68k_ini.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = c68k_ini.h; sourceTree = "<group>"; };
+		059E3A3110636CC60056A577 /* c68k_misc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = c68k_misc.h; sourceTree = "<group>"; };
+		059E3A3210636CC60056A577 /* c68k_op0.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = c68k_op0.h; sourceTree = "<group>"; };
+		059E3A3310636CC60056A577 /* c68k_op1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = c68k_op1.h; sourceTree = "<group>"; };
+		059E3A3410636CC60056A577 /* c68k_op2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = c68k_op2.h; sourceTree = "<group>"; };
+		059E3A3510636CC60056A577 /* c68k_op3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = c68k_op3.h; sourceTree = "<group>"; };
+		059E3A3610636CC60056A577 /* c68k_op4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = c68k_op4.h; sourceTree = "<group>"; };
+		059E3A3710636CC60056A577 /* c68k_op5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = c68k_op5.h; sourceTree = "<group>"; };
+		059E3A3810636CC60056A577 /* c68k_op6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = c68k_op6.h; sourceTree = "<group>"; };
+		059E3A3910636CC60056A577 /* c68k_op7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = c68k_op7.h; sourceTree = "<group>"; };
+		059E3A3A10636CC60056A577 /* c68k_op8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = c68k_op8.h; sourceTree = "<group>"; };
+		059E3A3B10636CC60056A577 /* c68k_op9.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = c68k_op9.h; sourceTree = "<group>"; };
+		059E3A3C10636CC60056A577 /* c68k_opA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = c68k_opA.h; sourceTree = "<group>"; };
+		059E3A3D10636CC60056A577 /* c68k_opB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = c68k_opB.h; sourceTree = "<group>"; };
+		059E3A3E10636CC60056A577 /* c68k_opC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = c68k_opC.h; sourceTree = "<group>"; };
+		059E3A3F10636CC60056A577 /* c68k_opD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = c68k_opD.h; sourceTree = "<group>"; };
+		059E3A4010636CC60056A577 /* c68k_opE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = c68k_opE.h; sourceTree = "<group>"; };
+		059E3A4110636CC60056A577 /* c68k_opF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = c68k_opF.h; sourceTree = "<group>"; };
 		05B7066D0FD282230081B5C3 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		05E6A31C0FC3D93B0086151B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		05E6A3250FC3DAA90086151B /* sound_iphone.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sound_iphone.cpp; sourceTree = "<group>"; };
@@ -331,6 +353,7 @@
 		0542F2610FC8852A00126562 /* uae-src */ = {
 			isa = PBXGroup;
 			children = (
+				0552BD1C0F3D797C005B30DF /* sysconfig.h */,
 				0552BC9C0F3D797C005B30DF /* audio.cpp */,
 				0552BC9D0F3D797C005B30DF /* autoconf.cpp */,
 				0552BC9E0F3D797C005B30DF /* blitfunc.cpp */,
@@ -338,7 +361,6 @@
 				0552BCA00F3D797C005B30DF /* blitter.cpp */,
 				0552BCA10F3D797C005B30DF /* cia.cpp */,
 				0552BCA30F3D797C005B30DF /* config.h */,
-				0552BD1C0F3D797C005B30DF /* sysconfig.h */,
 				0552BD1D0F3D797C005B30DF /* target.h */,
 				0552BCA40F3D797C005B30DF /* custom.cpp */,
 				0552BCA50F3D797C005B30DF /* disk.cpp */,
@@ -469,6 +491,7 @@
 		0552BCFC0F3D797C005B30DF /* m68k */ = {
 			isa = PBXGroup;
 			children = (
+				059E382510634D3C0056A577 /* sgc */,
 				0552BCFD0F3D797C005B30DF /* cyclone */,
 				0552BD040F3D797C005B30DF /* fame */,
 				0552BD030F3D797C005B30DF /* debug_m68k.h */,
@@ -566,6 +589,42 @@
 				057443560FC3CA04003BE251 /* BEAST1-2.ADF */,
 			);
 			path = s;
+			sourceTree = "<group>";
+		};
+		059E382510634D3C0056A577 /* sgc */ = {
+			isa = PBXGroup;
+			children = (
+				059E3A2910636CBD0056A577 /* opcodes */,
+				059E3A2510636CBA0056A577 /* fame_arm.h */,
+				059E3A2410636CBA0056A577 /* fame_arm.cpp */,
+				059E3A2610636CBA0056A577 /* m68k_interface.cpp */,
+			);
+			path = sgc;
+			sourceTree = "<group>";
+		};
+		059E3A2910636CBD0056A577 /* opcodes */ = {
+			isa = PBXGroup;
+			children = (
+				059E3A3010636CC60056A577 /* c68k_ini.h */,
+				059E3A3110636CC60056A577 /* c68k_misc.h */,
+				059E3A3210636CC60056A577 /* c68k_op0.h */,
+				059E3A3310636CC60056A577 /* c68k_op1.h */,
+				059E3A3410636CC60056A577 /* c68k_op2.h */,
+				059E3A3510636CC60056A577 /* c68k_op3.h */,
+				059E3A3610636CC60056A577 /* c68k_op4.h */,
+				059E3A3710636CC60056A577 /* c68k_op5.h */,
+				059E3A3810636CC60056A577 /* c68k_op6.h */,
+				059E3A3910636CC60056A577 /* c68k_op7.h */,
+				059E3A3A10636CC60056A577 /* c68k_op8.h */,
+				059E3A3B10636CC60056A577 /* c68k_op9.h */,
+				059E3A3C10636CC60056A577 /* c68k_opA.h */,
+				059E3A3D10636CC60056A577 /* c68k_opB.h */,
+				059E3A3E10636CC60056A577 /* c68k_opC.h */,
+				059E3A3F10636CC60056A577 /* c68k_opD.h */,
+				059E3A4010636CC60056A577 /* c68k_opE.h */,
+				059E3A4110636CC60056A577 /* c68k_opF.h */,
+			);
+			name = opcodes;
 			sourceTree = "<group>";
 		};
 		05E6A30D0FC3D8EA0086151B /* audio */ = {
@@ -719,7 +778,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				057BB6F50FF8A7AE00B26E3F /* cyclone.s in Sources */,
 				05D5D74C0FD5E38400B91C98 /* m68k_intrf.cpp in Sources */,
 				05FE7F310FC3EF9900DBFECF /* audio.cpp in Sources */,
 				1D60589B0D05DD56006BFB54 /* main.mm in Sources */,
@@ -763,6 +821,8 @@
 				050415620FCB475C00F46828 /* JoystickViewLandscape.mm in Sources */,
 				0504156B0FCB4BD400F46828 /* CocoaUtility.m in Sources */,
 				057B0D4C0FD0D0ED00D549AD /* MMStopWatch.m in Sources */,
+				059E3A2710636CBA0056A577 /* fame_arm.cpp in Sources */,
+				059E3A2810636CBA0056A577 /* m68k_interface.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -906,7 +966,13 @@
 					"-finline-functions",
 					"-fno-PIE",
 					"-fomit-frame-pointer",
-					"-falign-loops=16",
+					"-mstructure-size-boundary=32",
+					"-fexpensive-optimizations",
+					"-fweb",
+					"-falign-functions=32",
+					"-falign-loops",
+					"-falign-labels",
+					"-falign-jumps",
 				);
 				PREBINDING = NO;
 				SDKROOT = iphoneos3.0;

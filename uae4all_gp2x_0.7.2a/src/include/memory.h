@@ -338,7 +338,7 @@ extern "C" {
 
 #else
 
-#define UAE4ALL_ALIGN
+#define UAE4ALL_ALIGN	__attribute__((aligned(32)))
 #define uae4all_memcpy memcpy
 #define uae4all_memclr bzero
 

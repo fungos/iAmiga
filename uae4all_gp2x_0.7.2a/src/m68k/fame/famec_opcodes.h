@@ -18455,6 +18455,7 @@ RET(10)
 // ILLEGAL
 OPCODE(0x4AFC)
 {
+	u32 res;
 	u32 oldPC=GET_PC;
 	SET_PC(oldPC-2)
 	execute_exception(M68K_ILLEGAL_INSTRUCTION_EX);
@@ -18464,6 +18465,7 @@ RET(4)
 // ILLEGAL A000-AFFF
 OPCODE(0xA000)
 {
+	u32 res;
 	u32 oldPC=GET_PC;
 	SET_PC(oldPC-2)
 	execute_exception(M68K_1010_EX);
@@ -18473,6 +18475,7 @@ RET(4)
 // ILLEGAL F000-FFFF
 OPCODE(0xF000)
 {
+	u32 res;
 	u32 oldPC=GET_PC;
 	SET_PC(oldPC-2)
 	execute_exception(M68K_1111_EX);
@@ -19036,6 +19039,7 @@ RET(12)
 // TRAP
 OPCODE(0x4E40)
 {
+	u32 res;
 	execute_exception(M68K_TRAP_BASE_EX + (Opcode & 0xF));
 RET(4)
 }
@@ -19238,6 +19242,7 @@ RET(16)
 // TRAPV
 OPCODE(0x4E76)
 {
+	u32 res;
 	if (flag_V & 0x80)
 		execute_exception(M68K_TRAPV_EX);
 RET(4)
@@ -23405,27 +23410,27 @@ OPCODE(0x57C8)
 
 	if (flag_NotZ)
 	{
-	res = DREGu16((Opcode >> 0) & 7);
-	res--;
-	DREGu16((Opcode >> 0) & 7) = res;
-	if ((s32)res != -1)
-	{
-		u32 newPC;
+		res = DREGu16((Opcode >> 0) & 7);
+		res--;
+		DREGu16((Opcode >> 0) & 7) = res;
+		if ((s32)res != -1)
+		{
+			u32 newPC;
 
-		newPC = (u32)(PC) - BasePC;
-		newPC += GET_SWORD;
-		SET_PC(newPC);
-		CHECK_BRANCH_EXCEPTION(newPC)
-	RET(10)
-	}
+			newPC = (u32)(PC) - BasePC;
+			newPC += GET_SWORD;
+			SET_PC(newPC);
+			CHECK_BRANCH_EXCEPTION(newPC)
+			RET(10)
+		}
 	}
 	else
 	{
 		PC++;
-	RET(12)
+		RET(12)
 	}
 	PC++;
-RET(14)
+	RET(14)
 }
 
 // DBCC
@@ -25389,6 +25394,7 @@ RET(12)
 // BRA
 OPCODE(0x6001)
 {
+	u32 res;
 #ifdef FAMEC_CHECK_BRANCHES
 	u32 newPC = (u32)(PC) - BasePC;
 	s8 offs=Opcode;

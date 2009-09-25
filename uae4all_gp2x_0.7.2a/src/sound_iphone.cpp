@@ -102,6 +102,8 @@ static CAudioQueueManager *g_audioQueue;
 
 static int have_sound = 0;
 
+#define SOUND_EVTIME_NORMAL	(MAXHPOS_PAL*300 *VBLANK_HZ_PAL*CYCLE_UNIT/DEFAULT_SOUND_FREQ)
+
 void sound_default_evtime(void)
 {
 	int pal = beamcon0 & 0x20;
@@ -130,7 +132,8 @@ void sound_default_evtime(void)
 		case 1:
 		default: // MAXVPOS_PAL?
 			if (pal)
-				scaled_sample_evtime=(MAXHPOS_PAL*313*VBLANK_HZ_PAL*CYCLE_UNIT)/DEFAULT_SOUND_FREQ;
+				//scaled_sample_evtime=(MAXHPOS_PAL*313*VBLANK_HZ_PAL*CYCLE_UNIT)/DEFAULT_SOUND_FREQ;
+				scaled_sample_evtime = SOUND_EVTIME_NORMAL;
 			else
 				scaled_sample_evtime=(MAXHPOS_NTSC*MAXVPOS_NTSC*VBLANK_HZ_NTSC*CYCLE_UNIT)/DEFAULT_SOUND_FREQ + 1;
 			break;

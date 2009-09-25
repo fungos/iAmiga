@@ -13,6 +13,7 @@
 #endif
 
 #ifdef NO_THREADS
+// SGC: #define PRE_SNDBUFFER_LEN (960)
 #define PRE_SNDBUFFER_LEN (960)
 #else
 #define PRE_SNDBUFFER_LEN (1024)
@@ -21,8 +22,10 @@
 #ifdef WIN32
 #define SNDBUFFER_LEN (PRE_SNDBUFFER_LEN*2)
 #else
-#define SNDBUFFER_LEN (PRE_SNDBUFFER_LEN*2)
+#define SNDBUFFER_LEN (PRE_SNDBUFFER_LEN)
 #endif
+
+#define NO_AHI_CHANNELS
 
 extern unsigned sound_quality;
 

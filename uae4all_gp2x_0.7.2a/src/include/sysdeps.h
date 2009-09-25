@@ -439,3 +439,5 @@ extern int console_get (char *, int);
 
 #undef REGPARAM
 #define REGPARAM
+
+#define ROL16(v)		__asm__ volatile("ror %[val], #16": [val] "=r" (v))
