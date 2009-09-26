@@ -27,4 +27,6 @@
 - (void)startTimer;
 - (void)stopTimer;
 
+void UpdateScreen();
+
 @end

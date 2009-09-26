@@ -425,16 +425,7 @@ static __inline__ void Write_Long(unsigned int a,unsigned int d) {
 	} while (cycles > 0)
 
 #endif
-/*
-#define FINISH(cycle_count) \
-	asm volatile("ldrh %[opcode], [%[pc]], #2 ;@ fetch opcode \n" \
-		"\tsubs %[cycles], %[cycles], #" #cycle_count \
-		: [opcode] "=r" (Opcode), [pc] "+r" (PC), [cycles] "+r" (cycles) \
-		: : "cc"); \
-	asm volatile("ldrge pc, [%[jt], %[opcode], asl #2] ;@ jump to next opcode handler \n" \
-				 "\tb EmulateEnd" \
-				 : : [jt] "r" (jt), [opcode] "r" (Opcode)); 
-*/
+
 #endif
 
 #define PRE_IO
@@ -586,7 +577,7 @@ __inline__ u32 get_sr() {
 #pragma mark -
 #pragma mark Helper Functions
 
-#if 1
+#if 0
 __inline__ u32 fetch_long() {
 	u32 result;
 	asm("ldrh r2, [%[pc]], #2 \n"

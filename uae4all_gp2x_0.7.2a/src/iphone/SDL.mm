@@ -12,6 +12,7 @@
 #include "stdlib.h"
 #include "SDL.h"
 #include "AudioQueueManager.h"
+#include "DisplayView.h"
 
 const int kBytesPerPixel			= 2;
 const int kBitsPerComponent			= 5;
@@ -40,11 +41,13 @@ void SDL_FreeSurface(SDL_Surface* a) {
 }
 
 void SDL_FillRect(SDL_Surface* a, void* b, int c) {
-	hasImageChanged = YES;
+	//hasImageChanged = YES;
+	UpdateScreen();
 }
 
 void SDL_UpdateRect(SDL_Surface* s, int a, int b, int c, int d) {
-	hasImageChanged = YES;
+	//hasImageChanged = YES;
+	UpdateScreen();
 }
 
 void SDL_Delay(Uint32 duration) {

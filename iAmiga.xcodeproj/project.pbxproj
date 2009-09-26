@@ -60,6 +60,7 @@
 		059E3A2710636CBA0056A577 /* fame_arm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A2410636CBA0056A577 /* fame_arm.cpp */; settings = {COMPILER_FLAGS = "-frename-registers -Wno-unused"; }; };
 		059E3A2810636CBA0056A577 /* m68k_interface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A2610636CBA0056A577 /* m68k_interface.cpp */; };
 		05B7066E0FD282230081B5C3 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 05B7066D0FD282230081B5C3 /* Entitlements.plist */; };
+		05C87680106C9E20004A8DC2 /* Ghosts 'N Goblins.adf in Resources */ = {isa = PBXBuildFile; fileRef = 05C8767F106C9E20004A8DC2 /* Ghosts 'N Goblins.adf */; };
 		05D5D74C0FD5E38400B91C98 /* m68k_intrf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD010F3D797C005B30DF /* m68k_intrf.cpp */; };
 		05E6A31D0FC3D93B0086151B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E6A31C0FC3D93B0086151B /* AudioToolbox.framework */; };
 		05E6A3260FC3DAA90086151B /* sound_iphone.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05E6A3250FC3DAA90086151B /* sound_iphone.cpp */; };
@@ -236,6 +237,7 @@
 		059E3A4010636CC60056A577 /* c68k_opE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = c68k_opE.h; sourceTree = "<group>"; };
 		059E3A4110636CC60056A577 /* c68k_opF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = c68k_opF.h; sourceTree = "<group>"; };
 		05B7066D0FD282230081B5C3 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
+		05C8767F106C9E20004A8DC2 /* Ghosts 'N Goblins.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ghosts 'N Goblins.adf"; sourceTree = "<group>"; };
 		05E6A31C0FC3D93B0086151B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		05E6A3250FC3DAA90086151B /* sound_iphone.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sound_iphone.cpp; sourceTree = "<group>"; };
 		05FE7F260FC3EDBF00DBFECF /* AudioQueueManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioQueueManager.h; sourceTree = "<group>"; };
@@ -574,6 +576,7 @@
 		057443530FC3CA04003BE251 /* disks */ = {
 			isa = PBXGroup;
 			children = (
+				05C87678106C9D3A004A8DC2 /* g */,
 				0542F4090FC8B98900126562 /* o */,
 				0542F18F0FC7E01A00126562 /* i */,
 				05FE82980FC68EE000DBFECF /* t */,
@@ -625,6 +628,14 @@
 				059E3A4110636CC60056A577 /* c68k_opF.h */,
 			);
 			name = opcodes;
+			sourceTree = "<group>";
+		};
+		05C87678106C9D3A004A8DC2 /* g */ = {
+			isa = PBXGroup;
+			children = (
+				05C8767F106C9E20004A8DC2 /* Ghosts 'N Goblins.adf */,
+			);
+			path = g;
 			sourceTree = "<group>";
 		};
 		05E6A30D0FC3D8EA0086151B /* audio */ = {
@@ -768,6 +779,7 @@
 				050416460FCB566500F46828 /* ls-joystick_active.png in Resources */,
 				050416470FCB566500F46828 /* ls-joystick_rest.png in Resources */,
 				05B7066E0FD282230081B5C3 /* Entitlements.plist in Resources */,
+				05C87680106C9E20004A8DC2 /* Ghosts 'N Goblins.adf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -939,7 +951,7 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_CHAR_IS_UNSIGNED_CHAR = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -962,6 +974,7 @@
 					uae4all_gp2x_0.7.2a/src,
 					uae4all_gp2x_0.7.2a/src/iphone,
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = (
 					"-finline-functions",
 					"-fno-PIE",

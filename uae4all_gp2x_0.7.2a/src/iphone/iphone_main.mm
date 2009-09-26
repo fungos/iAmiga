@@ -21,7 +21,10 @@ int mainMenu_autosave=1;
 int mainMenu_ntsc=0;
 int drawfinished=0;
 
+extern int vkbd_mode;
+
 int gui_init() {
+	vkbd_mode = 0;
 	return 0;
 }
 
@@ -49,6 +52,7 @@ char* get_rom_path() {
 
 char* get_df0_path() {
 	NSString *bp = [[NSBundle mainBundle] bundlePath];
+	//bp = [bp stringByAppendingPathComponent:@"Ghosts 'N Goblins.adf"];
 	bp = [bp stringByAppendingPathComponent:@"IK+.adf"];
 	//bp = [bp stringByAppendingPathComponent:@"Turrican II.adf"];
 	

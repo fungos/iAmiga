@@ -45,7 +45,11 @@
 #define AUDIO_PREFETCH(ADR)
 #endif
 
+// options
+
 #define USE_MAX_EV
+
+//#define USE_WORD_STATE
 
 #define MAX_EV ~0ul
 
@@ -100,7 +104,7 @@ typedef uae_s8 sample8_t;
 		word += audio_channel_current_sample[5]; \
 		word >>= 1; \
 		PUT_SOUND_WORD (word) \
-    		CHECK_SOUND_BUFFERS(); \
+		CHECK_SOUND_BUFFERS(); \
 	}
 
 
@@ -697,6 +701,27 @@ void check_prefs_changed_audio (void)
 	if (best_evtime > n_cycles) \
 	    break;
 
+#ifdef USE_MAX_EV
+
+#define SUB_EVTIME \
+	next_sample_evtime -= best_evtime; \
+	if (STATE0) EVTIME0 -= best_evtime; \
+	if (STATE1) EVTIME1 -= best_evtime; \
+	if (STATE2) EVTIME2 -= best_evtime; \
+	if (STATE3) EVTIME3 -= best_evtime; \
+	n_cycles -= best_evtime; 
+
+#define RUN_HANDLERS \
+	if (!EVTIME0) \
+	    audio_handler_0(); \
+	if (!EVTIME1) \
+	    audio_handler_1(); \
+	if (!EVTIME2) \
+	    audio_handler_2(); \
+	if (!EVTIME3) \
+	    audio_handler_3(); \
+
+#else  // USE_MAX_EV
 
 #define SUB_EVTIME \
 	next_sample_evtime -= best_evtime; \
@@ -705,6 +730,7 @@ void check_prefs_changed_audio (void)
 	EVTIME2 -= best_evtime; \
 	EVTIME3 -= best_evtime; \
 	n_cycles -= best_evtime; 
+
 
 #define RUN_HANDLERS \
 	if (!EVTIME0 && STATE0) \
@@ -716,7 +742,9 @@ void check_prefs_changed_audio (void)
 	if (!EVTIME3 && STATE3) \
 	    audio_handler_3(); \
 
-#else
+#endif  // USE_MAX_EV
+
+#else	// NO_AHI_CHANNELS
 
 #define CHECK_STATE \
 	if (STATE0 && best_evtime > EVTIME0) \
@@ -761,7 +789,7 @@ void check_prefs_changed_audio (void)
 	if (!EVTIME5 && STATE5) \
 	    ahi_handler_5(); \
 
-#endif
+#endif	// NO_AHI_CHANNELS
 
 #define IF_SAMPLE \
 	if (!next_sample_evtime) { \
@@ -938,7 +966,7 @@ void check_dma_audio(void)
 
 #ifdef USE_FAME_CORE
 #define FETCH_AUDIO_PREFETCH(AUDIOCH) \
-        AUDIO_PREFETCH(chipmemory[audio_channel[AUDIOCH].pt]); 
+        AUDIO_PREFETCH(&chipmemory[audio_channel[AUDIOCH].pt]); 
 #else
 #define FETCH_AUDIO_PREFETCH(AUDIOCH)
 #endif

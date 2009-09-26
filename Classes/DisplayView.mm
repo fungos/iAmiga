@@ -20,6 +20,12 @@
 #import "DisplayView.h"
 #import <QuartzCore/QuartzCore.h>
 
+static DisplayView* sharedView;
+
+void UpdateScreen() {
+	[sharedView performSelectorOnMainThread:@selector(updateScreen) withObject:nil waitUntilDone:NO];
+}
+
 @interface DisplayView() 
 
 - (void)updateScreen;
@@ -28,11 +34,11 @@
 
 @implementation DisplayView
 
-
 const double kFramesPerSecond = 20;
 
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
+		sharedView = [self retain];
         self.opaque = YES;
 		_framesPerSecond = kFramesPerSecond;
     }
@@ -40,12 +46,12 @@ const double kFramesPerSecond = 20;
 }
 
 - (void)startTimer {
-	_timer = [NSTimer scheduledTimerWithTimeInterval:(1 / _framesPerSecond) target:self selector:@selector(updateScreen) userInfo:nil repeats:YES];
+	//_timer = [NSTimer scheduledTimerWithTimeInterval:(1 / _framesPerSecond) target:self selector:@selector(updateScreen) userInfo:nil repeats:YES];
 }
 
 - (void)stopTimer {
-	[_timer invalidate];
-	_timer = nil;
+	//[_timer invalidate];
+	//_timer = nil;
 }
 
 extern uint	*imageBuffer;
@@ -53,14 +59,14 @@ extern BOOL hasImageChanged;
 extern CGContextRef context;
 
 - (void)updateScreen {
-	if (hasImageChanged) {
+	//if (hasImageChanged) {
 		CALayer *layer = self.layer;
 		CGImageRef image = CGBitmapContextCreateImage(context);
 		layer.contents = (id)image;
 		layer.contentsRect = CGRectMake(0.0, 0.0, 1.0, 1.0);
 		CFRelease(image);
 		hasImageChanged = NO;
-	}
+	//}
 }
 
 - (void)dealloc {

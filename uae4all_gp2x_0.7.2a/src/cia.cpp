@@ -152,63 +152,63 @@ static void CIA_update (void)
 {
     unsigned long int ccount = (get_cycles () - eventtab[ev_cia].oldcycles + div10);
     unsigned long int ciaclocks = ccount / DIV10;
-
+	
     int aovfla = 0, aovflb = 0, bovfla = 0, bovflb = 0;
-
+	
     div10 = ccount % DIV10;
-
+	
     /* CIA A timers */
     if ((ciaacra & 0x21) == 0x01) {
-	assert ((ciaata+1) >= ciaclocks);
-	if ((ciaata+1) == ciaclocks) {
-	    aovfla = 1;
-	    if ((ciaacrb & 0x61) == 0x41) {
-		if (ciaatb-- == 0) aovflb = 1;
-	    }
-	}
-	ciaata -= ciaclocks;
+		assert ((ciaata+1) >= ciaclocks);
+		if ((ciaata+1) == ciaclocks) {
+			aovfla = 1;
+			if ((ciaacrb & 0x61) == 0x41) {
+				if (ciaatb-- == 0) aovflb = 1;
+			}
+		}
+		ciaata -= ciaclocks;
     }
     if ((ciaacrb & 0x61) == 0x01) {
-	assert ((ciaatb+1) >= ciaclocks);
-	if ((ciaatb+1) == ciaclocks) aovflb = 1;
-	ciaatb -= ciaclocks;
+		assert ((ciaatb+1) >= ciaclocks);
+		if ((ciaatb+1) == ciaclocks) aovflb = 1;
+		ciaatb -= ciaclocks;
     }
-
+	
     /* CIA B timers */
     if ((ciabcra & 0x21) == 0x01) {
-	assert ((ciabta+1) >= ciaclocks);
-	if ((ciabta+1) == ciaclocks) {
-	    bovfla = 1;
-	    if ((ciabcrb & 0x61) == 0x41) {
-		if (ciabtb-- == 0) bovflb = 1;
-	    }
-	}
-	ciabta -= ciaclocks;
+		assert ((ciabta+1) >= ciaclocks);
+		if ((ciabta+1) == ciaclocks) {
+			bovfla = 1;
+			if ((ciabcrb & 0x61) == 0x41) {
+				if (ciabtb-- == 0) bovflb = 1;
+			}
+		}
+		ciabta -= ciaclocks;
     }
     if ((ciabcrb & 0x61) == 0x01) {
-	assert ((ciabtb+1) >= ciaclocks);
-	if ((ciabtb+1) == ciaclocks) bovflb = 1;
-	ciabtb -= ciaclocks;
+		assert ((ciabtb+1) >= ciaclocks);
+		if ((ciabtb+1) == ciaclocks) bovflb = 1;
+		ciabtb -= ciaclocks;
     }
     if (aovfla) {
-	ciaaicr |= 1; RethinkICRA();
-	ciaata = ciaala;
-	if (ciaacra & 0x8) ciaacra &= ~1;
+		ciaaicr |= 1; RethinkICRA();
+		ciaata = ciaala;
+		if (ciaacra & 0x8) ciaacra &= ~1;
     }
     if (aovflb) {
-	ciaaicr |= 2; RethinkICRA();
-	ciaatb = ciaalb;
-	if (ciaacrb & 0x8) ciaacrb &= ~1;
+		ciaaicr |= 2; RethinkICRA();
+		ciaatb = ciaalb;
+		if (ciaacrb & 0x8) ciaacrb &= ~1;
     }
     if (bovfla) {
-	ciabicr |= 1; RethinkICRB();
-	ciabta = ciabla;
-	if (ciabcra & 0x8) ciabcra &= ~1;
+		ciabicr |= 1; RethinkICRB();
+		ciabta = ciabla;
+		if (ciabcra & 0x8) ciabcra &= ~1;
     }
     if (bovflb) {
-	ciabicr |= 2; RethinkICRB();
-	ciabtb = ciablb;
-	if (ciabcrb & 0x8) ciabcrb &= ~1;
+		ciabicr |= 2; RethinkICRB();
+		ciabtb = ciablb;
+		if (ciabcrb & 0x8) ciabcrb &= ~1;
     }
 }
 
@@ -219,31 +219,28 @@ static void CIA_calctimers (void)
     long ciaatimea = -1, ciaatimeb = -1, ciabtimea = -1, ciabtimeb = -1;
 
     eventtab[ev_cia].oldcycles = get_cycles ();
-    if ((ciaacra & 0x21) == 0x01) {
-	ciaatimea = (DIV10 - div10) + DIV10 * ciaata;
+	if ((ciaacra & 0x21) == 0x01) {
+		ciaatimea = (DIV10 - div10) + DIV10 * ciaata;
     }
     if ((ciaacrb & 0x61) == 0x01) {
-	ciaatimeb = (DIV10 - div10) + DIV10 * ciaatb;
+		ciaatimeb = (DIV10 - div10) + DIV10 * ciaatb;
     }
 
     if ((ciabcra & 0x21) == 0x01) {
-	ciabtimea = (DIV10 - div10) + DIV10 * ciabta;
+		ciabtimea = (DIV10 - div10) + DIV10 * ciabta;
     }
     if ((ciabcrb & 0x61) == 0x01) {
-	ciabtimeb = (DIV10 - div10) + DIV10 * ciabtb;
+		ciabtimeb = (DIV10 - div10) + DIV10 * ciabtb;
     }
     eventtab[ev_cia].active = (ciaatimea != -1 || ciaatimeb != -1
 			       || ciabtimea != -1 || ciabtimeb != -1);
     if (eventtab[ev_cia].active) {
-	unsigned long int ciatime = ~0L;
-	if (ciaatimea != -1) ciatime = ciaatimea;
-	if (ciaatimeb != -1 && ciaatimeb < ciatime) ciatime = ciaatimeb;
-	if (ciabtimea != -1 && ciabtimea < ciatime) ciatime = ciabtimea;
-	if (ciabtimeb != -1 && ciabtimeb < ciatime) ciatime = ciabtimeb;
-	eventtab[ev_cia].evtime = ciatime + get_cycles ();
-		//if (eventtab[ev_cia].evtime >= 1710000000 && eventtab[ev_cia].evtime <= 1880000000) {
-//			printf("uh oh\n");
-//		}
+		unsigned long int ciatime = ~0L;
+		if (ciaatimea != -1) ciatime = ciaatimea;
+		if (ciaatimeb != -1 && ciaatimeb < ciatime) ciatime = ciaatimeb;
+		if (ciabtimea != -1 && ciabtimea < ciatime) ciatime = ciabtimea;
+		if (ciabtimeb != -1 && ciabtimeb < ciatime) ciatime = ciabtimeb;
+		eventtab[ev_cia].evtime = ciatime + get_cycles ();
     }
     events_schedule();
 }
