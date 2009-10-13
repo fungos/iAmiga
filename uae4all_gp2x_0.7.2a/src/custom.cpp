@@ -18,33 +18,33 @@
 // #define CUSTOM_PREFETCHS
 
 
-#include "sysconfig.h"
-#include "sysdeps.h"
+#import "sysconfig.h"
+#import "sysdeps.h"
 
-#include <ctype.h>
-#include <assert.h>
+#import <ctype.h>
+#import <assert.h>
 
-#include "config.h"
-#include "uae.h"
-#include "options.h"
-#include "thread.h"
-#include "gensound.h"
-#include "sound.h"
-#include "debug_uae4all.h"
-#include "events.h"
-#include "memory.h"
-#include "custom.h"
-#include "m68k/m68k_intrf.h"
-#include "cia.h"
-#include "disk.h"
-#include "blitter.h"
-#include "xwin.h"
-#include "joystick.h"
-#include "audio.h"
-#include "keybuf.h"
-#include "autoconf.h"
-#include "gui.h"
-#include "drawing.h"
+#import "config.h"
+#import "uae.h"
+#import "options.h"
+#import "thread.h"
+#import "gensound.h"
+#import "sound.h"
+#import "debug_uae4all.h"
+#import "events.h"
+#import "memory.h"
+#import "custom.h"
+#import "m68k/m68k_intrf.h"
+#import "cia.h"
+#import "disk.h"
+#import "blitter.h"
+#import "xwin.h"
+#import "joystick.h"
+#import "audio.h"
+#import "keybuf.h"
+#import "autoconf.h"
+#import "gui.h"
+#import "drawing.h"
 
 
 #ifdef STOP_WHEN_COPPER
@@ -3021,7 +3021,7 @@ static _INLINE_ void compute_spcflag_copper (void)
 		setcopper();
 }
 
-static void copper_handler (void)
+void copper_handler (void)
 {
     setcopper();
 	
@@ -3299,7 +3299,7 @@ static void vsync_handler (void)
     uae4all_prof_end(7);
 }
 
-static void hsync_handler (void)
+void hsync_handler (void)
 {
     uae4all_prof_start(2);
 #ifdef DEBUG_CUSTOM
@@ -3420,20 +3420,23 @@ void init_eventtab (void)
 		eventtab[i].oldcycles = 0;
     }
 	
-    eventtab[ev_cia].handler = CIA_handler;
-    eventtab[ev_hsync].handler = hsync_handler;
     eventtab[ev_hsync].evtime = maxhpos * CYCLE_UNIT + get_cycles ();
-    eventtab[ev_hsync].active = 1;
-	
-    eventtab[ev_copper].handler = copper_handler;
+    eventtab[ev_hsync].active = 1;	
     eventtab[ev_copper].active = 0;
-    eventtab[ev_blitter].handler = blitter_handler;
     eventtab[ev_blitter].active = 0;
-    eventtab[ev_disk].handler = DISK_handler;
     eventtab[ev_disk].active = 0;
-    eventtab[ev_audio].handler = audio_evhandler;
     eventtab[ev_audio].active = 0;
-    events_schedule ();
+
+#ifndef UNROLL_EVENT_LOOP
+	eventtab[ev_cia].handler = CIA_handler;
+    eventtab[ev_hsync].handler = hsync_handler;
+    eventtab[ev_copper].handler = copper_handler;
+    eventtab[ev_blitter].handler = blitter_handler;
+    eventtab[ev_disk].handler = DISK_handler;
+    eventtab[ev_audio].handler = audio_evhandler;
+#endif
+    
+	events_schedule ();
 }
 
 void customreset (void)
@@ -3477,7 +3480,7 @@ void customreset (void)
     vpos = 0;
 	
     if (needmousehack ()) {
-#if 0
+#if 1
 		mousehack_setfollow();
 #else
 		mousehack_setdontcare();

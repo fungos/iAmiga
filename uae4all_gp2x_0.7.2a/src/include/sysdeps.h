@@ -441,3 +441,9 @@ extern int console_get (char *, int);
 #define REGPARAM
 
 #define ROL16(v)		__asm__ volatile("ror %[val], #16": [val] "=r" (v))
+
+#if defined(__arm__)
+#define PRELOAD(ADDR)	asm volatile("pld [%0]":: "r" ((ADDR)))
+#else
+#define PRELOAD(ADDR)
+#endif

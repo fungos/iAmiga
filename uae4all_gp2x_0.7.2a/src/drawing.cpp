@@ -30,28 +30,28 @@
  To prevent extremely bad things (think pixels cut in half by window borders) from
  happening, all ports should restrict window widths to be multiples of 16 pixels.  */
 
-#include "sysconfig.h"
-#include "sysdeps.h"
+#import "sysconfig.h"
+#import "sysdeps.h"
 
-#include <ctype.h>
-#include <assert.h>
+#import <ctype.h>
+#import <assert.h>
 
-#include "config.h"
-#include "uae.h"
-#include "options.h"
-#include "thread.h"
-#include "memory.h"
-#include "custom.h"
-#include "m68k/m68k_intrf.h"
-#include "xwin.h"
-#include "autoconf.h"
-#include "gui.h"
-#include "drawing.h"
-#include "sound.h"
-#include "debug_uae4all.h"
+#import "config.h"
+#import "uae.h"
+#import "options.h"
+#import "thread.h"
+#import "memory.h"
+#import "custom.h"
+#import "m68k/m68k_intrf.h"
+#import "xwin.h"
+#import "autoconf.h"
+#import "gui.h"
+#import "drawing.h"
+#import "sound.h"
+#import "debug_uae4all.h"
 
-#include <sys/time.h>
-#include <time.h>
+#import <sys/time.h>
+#import <time.h>
 static int fps_counter = 0, fps_counter_changed = 0;
 
 #ifdef USE_DRAWING_EXTRA_INLINE
@@ -294,13 +294,8 @@ static __inline__ void count_frame (void)
 			uae4all_frameskipped++;
 #endif
 		// limiter..
-		if ((time_now+partida)<next_frameskip)
-		{
-#ifdef DREAMCAST
-			//		SDL_Delay(proximo_frameskip-ahora-PARTIDA+1);
-#else
+		if ((time_now+partida)<next_frameskip) {
 			SDL_Delay((next_frameskip-time_now)>>8);
-#endif
 		}
     }
     else
@@ -314,32 +309,22 @@ static __inline__ void count_frame (void)
 		else
 			next_frameskip+=(tabla_ajuste[uae4all_numframes%9]);
 #endif
-		if ((time_now-partida)>next_frameskip)
-		{	
+		if ((time_now-partida)>next_frameskip) {
 			cuantos++;
 			if (cuantos>5) // auto FS limit
 			{
 				next_frameskip=time_now+(1<<8);
 				fs_framecnt=0;
 				cuantos=0;
-			}
-			else
-			{
+			} else {
 				fs_framecnt=1;
 #ifdef DEBUG_FRAMERATE
 				uae4all_frameskipped++;
 #endif
 			}
-		}
-		else
-		{
-			if ((time_now+partida)<next_frameskip)
-			{
-#ifdef DREAMCAST
-				//			SDL_Delay(proximo_frameskip-ahora-PARTIDA+1);
-#else
+		} else {
+			if ((time_now+partida)<next_frameskip) {
 				SDL_Delay((next_frameskip-time_now)>>8);
-#endif
 				//proximo_frameskip=SDL_GetTicks() << 8;
 			}
 			fs_framecnt=0;
@@ -1743,7 +1728,7 @@ static __inline__ void do_flush_screen (int start, int stop)
     if (first_block_line != -2) 
 		flush_block (first_block_line, last_block_line);
     
-#ifndef DREAMCAST
+#if !defined(DREAMCAST) && !defined(IPHONE)
     unlockscr ();
 #endif
 }

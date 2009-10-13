@@ -6,22 +6,22 @@
   * Copyright 1997 Bernd Schmidt
   */
 
-#include "sysconfig.h"
-#include "sysdeps.h"
+#import "sysconfig.h"
+#import "sysdeps.h"
 
-#include "config.h"
-#include "uae.h"
-#include "options.h"
-#include "memory.h"
-#include "debug_uae4all.h"
-#include "events.h"
-#include "custom.h"
-#include "gensound.h"
-#include "sound.h"
-#include "audio.h"
+#import "config.h"
+#import "uae.h"
+#import "options.h"
+#import "memory.h"
+#import "debug_uae4all.h"
+#import "events.h"
+#import "custom.h"
+#import "gensound.h"
+#import "sound.h"
+#import "audio.h"
 
-#include "custom.h"
-#include "drawing.h"
+#import "custom.h"
+#import "drawing.h"
 
 #ifdef DREAMCAST
 #include <SDL_dreamcast.h>

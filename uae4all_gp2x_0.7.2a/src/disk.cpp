@@ -11,27 +11,27 @@
  *
  */
 
-#include <stdio.h>
+#import <stdio.h>
 
-#include "sysconfig.h"
-#include "sysdeps.h"
+#import "sysconfig.h"
+#import "sysdeps.h"
 
-#include "config.h"
-#include "uae.h"
-#include "options.h"
-#include "thread.h"
-#include "memory.h"
-#include "debug_uae4all.h"
-#include "events.h"
-#include "custom.h"
-#include "ersatz.h"
-#include "disk.h"
-#include "gui.h"
-#include "zfile.h"
-#include "autoconf.h"
-#include "m68k/m68k_intrf.h"
-#include "xwin.h"
-#include "execlib.h"
+#import "config.h"
+#import "uae.h"
+#import "options.h"
+#import "thread.h"
+#import "memory.h"
+#import "debug_uae4all.h"
+#import "events.h"
+#import "custom.h"
+#import "ersatz.h"
+#import "disk.h"
+#import "gui.h"
+#import "zfile.h"
+#import "autoconf.h"
+#import "m68k/m68k_intrf.h"
+#import "xwin.h"
+#import "execlib.h"
 
 
 char prefs_df[NUM_DRIVES][256];
@@ -118,6 +118,7 @@ typedef struct {
 } drive;
 
 static drive floppy[NUM_DRIVES];
+static int linecounter;
 
 /* Keeps track of whether the Amiga program seems to be using the data coming
  in from the disk; if this remains 0 for several seconds, we stop calling
@@ -226,10 +227,10 @@ static int drive_insert (drive * drv, int dnum, const char *fname)
 		drv->trackspeed = floppy_speed;
 		return 0;
     }
-    strncpy ((char *)&prefs_df[drv-floppy], fname, 127);
-    prefs_df[drv-floppy][127] = 0;
-    strncpy ((char *)&changed_df[drv-floppy], fname, 127);
-    changed_df[drv-floppy][127] = 0;
+    strncpy ((char *)&prefs_df[drv-floppy], fname, 255);
+    prefs_df[drv-floppy][255] = 0;
+    strncpy ((char *)&changed_df[drv-floppy], fname, 255);
+    changed_df[drv-floppy][255] = 0;
 	
     uae4all_fread (buffer, sizeof (char), 8, drv->diskfile);
     if (strncmp ((char *) buffer, "UAE-1ADF", 8) == 0) {
@@ -1010,17 +1011,11 @@ extern void cia_diskindex (void);
 
 void DISK_handler (void)
 {
-#ifdef DEBUG_DISK
-    dbg("disc.c : DISK_handler");
-#endif
     eventtab[ev_disk].active = 0;
     if (disk_sync[disk_sync_cycle] & DISK_WORDSYNC)
 		INTREQ (0x9000);
     if (disk_sync[disk_sync_cycle] & DISK_INDEXSYNC)
 		cia_diskindex ();
-#ifdef DEBUG_DISK
-    dbgf("disc.c : disk_sync[%i]=0\n",disk_sync_cycle);
-#endif
     disk_sync[disk_sync_cycle] = 0;
     disk_events (disk_sync_cycle);
 }
@@ -1215,8 +1210,6 @@ static void DISK_start (void)
     dma_tab[0] = 0xffffffff;
 }
 
-static int linecounter;
-
 void DISK_update (void)
 {
     int dr = 0;
@@ -1226,7 +1219,7 @@ void DISK_update (void)
 #endif
 	
 #if NUM_DRIVES == 1
-	drive *drv = floppy;
+	register drive * __restrict__ drv = floppy;
 	if (drv->steplimit)
 		drv->steplimit--;
     if (linecounter) {

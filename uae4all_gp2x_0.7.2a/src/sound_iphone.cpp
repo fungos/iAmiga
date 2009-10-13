@@ -3,27 +3,27 @@
  * (c) notaz, 2007
  */
 
-#define DEBUG_SOUND
+// #define DEBUG_SOUND
 
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <errno.h>
+#import <sys/types.h>
+#import <sys/stat.h>
+#import <fcntl.h>
+#import <unistd.h>
+#import <errno.h>
 
-#include "sysconfig.h"
-#include "sysdeps.h"
-#include "config.h"
-#include "uae.h"
-#include "options.h"
-#include "memory.h"
-#include "debug_uae4all.h"
-#include "audio.h"
-#include "gensound.h"
-#include "sound.h"
-#include "custom.h"
+#import "sysconfig.h"
+#import "sysdeps.h"
+#import "config.h"
+#import "uae.h"
+#import "options.h"
+#import "memory.h"
+#import "debug_uae4all.h"
+#import "audio.h"
+#import "gensound.h"
+#import "sound.h"
+#import "custom.h"
 
-#include "MMStopWatch.h"
+#import "MMStopWatch.h"
 
 
 extern unsigned long next_sample_evtime;

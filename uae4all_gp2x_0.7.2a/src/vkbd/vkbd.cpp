@@ -11,8 +11,13 @@ int vkbd_move=0;
 SDLKey vkbd_key=(SDLKey)0;
 SDLKey vkbd_button2=(SDLKey)0;
 int vkbd_keysave=-1234567;
+#ifdef __SYMBIAN32__
+#include <sdl_image.h>
+#endif
 
-#if !defined (DREAMCAST) && !defined (GP2X) && !defined (PSP) && !defined (GIZMONDO)
+char* DataPrefix();
+
+#if !defined (DREAMCAST) && !defined (GP2X) && !defined (PSP) && !defined (GIZMONDO) && !defined(__SYMBIAN32__)
 
 int vkbd_init(void) { return 0; }
 void vkbd_init_button2(void) { }
@@ -25,7 +30,12 @@ SDLKey vkbd_process(void) { return (SDLKey)0; }
 
 extern SDL_Surface *prSDLScreen;
 
-static SDL_Surface *ksur, *vkey[MAX_KEY];
+static SDL_Surface *ksur,
+#ifdef __SYMBIAN32__
+		  *vkeys = NULL;
+#else
+		 *vkey[MAX_KEY];
+#endif
 
 static int vkbd_actual=0, vkbd_color=0;
 
@@ -159,8 +169,11 @@ int vkbd_init(void)
 #else
 #ifdef GIZMONDO
 	SDL_Surface *tmp = SDL_LoadBMP("\\SD Card\\uae4all\\data\\vkbd.bmp");
+#elif defined (__SYMBIAN32__)
+	sprintf(tmpchar, "%svkbd.png", DataPrefix());
+	SDL_Surface *tmp=IMG_Load(tmpchar);
 #else
-	SDL_Surface *tmp=SDL_LoadBMP(DATA_PREFIX "vkbd.bmp");
+	SDL_Surface *tmp=IMG_Load(DATA_PREFIX "vkbd.png");
 #endif
 #endif
 	if (tmp==NULL)
@@ -170,6 +183,11 @@ int vkbd_init(void)
 	}
 	ksur=SDL_DisplayFormat(tmp);
 	SDL_FreeSurface(tmp);
+#ifdef __SYMBIAN32__
+	sprintf(tmpchar, "%skeys.png", DataPrefix());
+	tmp=IMG_Load(tmpchar);
+	vkeys=SDL_DisplayFormat(tmp);
+#else
 	for(i=0;i<MAX_KEY;i++)
 		vkey[i]=NULL;
 	for(i=0;i<MAX_KEY;i++)
@@ -180,15 +198,17 @@ int vkbd_init(void)
 #ifdef GIZMONDO
 		sprintf(tmpchar, "\\SD Card\\uae4all\\data\\key%i.bmp", i);
 #else
-		sprintf(tmpchar,DATA_PREFIX "key%i.bmp", i);
+	sprintf(tmpchar,DATA_PREFIX "key%i.png", i);
 #endif
 #endif
-		tmp=SDL_LoadBMP(tmpchar);
+		tmp=IMG_Load(tmpchar);
 		if (tmp==NULL)
 			break;
 		vkey[i]=SDL_DisplayFormat(tmp);
 		SDL_FreeSurface(tmp);
 	}
+#endif
+
 	vkbd_actual=0;
 	vkbd_redraw();
 	vkbd_mode=0;
@@ -202,9 +222,13 @@ int vkbd_init(void)
 
 void vkbd_quit(void)
 {
+#ifdef __SYMBIAN32__
+	SDL_FreeSurface(vkeys);
+#else
 	int i;
 	for(i=0;i<MAX_KEY;i++)
 		SDL_FreeSurface(vkey[i]);
+#endif
 	SDL_FreeSurface(ksur);
 	vkbd_mode=0;
 }
@@ -224,6 +248,7 @@ SDLKey vkbd_process(void)
 	static Uint32 last_time=0;
 	Uint32 now=SDL_GetTicks();
 	SDL_Rect r;
+	SDL_Rect src;
 	int canmove=(now-last_time>MIN_VKBD_TIME);
 #ifndef VKBD_ALWAYS
 	if (vkbd_move) 
@@ -260,17 +285,76 @@ SDLKey vkbd_process(void)
 
 	SDL_FillRect(prSDLScreen,&r,vkbd_color);
 	vkbd_color = ~vkbd_color;
+#ifdef __SYMBIAN32__
+	r.x=VKBD_X+ksur->w+2;
+	r.y=prSDLScreen->h-vkeys->h;
+	r.h = 32;
+	src.y = 0;
+	src.x = 0;
+	src.h = 32;
 
-#ifndef VKBD_ALWAYS
-	if (vkbd_move && vkey[vkbd_actual]!=NULL)
+	for(int i = 0;i < vkbd_actual;i++)
 	{
+		switch(i)
+		{
+		case 25:
+		case 26:
+		case 89:
+		case 91:
+		case 92:
+			src.x+= 41;
+			break;
+		case 31:			
+		case 64:	
+		case 73:
+		case 84:
+		case 88:
+		case 90:
+		case 98:
+			src.x+= 49;
+			break;
+		default:
+			src.x+= 32;
+			break;
+		}
+	}
+
+	switch(vkbd_actual)
+	{
+	case 25:
+	case 26:
+	case 89:
+	case 91:
+	case 92:
+		r.w = src.w = 41;
+		break;
+	case 31:
+	case 64:
+	case 73:
+	case 84:
+	case 88:
+	case 90:
+	case 98:
+		r.w = src.w = 49;
+		break;
+	default:
+		r.w = src.w = 32;
+		break;
+	}
+
+	SDL_BlitSurface(vkeys,&src,prSDLScreen,&r);
+#else
+if (vkey[vkbd_actual]!=NULL
+#ifndef VKBD_ALWAYS
+	&& vkbd_move 
 #endif
+	)
+	{
 		r.x=VKBD_X+ksur->w+2;
-		r.y=prSDLScreen->h-40+2;
+		r.y=prSDLScreen->h-vkey[]->h;
 		r.w=vkey[vkbd_actual]->w;
 		r.h=vkey[vkbd_actual]->h;
 		SDL_BlitSurface(vkey[vkbd_actual],NULL,prSDLScreen,&r);
-#ifndef VKBD_ALWAYS
 	}
 #endif
 	return (SDLKey)0;

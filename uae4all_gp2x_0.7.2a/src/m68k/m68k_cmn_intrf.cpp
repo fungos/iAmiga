@@ -250,6 +250,7 @@ static void m68k_run (void)
 		
 #else
 		uae4all_prof_start(0);
+		
 		cycles = nextevent - currcycle;
 		switch (timeslice_mode) {
 			case 3:  cycles>>=6; break;
@@ -257,9 +258,6 @@ static void m68k_run (void)
 			case 1:  cycles=(cycles>>8)+(cycles>>9); break;
 			default: cycles>>=8; break;
 		}
-#ifdef DEBUG_TIMESLICE
-		unsigned ts=cycles;
-#endif
 
 #define NDEBUG_CYCLES
 #ifdef DEBUG_CYCLES
@@ -298,14 +296,9 @@ static void m68k_run (void)
 			m68k_irq_update(0);
 		}
 #endif
-#ifdef DEBUG_M68K
-		
-		if (M68KCONTEXT.execinfo & 0x0080)
-			mispcflags|=SPCFLAG_STOP;
-#endif
+
 		uae4all_prof_start(1);
 		
-		//cycles=((unsigned)(((double)(M68KCONTEXT.cycles_counter-cycles_actual))*cycles_factor))<<8;
 		cycles=(M68KCONTEXT.cycles_counter-cycles_actual) * cycles_factor;
 		
 #ifdef DEBUG_INTERRUPTS

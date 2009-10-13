@@ -228,6 +228,8 @@ __inline__ void _vsub_time(unsigned int v) {
 #define STORE_CYCLES	m68k_context.cycles = cycles;
 #define LOAD_CYCLES		cycles = m68k_context.cycles;
 
+static unsigned int Read_Byte(unsigned int a) __attribute__((always_inline));
+
 static __inline__ unsigned int Read_Byte(unsigned int a) {
 	a &= ~0xff000000;
 	uae_u8 *p = baseaddr[a>>16];

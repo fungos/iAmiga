@@ -13,7 +13,6 @@
 #endif
 
 #ifdef NO_THREADS
-// SGC: #define PRE_SNDBUFFER_LEN (960)
 #define PRE_SNDBUFFER_LEN (960)
 #else
 #define PRE_SNDBUFFER_LEN (1024)
@@ -64,9 +63,11 @@ extern void ahi_install (void);
 extern void audio_reset (void);
 extern void update_audio (void);
 extern void schedule_audio (void);
-extern void audio_evhandler (void);
 extern void audio_channel_enable_dma (int n_channel);
 extern void audio_channel_disable_dma (int n_channel);
 extern void check_dma_audio(void);
 extern void fetch_audio(void);
 extern void update_adkmasks (void);
+
+extern "C" void audio_evhandler (void);
+

@@ -57,12 +57,13 @@ void uae::default_prefs () {
     produce_sound = 2;
 #endif
 
-    prefs_gfx_framerate = 2;
-	//prefs_gfx_framerate = -1; // auto frame skip
+    //prefs_gfx_framerate = 2;
+	prefs_gfx_framerate = -1; // auto frame skip
 
-	strcpy (prefs_df[0], get_df0_path());
+	//strcpy (prefs_df[0], get_df_path(0));
+	//strcpy (prefs_df[1], get_df_path(1));
     //strcpy (prefs_df[0], ROM_PATH_PREFIX "df0.adf");
-    strcpy (prefs_df[1], ROM_PATH_PREFIX "df1.adf");
+    //strcpy (prefs_df[1], ROM_PATH_PREFIX "df1.adf");
 
 #if defined(DREAMCAST)
     strcpy (romfile, ROM_PATH_PREFIX "kick.rom");
@@ -89,7 +90,7 @@ void uae::default_prefs () {
 	// 1 = 75%
 	// 2 = 50%
 	// 3 = 25%
-	timeslice_mode = 0;
+	timeslice_mode = 2;
 	
 	// 0 = 100%
 	// 2 = 83%
@@ -102,6 +103,10 @@ void uae::uae_reset (void) {
     black_screen_now();
     quit_program = 2;
     set_special (SPCFLAG_BRK);
+}
+
+void uae_reset() {
+	g_emulator.uae_reset();
 }
 
 void uae::uae_quit (void) {

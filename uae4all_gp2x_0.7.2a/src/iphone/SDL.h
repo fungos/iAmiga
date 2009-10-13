@@ -281,6 +281,7 @@ typedef struct SDL_Joystick {
 } SDL_Joystick;
 
 typedef struct tagMotion {
+	int type;
 	int xrel, yrel;
 } tagMotion;
 

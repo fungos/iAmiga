@@ -170,15 +170,13 @@ void flush_block (int ystart, int ystop)
     dbgf("Function: flush_block %d %d\n", ystart, ystop);
 #endif
 #ifndef DREAMCAST
-    SDL_UnlockSurface (prSDLScreen);
+    // SDL_UnlockSurface (prSDLScreen);
 #endif
 #if defined (GP2X) || defined (PSP) || defined (GIZMONDO)
-	if (vkbd_mode)
-	{
+	if (vkbd_mode) {
 		vkbd_key=vkbd_process();
 	}
-	if (show_inputmode)
-	{
+	if (show_inputmode) {
 		inputmode_redraw();
 	}
 #ifdef GP2X
@@ -203,9 +201,13 @@ void flush_block (int ystart, int ystop)
 #endif
     }
 #ifndef DREAMCAST
-    SDL_LockSurface (prSDLScreen);
+    // SDL_LockSurface (prSDLScreen);
 #endif
     uae4all_prof_end(13);
+	
+#if defined(IPHONE) && defined(PROFILER_UAE4ALL)
+	uae4all_prof_show_statistics();
+#endif
 }
 
 void black_screen_now(void)

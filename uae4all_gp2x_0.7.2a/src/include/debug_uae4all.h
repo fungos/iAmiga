@@ -63,7 +63,7 @@ static __inline__ void dbgsum(char *str, void *buff, unsigned len)
 
 #else
 
-#define UAE4ALL_PROFILER_MAX 256
+#define UAE4ALL_PROFILER_MAX 32
 
 extern unsigned long long uae4all_prof_initial[UAE4ALL_PROFILER_MAX];
 extern unsigned long long uae4all_prof_sum[UAE4ALL_PROFILER_MAX];
@@ -94,8 +94,9 @@ static __inline__ void uae4all_prof_end(unsigned a)
 }
 
 void uae4all_prof_init(void);
-void uae4all_prof_add(char *msg);
+void uae4all_prof_add(const char *msg);
 void uae4all_prof_show(void);
+void uae4all_prof_show_statistics();
 
 #endif
 

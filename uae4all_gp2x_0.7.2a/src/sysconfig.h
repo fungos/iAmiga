@@ -413,6 +413,8 @@
 
 #ifdef IPHONE
 
+// #define PROFILER_UAE4ALL
+
 #include "TargetConditionals.h"
 
 #define NDEBUG_CPU

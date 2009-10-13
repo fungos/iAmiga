@@ -6,8 +6,6 @@
   * Copyright 1996 Bernd Schmidt
   */
 
-#define NUM_DRIVES 1
-
 class uae {
 public:
 	uae();
@@ -32,3 +30,4 @@ private:
 
 extern uae g_emulator;
 
+extern "C" void uae_reset();

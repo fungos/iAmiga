@@ -41,12 +41,10 @@ void SDL_FreeSurface(SDL_Surface* a) {
 }
 
 void SDL_FillRect(SDL_Surface* a, void* b, int c) {
-	//hasImageChanged = YES;
-	UpdateScreen();
+	// UpdateScreen();
 }
 
 void SDL_UpdateRect(SDL_Surface* s, int a, int b, int c, int d) {
-	//hasImageChanged = YES;
 	UpdateScreen();
 }
 
@@ -58,7 +56,56 @@ long int SDL_MapRGB(tagFormat* a, int b, int c, int d) {
 	return 0;
 }
 
+#include "touchstick.h"
+
+extern "C" CJoyStick g_touchStick;
 int SDL_PollEvent(SDL_Event* a) {
+	TouchStickDPadState state = g_touchStick.dPadState();
+	if (state == DPadCenter)
+		return 0;
+	
+	static Uint32 timer = SDL_GetTicks();
+	Uint32 now = SDL_GetTicks();
+	if (now - timer < 20) {
+		return 0;
+	}
+	timer = now;
+	
+	int x=0, y=0;
+	
+	switch (g_touchStick.dPadState()) {
+		case DPadUp:
+			y = -1;
+			break;
+		case DPadUpRight:
+			y = -1, x = 1;
+			break;
+		case DPadRight:
+			x = 1;
+			break;
+		case DPadDownRight:
+			y = 1, x = 1;
+			break;
+		case DPadDown:
+			y = 1;
+			break;
+		case DPadDownLeft:
+			y = 1, x = -1;
+			break;
+		case DPadLeft:
+			x = -1;
+			break;
+		case DPadUpLeft:
+			y = -1, x = -1;
+			break;
+	}
+	
+	if (x!=0 || y != 0) {
+		a->type = SDL_MOUSEMOTION;
+		a->motion.yrel = y;
+		a->motion.xrel = x;
+		return 1;
+	}
 	return 0;
 }
 

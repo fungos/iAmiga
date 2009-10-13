@@ -14,22 +14,22 @@
 // #define UNROLL_AHI_HANDLER
 // #define SOUND_PREFETCHS
 
-#include "sysconfig.h"
-#include "sysdeps.h"
+#import "sysconfig.h"
+#import "sysdeps.h"
 
-#include "config.h"
-#include "uae.h"
-#include "options.h"
-#include "memory.h"
-#include "custom.h"
-#include "m68k/m68k_intrf.h"
-#include "debug_uae4all.h"
-#include "autoconf.h"
-#include "gensound.h"
-#include "sound.h"
-#include "events.h"
-#include "audio.h"
-#include "debug_uae4all.h"
+#import "config.h"
+#import "uae.h"
+#import "options.h"
+#import "memory.h"
+#import "custom.h"
+#import "m68k/m68k_intrf.h"
+#import "debug_uae4all.h"
+#import "autoconf.h"
+#import "gensound.h"
+#import "sound.h"
+#import "events.h"
+#import "audio.h"
+#import "debug_uae4all.h"
 
 #ifdef NO_AHI_CHANNELS
 #define NUMBER_CHANNELS		4
@@ -49,16 +49,14 @@
 
 #define USE_MAX_EV
 
-//#define USE_WORD_STATE
-
 #define MAX_EV ~0ul
 
 struct audio_channel_data audio_channel[NUMBER_CHANNELS] UAE4ALL_ALIGN;
-int audio_channel_current_sample[NUMBER_CHANNELS] UAE4ALL_ALIGN;
-int audio_channel_vol[NUMBER_CHANNELS] UAE4ALL_ALIGN;
-unsigned long audio_channel_adk_mask[NUMBER_CHANNELS] UAE4ALL_ALIGN;
-int audio_channel_state[NUMBER_CHANNELS] UAE4ALL_ALIGN;
+int audio_channel_current_sample[NUMBER_CHANNELS];
+int audio_channel_vol[NUMBER_CHANNELS];
+unsigned long audio_channel_adk_mask[NUMBER_CHANNELS];
 unsigned long audio_channel_evtime[NUMBER_CHANNELS] UAE4ALL_ALIGN;
+int audio_channel_state[NUMBER_CHANNELS] UAE4ALL_ALIGN;
 
 #ifdef NO_SOUND
 int sound_available = 0;
@@ -110,12 +108,10 @@ typedef uae_s8 sample8_t;
 
 #define SAMPLE_HANDLER \
 	{ \
-		AUDIO_PREFETCH(audio_channel_vol[0]); \
 		register uae_u32 d0 = audio_channel_current_sample[0]; \
 		register uae_u32 d1 = audio_channel_current_sample[1]; \
 		register uae_u32 d2 = audio_channel_current_sample[2]; \
 		register uae_u32 d3 = audio_channel_current_sample[3]; \
-		AUDIO_PREFETCH(audio_channel_adk_mask[0]); \
 		d0 *= audio_channel_vol[0]; \
 		d1 *= audio_channel_vol[1]; \
 		d2 *= audio_channel_vol[2]; \
@@ -688,13 +684,13 @@ void check_prefs_changed_audio (void)
 #ifdef NO_AHI_CHANNELS
 
 #define CHECK_STATE \
-	if (STATE0 && best_evtime > EVTIME0) \
+	if (best_evtime > EVTIME0) \
 	    best_evtime = EVTIME0; \
-	if (STATE1 && best_evtime > EVTIME1) \
+	if (best_evtime > EVTIME1) \
 	    best_evtime = EVTIME1; \
-	if (STATE2 && best_evtime > EVTIME2) \
+	if (best_evtime > EVTIME2) \
 	    best_evtime = EVTIME2; \
-	if (STATE3 && best_evtime > EVTIME3) \
+	if (best_evtime > EVTIME3) \
 	    best_evtime = EVTIME3; \
 	if (best_evtime > next_sample_evtime) \
 	    best_evtime = next_sample_evtime; \
@@ -791,13 +787,13 @@ void check_prefs_changed_audio (void)
 
 #endif	// NO_AHI_CHANNELS
 
+// SGC: removed removed if (produce_sound == 2) check
+
 #define IF_SAMPLE \
 	if (!next_sample_evtime) { \
 		next_sample_evtime = scaled_sample_evtime; \
-		if (produce_sound == 2) { \
-			SAMPLE_HANDLER \
-		} \
-	} \
+		SAMPLE_HANDLER \
+	}
 
 
 #define IF_SAMPLE_AHI \
@@ -806,8 +802,93 @@ void check_prefs_changed_audio (void)
 		if (produce_sound == 2) { \
 			SAMPLE_HANDLER_AHI \
 		} \
-	} \
+	}
 
+#if 1 && defined(__arm__)
+void update_audio (void)
+{
+    unsigned long int n_cycles;
+	
+    uae4all_prof_start(4);
+    n_cycles = get_cycles () - last_cycles;
+	for (;;) {
+#ifdef __arm__
+		asm(".align 4");
+#endif	
+		register unsigned long int best_evtime = n_cycles + 1;
+		AUDIO_PREFETCH(audio_channel_evtime);
+
+		// CHECK_STATE
+		if (best_evtime > audio_channel_evtime[0]) 
+			best_evtime = audio_channel_evtime[0]; 
+		if (best_evtime > audio_channel_evtime[1]) 
+			best_evtime = audio_channel_evtime[1]; 
+		if (best_evtime > audio_channel_evtime[2]) 
+			best_evtime = audio_channel_evtime[2];
+		if (best_evtime > audio_channel_evtime[3])
+			best_evtime = audio_channel_evtime[3];
+
+		if (best_evtime > next_sample_evtime)
+			best_evtime = next_sample_evtime;
+		if (best_evtime > n_cycles)
+			break;
+			
+		// SUB_EVTIME
+		next_sample_evtime -= best_evtime;
+		audio_channel_evtime[0] -= best_evtime;
+		audio_channel_evtime[1] -= best_evtime;
+		audio_channel_evtime[2] -= best_evtime;
+		audio_channel_evtime[3] -= best_evtime;
+		n_cycles -= best_evtime;
+		
+		AUDIO_PREFETCH(audio_channel_current_sample);
+		AUDIO_PREFETCH(audio_channel_vol);
+		AUDIO_PREFETCH(audio_channel_adk_mask);
+		
+		// IF_SAMPLE
+		if (!next_sample_evtime) {
+			next_sample_evtime = scaled_sample_evtime;
+			register uae_u32 d0 = audio_channel_current_sample[0];
+			register uae_u32 d1 = audio_channel_current_sample[1];
+			register uae_u32 d2 = audio_channel_current_sample[2];
+			register uae_u32 d3 = audio_channel_current_sample[3];
+			d0 *= audio_channel_vol[0];
+			d1 *= audio_channel_vol[1];
+			d2 *= audio_channel_vol[2];
+			d3 *= audio_channel_vol[3];
+			d0 &= audio_channel_adk_mask[0];
+			d1 &= audio_channel_adk_mask[1];
+			d2 &= audio_channel_adk_mask[2];
+			d3 &= audio_channel_adk_mask[3];
+			*(uae_u16 *)sndbufpt = d0+d1+d2+d3;
+			sndbufpt = (uae_u16 *)(((uae_u8 *)sndbufpt) + 2);
+			if ((unsigned)sndbufpt - (unsigned)render_sndbuff >= SNDBUFFER_LEN) {
+				finish_sound_buffer ();
+			}
+		}
+		
+		// RUN_HANDLERS
+		for (int i=0; i < 4; i++) {
+			if (!audio_channel_evtime[i])
+				audio_handler(i);
+		}
+		/*
+		if (!audio_channel_evtime[0])
+			audio_handler_0();
+		if (!audio_channel_evtime[1])
+			audio_handler_1();
+		if (!audio_channel_evtime[2])
+			audio_handler_2();
+		if (!audio_channel_evtime[3])
+			audio_handler_3();
+		 */
+	}
+	
+	last_cycles = get_cycles () - n_cycles;
+	
+    uae4all_prof_end(4);
+}
+#else
 void update_audio (void)
 {
     unsigned long int n_cycles;
@@ -826,6 +907,7 @@ void update_audio (void)
     else
 #endif
 		for (;;) {
+			asm(".align 4");
 			DEFINE_STATE
 			CHECK_STATE
 			SUB_EVTIME
@@ -837,16 +919,17 @@ void update_audio (void)
 	
     uae4all_prof_end(4);
 }
+#endif
 
 void audio_evhandler (void)
 {
-    if (produce_sound)
+    //if (produce_sound)
     {
     	update_audio ();
     	schedule_audio ();
     }
-    else
-    	eventtab[ev_audio].evtime = get_cycles () + (~0ul);
+    //else
+    //	eventtab[ev_audio].evtime = get_cycles () + (~0ul);
 }
 
 void AUDxDAT (int nr, uae_u16 v)
@@ -971,6 +1054,30 @@ void check_dma_audio(void)
 #define FETCH_AUDIO_PREFETCH(AUDIOCH)
 #endif
 
+#if 1
+
+static __inline__ void fetch_audio_for_channel(int AUDIOCH) {
+	FETCH_AUDIO_PREFETCH(AUDIOCH+1);
+	struct audio_channel_data *cdp = &audio_channel[AUDIOCH];
+	if (cdp->data_written == 2) {
+		cdp->data_written = 0;
+		cdp->nextdat = CHIPMEM_WGET (cdp->pt);
+		cdp->pt += 2;
+		if (audio_channel_state[AUDIOCH] == 2 || audio_channel_state[AUDIOCH] == 3) {
+			if (cdp->wlen == 1) {
+				cdp->pt = cdp->lc;
+				cdp->wlen = cdp->len;
+				cdp->intreq2 = 1;
+			} else
+				cdp->wlen = (cdp->wlen - 1) & 0xFFFF;
+		}
+	} 
+}
+
+#define FETCH_AUDIO(AUDIOCH) fetch_audio_for_channel(AUDIOCH)
+
+#else
+
 #define FETCH_AUDIO(AUDIOCH) \
 	FETCH_AUDIO_PREFETCH(AUDIOCH+1) \
 	cdp = &audio_channel[AUDIOCH]; \
@@ -988,6 +1095,7 @@ void check_dma_audio(void)
 		} \
 	} 
 
+#endif
 
 void fetch_audio(void)
 {
@@ -1004,8 +1112,7 @@ void fetch_audio(void)
 	int i;
 	for(i=0;i<4;i++)
 	{
-		struct audio_channel_data *cdp;
-		FETCH_AUDIO(i)
+		FETCH_AUDIO(i);
 	}
 #endif
 }

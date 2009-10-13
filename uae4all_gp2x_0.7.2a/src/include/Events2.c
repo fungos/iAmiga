@@ -1,11 +1,11 @@
 /*
- *  AmigaBase.cpp
+ *  Events2.c
  *  iAmiga
  *
- *  Created by Stuart Carnie on 5/23/09.
+ *  Created by Stuart Carnie on 9/26/09.
  *  Copyright 2009 __MyCompanyName__. All rights reserved.
  *
  */
 
-#include "AmigaBase.h"
+#include "Events2.h"
 

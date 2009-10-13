@@ -483,7 +483,7 @@ void uae4all_prof_init(void)
 	uae4all_prof_total_initial=s;
 }
 
-void uae4all_prof_add(char *msg)
+void uae4all_prof_add(const char *msg)
 {
 	if (uae4all_prof_total<UAE4ALL_PROFILER_MAX)
 	{
