@@ -38,6 +38,7 @@ EmulationViewController *g_emulatorViewController;
 #define kDisplayFramePortrait					CGRectMake(0, 0, 320, 240)
 #define kInputFramePortrait						CGRectMake(0, 0, 320, 480)
 
+//#define kDisplayFrameLandscape					CGRectMake(28, 0, 424, 320)
 #define kDisplayFrameLandscape					CGRectMake(32, 0, 416, 312)
 #define kInputFrameLandscape					CGRectMake(0, 0, 480, 320)
 
@@ -74,7 +75,7 @@ const double kDefaultAnimationDuration					= 250.0 / 1000.0;
 	
 	
 	self.inputController = [[InputControllerView alloc] initWithFrame:kInputFramePortrait];
-	self.inputController.delegate = self.landscapeJoystickView;
+	//self.inputController.delegate = self.landscapeJoystickView;
 	[view addSubview:self.inputController];
 	
 	self.landscapeJoystickView = [[JoystickViewLandscape alloc] initWithFrame:kInputFrameLandscape];
@@ -144,8 +145,9 @@ const double kDefaultAnimationDuration					= 250.0 / 1000.0;
 	self.displayView.frame = kDisplayFramePortrait;
 	[self.displayView setNeedsLayout];
 	
-	self.landscapeJoystickView.hidden	= YES;
+	//self.landscapeJoystickView.hidden	= YES;
 	//self.inputController.delegate		= joystickView;
+	self.inputController.frame			= kInputFramePortrait;
 }
 
 - (void)rotateToLandscape {
@@ -154,8 +156,8 @@ const double kDefaultAnimationDuration					= 250.0 / 1000.0;
 	self.displayView.frame				= kDisplayFrameLandscape;
 	[self.displayView setNeedsLayout];
 	
-	self.landscapeJoystickView.hidden	= NO;
-	self.inputController.delegate		= landscapeJoystickView;	
+	//self.landscapeJoystickView.hidden	= NO;
+	//self.inputController.delegate		= landscapeJoystickView;	
 	self.inputController.frame			= kInputFrameLandscape;
 }
 
@@ -192,10 +194,6 @@ const double kDefaultAnimationDuration					= 250.0 / 1000.0;
 	NSAssert(emulator != NULL, @"emulator should not be NULL");
 	
 	[displayView stopTimer];	
-	//emulator->TheC64->Quit();
-	//while (![emulationThread isFinished]) {
-	//	usleep(100);
-	//}
 	[emulationThread release];
 }
 

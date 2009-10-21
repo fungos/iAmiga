@@ -135,10 +135,10 @@ const int kButtonWidthLandscape			= 200;
 	UIInterfaceOrientation current = (UIInterfaceOrientation)[[UIDevice currentDevice] orientation];
 	if (UIInterfaceOrientationIsLandscape(current)) {
 		button.frame = CGRectMake(0, 0, kButtonWidthLandscape, size.height);
-		button.showImage = YES;
+		//button.showImage = YES;
 	} else {
 		button.frame = CGRectMake(0, 0, kButtonWidthPortrait, size.height);
-		button.showImage = NO;
+		//button.showImage = NO;
 	}
 }
 

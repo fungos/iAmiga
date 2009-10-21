@@ -1128,3 +1128,39 @@ void update_adkmasks (void)
     audio_channel_adk_mask[3] = (((t >> 3) & 1) - 1);
 }
 
+#if defined SAVESTATE || defined DEBUGGER
+
+uae_u8 *save_audio (unsigned int channel, uae_u32 *len, uae_u8 *dstptr)
+{
+#ifdef PROFILING	
+	PROFILINGBEGIN
+#endif	
+    const struct audio_channel_data *acd = &audio_channel[channel];
+    uae_u8 *dst, *dstbak;
+    uae_u16 p;
+
+    if (dstptr)
+	dstbak = dst = dstptr;
+    else
+	dstbak = dst = malloc (100);
+
+    save_u8 ((uae_u8)acd->state);
+    save_u8 (acd->vol);
+    save_u8 (acd->intreq2);
+    save_u8 (acd->request_word);
+    save_u16 (acd->len);
+    save_u16 (acd->wlen);
+    p = acd->per == PERIOD_MAX ? 0 : acd->per / CYCLE_UNIT;
+    save_u16 (p);
+    save_u16 (acd->dat2);
+    save_u32 (acd->lc);
+    save_u32 (acd->pt);
+    save_u32 (acd->evtime);
+    *len = dst - dstbak;
+#ifdef PROFILING	
+	PROFILINGEND(PROFILINGINDEX+40)
+#endif	
+    return dstbak;
+}
+
+#endif /* SAVESTATE || DEBUGGER */

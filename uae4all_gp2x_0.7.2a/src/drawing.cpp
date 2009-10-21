@@ -543,6 +543,70 @@ static __inline__ void fill_line (void)
 	 */
 }
 
+/* H-A-M-
+static unsigned int ham_lastcolor;
+
+static int ham_decode_pixel;
+
+ Decode HAM in the invisible portion of the display (left of VISIBLE_LEFT_BORDER),
+   but don't draw anything in.  This is done to prepare HAM_LASTCOLOR for later,
+   when decode_ham runs.  
+static void init_ham_decoding (void)
+{
+    int unpainted_amiga = res_shift_from_window (unpainted);
+    ham_decode_pixel = src_pixel;
+    ham_lastcolor = color_reg_get (&colors_for_drawing, 0);
+
+    if (! bplham || (bplplanecnt != 6 && ((currprefs.chipset_mask & CSMASK_AGA) == 0 || bplplanecnt != 8))) {
+		if (unpainted_amiga > 0) {
+			int pv = pixdata.apixels[ham_decode_pixel + unpainted_amiga - 1];
+			ham_lastcolor = colors_for_drawing.color_regs_ecs[pv];
+		}
+    } else {
+	if (bplplanecnt == 6) { /* OCS/ECS mode HAM6 
+	    while (unpainted_amiga-- > 0) {
+		int pv = pixdata.apixels[ham_decode_pixel++];
+		switch (pv & 0x30) {
+		case 0x00: ham_lastcolor = colors_for_drawing.color_regs_ecs[pv]; break;
+		case 0x10: ham_lastcolor &= 0xFF0; ham_lastcolor |= (pv & 0xF); break;
+		case 0x20: ham_lastcolor &= 0x0FF; ham_lastcolor |= (pv & 0xF) << 8; break;
+		case 0x30: ham_lastcolor &= 0xF0F; ham_lastcolor |= (pv & 0xF) << 4; break;
+		}
+	    }
+	}
+    }
+}
+
+static void decode_ham (int pix, int stoppos)
+{
+    int todraw_amiga = res_shift_from_window (stoppos - pix);
+
+    if (! bplham || (bplplanecnt != 6 && ((currprefs.chipset_mask & CSMASK_AGA) == 0 || bplplanecnt != 8))) {
+	while (todraw_amiga-- > 0) {
+	    int pv = pixdata.apixels[ham_decode_pixel];
+		ham_lastcolor = colors_for_drawing.color_regs_ecs[pv];
+
+	    ham_linebuf[ham_decode_pixel++] = ham_lastcolor;
+	}
+    } else {
+	if (bplplanecnt == 6) { /* OCS/ECS mode HAM6 
+	    while (todraw_amiga-- > 0) {
+		int pv = pixdata.apixels[ham_decode_pixel];
+		switch (pv & 0x30) {
+		case 0x00: ham_lastcolor = colors_for_drawing.color_regs_ecs[pv]; break;
+		case 0x10: ham_lastcolor &= 0xFF0; ham_lastcolor |= (pv & 0xF); break;
+		case 0x20: ham_lastcolor &= 0x0FF; ham_lastcolor |= (pv & 0xF) << 8; break;
+		case 0x30: ham_lastcolor &= 0xF0F; ham_lastcolor |= (pv & 0xF) << 4; break;
+		}
+		ham_linebuf[ham_decode_pixel++] = ham_lastcolor;
+	    }
+	}
+    }
+}
+
+*/
+
+
 static __inline__ void gen_pfield_tables (void)
 {
     int i;
@@ -657,28 +721,31 @@ static __inline__ void draw_sprites_1 (struct sprite_entry *_GCCRES_ e, int dual
 static __inline__ void draw_sprites_ecs (struct sprite_entry *_GCCRES_ e)
 {
     uae4all_prof_start(12);
-    if (e->has_attached)
-		if (bplres == 1)
+    if (e->has_attached) {
+		if (bplres == 1) {
 			if (bpldualpf)
 				draw_sprites_normal_dp_hi_at (e);
 			else
 				draw_sprites_normal_sp_hi_at (e);
+		} else {
+			if (bpldualpf)
+				draw_sprites_normal_dp_lo_at (e);
 			else
-				if (bpldualpf)
-					draw_sprites_normal_dp_lo_at (e);
-				else
-					draw_sprites_normal_sp_lo_at (e);
-				else
-					if (bplres == 1)
-						if (bpldualpf)
-							draw_sprites_normal_dp_hi_nat (e);
-						else
-							draw_sprites_normal_sp_hi_nat (e);
-						else
-							if (bpldualpf)
-								draw_sprites_normal_dp_lo_nat (e);
-							else
-								draw_sprites_normal_sp_lo_nat (e);
+				draw_sprites_normal_sp_lo_at (e);
+		}
+	} else {
+		if (bplres == 1) {
+			if (bpldualpf)
+				draw_sprites_normal_dp_hi_nat (e);
+			else
+				draw_sprites_normal_sp_hi_nat (e);
+		} else {
+			if (bpldualpf)
+				draw_sprites_normal_dp_lo_nat (e);
+			else
+				draw_sprites_normal_sp_lo_nat (e);
+		}
+	}
     uae4all_prof_end(12);
 }
 
@@ -1924,6 +1991,16 @@ static char *numbers = { /* ugly */
 "------ ------ ------ ------ ------ ------ ------ ------ ------ ------ "
 };
 
+static char *letters = { /* ugly */
+"------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ "
+"-xxxxx -xxxxx -xxxxx -xxxx- -xxxxx -xxxxx -xxxxx -x---x --xx-- -----x -x--x- -x---- -x---x -x---x --xxx- -xxxx- -xxxx- -xxxx- -xxxxx -xxxxx -x---x -x---x -x---x -x---x -x---x -xxxxx "
+"-x---x -x---x -x---- -x---x -x---- -x---- -x---- -x---x --xx-- -----x -x-x-- -x---- -xxxxx -xx--x -x---x -x---x -x---- -x---x -x---- ---x-- -x---x -x---x --x-x- --x-x- -x---x ----x- "
+"-xxxxx -xxxxx -x---- -x---x -xxxxx -xxxx- -xxxxx -xxxxx --xx-- -----x -xx--- -x---- -x---x -x-x-x -x---x -xxxx- -x---- -xxxx- -xxxxx ---x-- -x---x -x---x ---x-- ---x-- -x-x-x ---x-- "
+"-x---x -x---x -x---- -x---x -x---- -x---- -x---x -x---x --xx-- -x---x -x-x-- -x---- -x---x -x--xx -x---x -x---- -x---- -x-x-- -----x ---x-- -x---x -xx-xx --x-x- ---x-- -xx-xx --x--- "
+"-x---x -xxxxx -xxxxx -xxxx- -xxxxx -x---- -xxxxx -x---x --xx-- -xxxxx -x--x- -xxxx- -x---x -x---x --xxx- -x---- -xxxx- -x--xx -xxxxx ---x-- --xxx- ---x-- -x---x ---x-- -x---x -xxxxx "
+"------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ "
+};
+
 static int back_drive_track0=-1,back_drive_motor0=-1;
 static int back_drive_track1=-1,back_drive_motor1=-1;
 static int back_powerled=-1;
@@ -1944,6 +2021,19 @@ static _INLINE_ void write_tdnumber (int x, int y, int num)
 		putpixel (x + j, *numptr == 'x' ? xcolors[0xfff] : xcolors[0x000]);
 		numptr++;
     }
+}
+static _INLINE_ void write_tdletter (int x, int y, char ch)
+{
+    int j;
+    uae_u8 *numptr;
+	
+    numptr = (uae_u8 *)(letters + (ch-65) * TD_NUM_WIDTH + 26 * TD_NUM_WIDTH * y);
+  
+	for (j = 0; j < TD_NUM_WIDTH; j++) {
+	putpixel (x + j, *numptr == 'x' ? xcolors[0xfff] : xcolors[0x000]);
+	numptr++;
+    }
+
 }
 
 static _INLINE_ void draw_status_line (int line)
