@@ -25,12 +25,15 @@
 }
 */
 
-/*
+extern int mainMenu_showStatus;
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
+	
+	status.on = mainMenu_showStatus ? YES : NO;
 }
-*/
+
 
 /*
 // Override to allow orientations other than the default portrait orientation.
@@ -62,6 +65,19 @@ extern void uae_reset();
 	uae_reset();
 }
 
+- (IBAction)toggleStatus:(UISwitch*)sender {
+	mainMenu_showStatus = sender.on ? 1 : 0;
+}
+
+extern void DISK_motors_off();
+
+- (IBAction)otherAction:(UIControl*)sender {
+	int tag = sender.tag;
+	if (tag == 1) {
+		DISK_motors_off();
+	}
+}
+
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
@@ -72,6 +88,7 @@ extern void uae_reset();
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
+	[status release];
 }
 
 

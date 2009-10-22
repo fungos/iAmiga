@@ -85,9 +85,6 @@ extern "C" char changed_df[1][256];;
 
 char* get_df_path(int drive) {
 	NSString *bp = [[NSBundle mainBundle] bundlePath];
-	//bp = [bp stringByAppendingPathComponent:@"Ghosts 'N Goblins.adf"];
-	//bp = [bp stringByAppendingPathComponent:@"IK+.adf"];
-	//bp = [bp stringByAppendingPathComponent:@"Turrican II.adf"];
 	
 	static char df0Path[500];
 	if (drive == 0) {

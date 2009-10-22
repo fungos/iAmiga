@@ -38,8 +38,10 @@ EmulationViewController *g_emulatorViewController;
 #define kDisplayFramePortrait					CGRectMake(0, 0, 320, 240)
 #define kInputFramePortrait						CGRectMake(0, 0, 320, 480)
 
+// stretched version, specifically cropped for IK+
+#define kDisplayFrameLandscape					CGRectMake(0, 0, 480, 366)
 //#define kDisplayFrameLandscape					CGRectMake(28, 0, 424, 320)
-#define kDisplayFrameLandscape					CGRectMake(32, 0, 416, 312)
+//#define kDisplayFrameLandscape					CGRectMake(32, 0, 416, 312)
 #define kInputFrameLandscape					CGRectMake(0, 0, 480, 320)
 
 // tabbar

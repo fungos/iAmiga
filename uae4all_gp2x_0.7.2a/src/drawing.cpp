@@ -133,7 +133,7 @@ union sps_union spixstate;
 char *xlinebuffer;
 
 static int *amiga2aspect_line_map, *native2amiga_line_map;
-static char *row_map[2049] UAE4ALL_ALIGN;
+static char *row_map[GFXVIDINFO_HEIGHT] UAE4ALL_ALIGN;
 static int max_drawn_amiga_line;
 
 /* line_draw_funcs: pfield_do_linetoscr, pfield_do_fill_line */
@@ -1174,27 +1174,27 @@ static __inline__ void draw_sprites_ecs (struct sprite_entry *_GCCRES_ e)
 
 
 #define MERGE(a,b,mask,shift) {\
-register uae_u32 tmp = mask & (a ^ (b >> shift)); \
-a ^= tmp; \
-b ^= (tmp << shift); \
+	register uae_u32 tmp = mask & (a ^ (b >> shift)); \
+	a ^= tmp; \
+	b ^= (tmp << shift); \
 }
 
 #define MERGE_0(a,b,mask,shift) {\
-register uae_u32 tmp = mask & (b>>shift); \
-a = tmp; \
-b ^= (tmp << shift); \
+	register uae_u32 tmp = mask & (b>>shift); \
+	a = tmp; \
+	b ^= (tmp << shift); \
 }
 
 #define GETLONG(P) (*(uae_u32 *)P)
 #define DATA_POINTER(n) (line_data[lineno] + (n)*MAX_WORDS_PER_LINE*2)
 
 #define DO_SWLONG(A,V) {\
-register uae_u8 *b = (uae_u8 *)(A); \
-register uae_u32 v = (V); \
-*b++ = v >> 24; \
-*b++ = v >> 16; \
-*b++ = v >> 8; \
-*b = v; \
+	register uae_u8 *b = (uae_u8 *)(A); \
+	register uae_u32 v = (V); \
+	*b++ = v >> 24; \
+	*b++ = v >> 16; \
+	*b++ = v >> 8; \
+	*b = v; \
 }
 
 #ifndef UNROLL_PFIELD
@@ -1981,7 +1981,7 @@ static int td_pos = (TD_RIGHT|TD_BOTTOM);
 
 #define TD_TOTAL_HEIGHT (TD_PADY * 2 + TD_NUM_HEIGHT)
 
-static char *numbers = { /* ugly */
+static const char *numbers = { /* ugly */
 "------ ------ ------ ------ ------ ------ ------ ------ ------ ------ "
 "-xxxxx ---xx- -xxxxx -xxxxx -x---x -xxxxx -xxxxx -xxxxx -xxxxx -xxxxx "
 "-x---x ----x- -----x -----x -x---x -x---- -x---- -----x -x---x -x---x "
@@ -1991,7 +1991,7 @@ static char *numbers = { /* ugly */
 "------ ------ ------ ------ ------ ------ ------ ------ ------ ------ "
 };
 
-static char *letters = { /* ugly */
+static const char *letters = { /* ugly */
 "------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ "
 "-xxxxx -xxxxx -xxxxx -xxxx- -xxxxx -xxxxx -xxxxx -x---x --xx-- -----x -x--x- -x---- -x---x -x---x --xxx- -xxxx- -xxxx- -xxxx- -xxxxx -xxxxx -x---x -x---x -x---x -x---x -x---x -xxxxx "
 "-x---x -x---x -x---- -x---x -x---- -x---- -x---- -x---x --xx-- -----x -x-x-- -x---- -xxxxx -xx--x -x---x -x---x -x---- -x---x -x---- ---x-- -x---x -x---x --x-x- --x-x- -x---x ----x- "
@@ -2129,10 +2129,10 @@ static _INLINE_ void finish_drawing_frame (void)
 {
     int i;
 	
-    if (mainMenu_showStatus)
-        fps_counter_upd();
+    //if (mainMenu_showStatus)
+    //    fps_counter_upd();
 	
-#ifndef DREAMCAST
+#if !defined(DREAMCAST) && !defined(IPHONE)
     if (! lockscr ()) {
 		notice_screen_contents_lost ();
 		return;
@@ -2148,7 +2148,7 @@ static _INLINE_ void finish_drawing_frame (void)
 		
 		i1 = i + min_ypos_for_screen;
 		where = amiga2aspect_line_map[i1];
-#if defined (GP2X) || defined (GIZMONDO) || defined (PSP)
+#if defined (GP2X) || defined (GIZMONDO) || defined (PSP) || defined (IPHONE)
 		if (where >= GFXVIDINFO_HEIGHT - ((mainMenu_showStatus) ? TD_TOTAL_HEIGHT : 0))
 #else
 			if (where >= GFXVIDINFO_HEIGHT - TD_TOTAL_HEIGHT)
@@ -2158,7 +2158,7 @@ static _INLINE_ void finish_drawing_frame (void)
 			continue;
 		pfield_draw_line (line, where, amiga2aspect_line_map[i1 + 1]);
     }
-#if defined (GP2X) || defined (PSP) || defined (GIZMONDO)
+#if defined (GP2X) || defined (PSP) || defined (GIZMONDO) || defined (IPHONE)
 	if (mainMenu_showStatus)
 	{
 #endif
@@ -2184,7 +2184,7 @@ static _INLINE_ void finish_drawing_frame (void)
 				do_flush_line (line);
 			}
 		}
-#if defined (GP2X) || defined (PSP) || defined (GIZMONDO)
+#if defined (GP2X) || defined (PSP) || defined (GIZMONDO) || defined (IPHONE)
 	}
 #endif
     drawfinished=1;

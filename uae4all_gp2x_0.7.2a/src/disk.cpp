@@ -117,6 +117,16 @@ typedef struct {
     char newname[256]; /* storage space for new filename during eject delay */
 } drive;
 
+// TODO: planning to separate drive and drive_header so that Disk_
+/*
+typedef struct {
+	int steplimit;
+	int motoroff;
+    int mfmpos;
+    int tracklen;
+} drive_header;
+ */
+
 static drive floppy[NUM_DRIVES];
 static int linecounter;
 
@@ -1506,6 +1516,14 @@ void DISK_reset (void)
 		drv->dskchange = 1;
 	    drv->mfmpos = 0;
     }
+}
+
+// performance HACKing code
+
+extern "C" void DISK_motors_off() {
+	for (int i=0; i<NUM_DRIVES; i++) {
+		drive_motor(&floppy[i], 1);
+	}
 }
 
 #if 0

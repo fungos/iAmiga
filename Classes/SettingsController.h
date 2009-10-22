@@ -10,10 +10,12 @@
 #import "EMUROMBrowserViewController.h"
 
 @interface SettingsController : UIViewController<SelectRomDelegate> {
-
+	IBOutlet UISwitch		*status;
 }
 
 - (IBAction)selectDrive:(UIButton*)sender;
 - (IBAction)resetAmiga:(id)sender;
+- (IBAction)toggleStatus:(id)sender;
+- (IBAction)otherAction:(id)sender;
 
 @end
