@@ -126,6 +126,7 @@ typedef uae_s8 sample8_t;
 
 #ifdef USE_MAX_EV
 
+/*
 #define SCHEDULE_AUDIO(CHN) \
 	if (audio_channel_evtime[CHN] != MAX_EV) { \
 	    if (best > audio_channel_evtime[CHN]) { \
@@ -133,6 +134,12 @@ typedef uae_s8 sample8_t;
 			eventtab[ev_audio].active = 1; \
 	    } \
 	}
+*/
+
+#define SCHEDULE_AUDIO(CHN) \
+	if (best > audio_channel_evtime[CHN]) { \
+		best = audio_channel_evtime[CHN]; \
+	} 
 
 #else
 
@@ -164,15 +171,22 @@ void schedule_audio (void)
     eventtab[ev_audio].evtime = get_cycles () + best;
 #else
     unsigned long best = MAX_EV;
-    int i;
 	
-    eventtab[ev_audio].active = 0;
-    eventtab[ev_audio].oldcycles = get_cycles ();
-    for (i = 0; i < NUMBER_CHANNELS; i++) {
-		//struct audio_channel_data *cdp;
+    //eventtab[ev_audio].active = 0;
+    //eventtab[ev_audio].oldcycles = get_cycles ();
+
+    for (int i = 0; i < NUMBER_CHANNELS; i++) {
     	SCHEDULE_AUDIO(i)
     }
-    eventtab[ev_audio].evtime = get_cycles () + best;
+	
+	if (best == MAX_EV)
+		eventtab[ev_audio].active = 0;
+	else
+		eventtab[ev_audio].active = 1;
+
+	unsigned long currcycles = get_cycles();
+	eventtab[ev_audio].oldcycles = currcycles;
+    eventtab[ev_audio].evtime = currcycles + best;
 #endif
 }
 
@@ -816,7 +830,8 @@ void update_audio (void)
 		asm(".align 4");
 #endif	
 		register unsigned long int best_evtime = n_cycles + 1;
-		AUDIO_PREFETCH(audio_channel_evtime);
+		int addr = (int)audio_channel_evtime;
+		AUDIO_PREFETCH(addr);
 
 		// CHECK_STATE
 		if (best_evtime > audio_channel_evtime[0]) 
@@ -841,9 +856,12 @@ void update_audio (void)
 		audio_channel_evtime[3] -= best_evtime;
 		n_cycles -= best_evtime;
 		
-		AUDIO_PREFETCH(audio_channel_current_sample);
-		AUDIO_PREFETCH(audio_channel_vol);
-		AUDIO_PREFETCH(audio_channel_adk_mask);
+		addr = (int)audio_channel_current_sample;
+		AUDIO_PREFETCH(addr);
+		addr = (int)audio_channel_vol;
+		AUDIO_PREFETCH(addr);
+		addr = (int)audio_channel_adk_mask;
+		AUDIO_PREFETCH(addr);
 		
 		// IF_SAMPLE
 		if (!next_sample_evtime) {

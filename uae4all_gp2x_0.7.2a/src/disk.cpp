@@ -1521,8 +1521,10 @@ void DISK_reset (void)
 // performance HACKing code
 
 extern "C" void DISK_motors_off() {
-	for (int i=0; i<NUM_DRIVES; i++) {
-		drive_motor(&floppy[i], 1);
+	for (int dr=0; dr<NUM_DRIVES; dr++) {
+		drive_motor(&floppy[dr], 1);
+		floppy[dr].state = (!(selected & (1 << dr))) | !floppy[dr].motoroff;
+		update_drive_gui (dr);
 	}
 }
 

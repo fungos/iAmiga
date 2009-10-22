@@ -708,7 +708,7 @@ static void cia_wait (void)
 uae_u32 REGPARAM2 cia_bget (uaecptr addr)
 {
     int r = (addr & 0xf00) >> 8;
-    special_mem |= S_READ;
+    SMEM_READ;
     cia_wait ();
     switch ((addr >> 12) & 3)
     {
@@ -725,7 +725,7 @@ uae_u32 REGPARAM2 cia_bget (uaecptr addr)
 uae_u32 REGPARAM2 cia_wget (uaecptr addr)
 {
     int r = (addr & 0xf00) >> 8;
-    special_mem |= S_READ;
+    SMEM_READ;
     cia_wait ();
     switch ((addr >> 12) & 3)
     {
@@ -742,7 +742,7 @@ uae_u32 REGPARAM2 cia_wget (uaecptr addr)
 uae_u32 REGPARAM2 cia_lget (uaecptr addr)
 {
     uae_u32 v;
-    special_mem |= S_READ;
+    SMEM_READ;
     v = cia_wget (addr) << 16;
     v |= cia_wget (addr + 2);
     return v;
@@ -754,7 +754,7 @@ void REGPARAM2 cia_bput (uaecptr addr, uae_u32 value)
     value&=0xFF;
 #endif
     int r = (addr & 0xf00) >> 8;
-    special_mem |= S_WRITE;
+    SMEM_WRITE;
     cia_wait ();
     if ((addr & 0x2000) == 0)
 		WriteCIAB (r, value);
@@ -769,7 +769,7 @@ void REGPARAM2 cia_wput (uaecptr addr, uae_u32 value)
 #endif
     value = value;
     int r = (addr & 0xf00) >> 8;
-    special_mem |= S_WRITE;
+    SMEM_WRITE;
     cia_wait ();
     if ((addr & 0x2000) == 0)
 		WriteCIAB (r, value >> 8);
@@ -780,7 +780,7 @@ void REGPARAM2 cia_wput (uaecptr addr, uae_u32 value)
 void REGPARAM2 cia_lput (uaecptr addr, uae_u32 value)
 {
     value = value;
-    special_mem |= S_WRITE;
+    SMEM_WRITE;
     cia_wput (addr, value >> 16);
     cia_wput (addr + 2, value & 0xffff);
 }
@@ -802,13 +802,13 @@ addrbank clock_bank = {
 
 uae_u32 REGPARAM2 clock_lget (uaecptr addr)
 {
-    special_mem |= S_READ;
+    SMEM_READ;
     return clock_bget (addr + 3);
 }
 
 uae_u32 REGPARAM2 clock_wget (uaecptr addr)
 {
-    special_mem |= S_READ;
+    SMEM_READ;
     return clock_bget (addr + 1);
 }
 
@@ -818,7 +818,7 @@ uae_u32 REGPARAM2 clock_bget (uaecptr addr)
     struct tm *ct;
 	
     ct = localtime (&t);
-    special_mem |= S_READ;
+    SMEM_READ;
 	
     switch (addr & 0x3f) {
 		case 0x03: return ct->tm_sec % 10;
@@ -844,19 +844,19 @@ uae_u32 REGPARAM2 clock_bget (uaecptr addr)
 
 void REGPARAM2 clock_lput (uaecptr addr, uae_u32 value)
 {
-    special_mem |= S_WRITE;
+    SMEM_WRITE;
     /* No way */
 }
 
 void REGPARAM2 clock_wput (uaecptr addr, uae_u32 value)
 {
-    special_mem |= S_WRITE;
+    SMEM_WRITE;
     /* No way */
 }
 
 void REGPARAM2 clock_bput (uaecptr addr, uae_u32 value)
 {
-    special_mem |= S_WRITE;
+    SMEM_WRITE;
     switch (addr & 0x3f) {
 		case 0x37: clock_control_d = value; break;
 		case 0x3b: clock_control_e = value; break;

@@ -3317,10 +3317,10 @@ void hsync_handler (void)
     eventtab[ev_hsync].oldcycles = get_cycles ();
     CIA_hsync_handler ();
 	
-    if (produce_sound) {
+    //if (produce_sound) {
 		update_audio();
 		fetch_audio();
-    }
+    //}
 	
     /* In theory only an equality test is needed here - but if a program
 	 goes haywire with the VPOSW register, it can cause us to miss this,
@@ -3641,7 +3641,7 @@ static __inline__ uae_u32 REGPARAM2 custom_wget_1 (uaecptr addr)
     dbgf("custom_wget_1 0x%X\n",addr&0xFFFF);
 #endif
     uae_u16 v;
-    special_mem |= S_READ;
+    SMEM_READ;
     switch (addr & 0x1FE) {
 		case 0x002: v = DMACONR (); break;
 		case 0x004: v = VPOSR (); break;
@@ -3698,7 +3698,7 @@ uae_u32 REGPARAM2 custom_bget (uaecptr addr)
 #ifdef DEBUG_CUSTOM
 	//  dbg("custom_bget");
 #endif
-    special_mem |= S_READ;
+    SMEM_READ;
     return custom_wget (addr & 0xfffe) >> (addr & 1 ? 0 : 8);
 }
 
@@ -3707,7 +3707,7 @@ uae_u32 REGPARAM2 custom_lget (uaecptr addr)
 #ifdef DEBUG_CUSTOM
 	//  dbg("custom_lget");
 #endif
-    special_mem |= S_READ;
+    SMEM_READ;
     return ((uae_u32)custom_wget (addr & 0xfffe) << 16) | custom_wget ((addr + 2) & 0xfffe);
 }
 
@@ -3894,7 +3894,7 @@ void REGPARAM2 custom_wput (uaecptr addr, uae_u32 value)
     dbgf("custom_wput 0x%X 0x%X\n",addr,value);
 #endif
     int hpos = current_hpos ();
-    special_mem |= S_WRITE;
+    SMEM_WRITE;
 	
     sync_copper_with_cpu (hpos, 1, addr);
     custom_wput_1 (hpos, addr, value);
@@ -3912,7 +3912,7 @@ void REGPARAM2 custom_bput (uaecptr addr, uae_u32 value)
     static int warned = 0;
     /* Is this correct now? (There are people who bput things to the upper byte of AUDxVOL). */
     uae_u16 rval = (value << 8) | (value & 0xFF);
-    special_mem |= S_WRITE;
+    SMEM_WRITE;
     custom_wput (addr, rval);
     if (!warned)
     {
@@ -3923,7 +3923,7 @@ void REGPARAM2 custom_bput (uaecptr addr, uae_u32 value)
 
 void REGPARAM2 custom_lput(uaecptr addr, uae_u32 value)
 {
-    special_mem |= S_WRITE;
+    SMEM_WRITE;
     custom_wput (addr & 0xfffe, value >> 16);
     custom_wput ((addr + 2) & 0xfffe, (uae_u16)value);
 }

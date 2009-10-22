@@ -32,8 +32,10 @@ unsigned prefs_chipmem_size;
 void clear_fame_mem_dummy(void);
 #endif
 
+#ifdef SPECIAL_MEM_FLAGS
 /* Set by each memory handler that does not simply access real memory.  */
 int special_mem;
+#endif
 
 int ersatzkickfile = 0;
 
@@ -103,7 +105,7 @@ uae_u32 REGPARAM2 dummy_lget (uaecptr addr)
 #ifdef DEBUG_MEMORY
     dbgf("dummy_lget 0x%X\n",addr);
 #endif
-    special_mem |= S_READ;
+    SMEM_READ;
     return 0xFFFFFFFF;
 }
 
@@ -112,7 +114,7 @@ uae_u32 REGPARAM2 dummy_wget (uaecptr addr)
 #ifdef DEBUG_MEMORY
     dbgf("dummy_wget 0x%X\n",addr);
 #endif
-    special_mem |= S_READ;
+    SMEM_READ;
     return 0xFFFF;
 }
 
@@ -121,7 +123,7 @@ uae_u32 REGPARAM2 dummy_bget (uaecptr addr)
 #ifdef DEBUG_MEMORY
     dbgf("dummy_bget 0x%X\n",addr);
 #endif
-    special_mem |= S_READ;
+    SMEM_READ;
     return 0xFF;
 }
 
@@ -130,26 +132,26 @@ void REGPARAM2 dummy_lput (uaecptr addr, uae_u32 l)
 #ifdef DEBUG_MEMORY
     dbgf("dummy_lput 0x%X = 0x%X\n",addr,l);
 #endif
-    special_mem |= S_WRITE;
+    SMEM_WRITE;
 }
 void REGPARAM2 dummy_wput (uaecptr addr, uae_u32 w)
 {
 #ifdef DEBUG_MEMORY
     dbgf("dummy_wput 0x%X = 0x%X\n",addr,w);
 #endif
-    special_mem |= S_WRITE;
+    SMEM_WRITE;
 }
 void REGPARAM2 dummy_bput (uaecptr addr, uae_u32 b)
 {
 #ifdef DEBUG_MEMORY
     dbgf("dummy_bput 0x%X = 0x%X\n",addr,b);
 #endif
-    special_mem |= S_WRITE;
+    SMEM_WRITE;
 }
 
 int REGPARAM2 dummy_check (uaecptr addr, uae_u32 size)
 {
-    special_mem |= S_READ;
+    SMEM_READ;
 
     return 0;
 }
@@ -170,7 +172,7 @@ uae_u32 REGPARAM2 mbres_lget (uaecptr addr)
 #ifdef DEBUG_MEMORY
     dbgf("mbres_lget 0x%X\n",addr);
 #endif
-    special_mem |= S_READ;
+    SMEM_READ;
 
     return 0;
 }
@@ -180,7 +182,7 @@ uae_u32 REGPARAM2 mbres_wget (uaecptr addr)
 #ifdef DEBUG_MEMORY
     dbgf("mbres_wget 0x%X\n",addr);
 #endif
-    special_mem |= S_READ;
+    SMEM_READ;
 
     return 0;
 }
@@ -190,7 +192,7 @@ uae_u32 REGPARAM2 mbres_bget (uaecptr addr)
 #ifdef DEBUG_MEMORY
     dbgf("mbres_bget 0x%X\n",addr);
 #endif
-    special_mem |= S_READ;
+    SMEM_READ;
 
     return (addr & 0xFFFF) == 3 ? mbres_val : 0;
 }
@@ -200,21 +202,21 @@ void REGPARAM2 mbres_lput (uaecptr addr, uae_u32 l)
 #ifdef DEBUG_MEMORY
     dbgf("mbres_lput 0x%X = 0x%X\n",addr,l);
 #endif
-    special_mem |= S_WRITE;
+    SMEM_WRITE;
 }
 void REGPARAM2 mbres_wput (uaecptr addr, uae_u32 w)
 {
 #ifdef DEBUG_MEMORY
     dbgf("mbres_wput 0x%X = 0x%X\n",addr,w);
 #endif
-    special_mem |= S_WRITE;
+    SMEM_WRITE;
 }
 void REGPARAM2 mbres_bput (uaecptr addr, uae_u32 b)
 {
 #ifdef DEBUG_MEMORY
     dbgf("mbres_bput 0x%X = 0x%X\n",addr,b);
 #endif
-    special_mem |= S_WRITE;
+    SMEM_WRITE;
 
     if ((addr & 0xFFFF) == 3)
 	mbres_val = b;

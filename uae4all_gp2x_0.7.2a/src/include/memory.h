@@ -17,9 +17,18 @@
 extern void memory_reset (void);
 extern unsigned chipmem_checksum(void);
 
+#ifdef SPECIAL_MEM_FLAGS
+
 extern int special_mem;
 #define S_READ 1
 #define S_WRITE 2
+
+#define SMEM_READ	special_mem |= S_READ
+#define SMEM_WRITE	special_mem |= S_WRITE
+#else
+#define SMEM_READ
+#define SMEM_WRITE
+#endif
 
 
 typedef uae_u32 (*mem_get_func)(uaecptr) REGPARAM;

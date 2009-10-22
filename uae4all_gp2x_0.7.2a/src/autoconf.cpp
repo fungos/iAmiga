@@ -248,7 +248,7 @@ uae_u32 REGPARAM2 rtarea_lget (uaecptr addr)
 #ifdef DEBUG_MEMORY
     dbgf("rtarea_lget 0x%X\n",addr);
 #endif
-    special_mem |= S_READ;
+    SMEM_READ;
     addr &= 0xFFFF;
     return (uae_u32)(rtarea_wget (addr) << 16) + rtarea_wget (addr+2);
 }
@@ -258,7 +258,7 @@ uae_u32 REGPARAM2 rtarea_wget (uaecptr addr)
 #ifdef DEBUG_MEMORY
     dbgf("rtarea_wget 0x%X\n",addr);
 #endif
-    special_mem |= S_READ;
+    SMEM_READ;
     addr &= 0xFFFF;
     return (rtarea[addr]<<8) + rtarea[addr+1];
 }
@@ -268,7 +268,7 @@ uae_u32 REGPARAM2 rtarea_bget (uaecptr addr)
 #ifdef DEBUG_MEMORY
     dbgf("rtarea_bget 0x%X\n",addr);
 #endif
-    special_mem |= S_READ;
+    SMEM_READ;
     addr &= 0xFFFF;
     return rtarea[addr];
 }
@@ -278,7 +278,7 @@ void REGPARAM2 rtarea_lput (uaecptr addr, uae_u32 value)
 #ifdef DEBUG_MEMORY
     dbgf("rtarea_lput 0x%X = 0x%X\n",addr,value);
 #endif
-    special_mem |= S_WRITE;
+    SMEM_WRITE;
 }
 
 void REGPARAM2 rtarea_wput (uaecptr addr, uae_u32 value)
@@ -286,7 +286,7 @@ void REGPARAM2 rtarea_wput (uaecptr addr, uae_u32 value)
 #ifdef DEBUG_MEMORY
     dbgf("rtarea_wput 0x%X = 0x%X\n",addr,value);
 #endif
-    special_mem |= S_WRITE;
+    SMEM_WRITE;
 }
 
 void REGPARAM2 rtarea_bput (uaecptr addr, uae_u32 value)
@@ -294,7 +294,7 @@ void REGPARAM2 rtarea_bput (uaecptr addr, uae_u32 value)
 #ifdef DEBUG_MEMORY
     dbgf("rtarea_bput 0x%X = 0x%X\n",addr,value);
 #endif
-    special_mem |= S_WRITE;
+    SMEM_WRITE;
 }
 
 #ifdef USE_AUTOCONFIG
