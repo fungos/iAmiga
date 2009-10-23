@@ -24,6 +24,7 @@
 #import "uae.h"
 #import "JoystickViewLandscape.h"
 #import "CocoaUtility.h"
+#import "VirtualKeyboard.h"
 
 EmulationViewController *g_emulatorViewController;
 
@@ -85,6 +86,10 @@ const double kDefaultAnimationDuration					= 250.0 / 1000.0;
 	self.landscapeJoystickView = [[JoystickViewLandscape alloc] initWithFrame:kInputFrameLandscape];
 	self.landscapeJoystickView.hidden = YES;
 	[self.inputController addSubview:self.landscapeJoystickView];
+	
+	// virtual keyboard
+	vKeyboard = [[VirtualKeyboard alloc] initWithFrame:CGRectMake(0, 200, 200, 40)];
+	[view addSubview:vKeyboard];
 		
     self.view = view;
 	[view setUserInteractionEnabled:NO];

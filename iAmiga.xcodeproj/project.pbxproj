@@ -54,6 +54,8 @@
 		057442820FC3C25B003BE251 /* DisplayView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 057442810FC3C25B003BE251 /* DisplayView.mm */; };
 		0574432A0FC3C94F003BE251 /* kick13.rom in Resources */ = {isa = PBXBuildFile; fileRef = 057443290FC3C94F003BE251 /* kick13.rom */; };
 		057B0D4C0FD0D0ED00D549AD /* MMStopWatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 057B0D4B0FD0D0ED00D549AD /* MMStopWatch.m */; };
+		0585D55F1091640900C1E4C1 /* VirtualKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 0585D55E1091640900C1E4C1 /* VirtualKeyboard.m */; };
+		0585D5621091653E00C1E4C1 /* KeyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0585D5611091653E00C1E4C1 /* KeyView.m */; };
 		059E3A2710636CBA0056A577 /* fame_arm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A2410636CBA0056A577 /* fame_arm.cpp */; settings = {COMPILER_FLAGS = "-frename-registers -Wno-unused"; }; };
 		059E3A2810636CBA0056A577 /* m68k_interface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A2610636CBA0056A577 /* m68k_interface.cpp */; };
 		05B7066E0FD282230081B5C3 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 05B7066D0FD282230081B5C3 /* Entitlements.plist */; };
@@ -227,6 +229,10 @@
 		057443560FC3CA04003BE251 /* BEAST1-2.ADF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BEAST1-2.ADF"; sourceTree = "<group>"; };
 		057B0D4A0FD0D0ED00D549AD /* MMStopWatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMStopWatch.h; sourceTree = "<group>"; };
 		057B0D4B0FD0D0ED00D549AD /* MMStopWatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMStopWatch.m; sourceTree = "<group>"; };
+		0585D55D1091640900C1E4C1 /* VirtualKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VirtualKeyboard.h; sourceTree = "<group>"; };
+		0585D55E1091640900C1E4C1 /* VirtualKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VirtualKeyboard.m; sourceTree = "<group>"; };
+		0585D5601091653E00C1E4C1 /* KeyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyView.h; sourceTree = "<group>"; };
+		0585D5611091653E00C1E4C1 /* KeyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyView.m; sourceTree = "<group>"; };
 		059E3A2410636CBA0056A577 /* fame_arm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fame_arm.cpp; sourceTree = "<group>"; };
 		059E3A2510636CBA0056A577 /* fame_arm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fame_arm.h; sourceTree = "<group>"; };
 		059E3A2610636CBA0056A577 /* m68k_interface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = m68k_interface.cpp; sourceTree = "<group>"; };
@@ -318,6 +324,10 @@
 				0504155E0FCB475C00F46828 /* InputControllerView.mm */,
 				0504155F0FCB475C00F46828 /* JoystickViewLandscape.h */,
 				050415600FCB475C00F46828 /* JoystickViewLandscape.mm */,
+				0585D55D1091640900C1E4C1 /* VirtualKeyboard.h */,
+				0585D55E1091640900C1E4C1 /* VirtualKeyboard.m */,
+				0585D5601091653E00C1E4C1 /* KeyView.h */,
+				0585D5611091653E00C1E4C1 /* KeyView.m */,
 			);
 			name = Emulator;
 			sourceTree = "<group>";
@@ -961,6 +971,8 @@
 				05BC1AF71073448200EABC6E /* EMUFileInfo.m in Sources */,
 				05BC1AF91073448200EABC6E /* EMUROMBrowserViewController.mm in Sources */,
 				05BC1B1D10734C3B00EABC6E /* SettingsController.m in Sources */,
+				0585D55F1091640900C1E4C1 /* VirtualKeyboard.m in Sources */,
+				0585D5621091653E00C1E4C1 /* KeyView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

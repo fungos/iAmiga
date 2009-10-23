@@ -22,6 +22,8 @@
 @class DisplayView;
 @class InputControllerView;
 @class JoystickViewLandscape;
+@class VirtualKeyboard;
+
 class uae;
 
 enum tagEmulatorState {
@@ -34,6 +36,7 @@ enum tagEmulatorState {
 	// Views: both orientations
 	DisplayView					*displayView;
 	InputControllerView			*inputController;
+	VirtualKeyboard				*vKeyboard;
 	
 	// Views: portrait
 
