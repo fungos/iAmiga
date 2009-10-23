@@ -58,6 +58,19 @@
 	self.hidden = YES;
 }
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+	SDL_Event e = { SDL_KEYDOWN };
+	e.key.keysym.sym = key;
+	SDL_PushEvent(&e);
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+	SDL_Event e = { SDL_KEYUP };
+	e.key.keysym.sym = key;
+	SDL_PushEvent(&e);
+}
+
+
 - (void)dealloc {
     [super dealloc];
 }

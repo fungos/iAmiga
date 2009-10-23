@@ -25,6 +25,7 @@
 #import "JoystickViewLandscape.h"
 #import "CocoaUtility.h"
 #import "VirtualKeyboard.h"
+#import "sdl.h"
 
 EmulationViewController *g_emulatorViewController;
 
@@ -33,6 +34,7 @@ EmulationViewController *g_emulatorViewController;
 - (void)rotateToPortrait;
 - (void)rotateToLandscape;
 - (void)didRotate;
+- (void)toggleInputMode:(UIButton*)sender;
 
 @end
 
@@ -72,6 +74,7 @@ const double kDefaultAnimationDuration					= 250.0 / 1000.0;
 	// create all the views, order is important to ensure active areas of the UI are layered on top
 	CGRect frame = [UIScreen mainScreen].bounds;
 	UIView *view = [[UIView alloc] initWithFrame:frame];
+	//view.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin;
 	view.autoresizingMask = (UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
 	view.backgroundColor = [UIColor blackColor];
 	
@@ -83,13 +86,26 @@ const double kDefaultAnimationDuration					= 250.0 / 1000.0;
 	//self.inputController.delegate = self.landscapeJoystickView;
 	[view addSubview:self.inputController];
 	
-	self.landscapeJoystickView = [[JoystickViewLandscape alloc] initWithFrame:kInputFrameLandscape];
-	self.landscapeJoystickView.hidden = YES;
-	[self.inputController addSubview:self.landscapeJoystickView];
+	//self.landscapeJoystickView = [[JoystickViewLandscape alloc] initWithFrame:kInputFrameLandscape];
+	//self.landscapeJoystickView.hidden = YES;
+	//[self.inputController addSubview:self.landscapeJoystickView];
 	
 	// virtual keyboard
-	vKeyboard = [[VirtualKeyboard alloc] initWithFrame:CGRectMake(0, 200, 200, 40)];
+	vKeyboard = [[VirtualKeyboard alloc] initWithFrame:CGRectMake(0, 280, 200, 40)];
+	inputModeView.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin;
+	vKeyboard.hidden = YES;
 	[view addSubview:vKeyboard];
+	
+	inputModeView = [UIButton buttonWithType:UIButtonTypeCustom];
+	inputModeView.frame = CGRectMake(290, 5, 24, 24);
+	inputModeView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin;
+	inputModeView.alpha = 0.5;
+	modes[0] = [[UIImage imageFromResource:@"joystick.png"] retain];
+	modes[1] = [[UIImage imageFromResource:@"keyboard.png"] retain];
+	modes[2] = [[UIImage imageFromResource:@"mouse.png"] retain];
+	[inputModeView setImage:modes[0] forState:UIControlStateNormal];
+	[inputModeView addTarget:self action:@selector(toggleInputMode:) forControlEvents:UIControlEventTouchUpInside];
+	[view addSubview:inputModeView];
 		
     self.view = view;
 	[view setUserInteractionEnabled:NO];
@@ -102,6 +118,21 @@ const double kDefaultAnimationDuration					= 250.0 / 1000.0;
 												 name:@"UIDeviceOrientationDidChangeNotification" 
 											   object:nil];
 	
+}
+
+- (void)toggleInputMode:(UIButton*)sender {
+	if (inputMode == 0) {
+		vKeyboard.hidden = NO;
+		inputMode = 1;
+	} else {
+		vKeyboard.hidden = YES;
+		inputMode++;
+		if (inputMode > 2)
+			inputMode = 0;
+	}
+
+	
+	[inputModeView setImage:modes[inputMode] forState:UIControlStateNormal];
 }
 
 #pragma mark Rotation handlers
@@ -142,6 +173,7 @@ const double kDefaultAnimationDuration					= 250.0 / 1000.0;
 		self.tabBarController.view.frame = kTabBarVisible;
 		self.view.transform = CGAffineTransformIdentity;
 		self.view.bounds = CGRectMake(0, 0, 320, 480);
+		self.view.frame = CGRectMake(0, 0, 320, 480);
 		
 		[self rotateToPortrait];
 	}
@@ -153,7 +185,7 @@ const double kDefaultAnimationDuration					= 250.0 / 1000.0;
 		
 	self.displayView.frame = kDisplayFramePortrait;
 	[self.displayView setNeedsLayout];
-	
+	inputModeView.frame = CGRectMake(290, 5, 24, 24);
 	//self.landscapeJoystickView.hidden	= YES;
 	//self.inputController.delegate		= joystickView;
 	self.inputController.frame			= kInputFramePortrait;

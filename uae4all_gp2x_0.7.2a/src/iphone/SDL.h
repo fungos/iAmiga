@@ -13,6 +13,32 @@
 extern "C" {
 #endif
 
+	/* General keyboard/mouse state definitions */
+#define SDL_RELEASED	0
+#define SDL_PRESSED		1
+	
+/**
+ * \enum SDLMod
+ *
+ * \brief Enumeration of valid key mods (possibly OR'd together)
+ */
+typedef enum
+{
+	KMOD_NONE = 0x0000,
+	KMOD_LSHIFT = 0x0001,
+	KMOD_RSHIFT = 0x0002,
+	KMOD_LCTRL = 0x0040,
+	KMOD_RCTRL = 0x0080,
+	KMOD_LALT = 0x0100,
+	KMOD_RALT = 0x0200,
+	KMOD_LGUI = 0x0400,
+	KMOD_RGUI = 0x0800,
+	KMOD_NUM = 0x1000,
+	KMOD_CAPS = 0x2000,
+	KMOD_MODE = 0x4000,
+	KMOD_RESERVED = 0x8000
+} SDLMod;
+
 typedef enum {
 	/* The keyboard syms have been cleverly chosen to map to ASCII */
 	SDLK_UNKNOWN            = 0,
@@ -283,41 +309,118 @@ typedef struct SDL_Joystick {
 typedef struct tagMotion {
 	int type;
 	int xrel, yrel;
+	int x,y;
 } tagMotion;
 
 typedef struct tagButtons {
+	int type;
 	int button;
+	int x,y;
 } tagButtons;
 
 typedef struct SDL_keysym {
 	SDLKey sym;
+	int unicode;
+	SDLMod mod;
 } SDL_keysym;
 
 typedef struct tagKeyEvent {
+	int			type;
 	SDL_keysym keysym;
 } tagKeyEvent;
 
-typedef struct tagJoystick {
-	int button;
-} tagJoystick;
+/**
+ * \struct SDL_JoyAxisEvent
+ *
+ * \brief Joystick axis motion event structure (event.jaxis.*)
+ */
+typedef struct SDL_JoyAxisEvent
+{
+	Uint8 type;         /**< SDL_JOYAXISMOTION */
+	Uint8 which;        /**< The joystick device index */
+	Uint8 axis;         /**< The joystick axis index */
+	int value;          /**< The axis value (range: -32768 to 32767) */
+} SDL_JoyAxisEvent;
+
+/**
+ * \struct SDL_JoyBallEvent
+ *
+ * \brief Joystick trackball motion event structure (event.jball.*)
+ */
+typedef struct SDL_JoyBallEvent
+{
+	Uint8 type;         /**< SDL_JOYBALLMOTION */
+	Uint8 which;        /**< The joystick device index */
+	Uint8 ball;         /**< The joystick trackball index */
+	int xrel;           /**< The relative motion in the X direction */
+	int yrel;           /**< The relative motion in the Y direction */
+} SDL_JoyBallEvent;
+
+/**
+ * \struct SDL_JoyHatEvent
+ *
+ * \brief Joystick hat position change event structure (event.jhat.*)
+ */
+typedef struct SDL_JoyHatEvent
+{
+	Uint8 type;         /**< SDL_JOYHATMOTION */
+	Uint8 which;        /**< The joystick device index */
+	Uint8 hat;          /**< The joystick hat index */
+	Uint8 value;        /**< The hat position value:
+						 SDL_HAT_LEFTUP   SDL_HAT_UP       SDL_HAT_RIGHTUP
+						 SDL_HAT_LEFT     SDL_HAT_CENTERED SDL_HAT_RIGHT
+						 SDL_HAT_LEFTDOWN SDL_HAT_DOWN     SDL_HAT_RIGHTDOWN
+						 Note that zero means the POV is centered.
+						 */
+} SDL_JoyHatEvent;
+
+/*
+ * Get the current state of a POV hat on a joystick
+ * The return value is one of the following positions:
+ */
+#define SDL_HAT_CENTERED	0x00
+#define SDL_HAT_UP			0x01
+#define SDL_HAT_RIGHT		0x02
+#define SDL_HAT_DOWN		0x04
+#define SDL_HAT_LEFT		0x08
+#define SDL_HAT_RIGHTUP		(SDL_HAT_RIGHT|SDL_HAT_UP)
+#define SDL_HAT_RIGHTDOWN	(SDL_HAT_RIGHT|SDL_HAT_DOWN)
+#define SDL_HAT_LEFTUP		(SDL_HAT_LEFT|SDL_HAT_UP)
+#define SDL_HAT_LEFTDOWN	(SDL_HAT_LEFT|SDL_HAT_DOWN)
+
+/**
+ * \struct SDL_JoyButtonEvent
+ *
+ * \brief Joystick button event structure (event.jbutton.*)
+ */
+typedef struct SDL_JoyButtonEvent
+{
+	Uint8 type;         /**< SDL_JOYBUTTONDOWN or SDL_JOYBUTTONUP */
+	Uint8 which;        /**< The joystick device index */
+	Uint8 button;       /**< The joystick button index */
+	Uint8 state;        /**< SDL_PRESSED or SDL_RELEASED */
+} SDL_JoyButtonEvent;
 
 typedef union SDL_Event {
 	int type;
 	struct tagMotion motion;
 	struct tagButtons button;
 	struct tagKeyEvent key;
-	struct tagJoystick jbutton;
+	SDL_JoyAxisEvent jaxis;         /**< Joystick axis event data */
+	SDL_JoyBallEvent jball;         /**< Joystick ball event data */
+	SDL_JoyHatEvent jhat;           /**< Joystick hat event data */
+	struct SDL_JoyButtonEvent jbutton;
 } SDL_Event;
 
 typedef void (*sound_callback_t)(void *userdata, Uint8 *stream, int len);
-	
+
 typedef struct SDL_AudioSpec {
 	int freq;
-    int format;
-    int channels;
-    int samples;
-    sound_callback_t callback;
-    void *userdata;
+	int format;
+	int channels;
+	int samples;
+	sound_callback_t callback;
+	void *userdata;
 } SDL_AudioSpec;
 
 typedef struct tagFormat {
@@ -403,6 +506,13 @@ enum { SDL_NOEVENT = 0,                 /* Unused (do not remove) */
 	 */
 	SDL_NUMEVENTS = 32
 };
+
+#define KMOD_CTRL	(KMOD_LCTRL|KMOD_RCTRL)
+#define KMOD_SHIFT	(KMOD_LSHIFT|KMOD_RSHIFT)
+#define KMOD_ALT	(KMOD_LALT|KMOD_RALT)
+#define KMOD_GUI	(KMOD_LGUI|KMOD_RGUI)
+	
+#import "sdl_event.h"
 	
 #ifdef __cplusplus
 }

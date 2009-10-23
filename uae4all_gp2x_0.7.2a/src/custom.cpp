@@ -3247,8 +3247,8 @@ static void vsync_handler (void)
     {
 		static int back_joy0button=0;
     	handle_events ();
-    	getjoystate (0, &joy1dir, &joy1button);
-    	getjoystate (1, &joy0dir, &joy0button);
+		getjoystate (0, &joy1dir, &joy1button);
+		getjoystate (1, &joy0dir, &joy0button);
 		if (joy0button!=back_joy0button)
 			back_joy0button= buttonstate[0]= joy0button;
     }
@@ -3480,7 +3480,7 @@ void customreset (void)
     vpos = 0;
 	
     if (needmousehack ()) {
-#if 1
+#if 0
 		mousehack_setfollow();
 #else
 		mousehack_setdontcare();

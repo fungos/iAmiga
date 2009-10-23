@@ -37,6 +37,8 @@ enum tagEmulatorState {
 	DisplayView					*displayView;
 	InputControllerView			*inputController;
 	VirtualKeyboard				*vKeyboard;
+	UIImage						*modes[3];
+	UIButton					*inputModeView;
 	
 	// Views: portrait
 
