@@ -3,7 +3,7 @@
 	<data>
 		<int key="IBDocument.SystemTarget">528</int>
 		<string key="IBDocument.SystemVersion">10B504</string>
-		<string key="IBDocument.InterfaceBuilderVersion">732</string>
+		<string key="IBDocument.InterfaceBuilderVersion">740</string>
 		<string key="IBDocument.AppKitVersion">1038.2</string>
 		<string key="IBDocument.HIToolboxVersion">437.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
@@ -12,8 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="12"/>
-			<integer value="2"/>
+			<integer value="10"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -43,6 +42,7 @@
 				<object class="NSPSMatrix" key="NSFrameMatrix"/>
 				<string key="NSFrameSize">{320, 480}</string>
 				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
 					<bytes key="NSRGB">MCAwIDAAA</bytes>
@@ -52,24 +52,26 @@
 			</object>
 			<object class="IBUITabBarController" id="302593206">
 				<object class="IBUISimulatedTabBarMetrics" key="IBUISimulatedBottomBarMetrics"/>
-				<object class="IBUIViewController" key="IBUISelectedViewController" id="77380258">
-					<object class="IBUITabBarItem" key="IBUITabBarItem" id="640933559">
-						<string key="IBUITitle">Games</string>
+				<bool key="IBUIWantsFullScreenLayout">YES</bool>
+				<object class="IBUIViewController" key="IBUISelectedViewController" id="512862853">
+					<object class="IBUITabBarItem" key="IBUITabBarItem" id="4129744">
+						<string key="IBUITitle">Amiga</string>
 						<reference key="IBUITabBar"/>
 					</object>
 					<reference key="IBUIParentViewController" ref="302593206"/>
-					<string key="IBUINibName">SettingsController</string>
+					<bool key="IBUIWantsFullScreenLayout">YES</bool>
 				</object>
 				<object class="NSMutableArray" key="IBUIViewControllers">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<reference ref="77380258"/>
-					<object class="IBUIViewController" id="512862853">
-						<object class="IBUITabBarItem" key="IBUITabBarItem" id="4129744">
-							<string key="IBUITitle">Amiga</string>
+					<object class="IBUIViewController" id="77380258">
+						<object class="IBUITabBarItem" key="IBUITabBarItem" id="640933559">
+							<string key="IBUITitle">Games</string>
 							<reference key="IBUITabBar"/>
 						</object>
 						<reference key="IBUIParentViewController" ref="302593206"/>
+						<string key="IBUINibName">SettingsController</string>
 					</object>
+					<reference ref="512862853"/>
 				</object>
 				<object class="IBUITabBar" key="IBUITabBar" id="571408873">
 					<nil key="NSNextResponder"/>
@@ -270,8 +272,25 @@
 					<string key="className">SettingsController</string>
 					<string key="superclassName">UIViewController</string>
 					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">selectDrive:</string>
-						<string key="NS.object.0">UIButton</string>
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>otherAction:</string>
+							<string>resetAmiga:</string>
+							<string>selectDrive:</string>
+							<string>toggleStatus:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
+							<string>UIButton</string>
+							<string>id</string>
+						</object>
+					</object>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">status</string>
+						<string key="NS.object.0">UISwitch</string>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
@@ -487,6 +506,14 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBFrameworkSource</string>
 						<string key="minorKey">UIKit.framework/Headers/UISearchDisplayController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">UISwitch</string>
+					<string key="superclassName">UIControl</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">UIKit.framework/Headers/UISwitch.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

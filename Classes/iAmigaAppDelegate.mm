@@ -14,8 +14,7 @@
 
 @synthesize window, mainController=_mainController;
 
-- (void)applicationDidFinishLaunching:(UIApplication *)application {    
-
+- (void)applicationDidFinishLaunching:(UIApplication *)application {
 	//_emulationView = [EmulationViewController new];
 	[window addSubview:self.mainController.view];	
 	

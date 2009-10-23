@@ -60,6 +60,7 @@ const double kDefaultAnimationDuration					= 250.0 / 1000.0;
 // Implement loadView to create a view hierarchy programmatically.
 - (void)loadView {
 	g_emulatorViewController		= self;
+	self.wantsFullScreenLayout		= YES;
 		
 	self.hidesBottomBarWhenPushed	= YES;
 	self.emulatorState				= EmulatorNotStarted;
@@ -68,8 +69,9 @@ const double kDefaultAnimationDuration					= 250.0 / 1000.0;
 	layoutOrientation				= (UIInterfaceOrientation)[[UIDevice currentDevice] orientation];
 	
 	// create all the views, order is important to ensure active areas of the UI are layered on top
-	CGRect frame = [UIScreen mainScreen].applicationFrame;
+	CGRect frame = [UIScreen mainScreen].bounds;
 	UIView *view = [[UIView alloc] initWithFrame:frame];
+	view.autoresizingMask = (UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
 	view.backgroundColor = [UIColor blackColor];
 	
 	self.displayView = [[DisplayView alloc] initWithFrame:kDisplayFramePortrait];
@@ -212,7 +214,6 @@ const double kDefaultAnimationDuration					= 250.0 / 1000.0;
 	DLog(@"pausing emulator");
 	
 	[displayView stopTimer];
-	//emulator->TheC64->Pause();
 	emulatorState = EmulatorPaused;
 }
 
@@ -225,7 +226,6 @@ const double kDefaultAnimationDuration					= 250.0 / 1000.0;
 	
 	[displayView startTimer];
 	emulatorState = EmulatorRunning;
-	//emulator->TheC64->Resume();
 }
 
 - (void)dealloc {
