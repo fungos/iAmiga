@@ -47,6 +47,8 @@
 		0552BD540F3D797C005B30DF /* vkbd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD1F0F3D797C005B30DF /* vkbd.cpp */; };
 		0552BD550F3D797C005B30DF /* writelog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD210F3D797C005B30DF /* writelog.cpp */; };
 		0552BD560F3D797C005B30DF /* zfile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD220F3D797C005B30DF /* zfile.cpp */; };
+		0560647E10A5FC9200E52EF6 /* Turrican III.adf in Resources */ = {isa = PBXBuildFile; fileRef = 0560647C10A5FC9200E52EF6 /* Turrican III.adf */; };
+		0560647F10A5FC9200E52EF6 /* Turrican.adf in Resources */ = {isa = PBXBuildFile; fileRef = 0560647D10A5FC9200E52EF6 /* Turrican.adf */; };
 		05743FC50FC293FD003BE251 /* iphone_main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 05743FC40FC293FD003BE251 /* iphone_main.mm */; };
 		0574402C0FC29FBE003BE251 /* SDL.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0574402B0FC29FBE003BE251 /* SDL.mm */; };
 		057440690FC2A243003BE251 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 057440680FC2A243003BE251 /* libz.1.2.3.dylib */; };
@@ -223,6 +225,8 @@
 		0552BD200F3D797C005B30DF /* vkbd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vkbd.h; sourceTree = "<group>"; };
 		0552BD210F3D797C005B30DF /* writelog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = writelog.cpp; sourceTree = "<group>"; };
 		0552BD220F3D797C005B30DF /* zfile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = zfile.cpp; sourceTree = "<group>"; };
+		0560647C10A5FC9200E52EF6 /* Turrican III.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Turrican III.adf"; sourceTree = "<group>"; };
+		0560647D10A5FC9200E52EF6 /* Turrican.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Turrican.adf; sourceTree = "<group>"; };
 		05743F6D0FC28C6A003BE251 /* SDL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL.h; sourceTree = "<group>"; };
 		05743FC30FC293FD003BE251 /* iphone_main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iphone_main.h; sourceTree = "<group>"; };
 		05743FC40FC293FD003BE251 /* iphone_main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = iphone_main.mm; sourceTree = "<group>"; };
@@ -825,7 +829,9 @@
 		05FE82980FC68EE000DBFECF /* t */ = {
 			isa = PBXGroup;
 			children = (
+				0560647D10A5FC9200E52EF6 /* Turrican.adf */,
 				05FE829D0FC68EED00DBFECF /* Turrican II.adf */,
+				0560647C10A5FC9200E52EF6 /* Turrican III.adf */,
 			);
 			name = t;
 			sourceTree = "<group>";
@@ -981,6 +987,8 @@
 				05ECEBB31091CE25001A71D0 /* Lotus Esprit.adf in Resources */,
 				05ECEBB61091CE96001A71D0 /* Silkworm.ADF in Resources */,
 				05ECEBB71091CE96001A71D0 /* Speedball.adf in Resources */,
+				0560647E10A5FC9200E52EF6 /* Turrican III.adf in Resources */,
+				0560647F10A5FC9200E52EF6 /* Turrican.adf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
