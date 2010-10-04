@@ -377,7 +377,7 @@ static __inline__ void audio_handler (int nr)
 			if (cdp->wlen != 1)
 				cdp->wlen = (cdp->wlen - 1) & 0xFFFF;
 			cdp->nextdat = CHIPMEM_WGET (cdp->pt);
-			cdp->pt += 2;
+			//cdp->pt += 2;
 			break;
 		case 5:
 			audio_channel_evtime[nr] = cdp->per;

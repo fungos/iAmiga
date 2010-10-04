@@ -173,7 +173,7 @@ int inhibit_frame;
 int framecnt = 0, fs_framecnt = 0;
 static int frame_redraw_necessary;
 
-#ifdef NO_THREADS
+#ifndef NO_THREADS
 #define THRESHOLD_PAL   21<<8
 #else
 #define THRESHOLD_PAL   ((1000<<8)/50)
