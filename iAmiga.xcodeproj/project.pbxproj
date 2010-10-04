@@ -25,6 +25,8 @@
 		051F92EF1084644D00C815BE /* Gods 1.ADF in Resources */ = {isa = PBXBuildFile; fileRef = 051F92ED1084644D00C815BE /* Gods 1.ADF */; };
 		051F92F01084644D00C815BE /* Gods 2.ADF in Resources */ = {isa = PBXBuildFile; fileRef = 051F92EE1084644D00C815BE /* Gods 2.ADF */; };
 		0542F40B0FC8B99100126562 /* Odyssey-1.adf in Resources */ = {isa = PBXBuildFile; fileRef = 0542F40A0FC8B99100126562 /* Odyssey-1.adf */; };
+		05434906112CD9D2009CF6CF /* ABreed-1.adf in Resources */ = {isa = PBXBuildFile; fileRef = 05434904112CD9D2009CF6CF /* ABreed-1.adf */; };
+		05434907112CD9D2009CF6CF /* ABreed-2.adf in Resources */ = {isa = PBXBuildFile; fileRef = 05434905112CD9D2009CF6CF /* ABreed-2.adf */; };
 		0545257E106EBB590032FC41 /* Events2.c in Sources */ = {isa = PBXBuildFile; fileRef = 0545257D106EBB590032FC41 /* Events2.c */; };
 		054525B0106EC5550032FC41 /* combined_modules.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 054525AF106EC5550032FC41 /* combined_modules.cpp */; };
 		0552BD240F3D797C005B30DF /* autoconf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BC9D0F3D797C005B30DF /* autoconf.cpp */; };
@@ -83,6 +85,7 @@
 		05BC1C1B10735D7400EABC6E /* Xenon 2.adf in Resources */ = {isa = PBXBuildFile; fileRef = 05BC1C1A10735D7400EABC6E /* Xenon 2.adf */; };
 		05C87680106C9E20004A8DC2 /* Ghosts 'N Goblins.adf in Resources */ = {isa = PBXBuildFile; fileRef = 05C8767F106C9E20004A8DC2 /* Ghosts 'N Goblins.adf */; };
 		05D5D74C0FD5E38400B91C98 /* m68k_intrf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD010F3D797C005B30DF /* m68k_intrf.cpp */; };
+		05E65E0A117EE7F700DC1086 /* Battle Squadron.adf in Resources */ = {isa = PBXBuildFile; fileRef = 05E65E09117EE7F700DC1086 /* Battle Squadron.adf */; };
 		05E6A31D0FC3D93B0086151B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E6A31C0FC3D93B0086151B /* AudioToolbox.framework */; };
 		05ECEA051091A847001A71D0 /* sdl_event.mm in Sources */ = {isa = PBXBuildFile; fileRef = 05ECEA031091A847001A71D0 /* sdl_event.mm */; };
 		05ECEAA51091B97D001A71D0 /* joystick.png in Resources */ = {isa = PBXBuildFile; fileRef = 05ECEAA21091B97D001A71D0 /* joystick.png */; };
@@ -92,6 +95,11 @@
 		05ECEBB31091CE25001A71D0 /* Lotus Esprit.adf in Resources */ = {isa = PBXBuildFile; fileRef = 05ECEBB21091CE25001A71D0 /* Lotus Esprit.adf */; };
 		05ECEBB61091CE96001A71D0 /* Silkworm.ADF in Resources */ = {isa = PBXBuildFile; fileRef = 05ECEBB41091CE96001A71D0 /* Silkworm.ADF */; };
 		05ECEBB71091CE96001A71D0 /* Speedball.adf in Resources */ = {isa = PBXBuildFile; fileRef = 05ECEBB51091CE96001A71D0 /* Speedball.adf */; };
+		05F5F1F2112A4E94001530EC /* Populous.adf in Resources */ = {isa = PBXBuildFile; fileRef = 05F5F1F1112A4E94001530EC /* Populous.adf */; };
+		05F5F203112A50FB001530EC /* It Came from the Desert-1.adf in Resources */ = {isa = PBXBuildFile; fileRef = 05F5F200112A50FB001530EC /* It Came from the Desert-1.adf */; };
+		05F5F204112A50FB001530EC /* It Came from the Desert-2.adf in Resources */ = {isa = PBXBuildFile; fileRef = 05F5F201112A50FB001530EC /* It Came from the Desert-2.adf */; };
+		05F5F205112A50FB001530EC /* It Came from the Desert-3.adf in Resources */ = {isa = PBXBuildFile; fileRef = 05F5F202112A50FB001530EC /* It Came from the Desert-3.adf */; };
+		05F5F218112A54F1001530EC /* kick31.rom in Resources */ = {isa = PBXBuildFile; fileRef = 05F5F217112A54F1001530EC /* kick31.rom */; };
 		05FE7F280FC3EDBF00DBFECF /* AudioQueueManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05FE7F270FC3EDBF00DBFECF /* AudioQueueManager.cpp */; };
 		1D3623260D0F684500981E51 /* iAmigaAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* iAmigaAppDelegate.mm */; };
 		1D60589B0D05DD56006BFB54 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.mm */; };
@@ -126,6 +134,8 @@
 		051F92EE1084644D00C815BE /* Gods 2.ADF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gods 2.ADF"; sourceTree = "<group>"; };
 		0542F18D0FC7E00F00126562 /* IK+.adf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "IK+.adf"; path = "../IK+.adf"; sourceTree = "<group>"; };
 		0542F40A0FC8B99100126562 /* Odyssey-1.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Odyssey-1.adf"; sourceTree = "<group>"; };
+		05434904112CD9D2009CF6CF /* ABreed-1.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ABreed-1.adf"; sourceTree = "<group>"; };
+		05434905112CD9D2009CF6CF /* ABreed-2.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ABreed-2.adf"; sourceTree = "<group>"; };
 		0545257C106EBB590032FC41 /* Events2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Events2.h; sourceTree = "<group>"; };
 		0545257D106EBB590032FC41 /* Events2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Events2.c; sourceTree = "<group>"; };
 		054525AF106EC5550032FC41 /* combined_modules.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = combined_modules.cpp; sourceTree = "<group>"; };
@@ -291,6 +301,7 @@
 		05BC1C0810735AD600EABC6E /* Kid Chaos 4 of 4.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kid Chaos 4 of 4.adf"; sourceTree = "<group>"; };
 		05BC1C1A10735D7400EABC6E /* Xenon 2.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Xenon 2.adf"; sourceTree = "<group>"; };
 		05C8767F106C9E20004A8DC2 /* Ghosts 'N Goblins.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ghosts 'N Goblins.adf"; sourceTree = "<group>"; };
+		05E65E09117EE7F700DC1086 /* Battle Squadron.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Battle Squadron.adf"; sourceTree = "<group>"; };
 		05E6A31C0FC3D93B0086151B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		05E6A3250FC3DAA90086151B /* sound_iphone.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sound_iphone.cpp; sourceTree = "<group>"; };
 		05ECEA021091A847001A71D0 /* sdl_event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdl_event.h; sourceTree = "<group>"; };
@@ -304,6 +315,11 @@
 		05ECEBB21091CE25001A71D0 /* Lotus Esprit.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lotus Esprit.adf"; sourceTree = "<group>"; };
 		05ECEBB41091CE96001A71D0 /* Silkworm.ADF */ = {isa = PBXFileReference; lastKnownFileType = file; path = Silkworm.ADF; sourceTree = "<group>"; };
 		05ECEBB51091CE96001A71D0 /* Speedball.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Speedball.adf; sourceTree = "<group>"; };
+		05F5F1F1112A4E94001530EC /* Populous.adf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Populous.adf; path = p/Populous.adf; sourceTree = "<group>"; };
+		05F5F200112A50FB001530EC /* It Came from the Desert-1.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "It Came from the Desert-1.adf"; sourceTree = "<group>"; };
+		05F5F201112A50FB001530EC /* It Came from the Desert-2.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "It Came from the Desert-2.adf"; sourceTree = "<group>"; };
+		05F5F202112A50FB001530EC /* It Came from the Desert-3.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "It Came from the Desert-3.adf"; sourceTree = "<group>"; };
+		05F5F217112A54F1001530EC /* kick31.rom */ = {isa = PBXFileReference; lastKnownFileType = file; path = kick31.rom; sourceTree = "<group>"; };
 		05FE7F260FC3EDBF00DBFECF /* AudioQueueManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioQueueManager.h; sourceTree = "<group>"; };
 		05FE7F270FC3EDBF00DBFECF /* AudioQueueManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioQueueManager.cpp; sourceTree = "<group>"; };
 		05FE7F290FC3EDC800DBFECF /* RingQ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RingQ.h; sourceTree = "<group>"; };
@@ -399,6 +415,7 @@
 		051F92E3108462A700C815BE /* p */ = {
 			isa = PBXGroup;
 			children = (
+				05F5F1F1112A4E94001530EC /* Populous.adf */,
 				051F92E5108462AE00C815BE /* Paradroid 90.adf */,
 			);
 			name = p;
@@ -415,6 +432,7 @@
 		0542F18F0FC7E01A00126562 /* i */ = {
 			isa = PBXGroup;
 			children = (
+				05F5F1FF112A50FB001530EC /* It came from the desert */,
 				0542F18D0FC7E00F00126562 /* IK+.adf */,
 			);
 			name = i;
@@ -464,6 +482,23 @@
 				0542F40A0FC8B99100126562 /* Odyssey-1.adf */,
 			);
 			name = o;
+			sourceTree = "<group>";
+		};
+		05434902112CD9D2009CF6CF /* a */ = {
+			isa = PBXGroup;
+			children = (
+				05434903112CD9D2009CF6CF /* alienbreed */,
+			);
+			path = a;
+			sourceTree = "<group>";
+		};
+		05434903112CD9D2009CF6CF /* alienbreed */ = {
+			isa = PBXGroup;
+			children = (
+				05434904112CD9D2009CF6CF /* ABreed-1.adf */,
+				05434905112CD9D2009CF6CF /* ABreed-2.adf */,
+			);
+			path = alienbreed;
 			sourceTree = "<group>";
 		};
 		0552BC9A0F3D7968005B30DF /* uae */ = {
@@ -646,6 +681,7 @@
 			children = (
 				057440D50FC2A4A7003BE251 /* kick.rom */,
 				057443290FC3C94F003BE251 /* kick13.rom */,
+				05F5F217112A54F1001530EC /* kick31.rom */,
 			);
 			path = roms;
 			sourceTree = "<group>";
@@ -653,6 +689,9 @@
 		057443530FC3CA04003BE251 /* disks */ = {
 			isa = PBXGroup;
 			children = (
+				05434902112CD9D2009CF6CF /* a */,
+				05E65E08117EE7F700DC1086 /* b */,
+				05F5F1EC112A4E66001530EC /* c */,
 				05BC17D81070B74E00EABC6E /* d */,
 				05C87678106C9D3A004A8DC2 /* g */,
 				0542F18F0FC7E01A00126562 /* i */,
@@ -673,6 +712,7 @@
 		057443540FC3CA04003BE251 /* s */ = {
 			isa = PBXGroup;
 			children = (
+				05F5F1E7112A4E58001530EC /* Sensible World of Soccer 96-97 */,
 				05ECEBB41091CE96001A71D0 /* Silkworm.ADF */,
 				05ECEBB51091CE96001A71D0 /* Speedball.adf */,
 				057443550FC3CA04003BE251 /* Shadow OTB1.ADF */,
@@ -790,6 +830,14 @@
 			path = g;
 			sourceTree = "<group>";
 		};
+		05E65E08117EE7F700DC1086 /* b */ = {
+			isa = PBXGroup;
+			children = (
+				05E65E09117EE7F700DC1086 /* Battle Squadron.adf */,
+			);
+			path = b;
+			sourceTree = "<group>";
+		};
 		05E6A30D0FC3D8EA0086151B /* audio */ = {
 			isa = PBXGroup;
 			children = (
@@ -824,6 +872,31 @@
 				05ECEBB21091CE25001A71D0 /* Lotus Esprit.adf */,
 			);
 			path = l;
+			sourceTree = "<group>";
+		};
+		05F5F1E7112A4E58001530EC /* Sensible World of Soccer 96-97 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Sensible World of Soccer 96-97";
+			sourceTree = "<group>";
+		};
+		05F5F1EC112A4E66001530EC /* c */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = c;
+			sourceTree = "<group>";
+		};
+		05F5F1FF112A50FB001530EC /* It came from the desert */ = {
+			isa = PBXGroup;
+			children = (
+				05F5F200112A50FB001530EC /* It Came from the Desert-1.adf */,
+				05F5F201112A50FB001530EC /* It Came from the Desert-2.adf */,
+				05F5F202112A50FB001530EC /* It Came from the Desert-3.adf */,
+			);
+			name = "It came from the desert";
+			path = "i/It came from the desert";
 			sourceTree = "<group>";
 		};
 		05FE82980FC68EE000DBFECF /* t */ = {
@@ -931,7 +1004,11 @@
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "iAmiga" */;
 			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -989,6 +1066,14 @@
 				05ECEBB71091CE96001A71D0 /* Speedball.adf in Resources */,
 				0560647E10A5FC9200E52EF6 /* Turrican III.adf in Resources */,
 				0560647F10A5FC9200E52EF6 /* Turrican.adf in Resources */,
+				05F5F1F2112A4E94001530EC /* Populous.adf in Resources */,
+				05F5F203112A50FB001530EC /* It Came from the Desert-1.adf in Resources */,
+				05F5F204112A50FB001530EC /* It Came from the Desert-2.adf in Resources */,
+				05F5F205112A50FB001530EC /* It Came from the Desert-3.adf in Resources */,
+				05F5F218112A54F1001530EC /* kick31.rom in Resources */,
+				05434906112CD9D2009CF6CF /* ABreed-1.adf in Resources */,
+				05434907112CD9D2009CF6CF /* ABreed-2.adf in Resources */,
+				05E65E0A117EE7F700DC1086 /* Battle Squadron.adf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1076,6 +1161,8 @@
 					uae4all_gp2x_0.7.2a/src,
 					uae4all_gp2x_0.7.2a/src/iphone,
 				);
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = (
 					"-finline-functions",
 					"-fno-PIE",
@@ -1090,7 +1177,7 @@
 				);
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos3.0;
+				SDKROOT = iphoneos4.1;
 			};
 			name = Distribution;
 		};
@@ -1156,10 +1243,11 @@
 					uae4all_gp2x_0.7.2a/src,
 					uae4all_gp2x_0.7.2a/src/iphone,
 				);
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.0;
+				SDKROOT = iphoneos4.1;
 			};
 			name = Debug;
 		};
@@ -1189,6 +1277,7 @@
 					uae4all_gp2x_0.7.2a/src,
 					uae4all_gp2x_0.7.2a/src/iphone,
 				);
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = (
 					"-finline-functions",
@@ -1202,7 +1291,7 @@
 				);
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos3.0;
+				SDKROOT = iphoneos4.1;
 			};
 			name = Release;
 		};
