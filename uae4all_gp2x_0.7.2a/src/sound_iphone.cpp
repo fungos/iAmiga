@@ -102,7 +102,7 @@ static CAudioQueueManager *g_audioQueue;
 
 static int have_sound = 0;
 
-#define SOUND_EVTIME_NORMAL	(MAXHPOS_PAL*300 *VBLANK_HZ_PAL*CYCLE_UNIT/DEFAULT_SOUND_FREQ)
+#define SOUND_EVTIME_NORMAL	(MAXHPOS_PAL*312 *VBLANK_HZ_PAL*CYCLE_UNIT/DEFAULT_SOUND_FREQ)
 
 void sound_default_evtime(void)
 {
