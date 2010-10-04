@@ -7,19 +7,20 @@
  *
  */
 
-#import <Foundation/Foundation.h>
+// #import <Foundation/Foundation.h>
 #import "unistd.h"
 #include "stdlib.h"
 #include "SDL.h"
 #include "AudioQueueManager.h"
 #include "DisplayView.h"
 #import "sdl_internal.h"
+#import <sys/time.h>
 
 const int kBytesPerPixel			= 2;
 const int kBitsPerComponent			= 5;
 const unsigned int kFormat			= kCGBitmapByteOrder16Little | kCGImageAlphaNoneSkipFirst;
 
-static double				time_start;
+static Uint32				time_start;
 BOOL						hasImageChanged;
 uint						*imageBuffer;
 CGContextRef				context;
@@ -27,9 +28,9 @@ CGContextRef				context;
 #define kBufferHeight		240
 
 Uint32 SDL_GetTicks() {
-	double now = CFAbsoluteTimeGetCurrent();
-	now = now - time_start;
-	return (Uint32)(now * 1000UL);
+	timeval tv;
+	gettimeofday(&tv, NULL);
+	return (tv.tv_sec - time_start) * 1000UL + tv.tv_usec / 1000;
 }
 
 void SDL_UnlockSurface(SDL_Surface* a) {
@@ -93,7 +94,9 @@ int SDL_JoystickClose(SDL_Joystick* a) {
 }
 
 int SDL_Init(int a) {
-	time_start = CFAbsoluteTimeGetCurrent();
+	timeval tv;
+	gettimeofday(&tv, NULL);
+	time_start = tv.tv_sec;
 	// create indexed color palette
 	CGColorSpaceRef rgbColorSpace = CGColorSpaceCreateDeviceRGB();
 	
