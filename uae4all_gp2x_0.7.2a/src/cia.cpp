@@ -561,7 +561,7 @@ static void WriteCIAA (uae_u16 addr,uae_u8 val)
 
 static void WriteCIAB (uae_u16 addr,uae_u8 val)
 {
-    int oldval;
+    //int oldval;
     switch (addr & 0xf) {
 		case 0:
 			ciabpra  = val;
