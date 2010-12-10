@@ -60,6 +60,7 @@
 		057B0D4C0FD0D0ED00D549AD /* MMStopWatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 057B0D4B0FD0D0ED00D549AD /* MMStopWatch.m */; };
 		0585D55F1091640900C1E4C1 /* VirtualKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 0585D55E1091640900C1E4C1 /* VirtualKeyboard.m */; };
 		0585D5621091653E00C1E4C1 /* KeyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0585D5611091653E00C1E4C1 /* KeyView.m */; };
+		059A411D12697B33003B23C7 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 059A411C12697B33003B23C7 /* MainWindow-iPad.xib */; };
 		059E3A2710636CBA0056A577 /* fame_arm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A2410636CBA0056A577 /* fame_arm.cpp */; settings = {COMPILER_FLAGS = "-frename-registers -Wno-unused"; }; };
 		059E3A2810636CBA0056A577 /* m68k_interface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A2610636CBA0056A577 /* m68k_interface.cpp */; };
 		05B7066E0FD282230081B5C3 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 05B7066D0FD282230081B5C3 /* Entitlements.plist */; };
@@ -85,6 +86,8 @@
 		05BC1C1B10735D7400EABC6E /* Xenon 2.adf in Resources */ = {isa = PBXBuildFile; fileRef = 05BC1C1A10735D7400EABC6E /* Xenon 2.adf */; };
 		05C87680106C9E20004A8DC2 /* Ghosts 'N Goblins.adf in Resources */ = {isa = PBXBuildFile; fileRef = 05C8767F106C9E20004A8DC2 /* Ghosts 'N Goblins.adf */; };
 		05D5D74C0FD5E38400B91C98 /* m68k_intrf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD010F3D797C005B30DF /* m68k_intrf.cpp */; };
+		05D6044B12AF2D620048E478 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 05D6044912AF2D620048E478 /* Icon.png */; };
+		05D6044C12AF2D620048E478 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 05D6044A12AF2D620048E478 /* Icon@2x.png */; };
 		05E65E0A117EE7F700DC1086 /* Battle Squadron.adf in Resources */ = {isa = PBXBuildFile; fileRef = 05E65E09117EE7F700DC1086 /* Battle Squadron.adf */; };
 		05E6A31D0FC3D93B0086151B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E6A31C0FC3D93B0086151B /* AudioToolbox.framework */; };
 		05ECEA051091A847001A71D0 /* sdl_event.mm in Sources */ = {isa = PBXBuildFile; fileRef = 05ECEA031091A847001A71D0 /* sdl_event.mm */; };
@@ -255,6 +258,7 @@
 		0585D55E1091640900C1E4C1 /* VirtualKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VirtualKeyboard.m; sourceTree = "<group>"; };
 		0585D5601091653E00C1E4C1 /* KeyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyView.h; sourceTree = "<group>"; };
 		0585D5611091653E00C1E4C1 /* KeyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyView.m; sourceTree = "<group>"; };
+		059A411C12697B33003B23C7 /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainWindow-iPad.xib"; path = "Resources-iPad/MainWindow-iPad.xib"; sourceTree = "<group>"; };
 		059E3A2410636CBA0056A577 /* fame_arm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fame_arm.cpp; sourceTree = "<group>"; };
 		059E3A2510636CBA0056A577 /* fame_arm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fame_arm.h; sourceTree = "<group>"; };
 		059E3A2610636CBA0056A577 /* m68k_interface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = m68k_interface.cpp; sourceTree = "<group>"; };
@@ -301,6 +305,8 @@
 		05BC1C0810735AD600EABC6E /* Kid Chaos 4 of 4.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kid Chaos 4 of 4.adf"; sourceTree = "<group>"; };
 		05BC1C1A10735D7400EABC6E /* Xenon 2.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Xenon 2.adf"; sourceTree = "<group>"; };
 		05C8767F106C9E20004A8DC2 /* Ghosts 'N Goblins.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ghosts 'N Goblins.adf"; sourceTree = "<group>"; };
+		05D6044912AF2D620048E478 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		05D6044A12AF2D620048E478 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		05E65E09117EE7F700DC1086 /* Battle Squadron.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Battle Squadron.adf"; sourceTree = "<group>"; };
 		05E6A31C0FC3D93B0086151B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		05E6A3250FC3DAA90086151B /* sound_iphone.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sound_iphone.cpp; sourceTree = "<group>"; };
@@ -721,6 +727,14 @@
 			path = s;
 			sourceTree = "<group>";
 		};
+		059A411B12697B33003B23C7 /* Resources-iPad */ = {
+			isa = PBXGroup;
+			children = (
+				059A411C12697B33003B23C7 /* MainWindow-iPad.xib */,
+			);
+			name = "Resources-iPad";
+			sourceTree = "<group>";
+		};
 		059E382510634D3C0056A577 /* sgc */ = {
 			isa = PBXGroup;
 			children = (
@@ -936,6 +950,7 @@
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
+				059A411B12697B33003B23C7 /* Resources-iPad */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
@@ -955,6 +970,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				05D6044912AF2D620048E478 /* Icon.png */,
+				05D6044A12AF2D620048E478 /* Icon@2x.png */,
 				057443530FC3CA04003BE251 /* disks */,
 				057440D40FC2A4A7003BE251 /* roms */,
 				0504161C0FCB566500F46828 /* images */,
@@ -1074,6 +1091,9 @@
 				05434906112CD9D2009CF6CF /* ABreed-1.adf in Resources */,
 				05434907112CD9D2009CF6CF /* ABreed-2.adf in Resources */,
 				05E65E0A117EE7F700DC1086 /* Battle Squadron.adf in Resources */,
+				059A411D12697B33003B23C7 /* MainWindow-iPad.xib in Resources */,
+				05D6044B12AF2D620048E478 /* Icon.png in Resources */,
+				05D6044C12AF2D620048E478 /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1139,7 +1159,6 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_CHAR_IS_UNSIGNED_CHAR = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_DYNAMIC_NO_PIC = YES;
@@ -1161,7 +1180,7 @@
 					uae4all_gp2x_0.7.2a/src,
 					uae4all_gp2x_0.7.2a/src/iphone,
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = (
 					"-finline-functions",
@@ -1176,8 +1195,8 @@
 					"-falign-jumps",
 				);
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Distribution;
 		};
@@ -1185,11 +1204,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Manomio LLC";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iAmiga_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				PRODUCT_NAME = iAmiga;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D4B63185-B7CC-4075-A670-329626202629";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Distribution;
 		};
@@ -1204,6 +1226,7 @@
 				GCC_PREFIX_HEADER = iAmiga_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				PRODUCT_NAME = iAmiga;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1216,6 +1239,7 @@
 				GCC_PREFIX_HEADER = iAmiga_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				PRODUCT_NAME = iAmiga;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -1237,17 +1261,18 @@
 				GCC_UNROLL_LOOPS = NO;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = NO;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					uae4all_gp2x_0.7.2a/src,
 					uae4all_gp2x_0.7.2a/src/iphone,
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1277,7 +1302,7 @@
 					uae4all_gp2x_0.7.2a/src,
 					uae4all_gp2x_0.7.2a/src/iphone,
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.1;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = (
 					"-finline-functions",
@@ -1291,7 +1316,8 @@
 				);
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
