@@ -44,9 +44,9 @@
 - (NSMutableArray*)getFiles {
 	NSMutableArray* list = [[NSMutableArray alloc] init];
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+
 	NSString *documentsDirectory = [paths objectAtIndex:0];
-	NSString *romsPath = [documentsDirectory stringByAppendingPathComponent:@"roms"];
-	[list addObjectsFromArray:[self getFilesForPath:romsPath]];
+	[list addObjectsFromArray:[self getFilesForPath:documentsDirectory]];
 	
 	[list addObjectsFromArray:[self getFilesForPath:[[NSBundle mainBundle] bundlePath]]];
 	
