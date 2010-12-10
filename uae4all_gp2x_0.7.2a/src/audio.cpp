@@ -830,8 +830,8 @@ void update_audio (void)
 		asm(".align 4");
 #endif	
 		register unsigned long int best_evtime = n_cycles + 1;
-		int addr = (int)audio_channel_evtime;
-		AUDIO_PREFETCH(addr);
+		//int addr = (int)audio_channel_evtime;
+		//AUDIO_PREFETCH(addr);
 
 		// CHECK_STATE
 		if (best_evtime > audio_channel_evtime[0]) 
@@ -856,12 +856,14 @@ void update_audio (void)
 		audio_channel_evtime[3] -= best_evtime;
 		n_cycles -= best_evtime;
 		
-		addr = (int)audio_channel_current_sample;
+		/*
+		addr = (int)&audio_channel_current_sample;
 		AUDIO_PREFETCH(addr);
-		addr = (int)audio_channel_vol;
+		addr = (int)&audio_channel_vol;
 		AUDIO_PREFETCH(addr);
-		addr = (int)audio_channel_adk_mask;
+		addr = (int)&audio_channel_adk_mask;
 		AUDIO_PREFETCH(addr);
+		 */
 		
 		// IF_SAMPLE
 		if (!next_sample_evtime) {
