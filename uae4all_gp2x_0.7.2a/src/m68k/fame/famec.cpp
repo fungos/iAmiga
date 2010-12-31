@@ -18,21 +18,39 @@
 #pragma mark -
 #pragma mark debug routines
 
+#define NO_BREAKPOINTS	1
+
+#if DISASSEMBLER || defined(DEBUG_CPU)
+
+int do_disa = 0;
+int do_debug = 0;
+int disa_step = 0;
+int instruction_cycles;
+
+#if NO_BREAKPOINTS
+#define CHECK_BREAKPOINTS
+#else
+#define CHECK_BREAKPOINTS	check_breakpoints();
+#endif
+
+#define STORE_COUNTER instruction_cycles = io_cycle_counter;
+#define INSTRUCTION_CYCLES	(instruction_cycles - (io_cycle_counter+cycles_needed))
+
+#else
+
+#define CHECK_BREAKPOINTS
+#define STORE_COUNTER
+
+#endif
+
 #ifdef DEBUG_CPU
 
-#define CHECK_BREAKPOINTS check_breakpoint();
-
-int io_cycles_before;
-#define STORE_COUNTER io_cycles_before = io_cycle_counter;
 
 #define insdebug(CYC) \
 if (do_debug) \
 	printf("%05i|%03i: %06x: OP_%04x (%02i) r=%08x|irq=%02i %s: \n",m68kcontext.cycles_counter,io_cycle_counter+cycles_needed,(u32)PC - BasePC,Opcode,io_cycles_before - io_cycle_counter,res, ((m68kcontext.sr>>8) & 7), __FUNCTION__)
 
-int do_debug = 0;
 #else
-#define CHECK_BREAKPOINTS
-#define STORE_COUNTER
 #define insdebug(CYC)
 #endif
 
@@ -409,9 +427,11 @@ typedef struct {
 #define NEXT \
     do{ \
 		CHECK_BREAKPOINTS; \
+		DISA_STEP(); \
     	FETCH_WORD(Opcode); \
 		STORE_COUNTER; \
     	JumpTable[Opcode](); \
+		DISA_POST_STEP(); \
     }while(io_cycle_counter>0); 
 
 #define RET(A) \
@@ -1091,18 +1111,173 @@ static FAMEC_EXTRA_INLINE void Write_Long(const u32 addr, u32 data)
 #endif
 }
 
+/***********************/
+/* disassembler code   */
+/***********************/
+#if DISASSEMBLER
+
+# include "Disa.h"
+# include "disassembler.h"
+# include "DisaLogging.h"
+
+FILE *g_logOutput = stdout;
+
+#define flag_x	(flag_X & 0x100)
+#define flag_n	(flag_N & 0x80)
+#define flag_z	(!flag_NotZ)
+#define flag_v	(flag_V & 0x80)
+#define flag_c	(flag_C & 0x80)
+
+#define flag_Xx			(flag_x ? 'X' : 'x')
+#define flag_Nn			(flag_n ? 'N' : 'n')
+#define flag_Zz			(flag_z ? 'Z' : 'z')
+#define flag_Vv			(flag_v ? 'V' : 'v')
+#define flag_Cc			(flag_c ? 'C' : 'c')
+
+#define _68k_areg(X) AREG(X)
+#define _68k_dreg(X) DREGu32(X)
+
 #pragma mark -
 #pragma mark BREAKPOINTS
 
-void check_breakpoint() {
+void check_breakpoints() {
 	u32 cPC = GET_PC;
+	
+	static int count = 0;
+	
 	switch (cPC) {
-		case 0x017c3a:
-			printf("break\n");
+		case 0x53d0:
+			count++;
+			if (count == 1) {
+				do_disa = 1;
+			}
 			break;
 	}
 }
 
+unsigned short DisaGetWord(unsigned int a) {
+	return Read_Word(a);
+}
+
+#define MODE_BINARY				1
+#define MODE_TEXT_TABS			2
+#define MODE_TEXT_SPACES		3
+
+#define DISASSEMBLER_OUTPUT		MODE_BINARY
+
+#define DISASSEMBLER_LIMIT		1000000
+
+#define INSTRUCTION_LOGLEVEL	3
+
+u16 *DPC;
+
+static void DisaStep() {
+	DisaPc = GET_PC;
+#if DISASSEMBLER_OUTPUT != MODE_BINARY
+	DisaGet();
+	DisaPc = GET_PC;
+#else
+	DPC = PC;
+#endif
+}
+
+static void DisaPostStep() {
+#if DISASSEMBLER_LIMIT
+	disa_step++;
+#endif
+	
+#if DISASSEMBLER_OUTPUT == MODE_BINARY
+	
+#if INSTRUCTION_LOGLEVEL == 0
+	const uint8_t rType = EntryTypeInstructionL0;
+#elif INSTRUCTION_LOGLEVEL == 1
+	const uint8_t rType = EntryTypeInstructionL1;
+#else
+	const uint8_t rType = EntryTypeInstructionL2;
+#endif
+	fwrite(&rType, sizeof(rType), 1, g_logOutput);
+	
+	fwrite(&DisaPc, 4, 1, g_logOutput);
+	fwrite(DPC, 4, 3, g_logOutput);
+	uint8_t ccr = GET_CCR;
+	fwrite(&ccr, 1, 1, g_logOutput);
+	
+#if INSTRUCTION_LOGLEVEL > 0
+	u8 inscycles = INSTRUCTION_CYCLES; 
+	fwrite(&inscycles, 1, 1, g_logOutput);
+#endif
+	
+#if INSTRUCTION_LOGLEVEL > 1
+	fwrite(&DREG(0), 4, 16, g_logOutput);
+#endif
+	
+#elif DISASSEMBLER_OUTPUT == MODE_TEXT_TABS
+	fprintf(g_logOutput, "%06x:\t%s\t%c%c%c%c%c", DisaPc, DisaText, 
+			flag_Xx, flag_Nn, flag_Zz, flag_Vv, flag_Cc);
+	
+	fprintf(g_logOutput, "\tA0=%.8X\tA1=%.8X\tA2=%.8X\tA3=%.8X",_68k_areg(0),_68k_areg(1),_68k_areg(2),_68k_areg(3));
+	fprintf(g_logOutput, "\tA4=%.8X\tA5=%.8X\tA6=%.8X\tA7=%.8X",_68k_areg(4),_68k_areg(5),_68k_areg(6),_68k_areg(7));
+	fprintf(g_logOutput, "\tD0=%.8X\tD1=%.8X\tD2=%.8X\tD3=%.8X",_68k_dreg(0),_68k_dreg(1),_68k_dreg(2),_68k_dreg(3));
+	fprintf(g_logOutput, "\tD4=%.8X\tD5=%.8X\tD6=%.8X\tD7=%.8X",_68k_dreg(4),_68k_dreg(5),_68k_dreg(6),_68k_dreg(7));
+	
+	fprintf(g_logOutput, "\n");
+	
+#else
+	fprintf(g_logOutput, "%06x %06x: %-35s  %c%c%c%c%c\n", disa_step, DisaPc, DisaText, 
+			flag_Xx, flag_Nn, flag_Zz, flag_Vv, flag_Cc);
+#endif
+
+#if DISASSEMBLER_LIMIT
+	// limit
+	if (disa_step > DISASSEMBLER_LIMIT) {
+		do_disa = 0;
+		disa_step = 0;
+		DisaCloseFile();
+	}
+#endif
+}
+
+static void DisaLogException(s32 vect, u32 oldPC, u32 newPC) {
+	uint8_t rType = EntryTypeException;
+	fwrite(&rType, sizeof(rType), 1, g_logOutput);
+
+	tagExceptionRecord rec = {
+		vect, oldPC, newPC
+	};
+	fwrite(&rec, sizeof(rec), 1, g_logOutput);
+}
+
+void DisaInitialize() {
+	static char buffer[512];
+	DisaWord = &DisaGetWord;
+	DisaText = buffer;
+	
+	DisaCreateFile(1);
+}
+
+void DisaLogEmulateStart(s32 cycles, u32 total_cycles) {
+	uint8_t rType = EntryTypeEmulateStart;
+	fwrite(&rType, sizeof(rType), 1, g_logOutput);
+	
+	tagEmulateStart rec = {
+		cycles, total_cycles
+	};
+	fwrite(&rec, sizeof(rec), 1, g_logOutput);
+}
+
+#define DISA_STEP()			if (do_disa) DisaStep();
+#define DISA_POST_STEP()	if (do_disa) DisaPostStep();
+#define DISA_LOGEXCEPTION()	if (do_disa) DisaLogException(vect, oldPC, newPC);
+#define DISA_EMULATE_START(cycles, total_cycles) if (do_disa) DisaLogEmulateStart(cycles, total_cycles);
+
+#else
+
+#define DISA_STEP()
+#define DISA_POST_STEP()
+#define DISA_LOGEXCEPTION()
+#define DISA_EMULATE_START(cycles, total_cycles)
+
+#endif
 
 /***********************/
 /* core main functions */
@@ -1119,9 +1294,14 @@ void m68k_init(void)
 	puts("Initializing FAME...");
 #endif
 
-    if (!initialised)
+    if (!initialised) {
 	    m68k_emulate(0);
 
+#if DISASSEMBLER
+		DisaInitialize();
+#endif
+		
+	}
 #ifdef FAMEC_DEBUG
 	puts("FAME initialized.");
 #endif
@@ -1173,6 +1353,11 @@ u32 m68k_reset(void)
 	// Obtener puntero de pila inicial y PC
 	AREG(7) = Read_Long(0);
 	m68kcontext.pc = Read_Long(4);
+	
+#if DISASSEMBLER
+	DisaCloseFile();
+	DisaCreateFile(1);
+#endif
 
 #ifdef FAMEC_DEBUG
 	puts("Reset 68k done!\n");
@@ -1742,6 +1927,8 @@ extern u32 flag_S;
 	
 		SET_PC(newPC)
 
+		DISA_LOGEXCEPTION();
+		
 		POST_IO
 	}
 }
@@ -1780,6 +1967,8 @@ u32 m68k_emulate(s32 cycles)
 {
   if (initialised)
   {
+	  
+	  DISA_EMULATE_START(cycles, m68kcontext.cycles_counter);
 
 	/* Comprobar si la CPU esta detenida debido a un doble error de bus */
 	if (m68kcontext.execinfo & M68K_FAULTED) return (u32)-1;

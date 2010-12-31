@@ -38,18 +38,18 @@ EmulationViewController *g_emulatorViewController;
 
 @end
 
-#define kDisplayFramePortrait					CGRectMake(0, 0, 320, 240)
-#define kInputFramePortrait						CGRectMake(0, 0, 320, 480)
+#define kDisplayFramePortrait					CGRectMake(0, 0, 320 * S_PSCALE, 240 * S_PSCALE)
+#define kInputFramePortrait						CGRectMake(0, 0, 320 * S_PSCALE, 480 * S_PSCALE)
 
 // stretched version, specifically cropped for IK+
-#define kDisplayFrameLandscape					CGRectMake(0, 0, 480, 366)
+#define kDisplayFrameLandscape					CGRectMake(0, 0, 480 * S_LSCALE, 366 * S_LSCALE)
 //#define kDisplayFrameLandscape					CGRectMake(28, 0, 424, 320)
 //#define kDisplayFrameLandscape					CGRectMake(32, 0, 416, 312)
-#define kInputFrameLandscape					CGRectMake(0, 0, 480, 320)
+#define kInputFrameLandscape					CGRectMake(0, 0, 480 * S_LSCALE, 320 * S_PSCALE)
 
 // tabbar
-#define kTabBarVisible							CGRectMake(0, 0, 320, 480)
-#define kTabBarNotVisible						CGRectMake(0, 0, 320, 480 + 50)
+#define kTabBarVisible							CGRectMake(0, 0, 320 * S_PSCALE, 480 * S_LSCALE)
+#define kTabBarNotVisible						CGRectMake(0, 0, 320 * S_PSCALE, 480 * S_LSCALE + 50)
 
 // miscellaneous constants
 const double kDefaultAnimationDuration					= 250.0 / 1000.0;
@@ -60,8 +60,21 @@ const double kDefaultAnimationDuration					= 250.0 / 1000.0;
 @synthesize displayView, inputController;
 @synthesize landscapeJoystickView;
 
+CGFloat S_WIDTH, S_HEIGHT, S_HALFWIDTH, S_HALFHEIGHT, S_PSCALE, S_LSCALE;
+
 // Implement loadView to create a view hierarchy programmatically.
 - (void)loadView {
+
+	CGRect frame = [UIScreen mainScreen].bounds;
+
+	S_WIDTH = frame.size.width;
+	S_HEIGHT = frame.size.height;
+	S_HALFWIDTH = S_WIDTH / 2.0f;
+	S_HALFHEIGHT = S_HEIGHT / 2.0f;
+	S_PSCALE = S_WIDTH / 320.0f;
+	S_LSCALE = S_HEIGHT / 480.0f;
+	
+	
 	g_emulatorViewController		= self;
 	self.wantsFullScreenLayout		= YES;
 		
@@ -72,7 +85,6 @@ const double kDefaultAnimationDuration					= 250.0 / 1000.0;
 	layoutOrientation				= (UIInterfaceOrientation)[[UIDevice currentDevice] orientation];
 	
 	// create all the views, order is important to ensure active areas of the UI are layered on top
-	CGRect frame = [UIScreen mainScreen].bounds;
 	UIView *view = [[UIView alloc] initWithFrame:frame];
 	//view.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin;
 	view.autoresizingMask = (UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
@@ -91,13 +103,13 @@ const double kDefaultAnimationDuration					= 250.0 / 1000.0;
 	//[self.inputController addSubview:self.landscapeJoystickView];
 	
 	// virtual keyboard
-	vKeyboard = [[VirtualKeyboard alloc] initWithFrame:CGRectMake(0, 280, 200, 40)];
+	vKeyboard = [[VirtualKeyboard alloc] initWithFrame:CGRectMake(0, 280 * S_PSCALE, 200*S_PSCALE, 40*S_PSCALE)];
 	inputModeView.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin;
 	vKeyboard.hidden = YES;
 	[view addSubview:vKeyboard];
 	
 	inputModeView = [UIButton buttonWithType:UIButtonTypeCustom];
-	inputModeView.frame = CGRectMake(290, 5, 24, 24);
+	inputModeView.frame = CGRectMake(290 * S_PSCALE, 5, 24, 24);
 	inputModeView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleBottomMargin;
 	inputModeView.alpha = 0.5;
 	modes[0] = [[UIImage imageFromResource:@"joystick.png"] retain];
@@ -156,7 +168,7 @@ const double kDefaultAnimationDuration					= 250.0 / 1000.0;
 	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
 	[UIView setAnimationDuration:kDefaultAnimationDuration];
 		
-	self.view.center = CGPointMake(160, 240);
+	self.view.center = CGPointMake(S_HALFWIDTH, S_HALFHEIGHT);
 
 	if (UIInterfaceOrientationIsLandscape(layoutOrientation)) {
 		self.tabBarController.view.frame = kTabBarNotVisible;
@@ -166,14 +178,14 @@ const double kDefaultAnimationDuration					= 250.0 / 1000.0;
 		} else {
 			self.view.transform = CGAffineTransformMakeRotation(degreesToRadian(90));
 		}
-		self.view.bounds = CGRectMake(0, 0, 480, 320);
+		self.view.bounds = CGRectMake(0, 0, S_HEIGHT, S_WIDTH);
 		
 		[self rotateToLandscape];
 	} else {
 		self.tabBarController.view.frame = kTabBarVisible;
 		self.view.transform = CGAffineTransformIdentity;
-		self.view.bounds = CGRectMake(0, 0, 320, 480);
-		self.view.frame = CGRectMake(0, 0, 320, 480);
+		self.view.bounds = CGRectMake(0, 0, S_WIDTH, S_HEIGHT);
+		self.view.frame = CGRectMake(0, 0, S_WIDTH, S_HEIGHT);
 		
 		[self rotateToPortrait];
 	}
@@ -185,7 +197,7 @@ const double kDefaultAnimationDuration					= 250.0 / 1000.0;
 		
 	self.displayView.frame = kDisplayFramePortrait;
 	[self.displayView setNeedsLayout];
-	inputModeView.frame = CGRectMake(290, 5, 24, 24);
+	inputModeView.frame = CGRectMake(290 * S_PSCALE, 5, 24, 24);
 	//self.landscapeJoystickView.hidden	= YES;
 	//self.inputController.delegate		= joystickView;
 	self.inputController.frame			= kInputFramePortrait;
@@ -252,6 +264,7 @@ const double kDefaultAnimationDuration					= 250.0 / 1000.0;
 	
 	[displayView stopTimer];
 	emulatorState = EmulatorPaused;
+	emulator->uae_pause();
 }
 
 - (void)resumeEmulator {
@@ -263,6 +276,7 @@ const double kDefaultAnimationDuration					= 250.0 / 1000.0;
 	
 	[displayView startTimer];
 	emulatorState = EmulatorRunning;
+	emulator->uae_resume();
 }
 
 - (void)dealloc {

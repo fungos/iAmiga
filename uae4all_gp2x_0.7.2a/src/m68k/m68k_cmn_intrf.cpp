@@ -211,7 +211,7 @@ static int do_specialties (int cycles)
 #define DEBUG_CPU
 #ifdef DEBUG_CPU
 extern int do_debug;
-
+extern int do_disa;
 #endif
 
 static void uae4all_reset(void)
@@ -268,11 +268,11 @@ static void m68k_run (void)
 		}
 		
 		if (M68KCONTEXT.cycles_counter > 80000000) {
-			exit(0);
+			// exit(0);
 		}
 		
 		if (M68KCONTEXT.cycles_counter >= 500000000) {
-			do_debug = 1;
+			// do_debug = 1;
 		}
 		
 #endif
@@ -322,7 +322,7 @@ static void m68k_run (void)
 #ifdef PROTECT_INFINITE
 			cuentalo++;
 			if (cuentalo>1024) {
-				g_emulator.quit_program=2;
+				g_emulator.quit_program=RunStateReset;
 				return;
 			}
 #endif
@@ -348,20 +348,21 @@ void m68k_go (int may_quit)
 	
     in_m68k_go++;
 #endif
-    g_emulator.quit_program = 2;
+    g_emulator.quit_program = RunStateReset;
     for (;;) {
-        if (g_emulator.quit_program > 0) {
-            if (g_emulator.quit_program == 1)
+        if (g_emulator.quit_program > RunStateNormal) {
+            if (g_emulator.quit_program == RunStateExit)
                 break;
-            g_emulator.quit_program = 0;
-            g_emulator.reset_all_systems ();
-            customreset ();
+			
+			g_emulator.quit_program = RunStateNormal;
+			g_emulator.reset_all_systems ();
+			customreset ();
 			check_prefs_changed_cpu ();
 			sound_default_evtime ();
-            /* We may have been restoring state, but we're done now.  */
-            handle_active_events ();
-            if (mispcflags)
-                do_specialties (0);
+			/* We may have been restoring state, but we're done now.  */
+			handle_active_events ();
+			if (mispcflags)
+				do_specialties (0);
         }
 		
         m68k_run();

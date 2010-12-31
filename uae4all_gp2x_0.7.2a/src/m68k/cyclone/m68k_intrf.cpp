@@ -228,7 +228,7 @@ static int unrecognized_callback(void)
 		dprintfu("  68020");
 		write_log("Your Kickstart requires a 68020 CPU. Giving up.\n");
 		set_special (SPCFLAG_BRK);
-		g_emulator.quit_program = 1;
+		g_emulator.quit_program = RunStateExit;
 		m68k_context.cycles = 0;
 		return 1;
 	}

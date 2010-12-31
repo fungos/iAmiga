@@ -41,7 +41,8 @@
 uae g_emulator;
 
 uae::uae() {
-	quit_program = 0;
+	quit_program = RunStateNormal;
+	paused = false;
 }
 
 int cloanto_rom = 0;
@@ -57,10 +58,10 @@ void uae::default_prefs () {
     produce_sound = 2;
 #endif
 
-    //prefs_gfx_framerate = 2;
+    // prefs_gfx_framerate = 2;
 	prefs_gfx_framerate = -1; // auto frame skip
 
-	//strcpy (prefs_df[0], get_df_path(0));
+	strcpy (prefs_df[0], get_df_path(0));
 	//strcpy (prefs_df[1], get_df_path(1));
     //strcpy (prefs_df[0], ROM_PATH_PREFIX "df0.adf");
     //strcpy (prefs_df[1], ROM_PATH_PREFIX "df1.adf");
@@ -101,7 +102,7 @@ void uae::default_prefs () {
 void uae::uae_reset (void) {
     gui_purge_events();
     black_screen_now();
-    quit_program = 2;
+    quit_program = RunStateReset;
     set_special (SPCFLAG_BRK);
 }
 
@@ -110,8 +111,16 @@ void uae_reset() {
 }
 
 void uae::uae_quit (void) {
-    if (quit_program != -1)
-		quit_program = -1;
+    if (quit_program != RunStateSpecialQuit)
+		quit_program = RunStateSpecialQuit;
+}
+
+void uae::uae_pause(void) {
+	paused = true;
+}
+
+void uae::uae_resume(void) {
+	paused = false;
 }
 
 void uae::reset_all_systems (void) {
@@ -131,7 +140,7 @@ void uae::reset_all_systems (void) {
  */
 
 void uae::do_start_program (void) {
-	quit_program = 2;
+	quit_program = RunStateReset;
 	reset_frameskip();
 	m68k_go (1);
 }

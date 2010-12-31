@@ -419,6 +419,8 @@
 
 #define NDEBUG_CPU
 
+#define DISASSEMBLER 0
+
 #define USE_FAME_CORE
 
 #if TARGET_CPU_ARM

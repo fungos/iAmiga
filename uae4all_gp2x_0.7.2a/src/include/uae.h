@@ -6,6 +6,13 @@
   * Copyright 1996 Bernd Schmidt
   */
 
+enum tagUAERunState {
+	RunStateSpecialQuit = -1,
+	RunStateNormal = 0,
+	RunStateExit = 1,
+	RunStateReset = 2,
+};
+
 class uae {
 public:
 	uae();
@@ -14,10 +21,13 @@ public:
 	void uae_reset (void);
 	void uae_quit (void);
 	void reset_all_systems (void);
+	void uae_pause(void);
+	void uae_resume(void);
 	
 public:
 	// state
-	int quit_program;
+	tagUAERunState quit_program;
+	bool paused;
 	
 private:
 	void do_start_program (void);

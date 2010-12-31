@@ -170,7 +170,7 @@ void CAudioQueueManager::_HandleOutputBuffer(AudioQueueBufferRef outBuffer) {
 		}
 		
 		outBuffer->mAudioDataByteSize = bytesInBuffer;
-#if defined(DEBUG)
+#if defined(DEBUG_SOUND)
 		if (outBuffer->mAudioDataByteSize == 0)
 			printf("audio buffer underrun.");
 		else if (outBuffer->mAudioDataByteSize < outBuffer->mAudioDataBytesCapacity) 

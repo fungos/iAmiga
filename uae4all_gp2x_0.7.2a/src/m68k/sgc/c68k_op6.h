@@ -4,7 +4,6 @@ NAKED(BccDidntBranch) {
 
 // ---------- [6201] bhi 3 ----------
 OPCODE(0x6201)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -17,7 +16,6 @@ OPCODE(0x6201)
 
 // ---------- [6301] bls 3 ----------
 OPCODE(0x6301)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -30,7 +28,6 @@ OPCODE(0x6301)
 
 // ---------- [6401] bcc 3 ----------
 OPCODE(0x6401)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -43,7 +40,6 @@ OPCODE(0x6401)
 
 // ---------- [6501] bcs 3 ----------
 OPCODE(0x6501)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -56,7 +52,6 @@ OPCODE(0x6501)
 
 // ---------- [6601] bne 3 ----------
 OPCODE(0x6601)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -69,7 +64,6 @@ OPCODE(0x6601)
 
 // ---------- [6701] beq 3 ----------
 OPCODE(0x6701)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -82,7 +76,6 @@ OPCODE(0x6701)
 
 // ---------- [6801] bvc 3 ----------
 OPCODE(0x6801)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -95,7 +88,6 @@ OPCODE(0x6801)
 
 // ---------- [6901] bvs 3 ----------
 OPCODE(0x6901)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -108,7 +100,6 @@ OPCODE(0x6901)
 
 // ---------- [6a01] bpl 3 ----------
 OPCODE(0x6A01)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -121,7 +112,6 @@ OPCODE(0x6A01)
 
 // ---------- [6b01] bmi 3 ----------
 OPCODE(0x6B01)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -134,7 +124,6 @@ OPCODE(0x6B01)
 
 // ---------- [6c01] bge 3 ----------
 OPCODE(0x6C01)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -147,7 +136,6 @@ OPCODE(0x6C01)
 
 // ---------- [6d01] blt 3 ----------
 OPCODE(0x6D01)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -160,7 +148,6 @@ OPCODE(0x6D01)
 
 // ---------- [6e01] bgt 3 ----------
 OPCODE(0x6E01)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -173,7 +160,6 @@ OPCODE(0x6E01)
 
 // ---------- [6f01] ble 3 ----------
 OPCODE(0x6F01)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -190,7 +176,6 @@ NAKED(BccDidntBranch16) {
 
 // ---------- [6200] bhi 3335 ----------
 OPCODE(0x6200)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -198,12 +183,12 @@ OPCODE(0x6200)
 	asm volatile("bne BccDidntBranch16 ");
 	u32 newPC = (s32)PC + GET_SWORD;
 	SET_PC(newPC);
+	CHECK_BRANCH_EXCEPTION(newPC);
 	FINISH(10)
 }
 
 // ---------- [6300] bls 3335 ----------
 OPCODE(0x6300)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -211,12 +196,12 @@ OPCODE(0x6300)
 	asm volatile("beq BccDidntBranch16 ");
 	u32 newPC = (s32)PC + GET_SWORD;
 	SET_PC(newPC);
+	CHECK_BRANCH_EXCEPTION(newPC);
 	FINISH(10)
 }
 
 // ---------- [6400] bcc 3335 ----------
 OPCODE(0x6400)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -224,12 +209,12 @@ OPCODE(0x6400)
 	asm volatile("bcs BccDidntBranch16 ");
 	u32 newPC = (s32)PC + GET_SWORD;
 	SET_PC(newPC);
+	CHECK_BRANCH_EXCEPTION(newPC);
 	FINISH(10)
 }
 
 // ---------- [6500] bcs 3335 ----------
 OPCODE(0x6500)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -237,12 +222,12 @@ OPCODE(0x6500)
 	asm volatile("bcc BccDidntBranch16 ");
 	u32 newPC = (s32)PC + GET_SWORD;
 	SET_PC(newPC);
+	CHECK_BRANCH_EXCEPTION(newPC);
 	FINISH(10)
 }
 
 // ---------- [6600] bne 3335 ----------
 OPCODE(0x6600)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -250,12 +235,12 @@ OPCODE(0x6600)
 	asm volatile("beq BccDidntBranch16 ");
 	u32 newPC = (s32)PC + GET_SWORD;
 	SET_PC(newPC);
+	CHECK_BRANCH_EXCEPTION(newPC);
 	FINISH(10)
 }
 
 // ---------- [6700] beq 3335 ----------
 OPCODE(0x6700)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -263,12 +248,12 @@ OPCODE(0x6700)
 	asm volatile("bne BccDidntBranch16 ");
 	u32 newPC = (s32)PC + GET_SWORD;
 	SET_PC(newPC);
+	CHECK_BRANCH_EXCEPTION(newPC);
 	FINISH(10)
 }
 
 // ---------- [6800] bvc 3335 ----------
 OPCODE(0x6800)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -276,12 +261,12 @@ OPCODE(0x6800)
 	asm volatile("bvs BccDidntBranch16 ");
 	u32 newPC = (s32)PC + GET_SWORD;
 	SET_PC(newPC);
+	CHECK_BRANCH_EXCEPTION(newPC);
 	FINISH(10)
 }
 
 // ---------- [6900] bvs 3335 ----------
 OPCODE(0x6900)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -289,12 +274,12 @@ OPCODE(0x6900)
 	asm volatile("bvc BccDidntBranch16 ");
 	u32 newPC = (s32)PC + GET_SWORD;
 	SET_PC(newPC);
+	CHECK_BRANCH_EXCEPTION(newPC);
 	FINISH(10)
 }
 
 // ---------- [6a00] bpl 3335 ----------
 OPCODE(0x6A00)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -302,12 +287,12 @@ OPCODE(0x6A00)
 	asm volatile("bmi BccDidntBranch16 ");
 	u32 newPC = (s32)PC + GET_SWORD;
 	SET_PC(newPC);
+	CHECK_BRANCH_EXCEPTION(newPC);
 	FINISH(10)
 }
 
 // ---------- [6b00] bmi 3335 ----------
 OPCODE(0x6B00)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -315,12 +300,12 @@ OPCODE(0x6B00)
 	asm volatile("bpl BccDidntBranch16 ");
 	u32 newPC = (s32)PC + GET_SWORD;
 	SET_PC(newPC);
+	CHECK_BRANCH_EXCEPTION(newPC);
 	FINISH(10)
 }
 
 // ---------- [6c00] bge 3335 ----------
 OPCODE(0x6C00)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -328,12 +313,12 @@ OPCODE(0x6C00)
 	asm volatile("blt BccDidntBranch16 ");
 	u32 newPC = (s32)PC + GET_SWORD;
 	SET_PC(newPC);
+	CHECK_BRANCH_EXCEPTION(newPC);
 	FINISH(10)
 }
 
 // ---------- [6d00] blt 3335 ----------
 OPCODE(0x6D00)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -341,12 +326,12 @@ OPCODE(0x6D00)
 	asm volatile("bge BccDidntBranch16 ");
 	u32 newPC = (s32)PC + GET_SWORD;
 	SET_PC(newPC);
+	CHECK_BRANCH_EXCEPTION(newPC);
 	FINISH(10)
 }
 
 // ---------- [6e00] bgt 3335 ----------
 OPCODE(0x6E00)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -354,12 +339,12 @@ OPCODE(0x6E00)
 	asm volatile("ble BccDidntBranch16 ");
 	u32 newPC = (s32)PC + GET_SWORD;
 	SET_PC(newPC);
+	CHECK_BRANCH_EXCEPTION(newPC);
 	FINISH(10)
 }
 
 // ---------- [6f00] ble 3335 ----------
 OPCODE(0x6F00)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -367,34 +352,34 @@ OPCODE(0x6F00)
 	asm volatile("bgt BccDidntBranch16 ");
 	u32 newPC = (s32)PC + GET_SWORD;
 	SET_PC(newPC);
+	CHECK_BRANCH_EXCEPTION(newPC);
 	FINISH(10)
 }
 
 // ---------- [6001] bra 3 ----------
 OPCODE(0x6001)
-{
 	u32 adr, res;
 	u32 src, dst;
 
 	u32 newPC = (s32)PC + (s32)(s8)Opcode;
 	SET_PC_IMM(newPC);
+	CHECK_BRANCH_EXCEPTION((s8)Opcode);
 	FINISH(10)
 }
 
 // ---------- [6000] bra 3335 ----------
 OPCODE(0x6000)
-{
 	u32 adr, res;
 	u32 src, dst;
 
 	u32 newPC = (s32)PC + GET_SWORD;
 	SET_PC(newPC);
+	CHECK_BRANCH_EXCEPTION(newPC);
 	FINISH(10)
 }
 
 // ---------- [6101] bsr 3 ----------
 OPCODE(0x6101)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -402,13 +387,13 @@ OPCODE(0x6101)
 	PUSH_32_F(GET_PC)
 	u32 newPC = (s32)PC + (s32)(s8)Opcode;
 	SET_PC_IMM(newPC);
+	CHECK_BRANCH_EXCEPTION((s8)Opcode);
 	POST_IO
 	FINISH(18)
 }
 
 // ---------- [6100] bsr 3335 ----------
 OPCODE(0x6100)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -416,6 +401,7 @@ OPCODE(0x6100)
 	PUSH_32_F(GET_PC + 2)
 	u32 newPC = (s32)PC + GET_SWORD;
 	SET_PC(newPC);
+	CHECK_BRANCH_EXCEPTION(newPC);
 	POST_IO
 	FINISH(18)
 }

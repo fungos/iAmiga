@@ -16,24 +16,49 @@
 #import <memory>
 //#import <stdlib.h>
 
+#define USE_BRANCHES 1
+
 #pragma mark -
 #pragma mark debug routines
 
+#define NO_BREAKPOINTS	1
+
+#if DISASSEMBLER || defined(DEBUG_CPU)
+
+//#undef USE_BRANCHES
+//#define USE_BRANCHES 0
+
+int do_disa = 0;
+int do_debug = 0;
+int disa_step = 0;
+int instruction_cycles;
+
+#if NO_BREAKPOINTS
+#define CHECK_BREAKPOINTS
+#else
+#define CHECK_BREAKPOINTS	check_breakpoints();
+#endif
+
+#define STORE_COUNTER		instruction_cycles = cycles;
+#define UPDATE_COUNTER(CYC)	instruction_cycles = instruction_cycles - ((cycles-CYC)+cycles_needed)
+#define INSTRUCTION_CYCLES	instruction_cycles
+#else
+
+#define CHECK_BREAKPOINTS
+#define STORE_COUNTER 
+#define UPDATE_COUNTER(CYC)
+ 
+#endif
+
 #ifdef DEBUG_CPU
 
-#define CHECK_BREAKPOINTS check_breakpoints();
 
-int io_cycles_before;
-#define STORE_COUNTER io_cycles_before = cycles;
 
 #define insdebug(CYC) \
 if (do_debug) \
 	printf("%05i|%03i: %06x: OP_%04x (%02i) r=%08x|irq=%02i %s: \n",M68KCONTEXT.cycles_counter,cycles+cycles_needed,(u32)PC - ctx->membase,Opcode,io_cycles_before - cycles,res, ctx->irq&7,__FUNCTION__)
 
-int do_debug = 0;
 #else
-#define CHECK_BREAKPOINTS
-#define STORE_COUNTER
 #define insdebug(CYC)
 #endif
 
@@ -50,34 +75,6 @@ int do_debug = 0;
 #define FAMEC_ADR_BITS  24
 #define FAMEC_FETCHBITS 8
 #define FAMEC_DATABITS  8
-
-#define USE_BRANCHES 1
-
-#if USE_BRANCHES
-
-#define OPCODE(A)	\
-static void OP_##A() __asm__("OP" #A) __attribute__((naked));	\
-\
-void OP_##A()
-
-#define NAKED(FN)	\
-void FN() __asm__(#FN) __attribute__((naked));	\
-\
-void FN()
-
-#else
-
-#define OPCODE(A)	\
-static void OP_##A() __asm__("OP" #A);	\
-\
-void OP_##A()
-
-#define NAKED(FN)	\
-void FN() __asm__(#FN);	\
-\
-void FN()
-
-#endif
 
 /*!
  * indicates that VFP reg s16 should be used instead of ARM reg r5
@@ -400,6 +397,10 @@ static __inline__ void Write_Long(unsigned int a,unsigned int d) {
 #if USE_BRANCHES
 
 #define FINISH(cycle_count) \
+	UPDATE_COUNTER(cycle_count); \
+	DISA_POST_STEP(); \
+	CHECK_BREAKPOINTS; \
+	DISA_STEP(); \
 	Opcode = FETCH_WORD; \
 	asm volatile("subs %[cycles], %[cycles], #" #cycle_count \
 		: [cycles] "+r" (cycles) \
@@ -408,7 +409,13 @@ static __inline__ void Write_Long(unsigned int a,unsigned int d) {
 				 "\tb EmulateEnd" \
 				 : : [jt] "r" (jt), [opcode] "r" (Opcode), "r" (cycles)); 
 
-#define NEXT FINISH(0)
+#define NEXT \
+	DISA_START() \
+	STORE_COUNTER; \
+	DISA_STEP(); \
+	Opcode = FETCH_WORD; \
+	asm volatile("ldr pc, [%[jt], %[opcode], asl #2] ;@ jump to next opcode handler" \
+				 : : [jt] "r" (jt), [opcode] "r" (Opcode), "r" (cycles));
 
 #else
 
@@ -419,11 +426,13 @@ static __inline__ void Write_Long(unsigned int a,unsigned int d) {
 
 #define NEXT do { \
 	CHECK_BREAKPOINTS; \
+	DISA_STEP(); \
 	Opcode = FETCH_WORD; \
 	typedef void (*opcode_func)(void); \
 	STORE_COUNTER; \
 	opcode_func fn = (opcode_func)jt[Opcode]; \
 	fn(); \
+	DISA_POST_STEP(); \
 	} while (cycles > 0)
 
 #endif
@@ -452,6 +461,7 @@ static __inline__ void Write_Long(unsigned int a,unsigned int d) {
 		u32 pr_PC=GET_PC; \
 		EXECINFO |= M68K_EMULATE_GROUP_0; \
 		execute_exception_group_0(M68K_ADDRESS_ERROR_EX, 0, pr_PC, 0x12 ); \
+		PC++; \
 		asm volatile("b EmulateEnd"); \
 	}
 
@@ -506,7 +516,7 @@ __inline__ u32 get_sr() {
 
 #define GET_SR			get_sr()
 
-//#define GET_CCR			flags
+#define GET_CCR			get_sr()
 
 #define SET_CCR(V)		set_ccr(V);
 
@@ -538,7 +548,9 @@ __inline__ u32 get_sr() {
 
 #define M68K_INT_ACK_AUTOVECTOR         -1
 
+#if !defined(M68K_RUNNING)
 #define M68K_RUNNING    0x01
+#endif
 #define M68K_HALTED     0x80
 #define M68K_WAITING    0x04
 #define M68K_DISABLE    0x20
@@ -596,22 +608,6 @@ __inline__ u32 fetch_long() {
 		: [result] "=r" (result), [pc] "+r" (PC));
 	return result;
 }
-#endif
-
-#pragma mark -
-#pragma mark BREAKPOINTS
-
-#ifdef DEBUG_CPU
-
-void check_breakpoints() {
-	u32 cPC = GET_PC;
-	switch (cPC) {
-		case 0x017c3a:
-			printf("break\n");
-			break;
-	}
-}
-
 #endif
 
 #pragma mark -
@@ -778,6 +774,193 @@ static s32 interrupt_chk__(void) {
 	return 0;
 }
 
+#pragma mark -
+#pragma mark DISASSEMBLER / BREAKPOINTS
+
+/***********************/
+/* disassembler code   */
+/***********************/
+
+#if DISASSEMBLER
+# include "Disa.h"
+# include "disassembler.h"
+# include "DisaLogging.h"
+
+FILE *g_logOutput = stdout;
+
+//#define flag_x	(ctx->xc & 0x20000000)
+//#define flag_n	(flags & (0x1 << 31))
+//#define flag_z	(flags & (0x1 << 30))
+//#define flag_v	(flags & (0x1 << 28))
+//#define flag_c	(flags & (0x1 << 29))
+
+#define flag_Xx			(flag_x ? 'X' : 'x')
+#define flag_Nn			(flag_n ? 'N' : 'n')
+#define flag_Zz			(flag_z ? 'Z' : 'z')
+#define flag_Vv			(flag_v ? 'V' : 'v')
+#define flag_Cc			(flag_c ? 'C' : 'c')
+
+#define _68k_areg(X) AREG(X)
+#define _68k_dreg(X) DREGu32(X)
+
+int g_disastep=0;
+
+void check_breakpoints() {
+	u32 cPC = GET_PC;
+	
+	static int count = 0;
+	
+	switch (cPC) {
+		case 0x53d0:
+			count++;
+			if (count == 1) {
+				do_disa = 1;
+			}
+			break;
+	}
+}
+
+unsigned short DisaGetWord(unsigned int a) {
+	return Read_Word(a);
+}
+
+#define MODE_BINARY				1
+#define MODE_TEXT_TABS			2
+#define MODE_TEXT_SPACES		3
+
+#define DISASSEMBLER_OUTPUT		MODE_BINARY
+
+#define DISASSEMBLER_LIMIT		1000000
+
+#define INSTRUCTION_LOGLEVEL	2
+
+u16 *DPC;
+
+void DisaStep() {
+	g_disastep=1;
+
+	DisaPc = GET_PC;
+#if DISASSEMBLER_OUTPUT != MODE_BINARY
+	DisaGet();
+	DisaPc = GET_PC;
+#else
+	DPC = PC;
+#endif
+}
+
+void DisaPostStep() {
+	if (!g_disastep) return;
+	
+	g_disastep=0;
+	
+#if DISASSEMBLER_LIMIT
+	disa_step++;
+#endif
+
+	
+#if DISASSEMBLER_OUTPUT == MODE_BINARY
+
+#if INSTRUCTION_LOGLEVEL == 0
+	const uint8_t rType = EntryTypeInstructionL0;
+#elif INSTRUCTION_LOGLEVEL == 1
+	const uint8_t rType = EntryTypeInstructionL1;
+#else
+	const uint8_t rType = EntryTypeInstructionL2;
+#endif
+	fwrite(&rType, sizeof(rType), 1, g_logOutput);
+	
+	fwrite(&DisaPc, 4, 1, g_logOutput);
+	fwrite(DPC, 4, 3, g_logOutput);
+	uint8_t ccr = GET_CCR;
+	fwrite(&ccr, 1, 1, g_logOutput);
+	
+#if INSTRUCTION_LOGLEVEL > 0
+	u8 inscycles = INSTRUCTION_CYCLES; 
+	fwrite(&inscycles, 1, 1, g_logOutput);
+#endif
+	
+#if INSTRUCTION_LOGLEVEL > 1
+	fwrite(&DREG(0), 4, 16, g_logOutput);
+#endif
+	
+#elif DISASSEMBLER_OUTPUT == MODE_TEXT_TABS
+	fprintf(g_logOutput, "%06x:\t%s\t%c%c%c%c%c", DisaPc, DisaText, 
+		   flag_Xx, flag_Nn, flag_Zz, flag_Vv, flag_Cc);
+	
+	fprintf(g_logOutput, "\tA0=%.8X\tA1=%.8X\tA2=%.8X\tA3=%.8X",_68k_areg(0),_68k_areg(1),_68k_areg(2),_68k_areg(3));
+	fprintf(g_logOutput, "\tA4=%.8X\tA5=%.8X\tA6=%.8X\tA7=%.8X",_68k_areg(4),_68k_areg(5),_68k_areg(6),_68k_areg(7));
+	fprintf(g_logOutput, "\tD0=%.8X\tD1=%.8X\tD2=%.8X\tD3=%.8X",_68k_dreg(0),_68k_dreg(1),_68k_dreg(2),_68k_dreg(3));
+	fprintf(g_logOutput, "\tD4=%.8X\tD5=%.8X\tD6=%.8X\tD7=%.8X",_68k_dreg(4),_68k_dreg(5),_68k_dreg(6),_68k_dreg(7));
+	
+	fprintf(g_logOutput, "\n");
+	
+#else
+	fprintf(g_logOutput, "%06x %06x: %-35s  %c%c%c%c%c\n", disa_step, DisaPc, DisaText, 
+		   flag_Xx, flag_Nn, flag_Zz, flag_Vv, flag_Cc);
+#endif
+	
+#if DISASSEMBLER_LIMIT
+	// limit
+	if (disa_step > DISASSEMBLER_LIMIT) {
+		do_disa = 0;
+		DisaCloseFile();
+	}
+#endif
+}
+
+static void DisaLogException(s32 vect, u32 oldPC, u32 newPC) {
+	uint8_t rType = EntryTypeException;
+	fwrite(&rType, sizeof(rType), 1, g_logOutput);
+	
+	tagExceptionRecord rec = {
+		vect, oldPC, newPC
+	};
+	fwrite(&rec, sizeof(rec), 1, g_logOutput);
+}
+
+void DisaInitialize() {
+	static char buffer[512];
+	DisaWord = &DisaGetWord;
+	DisaText = buffer;
+	DisaText[0] = '\0';
+	
+	DisaCreateFile(1);
+}
+
+void DisaLogEmulateStart(s32 cycles, u32 total_cycles) {
+	uint8_t rType = EntryTypeEmulateStart;
+	fwrite(&rType, sizeof(rType), 1, g_logOutput);
+	
+	tagEmulateStart rec = {
+		cycles, total_cycles
+	};
+	fwrite(&rec, sizeof(rec), 1, g_logOutput);
+}
+
+#define DISA_STEP()			if (do_disa) DisaStep();
+#define DISA_POST_STEP()	if (do_disa) DisaPostStep();
+#define DISA_LOGEXCEPTION()	if (do_disa) DisaLogException(vect, oldPC, newPC);
+#define DISA_EMULATE_START(cycles, total_cycles) if (do_disa) DisaLogEmulateStart(cycles, total_cycles);
+
+#define DISA_START()		if (do_disa) g_disastep=0;
+
+#else
+
+#define DISA_STEP()
+#define DISA_POST_STEP()
+#define DISA_LOGEXCEPTION()
+#define DISA_EMULATE_START(cycles, total_cycles)
+
+#define DISA_START()
+
+#endif
+
+void m68k_init() {
+#if DISASSEMBLER
+	DisaInitialize();
+#endif
+}
+
 unsigned m68k_reset() {
 	u32 save_r11;
 	u32 save_r10;
@@ -811,6 +994,11 @@ unsigned m68k_reset() {
 	m68k_context.membase = 0;
 	m68k_context.pc = m68k_context.checkpc(Read_Long(4));
 	m68k_context.cycles = 0;
+	
+#if DISASSEMBLER
+	DisaCloseFile();
+	DisaCreateFile(1);
+#endif
 	
 	asm volatile("mov r11, %[save_r11]\n\t"
 				 "mov r10, %[save_r10]"
@@ -931,6 +1119,8 @@ static void execute_exception(s32 vect) {
 		
 		SET_PC_BASE(newPC)
 		
+		DISA_LOGEXCEPTION();
+		
 		POST_IO
 	}
 	
@@ -1000,7 +1190,8 @@ static void execute_exception_group_0(s32 vect, u16 inst_reg, s32 addr, u16 spec
 #if DEBUG
 
 #define PROLOG
-#define EPILOGUE 
+#define EPILOGUE
+
 #define EMULATE_PROLOG \
 	__asm__ volatile("stmfd sp!,{r4-r7,lr} \n\t" \
 					 "add r7, sp, #12"::: "sp", "r7");	\
@@ -1012,21 +1203,64 @@ static void execute_exception_group_0(s32 vect, u16 inst_reg, s32 addr, u16 spec
 	__asm__ volatile("ldmfd sp!,{r8-r11}"); \
 	__asm__ volatile("ldmfd sp!,{r4-r7,pc}"); \
 
+/*
+#define PROLOG
+#define EPILOGUE 
+#define EMULATE_PROLOG \
+	__asm__ volatile("stmfd sp!,{r4-r7,lr} \n\t" \
+					 "add r7, sp, #12"::: "sp", "r7");	\
+	__asm__ volatile("stmfd sp!,{r8-r11}"::: "sp");	\
+	__asm__ volatile("sub sp, sp, #0x200":::"sp");
+
+#define EMULATEEND_EPILOGUE \
+	__asm__ volatile("add sp, sp, #0x200" ::: "sp"); \
+	__asm__ volatile("ldmfd sp!,{r8-r11}"); \
+	__asm__ volatile("ldmfd sp!,{r4-r7,pc}"); \
+*/
 #else
 
 #define PROLOG
 #define EPILOGUE 
 #define EMULATE_PROLOG \
 	asm volatile("stmdb sp!,{r4-r11,lr}"); \
-	asm volatile("sub sp, sp, #0x100"::: "sp");
+	asm volatile("sub sp, sp, #0x200"::: "sp");
 
 #define EMULATEEND_EPILOGUE \
-	asm volatile("add sp, sp, #0x100" ::: "sp"); \
+	asm volatile("add sp, sp, #0x200" ::: "sp"); \
 	asm volatile("ldmia sp!,{r4-r11,pc}");
 
 #endif
 
 #endif
+
+#if USE_BRANCHES
+
+#define OPCODE(A)	\
+static void OP_##A() __asm__("OP" #A) __attribute__((naked));	\
+\
+void OP_##A() { \
+	STORE_COUNTER; 
+
+
+#define NAKED(FN)	\
+void FN() __asm__(#FN) __attribute__((naked));	\
+\
+void FN()
+
+#else
+
+#define OPCODE(A)	\
+static void OP_##A() __asm__("OP" #A);	\
+\
+void OP_##A() {
+
+#define NAKED(FN)	\
+void FN() __asm__(#FN);	\
+\
+void FN()
+
+#endif
+
 
 #include "c68k_misc.h"
 #include "c68k_op0.h"
@@ -1072,6 +1306,8 @@ void emulate_end() asm("EmulateEnd") __attribute__((naked));
 
 void emulate() {
 	EMULATE_PROLOG
+	
+	DISA_EMULATE_START(m68k_context.cycles_to_execute, M68KCONTEXT.cycles_counter);
 		
 	/* Comprobar si la CPU esta detenida debido a un doble error de bus */
 	if (EXECINFO & M68K_FAULTED) RETURN_EMULATE;

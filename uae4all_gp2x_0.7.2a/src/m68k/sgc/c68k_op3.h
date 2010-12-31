@@ -1,7 +1,6 @@
 
 // ---------- [3000] move.w d0, d0 ----------
 OPCODE(0x3000)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -17,7 +16,6 @@ OPCODE(0x3000)
 
 // ---------- [3080] move.w d0, (a0) ----------
 OPCODE(0x3080)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -36,7 +34,6 @@ OPCODE(0x3080)
 
 // ---------- [30c0] move.w d0, (a0)+ ----------
 OPCODE(0x30C0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -56,7 +53,6 @@ OPCODE(0x30C0)
 
 // ---------- [3100] move.w d0, -(a0) ----------
 OPCODE(0x3100)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -76,7 +72,6 @@ OPCODE(0x3100)
 
 // ---------- [3140] move.w d0, ($3333,a0) ----------
 OPCODE(0x3140)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -96,7 +91,6 @@ OPCODE(0x3140)
 
 // ---------- [3180] move.w d0, ($33,a0,d3.w*2) ----------
 OPCODE(0x3180)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -116,7 +110,6 @@ OPCODE(0x3180)
 
 // ---------- [31c0] move.w d0, $3333.w ----------
 OPCODE(0x31C0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -135,7 +128,6 @@ OPCODE(0x31C0)
 
 // ---------- [33c0] move.w d0, $33333333.l ----------
 OPCODE(0x33C0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -154,7 +146,6 @@ OPCODE(0x33C0)
 
 // ---------- [3ec0] move.w d0, (a7)+ ----------
 OPCODE(0x3EC0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -174,7 +165,6 @@ OPCODE(0x3EC0)
 
 // ---------- [3f00] move.w d0, -(a7) ----------
 OPCODE(0x3F00)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -194,7 +184,6 @@ OPCODE(0x3F00)
 
 // ---------- [3008] move.w a0, d0 ----------
 OPCODE(0x3008)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -210,7 +199,6 @@ OPCODE(0x3008)
 
 // ---------- [3088] move.w a0, (a0) ----------
 OPCODE(0x3088)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -229,7 +217,6 @@ OPCODE(0x3088)
 
 // ---------- [30c8] move.w a0, (a0)+ ----------
 OPCODE(0x30C8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -249,7 +236,6 @@ OPCODE(0x30C8)
 
 // ---------- [3108] move.w a0, -(a0) ----------
 OPCODE(0x3108)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -269,7 +255,6 @@ OPCODE(0x3108)
 
 // ---------- [3148] move.w a0, ($3333,a0) ----------
 OPCODE(0x3148)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -289,7 +274,6 @@ OPCODE(0x3148)
 
 // ---------- [3188] move.w a0, ($33,a0,d3.w*2) ----------
 OPCODE(0x3188)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -309,7 +293,6 @@ OPCODE(0x3188)
 
 // ---------- [31c8] move.w a0, $3333.w ----------
 OPCODE(0x31C8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -328,7 +311,6 @@ OPCODE(0x31C8)
 
 // ---------- [33c8] move.w a0, $33333333.l ----------
 OPCODE(0x33C8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -347,7 +329,6 @@ OPCODE(0x33C8)
 
 // ---------- [3ec8] move.w a0, (a7)+ ----------
 OPCODE(0x3EC8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -367,7 +348,6 @@ OPCODE(0x3EC8)
 
 // ---------- [3f08] move.w a0, -(a7) ----------
 OPCODE(0x3F08)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -387,7 +367,6 @@ OPCODE(0x3F08)
 
 // ---------- [3010] move.w (a0), d0 ----------
 OPCODE(0x3010)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -406,7 +385,6 @@ OPCODE(0x3010)
 
 // ---------- [3090] move.w (a0), (a0) ----------
 OPCODE(0x3090)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -426,7 +404,6 @@ OPCODE(0x3090)
 
 // ---------- [30d0] move.w (a0), (a0)+ ----------
 OPCODE(0x30D0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -447,7 +424,6 @@ OPCODE(0x30D0)
 
 // ---------- [3110] move.w (a0), -(a0) ----------
 OPCODE(0x3110)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -468,7 +444,6 @@ OPCODE(0x3110)
 
 // ---------- [3150] move.w (a0), ($3333,a0) ----------
 OPCODE(0x3150)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -489,7 +464,6 @@ OPCODE(0x3150)
 
 // ---------- [3190] move.w (a0), ($33,a0,d3.w*2) ----------
 OPCODE(0x3190)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -510,7 +484,6 @@ OPCODE(0x3190)
 
 // ---------- [31d0] move.w (a0), $3333.w ----------
 OPCODE(0x31D0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -530,7 +503,6 @@ OPCODE(0x31D0)
 
 // ---------- [33d0] move.w (a0), $33333333.l ----------
 OPCODE(0x33D0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -550,7 +522,6 @@ OPCODE(0x33D0)
 
 // ---------- [3ed0] move.w (a0), (a7)+ ----------
 OPCODE(0x3ED0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -571,7 +542,6 @@ OPCODE(0x3ED0)
 
 // ---------- [3f10] move.w (a0), -(a7) ----------
 OPCODE(0x3F10)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -592,7 +562,6 @@ OPCODE(0x3F10)
 
 // ---------- [3018] move.w (a0)+, d0 ----------
 OPCODE(0x3018)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -612,7 +581,6 @@ OPCODE(0x3018)
 
 // ---------- [3098] move.w (a0)+, (a0) ----------
 OPCODE(0x3098)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -633,7 +601,6 @@ OPCODE(0x3098)
 
 // ---------- [30d8] move.w (a0)+, (a0)+ ----------
 OPCODE(0x30D8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -655,7 +622,6 @@ OPCODE(0x30D8)
 
 // ---------- [3118] move.w (a0)+, -(a0) ----------
 OPCODE(0x3118)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -677,7 +643,6 @@ OPCODE(0x3118)
 
 // ---------- [3158] move.w (a0)+, ($3333,a0) ----------
 OPCODE(0x3158)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -699,7 +664,6 @@ OPCODE(0x3158)
 
 // ---------- [3198] move.w (a0)+, ($33,a0,d3.w*2) ----------
 OPCODE(0x3198)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -721,7 +685,6 @@ OPCODE(0x3198)
 
 // ---------- [31d8] move.w (a0)+, $3333.w ----------
 OPCODE(0x31D8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -742,7 +705,6 @@ OPCODE(0x31D8)
 
 // ---------- [33d8] move.w (a0)+, $33333333.l ----------
 OPCODE(0x33D8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -763,7 +725,6 @@ OPCODE(0x33D8)
 
 // ---------- [3ed8] move.w (a0)+, (a7)+ ----------
 OPCODE(0x3ED8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -785,7 +746,6 @@ OPCODE(0x3ED8)
 
 // ---------- [3f18] move.w (a0)+, -(a7) ----------
 OPCODE(0x3F18)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -807,7 +767,6 @@ OPCODE(0x3F18)
 
 // ---------- [3020] move.w -(a0), d0 ----------
 OPCODE(0x3020)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -827,7 +786,6 @@ OPCODE(0x3020)
 
 // ---------- [30a0] move.w -(a0), (a0) ----------
 OPCODE(0x30A0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -848,7 +806,6 @@ OPCODE(0x30A0)
 
 // ---------- [30e0] move.w -(a0), (a0)+ ----------
 OPCODE(0x30E0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -870,7 +827,6 @@ OPCODE(0x30E0)
 
 // ---------- [3120] move.w -(a0), -(a0) ----------
 OPCODE(0x3120)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -892,7 +848,6 @@ OPCODE(0x3120)
 
 // ---------- [3160] move.w -(a0), ($3333,a0) ----------
 OPCODE(0x3160)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -914,7 +869,6 @@ OPCODE(0x3160)
 
 // ---------- [31a0] move.w -(a0), ($33,a0,d3.w*2) ----------
 OPCODE(0x31A0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -936,7 +890,6 @@ OPCODE(0x31A0)
 
 // ---------- [31e0] move.w -(a0), $3333.w ----------
 OPCODE(0x31E0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -957,7 +910,6 @@ OPCODE(0x31E0)
 
 // ---------- [33e0] move.w -(a0), $33333333.l ----------
 OPCODE(0x33E0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -978,7 +930,6 @@ OPCODE(0x33E0)
 
 // ---------- [3ee0] move.w -(a0), (a7)+ ----------
 OPCODE(0x3EE0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1000,7 +951,6 @@ OPCODE(0x3EE0)
 
 // ---------- [3f20] move.w -(a0), -(a7) ----------
 OPCODE(0x3F20)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1022,7 +972,6 @@ OPCODE(0x3F20)
 
 // ---------- [3028] move.w ($3333,a0), d0 ----------
 OPCODE(0x3028)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1042,7 +991,6 @@ OPCODE(0x3028)
 
 // ---------- [30a8] move.w ($3333,a0), (a0) ----------
 OPCODE(0x30A8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1063,7 +1011,6 @@ OPCODE(0x30A8)
 
 // ---------- [30e8] move.w ($3333,a0), (a0)+ ----------
 OPCODE(0x30E8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1085,7 +1032,6 @@ OPCODE(0x30E8)
 
 // ---------- [3128] move.w ($3333,a0), -(a0) ----------
 OPCODE(0x3128)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1107,7 +1053,6 @@ OPCODE(0x3128)
 
 // ---------- [3168] move.w ($3333,a0), ($3333,a0) ----------
 OPCODE(0x3168)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1129,7 +1074,6 @@ OPCODE(0x3168)
 
 // ---------- [31a8] move.w ($3333,a0), ($33,a0,d3.w*2) ----------
 OPCODE(0x31A8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1151,7 +1095,6 @@ OPCODE(0x31A8)
 
 // ---------- [31e8] move.w ($3333,a0), $3333.w ----------
 OPCODE(0x31E8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1172,7 +1115,6 @@ OPCODE(0x31E8)
 
 // ---------- [33e8] move.w ($3333,a0), $33333333.l ----------
 OPCODE(0x33E8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1193,7 +1135,6 @@ OPCODE(0x33E8)
 
 // ---------- [3ee8] move.w ($3333,a0), (a7)+ ----------
 OPCODE(0x3EE8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1215,7 +1156,6 @@ OPCODE(0x3EE8)
 
 // ---------- [3f28] move.w ($3333,a0), -(a7) ----------
 OPCODE(0x3F28)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1237,7 +1177,6 @@ OPCODE(0x3F28)
 
 // ---------- [3030] move.w ($33,a0,d3.w*2), d0 ----------
 OPCODE(0x3030)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1257,7 +1196,6 @@ OPCODE(0x3030)
 
 // ---------- [30b0] move.w ($33,a0,d3.w*2), (a0) ----------
 OPCODE(0x30B0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1278,7 +1216,6 @@ OPCODE(0x30B0)
 
 // ---------- [30f0] move.w ($33,a0,d3.w*2), (a0)+ ----------
 OPCODE(0x30F0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1300,7 +1237,6 @@ OPCODE(0x30F0)
 
 // ---------- [3130] move.w ($33,a0,d3.w*2), -(a0) ----------
 OPCODE(0x3130)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1322,7 +1258,6 @@ OPCODE(0x3130)
 
 // ---------- [3170] move.w ($33,a0,d3.w*2), ($3333,a0) ----------
 OPCODE(0x3170)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1344,7 +1279,6 @@ OPCODE(0x3170)
 
 // ---------- [31b0] move.w ($33,a0,d3.w*2), ($33,a0,d3.w*2) ----------
 OPCODE(0x31B0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1366,7 +1300,6 @@ OPCODE(0x31B0)
 
 // ---------- [31f0] move.w ($33,a0,d3.w*2), $3333.w ----------
 OPCODE(0x31F0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1387,7 +1320,6 @@ OPCODE(0x31F0)
 
 // ---------- [33f0] move.w ($33,a0,d3.w*2), $33333333.l ----------
 OPCODE(0x33F0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1408,7 +1340,6 @@ OPCODE(0x33F0)
 
 // ---------- [3ef0] move.w ($33,a0,d3.w*2), (a7)+ ----------
 OPCODE(0x3EF0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1430,7 +1361,6 @@ OPCODE(0x3EF0)
 
 // ---------- [3f30] move.w ($33,a0,d3.w*2), -(a7) ----------
 OPCODE(0x3F30)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1452,7 +1382,6 @@ OPCODE(0x3F30)
 
 // ---------- [3038] move.w $3333.w, d0 ----------
 OPCODE(0x3038)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1471,7 +1400,6 @@ OPCODE(0x3038)
 
 // ---------- [30b8] move.w $3333.w, (a0) ----------
 OPCODE(0x30B8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1491,7 +1419,6 @@ OPCODE(0x30B8)
 
 // ---------- [30f8] move.w $3333.w, (a0)+ ----------
 OPCODE(0x30F8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1512,7 +1439,6 @@ OPCODE(0x30F8)
 
 // ---------- [3138] move.w $3333.w, -(a0) ----------
 OPCODE(0x3138)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1533,7 +1459,6 @@ OPCODE(0x3138)
 
 // ---------- [3178] move.w $3333.w, ($3333,a0) ----------
 OPCODE(0x3178)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1554,7 +1479,6 @@ OPCODE(0x3178)
 
 // ---------- [31b8] move.w $3333.w, ($33,a0,d3.w*2) ----------
 OPCODE(0x31B8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1575,7 +1499,6 @@ OPCODE(0x31B8)
 
 // ---------- [31f8] move.w $3333.w, $3333.w ----------
 OPCODE(0x31F8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1595,7 +1518,6 @@ OPCODE(0x31F8)
 
 // ---------- [33f8] move.w $3333.w, $33333333.l ----------
 OPCODE(0x33F8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1615,7 +1537,6 @@ OPCODE(0x33F8)
 
 // ---------- [3ef8] move.w $3333.w, (a7)+ ----------
 OPCODE(0x3EF8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1636,7 +1557,6 @@ OPCODE(0x3EF8)
 
 // ---------- [3f38] move.w $3333.w, -(a7) ----------
 OPCODE(0x3F38)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1657,7 +1577,6 @@ OPCODE(0x3F38)
 
 // ---------- [3039] move.w $33333333.l, d0 ----------
 OPCODE(0x3039)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1676,7 +1595,6 @@ OPCODE(0x3039)
 
 // ---------- [30b9] move.w $33333333.l, (a0) ----------
 OPCODE(0x30B9)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1696,7 +1614,6 @@ OPCODE(0x30B9)
 
 // ---------- [30f9] move.w $33333333.l, (a0)+ ----------
 OPCODE(0x30F9)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1717,7 +1634,6 @@ OPCODE(0x30F9)
 
 // ---------- [3139] move.w $33333333.l, -(a0) ----------
 OPCODE(0x3139)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1738,7 +1654,6 @@ OPCODE(0x3139)
 
 // ---------- [3179] move.w $33333333.l, ($3333,a0) ----------
 OPCODE(0x3179)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1759,7 +1674,6 @@ OPCODE(0x3179)
 
 // ---------- [31b9] move.w $33333333.l, ($33,a0,d3.w*2) ----------
 OPCODE(0x31B9)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1780,7 +1694,6 @@ OPCODE(0x31B9)
 
 // ---------- [31f9] move.w $33333333.l, $3333.w ----------
 OPCODE(0x31F9)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1800,7 +1713,6 @@ OPCODE(0x31F9)
 
 // ---------- [33f9] move.w $33333333.l, $33333333.l ----------
 OPCODE(0x33F9)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1820,7 +1732,6 @@ OPCODE(0x33F9)
 
 // ---------- [3ef9] move.w $33333333.l, (a7)+ ----------
 OPCODE(0x3EF9)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1841,7 +1752,6 @@ OPCODE(0x3EF9)
 
 // ---------- [3f39] move.w $33333333.l, -(a7) ----------
 OPCODE(0x3F39)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1862,7 +1772,6 @@ OPCODE(0x3F39)
 
 // ---------- [303a] move.w ($3333,pc), d0; =3335 ----------
 OPCODE(0x303A)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1882,7 +1791,6 @@ OPCODE(0x303A)
 
 // ---------- [30ba] move.w ($3333,pc), (a0); =3335 ----------
 OPCODE(0x30BA)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1903,7 +1811,6 @@ OPCODE(0x30BA)
 
 // ---------- [30fa] move.w ($3333,pc), (a0)+; =3335 ----------
 OPCODE(0x30FA)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1925,7 +1832,6 @@ OPCODE(0x30FA)
 
 // ---------- [313a] move.w ($3333,pc), -(a0); =3335 ----------
 OPCODE(0x313A)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1947,7 +1853,6 @@ OPCODE(0x313A)
 
 // ---------- [317a] move.w ($3333,pc), ($3333,a0); =3335 ----------
 OPCODE(0x317A)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1969,7 +1874,6 @@ OPCODE(0x317A)
 
 // ---------- [31ba] move.w ($3333,pc), ($33,a0,d3.w*2); =3335 ----------
 OPCODE(0x31BA)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1991,7 +1895,6 @@ OPCODE(0x31BA)
 
 // ---------- [31fa] move.w ($3333,pc), $3333.w; =3335 ----------
 OPCODE(0x31FA)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2012,7 +1915,6 @@ OPCODE(0x31FA)
 
 // ---------- [33fa] move.w ($3333,pc), $33333333.l; =3335 ----------
 OPCODE(0x33FA)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2033,7 +1935,6 @@ OPCODE(0x33FA)
 
 // ---------- [3efa] move.w ($3333,pc), (a7)+; =3335 ----------
 OPCODE(0x3EFA)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2055,7 +1956,6 @@ OPCODE(0x3EFA)
 
 // ---------- [3f3a] move.w ($3333,pc), -(a7); =3335 ----------
 OPCODE(0x3F3A)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2077,7 +1977,6 @@ OPCODE(0x3F3A)
 
 // ---------- [303b] move.w ($33,pc,d3.w*2), d0; =35 ----------
 OPCODE(0x303B)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2097,7 +1996,6 @@ OPCODE(0x303B)
 
 // ---------- [30bb] move.w ($33,pc,d3.w*2), (a0); =35 ----------
 OPCODE(0x30BB)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2118,7 +2016,6 @@ OPCODE(0x30BB)
 
 // ---------- [30fb] move.w ($33,pc,d3.w*2), (a0)+; =35 ----------
 OPCODE(0x30FB)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2140,7 +2037,6 @@ OPCODE(0x30FB)
 
 // ---------- [313b] move.w ($33,pc,d3.w*2), -(a0); =35 ----------
 OPCODE(0x313B)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2162,7 +2058,6 @@ OPCODE(0x313B)
 
 // ---------- [317b] move.w ($33,pc,d3.w*2), ($3333,a0); =35 ----------
 OPCODE(0x317B)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2184,7 +2079,6 @@ OPCODE(0x317B)
 
 // ---------- [31bb] move.w ($33,pc,d3.w*2), ($33,a0,d3.w*2); =35 ----------
 OPCODE(0x31BB)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2206,7 +2100,6 @@ OPCODE(0x31BB)
 
 // ---------- [31fb] move.w ($33,pc,d3.w*2), $3333.w; =35 ----------
 OPCODE(0x31FB)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2227,7 +2120,6 @@ OPCODE(0x31FB)
 
 // ---------- [33fb] move.w ($33,pc,d3.w*2), $33333333.l; =35 ----------
 OPCODE(0x33FB)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2248,7 +2140,6 @@ OPCODE(0x33FB)
 
 // ---------- [3efb] move.w ($33,pc,d3.w*2), (a7)+; =35 ----------
 OPCODE(0x3EFB)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2270,7 +2161,6 @@ OPCODE(0x3EFB)
 
 // ---------- [3f3b] move.w ($33,pc,d3.w*2), -(a7); =35 ----------
 OPCODE(0x3F3B)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2292,7 +2182,6 @@ OPCODE(0x3F3B)
 
 // ---------- [303c] move.w #$3333, d0 ----------
 OPCODE(0x303C)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2308,7 +2197,6 @@ OPCODE(0x303C)
 
 // ---------- [30bc] move.w #$3333, (a0) ----------
 OPCODE(0x30BC)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2327,7 +2215,6 @@ OPCODE(0x30BC)
 
 // ---------- [30fc] move.w #$3333, (a0)+ ----------
 OPCODE(0x30FC)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2347,7 +2234,6 @@ OPCODE(0x30FC)
 
 // ---------- [313c] move.w #$3333, -(a0) ----------
 OPCODE(0x313C)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2367,7 +2253,6 @@ OPCODE(0x313C)
 
 // ---------- [317c] move.w #$3333, ($3333,a0) ----------
 OPCODE(0x317C)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2387,7 +2272,6 @@ OPCODE(0x317C)
 
 // ---------- [31bc] move.w #$3333, ($33,a0,d3.w*2) ----------
 OPCODE(0x31BC)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2407,7 +2291,6 @@ OPCODE(0x31BC)
 
 // ---------- [31fc] move.w #$3333, $3333.w ----------
 OPCODE(0x31FC)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2426,7 +2309,6 @@ OPCODE(0x31FC)
 
 // ---------- [33fc] move.w #$3333, $33333333.l ----------
 OPCODE(0x33FC)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2445,7 +2327,6 @@ OPCODE(0x33FC)
 
 // ---------- [3efc] move.w #$3333, (a7)+ ----------
 OPCODE(0x3EFC)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2465,7 +2346,6 @@ OPCODE(0x3EFC)
 
 // ---------- [3f3c] move.w #$3333, -(a7) ----------
 OPCODE(0x3F3C)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2485,7 +2365,6 @@ OPCODE(0x3F3C)
 
 // ---------- [301f] move.w (a7)+, d0 ----------
 OPCODE(0x301F)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2505,7 +2384,6 @@ OPCODE(0x301F)
 
 // ---------- [309f] move.w (a7)+, (a0) ----------
 OPCODE(0x309F)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2526,7 +2404,6 @@ OPCODE(0x309F)
 
 // ---------- [30df] move.w (a7)+, (a0)+ ----------
 OPCODE(0x30DF)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2548,7 +2425,6 @@ OPCODE(0x30DF)
 
 // ---------- [311f] move.w (a7)+, -(a0) ----------
 OPCODE(0x311F)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2570,7 +2446,6 @@ OPCODE(0x311F)
 
 // ---------- [315f] move.w (a7)+, ($3333,a0) ----------
 OPCODE(0x315F)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2592,7 +2467,6 @@ OPCODE(0x315F)
 
 // ---------- [319f] move.w (a7)+, ($33,a0,d3.w*2) ----------
 OPCODE(0x319F)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2614,7 +2488,6 @@ OPCODE(0x319F)
 
 // ---------- [31df] move.w (a7)+, $3333.w ----------
 OPCODE(0x31DF)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2635,7 +2508,6 @@ OPCODE(0x31DF)
 
 // ---------- [33df] move.w (a7)+, $33333333.l ----------
 OPCODE(0x33DF)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2656,7 +2528,6 @@ OPCODE(0x33DF)
 
 // ---------- [3edf] move.w (a7)+, (a7)+ ----------
 OPCODE(0x3EDF)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2678,7 +2549,6 @@ OPCODE(0x3EDF)
 
 // ---------- [3f1f] move.w (a7)+, -(a7) ----------
 OPCODE(0x3F1F)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2700,7 +2570,6 @@ OPCODE(0x3F1F)
 
 // ---------- [3027] move.w -(a7), d0 ----------
 OPCODE(0x3027)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2720,7 +2589,6 @@ OPCODE(0x3027)
 
 // ---------- [30a7] move.w -(a7), (a0) ----------
 OPCODE(0x30A7)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2741,7 +2609,6 @@ OPCODE(0x30A7)
 
 // ---------- [30e7] move.w -(a7), (a0)+ ----------
 OPCODE(0x30E7)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2763,7 +2630,6 @@ OPCODE(0x30E7)
 
 // ---------- [3127] move.w -(a7), -(a0) ----------
 OPCODE(0x3127)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2785,7 +2651,6 @@ OPCODE(0x3127)
 
 // ---------- [3167] move.w -(a7), ($3333,a0) ----------
 OPCODE(0x3167)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2807,7 +2672,6 @@ OPCODE(0x3167)
 
 // ---------- [31a7] move.w -(a7), ($33,a0,d3.w*2) ----------
 OPCODE(0x31A7)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2829,7 +2693,6 @@ OPCODE(0x31A7)
 
 // ---------- [31e7] move.w -(a7), $3333.w ----------
 OPCODE(0x31E7)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2850,7 +2713,6 @@ OPCODE(0x31E7)
 
 // ---------- [33e7] move.w -(a7), $33333333.l ----------
 OPCODE(0x33E7)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2871,7 +2733,6 @@ OPCODE(0x33E7)
 
 // ---------- [3ee7] move.w -(a7), (a7)+ ----------
 OPCODE(0x3EE7)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2893,7 +2754,6 @@ OPCODE(0x3EE7)
 
 // ---------- [3f27] move.w -(a7), -(a7) ----------
 OPCODE(0x3F27)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2915,7 +2775,6 @@ OPCODE(0x3F27)
 
 // ---------- [3040] movea.w d0, a0 ----------
 OPCODE(0x3040)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2926,7 +2785,6 @@ OPCODE(0x3040)
 
 // ---------- [3048] movea.w a0, a0 ----------
 OPCODE(0x3048)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2937,7 +2795,6 @@ OPCODE(0x3048)
 
 // ---------- [3050] movea.w (a0), a0 ----------
 OPCODE(0x3050)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2951,7 +2808,6 @@ OPCODE(0x3050)
 
 // ---------- [3058] movea.w (a0)+, a0 ----------
 OPCODE(0x3058)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2966,7 +2822,6 @@ OPCODE(0x3058)
 
 // ---------- [3060] movea.w -(a0), a0 ----------
 OPCODE(0x3060)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2981,7 +2836,6 @@ OPCODE(0x3060)
 
 // ---------- [3068] movea.w ($3333,a0), a0 ----------
 OPCODE(0x3068)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2996,7 +2850,6 @@ OPCODE(0x3068)
 
 // ---------- [3070] movea.w ($33,a0,d3.w*2), a0 ----------
 OPCODE(0x3070)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3011,7 +2864,6 @@ OPCODE(0x3070)
 
 // ---------- [3078] movea.w $3333.w, a0 ----------
 OPCODE(0x3078)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3025,7 +2877,6 @@ OPCODE(0x3078)
 
 // ---------- [3079] movea.w $33333333.l, a0 ----------
 OPCODE(0x3079)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3039,7 +2890,6 @@ OPCODE(0x3079)
 
 // ---------- [307a] movea.w ($3333,pc), a0; =3335 ----------
 OPCODE(0x307A)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3054,7 +2904,6 @@ OPCODE(0x307A)
 
 // ---------- [307b] movea.w ($33,pc,d3.w*2), a0; =35 ----------
 OPCODE(0x307B)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3069,7 +2918,6 @@ OPCODE(0x307B)
 
 // ---------- [307c] movea.w #$3333, a0 ----------
 OPCODE(0x307C)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3080,7 +2928,6 @@ OPCODE(0x307C)
 
 // ---------- [305f] movea.w (a7)+, a0 ----------
 OPCODE(0x305F)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3095,7 +2942,6 @@ OPCODE(0x305F)
 
 // ---------- [3067] movea.w -(a7), a0 ----------
 OPCODE(0x3067)
-{
 	u32 adr, res;
 	u32 src, dst;
 

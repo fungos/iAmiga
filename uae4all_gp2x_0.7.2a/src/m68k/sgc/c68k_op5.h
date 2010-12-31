@@ -1,7 +1,6 @@
 
 // ---------- [50c0] st d0 ----------
 OPCODE(0x50C0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -12,7 +11,6 @@ OPCODE(0x50C0)
 
 // ---------- [51c0] sf d0 ----------
 OPCODE(0x51C0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -23,7 +21,6 @@ OPCODE(0x51C0)
 
 // ---------- [52c0] shi d0 ----------
 OPCODE(0x52C0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -38,7 +35,6 @@ OPCODE(0x52C0)
 
 // ---------- [53c0] sls d0 ----------
 OPCODE(0x53C0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -53,7 +49,6 @@ OPCODE(0x53C0)
 
 // ---------- [54c0] scc d0 ----------
 OPCODE(0x54C0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -68,7 +63,6 @@ OPCODE(0x54C0)
 
 // ---------- [55c0] scs d0 ----------
 OPCODE(0x55C0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -83,7 +77,6 @@ OPCODE(0x55C0)
 
 // ---------- [56c0] sne d0 ----------
 OPCODE(0x56C0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -98,7 +91,6 @@ OPCODE(0x56C0)
 
 // ---------- [57c0] seq d0 ----------
 OPCODE(0x57C0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -113,7 +105,6 @@ OPCODE(0x57C0)
 
 // ---------- [58c0] svc d0 ----------
 OPCODE(0x58C0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -128,7 +119,6 @@ OPCODE(0x58C0)
 
 // ---------- [59c0] svs d0 ----------
 OPCODE(0x59C0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -143,7 +133,6 @@ OPCODE(0x59C0)
 
 // ---------- [5ac0] spl d0 ----------
 OPCODE(0x5AC0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -158,7 +147,6 @@ OPCODE(0x5AC0)
 
 // ---------- [5bc0] smi d0 ----------
 OPCODE(0x5BC0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -173,7 +161,6 @@ OPCODE(0x5BC0)
 
 // ---------- [5cc0] sge d0 ----------
 OPCODE(0x5CC0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -188,7 +175,6 @@ OPCODE(0x5CC0)
 
 // ---------- [5dc0] slt d0 ----------
 OPCODE(0x5DC0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -203,7 +189,6 @@ OPCODE(0x5DC0)
 
 // ---------- [5ec0] sgt d0 ----------
 OPCODE(0x5EC0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -218,7 +203,6 @@ OPCODE(0x5EC0)
 
 // ---------- [5fc0] sle d0 ----------
 OPCODE(0x5FC0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -233,7 +217,6 @@ OPCODE(0x5FC0)
 
 // ---------- [50d0] st (a0) ----------
 OPCODE(0x50D0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -247,7 +230,6 @@ OPCODE(0x50D0)
 
 // ---------- [51d0] sf (a0) ----------
 OPCODE(0x51D0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -261,7 +243,6 @@ OPCODE(0x51D0)
 
 // ---------- [52d0] shi (a0) ----------
 OPCODE(0x52D0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -279,7 +260,6 @@ OPCODE(0x52D0)
 
 // ---------- [53d0] sls (a0) ----------
 OPCODE(0x53D0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -297,7 +277,6 @@ OPCODE(0x53D0)
 
 // ---------- [54d0] scc (a0) ----------
 OPCODE(0x54D0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -315,7 +294,6 @@ OPCODE(0x54D0)
 
 // ---------- [55d0] scs (a0) ----------
 OPCODE(0x55D0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -333,7 +311,6 @@ OPCODE(0x55D0)
 
 // ---------- [56d0] sne (a0) ----------
 OPCODE(0x56D0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -351,7 +328,6 @@ OPCODE(0x56D0)
 
 // ---------- [57d0] seq (a0) ----------
 OPCODE(0x57D0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -369,7 +345,6 @@ OPCODE(0x57D0)
 
 // ---------- [58d0] svc (a0) ----------
 OPCODE(0x58D0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -387,7 +362,6 @@ OPCODE(0x58D0)
 
 // ---------- [59d0] svs (a0) ----------
 OPCODE(0x59D0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -405,7 +379,6 @@ OPCODE(0x59D0)
 
 // ---------- [5ad0] spl (a0) ----------
 OPCODE(0x5AD0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -423,7 +396,6 @@ OPCODE(0x5AD0)
 
 // ---------- [5bd0] smi (a0) ----------
 OPCODE(0x5BD0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -441,7 +413,6 @@ OPCODE(0x5BD0)
 
 // ---------- [5cd0] sge (a0) ----------
 OPCODE(0x5CD0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -459,7 +430,6 @@ OPCODE(0x5CD0)
 
 // ---------- [5dd0] slt (a0) ----------
 OPCODE(0x5DD0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -477,7 +447,6 @@ OPCODE(0x5DD0)
 
 // ---------- [5ed0] sgt (a0) ----------
 OPCODE(0x5ED0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -495,7 +464,6 @@ OPCODE(0x5ED0)
 
 // ---------- [5fd0] sle (a0) ----------
 OPCODE(0x5FD0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -513,7 +481,6 @@ OPCODE(0x5FD0)
 
 // ---------- [50d8] st (a0)+ ----------
 OPCODE(0x50D8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -528,7 +495,6 @@ OPCODE(0x50D8)
 
 // ---------- [51d8] sf (a0)+ ----------
 OPCODE(0x51D8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -543,7 +509,6 @@ OPCODE(0x51D8)
 
 // ---------- [52d8] shi (a0)+ ----------
 OPCODE(0x52D8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -562,7 +527,6 @@ OPCODE(0x52D8)
 
 // ---------- [53d8] sls (a0)+ ----------
 OPCODE(0x53D8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -581,7 +545,6 @@ OPCODE(0x53D8)
 
 // ---------- [54d8] scc (a0)+ ----------
 OPCODE(0x54D8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -600,7 +563,6 @@ OPCODE(0x54D8)
 
 // ---------- [55d8] scs (a0)+ ----------
 OPCODE(0x55D8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -619,7 +581,6 @@ OPCODE(0x55D8)
 
 // ---------- [56d8] sne (a0)+ ----------
 OPCODE(0x56D8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -638,7 +599,6 @@ OPCODE(0x56D8)
 
 // ---------- [57d8] seq (a0)+ ----------
 OPCODE(0x57D8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -657,7 +617,6 @@ OPCODE(0x57D8)
 
 // ---------- [58d8] svc (a0)+ ----------
 OPCODE(0x58D8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -676,7 +635,6 @@ OPCODE(0x58D8)
 
 // ---------- [59d8] svs (a0)+ ----------
 OPCODE(0x59D8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -695,7 +653,6 @@ OPCODE(0x59D8)
 
 // ---------- [5ad8] spl (a0)+ ----------
 OPCODE(0x5AD8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -714,7 +671,6 @@ OPCODE(0x5AD8)
 
 // ---------- [5bd8] smi (a0)+ ----------
 OPCODE(0x5BD8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -733,7 +689,6 @@ OPCODE(0x5BD8)
 
 // ---------- [5cd8] sge (a0)+ ----------
 OPCODE(0x5CD8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -752,7 +707,6 @@ OPCODE(0x5CD8)
 
 // ---------- [5dd8] slt (a0)+ ----------
 OPCODE(0x5DD8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -771,7 +725,6 @@ OPCODE(0x5DD8)
 
 // ---------- [5ed8] sgt (a0)+ ----------
 OPCODE(0x5ED8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -790,7 +743,6 @@ OPCODE(0x5ED8)
 
 // ---------- [5fd8] sle (a0)+ ----------
 OPCODE(0x5FD8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -809,7 +761,6 @@ OPCODE(0x5FD8)
 
 // ---------- [50e0] st -(a0) ----------
 OPCODE(0x50E0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -824,7 +775,6 @@ OPCODE(0x50E0)
 
 // ---------- [51e0] sf -(a0) ----------
 OPCODE(0x51E0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -839,7 +789,6 @@ OPCODE(0x51E0)
 
 // ---------- [52e0] shi -(a0) ----------
 OPCODE(0x52E0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -858,7 +807,6 @@ OPCODE(0x52E0)
 
 // ---------- [53e0] sls -(a0) ----------
 OPCODE(0x53E0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -877,7 +825,6 @@ OPCODE(0x53E0)
 
 // ---------- [54e0] scc -(a0) ----------
 OPCODE(0x54E0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -896,7 +843,6 @@ OPCODE(0x54E0)
 
 // ---------- [55e0] scs -(a0) ----------
 OPCODE(0x55E0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -915,7 +861,6 @@ OPCODE(0x55E0)
 
 // ---------- [56e0] sne -(a0) ----------
 OPCODE(0x56E0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -934,7 +879,6 @@ OPCODE(0x56E0)
 
 // ---------- [57e0] seq -(a0) ----------
 OPCODE(0x57E0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -953,7 +897,6 @@ OPCODE(0x57E0)
 
 // ---------- [58e0] svc -(a0) ----------
 OPCODE(0x58E0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -972,7 +915,6 @@ OPCODE(0x58E0)
 
 // ---------- [59e0] svs -(a0) ----------
 OPCODE(0x59E0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -991,7 +933,6 @@ OPCODE(0x59E0)
 
 // ---------- [5ae0] spl -(a0) ----------
 OPCODE(0x5AE0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1010,7 +951,6 @@ OPCODE(0x5AE0)
 
 // ---------- [5be0] smi -(a0) ----------
 OPCODE(0x5BE0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1029,7 +969,6 @@ OPCODE(0x5BE0)
 
 // ---------- [5ce0] sge -(a0) ----------
 OPCODE(0x5CE0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1048,7 +987,6 @@ OPCODE(0x5CE0)
 
 // ---------- [5de0] slt -(a0) ----------
 OPCODE(0x5DE0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1067,7 +1005,6 @@ OPCODE(0x5DE0)
 
 // ---------- [5ee0] sgt -(a0) ----------
 OPCODE(0x5EE0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1086,7 +1023,6 @@ OPCODE(0x5EE0)
 
 // ---------- [5fe0] sle -(a0) ----------
 OPCODE(0x5FE0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1105,7 +1041,6 @@ OPCODE(0x5FE0)
 
 // ---------- [50e8] st ($3333,a0) ----------
 OPCODE(0x50E8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1120,7 +1055,6 @@ OPCODE(0x50E8)
 
 // ---------- [51e8] sf ($3333,a0) ----------
 OPCODE(0x51E8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1135,7 +1069,6 @@ OPCODE(0x51E8)
 
 // ---------- [52e8] shi ($3333,a0) ----------
 OPCODE(0x52E8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1154,7 +1087,6 @@ OPCODE(0x52E8)
 
 // ---------- [53e8] sls ($3333,a0) ----------
 OPCODE(0x53E8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1173,7 +1105,6 @@ OPCODE(0x53E8)
 
 // ---------- [54e8] scc ($3333,a0) ----------
 OPCODE(0x54E8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1192,7 +1123,6 @@ OPCODE(0x54E8)
 
 // ---------- [55e8] scs ($3333,a0) ----------
 OPCODE(0x55E8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1211,7 +1141,6 @@ OPCODE(0x55E8)
 
 // ---------- [56e8] sne ($3333,a0) ----------
 OPCODE(0x56E8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1230,7 +1159,6 @@ OPCODE(0x56E8)
 
 // ---------- [57e8] seq ($3333,a0) ----------
 OPCODE(0x57E8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1249,7 +1177,6 @@ OPCODE(0x57E8)
 
 // ---------- [58e8] svc ($3333,a0) ----------
 OPCODE(0x58E8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1268,7 +1195,6 @@ OPCODE(0x58E8)
 
 // ---------- [59e8] svs ($3333,a0) ----------
 OPCODE(0x59E8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1287,7 +1213,6 @@ OPCODE(0x59E8)
 
 // ---------- [5ae8] spl ($3333,a0) ----------
 OPCODE(0x5AE8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1306,7 +1231,6 @@ OPCODE(0x5AE8)
 
 // ---------- [5be8] smi ($3333,a0) ----------
 OPCODE(0x5BE8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1325,7 +1249,6 @@ OPCODE(0x5BE8)
 
 // ---------- [5ce8] sge ($3333,a0) ----------
 OPCODE(0x5CE8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1344,7 +1267,6 @@ OPCODE(0x5CE8)
 
 // ---------- [5de8] slt ($3333,a0) ----------
 OPCODE(0x5DE8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1363,7 +1285,6 @@ OPCODE(0x5DE8)
 
 // ---------- [5ee8] sgt ($3333,a0) ----------
 OPCODE(0x5EE8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1382,7 +1303,6 @@ OPCODE(0x5EE8)
 
 // ---------- [5fe8] sle ($3333,a0) ----------
 OPCODE(0x5FE8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1401,7 +1321,6 @@ OPCODE(0x5FE8)
 
 // ---------- [50f0] st ($33,a0,d3.w*2) ----------
 OPCODE(0x50F0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1416,7 +1335,6 @@ OPCODE(0x50F0)
 
 // ---------- [51f0] sf ($33,a0,d3.w*2) ----------
 OPCODE(0x51F0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1431,7 +1349,6 @@ OPCODE(0x51F0)
 
 // ---------- [52f0] shi ($33,a0,d3.w*2) ----------
 OPCODE(0x52F0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1450,7 +1367,6 @@ OPCODE(0x52F0)
 
 // ---------- [53f0] sls ($33,a0,d3.w*2) ----------
 OPCODE(0x53F0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1469,7 +1385,6 @@ OPCODE(0x53F0)
 
 // ---------- [54f0] scc ($33,a0,d3.w*2) ----------
 OPCODE(0x54F0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1488,7 +1403,6 @@ OPCODE(0x54F0)
 
 // ---------- [55f0] scs ($33,a0,d3.w*2) ----------
 OPCODE(0x55F0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1507,7 +1421,6 @@ OPCODE(0x55F0)
 
 // ---------- [56f0] sne ($33,a0,d3.w*2) ----------
 OPCODE(0x56F0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1526,7 +1439,6 @@ OPCODE(0x56F0)
 
 // ---------- [57f0] seq ($33,a0,d3.w*2) ----------
 OPCODE(0x57F0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1545,7 +1457,6 @@ OPCODE(0x57F0)
 
 // ---------- [58f0] svc ($33,a0,d3.w*2) ----------
 OPCODE(0x58F0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1564,7 +1475,6 @@ OPCODE(0x58F0)
 
 // ---------- [59f0] svs ($33,a0,d3.w*2) ----------
 OPCODE(0x59F0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1583,7 +1493,6 @@ OPCODE(0x59F0)
 
 // ---------- [5af0] spl ($33,a0,d3.w*2) ----------
 OPCODE(0x5AF0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1602,7 +1511,6 @@ OPCODE(0x5AF0)
 
 // ---------- [5bf0] smi ($33,a0,d3.w*2) ----------
 OPCODE(0x5BF0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1621,7 +1529,6 @@ OPCODE(0x5BF0)
 
 // ---------- [5cf0] sge ($33,a0,d3.w*2) ----------
 OPCODE(0x5CF0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1640,7 +1547,6 @@ OPCODE(0x5CF0)
 
 // ---------- [5df0] slt ($33,a0,d3.w*2) ----------
 OPCODE(0x5DF0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1659,7 +1565,6 @@ OPCODE(0x5DF0)
 
 // ---------- [5ef0] sgt ($33,a0,d3.w*2) ----------
 OPCODE(0x5EF0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1678,7 +1583,6 @@ OPCODE(0x5EF0)
 
 // ---------- [5ff0] sle ($33,a0,d3.w*2) ----------
 OPCODE(0x5FF0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1697,7 +1601,6 @@ OPCODE(0x5FF0)
 
 // ---------- [50f8] st $3333.w ----------
 OPCODE(0x50F8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1711,7 +1614,6 @@ OPCODE(0x50F8)
 
 // ---------- [51f8] sf $3333.w ----------
 OPCODE(0x51F8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1725,7 +1627,6 @@ OPCODE(0x51F8)
 
 // ---------- [52f8] shi $3333.w ----------
 OPCODE(0x52F8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1743,7 +1644,6 @@ OPCODE(0x52F8)
 
 // ---------- [53f8] sls $3333.w ----------
 OPCODE(0x53F8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1761,7 +1661,6 @@ OPCODE(0x53F8)
 
 // ---------- [54f8] scc $3333.w ----------
 OPCODE(0x54F8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1779,7 +1678,6 @@ OPCODE(0x54F8)
 
 // ---------- [55f8] scs $3333.w ----------
 OPCODE(0x55F8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1797,7 +1695,6 @@ OPCODE(0x55F8)
 
 // ---------- [56f8] sne $3333.w ----------
 OPCODE(0x56F8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1815,7 +1712,6 @@ OPCODE(0x56F8)
 
 // ---------- [57f8] seq $3333.w ----------
 OPCODE(0x57F8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1833,7 +1729,6 @@ OPCODE(0x57F8)
 
 // ---------- [58f8] svc $3333.w ----------
 OPCODE(0x58F8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1851,7 +1746,6 @@ OPCODE(0x58F8)
 
 // ---------- [59f8] svs $3333.w ----------
 OPCODE(0x59F8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1869,7 +1763,6 @@ OPCODE(0x59F8)
 
 // ---------- [5af8] spl $3333.w ----------
 OPCODE(0x5AF8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1887,7 +1780,6 @@ OPCODE(0x5AF8)
 
 // ---------- [5bf8] smi $3333.w ----------
 OPCODE(0x5BF8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1905,7 +1797,6 @@ OPCODE(0x5BF8)
 
 // ---------- [5cf8] sge $3333.w ----------
 OPCODE(0x5CF8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1923,7 +1814,6 @@ OPCODE(0x5CF8)
 
 // ---------- [5df8] slt $3333.w ----------
 OPCODE(0x5DF8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1941,7 +1831,6 @@ OPCODE(0x5DF8)
 
 // ---------- [5ef8] sgt $3333.w ----------
 OPCODE(0x5EF8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1959,7 +1848,6 @@ OPCODE(0x5EF8)
 
 // ---------- [5ff8] sle $3333.w ----------
 OPCODE(0x5FF8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1977,7 +1865,6 @@ OPCODE(0x5FF8)
 
 // ---------- [50f9] st $33333333.l ----------
 OPCODE(0x50F9)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -1991,7 +1878,6 @@ OPCODE(0x50F9)
 
 // ---------- [51f9] sf $33333333.l ----------
 OPCODE(0x51F9)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2005,7 +1891,6 @@ OPCODE(0x51F9)
 
 // ---------- [52f9] shi $33333333.l ----------
 OPCODE(0x52F9)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2023,7 +1908,6 @@ OPCODE(0x52F9)
 
 // ---------- [53f9] sls $33333333.l ----------
 OPCODE(0x53F9)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2041,7 +1925,6 @@ OPCODE(0x53F9)
 
 // ---------- [54f9] scc $33333333.l ----------
 OPCODE(0x54F9)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2059,7 +1942,6 @@ OPCODE(0x54F9)
 
 // ---------- [55f9] scs $33333333.l ----------
 OPCODE(0x55F9)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2077,7 +1959,6 @@ OPCODE(0x55F9)
 
 // ---------- [56f9] sne $33333333.l ----------
 OPCODE(0x56F9)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2095,7 +1976,6 @@ OPCODE(0x56F9)
 
 // ---------- [57f9] seq $33333333.l ----------
 OPCODE(0x57F9)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2113,7 +1993,6 @@ OPCODE(0x57F9)
 
 // ---------- [58f9] svc $33333333.l ----------
 OPCODE(0x58F9)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2131,7 +2010,6 @@ OPCODE(0x58F9)
 
 // ---------- [59f9] svs $33333333.l ----------
 OPCODE(0x59F9)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2149,7 +2027,6 @@ OPCODE(0x59F9)
 
 // ---------- [5af9] spl $33333333.l ----------
 OPCODE(0x5AF9)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2167,7 +2044,6 @@ OPCODE(0x5AF9)
 
 // ---------- [5bf9] smi $33333333.l ----------
 OPCODE(0x5BF9)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2185,7 +2061,6 @@ OPCODE(0x5BF9)
 
 // ---------- [5cf9] sge $33333333.l ----------
 OPCODE(0x5CF9)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2203,7 +2078,6 @@ OPCODE(0x5CF9)
 
 // ---------- [5df9] slt $33333333.l ----------
 OPCODE(0x5DF9)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2221,7 +2095,6 @@ OPCODE(0x5DF9)
 
 // ---------- [5ef9] sgt $33333333.l ----------
 OPCODE(0x5EF9)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2239,7 +2112,6 @@ OPCODE(0x5EF9)
 
 // ---------- [5ff9] sle $33333333.l ----------
 OPCODE(0x5FF9)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2257,7 +2129,6 @@ OPCODE(0x5FF9)
 
 // ---------- [50df] st (a7)+ ----------
 OPCODE(0x50DF)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2272,7 +2143,6 @@ OPCODE(0x50DF)
 
 // ---------- [51df] sf (a7)+ ----------
 OPCODE(0x51DF)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2287,7 +2157,6 @@ OPCODE(0x51DF)
 
 // ---------- [52df] shi (a7)+ ----------
 OPCODE(0x52DF)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2306,7 +2175,6 @@ OPCODE(0x52DF)
 
 // ---------- [53df] sls (a7)+ ----------
 OPCODE(0x53DF)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2325,7 +2193,6 @@ OPCODE(0x53DF)
 
 // ---------- [54df] scc (a7)+ ----------
 OPCODE(0x54DF)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2344,7 +2211,6 @@ OPCODE(0x54DF)
 
 // ---------- [55df] scs (a7)+ ----------
 OPCODE(0x55DF)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2363,7 +2229,6 @@ OPCODE(0x55DF)
 
 // ---------- [56df] sne (a7)+ ----------
 OPCODE(0x56DF)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2382,7 +2247,6 @@ OPCODE(0x56DF)
 
 // ---------- [57df] seq (a7)+ ----------
 OPCODE(0x57DF)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2401,7 +2265,6 @@ OPCODE(0x57DF)
 
 // ---------- [58df] svc (a7)+ ----------
 OPCODE(0x58DF)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2420,7 +2283,6 @@ OPCODE(0x58DF)
 
 // ---------- [59df] svs (a7)+ ----------
 OPCODE(0x59DF)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2439,7 +2301,6 @@ OPCODE(0x59DF)
 
 // ---------- [5adf] spl (a7)+ ----------
 OPCODE(0x5ADF)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2458,7 +2319,6 @@ OPCODE(0x5ADF)
 
 // ---------- [5bdf] smi (a7)+ ----------
 OPCODE(0x5BDF)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2477,7 +2337,6 @@ OPCODE(0x5BDF)
 
 // ---------- [5cdf] sge (a7)+ ----------
 OPCODE(0x5CDF)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2496,7 +2355,6 @@ OPCODE(0x5CDF)
 
 // ---------- [5ddf] slt (a7)+ ----------
 OPCODE(0x5DDF)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2515,7 +2373,6 @@ OPCODE(0x5DDF)
 
 // ---------- [5edf] sgt (a7)+ ----------
 OPCODE(0x5EDF)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2534,7 +2391,6 @@ OPCODE(0x5EDF)
 
 // ---------- [5fdf] sle (a7)+ ----------
 OPCODE(0x5FDF)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2553,7 +2409,6 @@ OPCODE(0x5FDF)
 
 // ---------- [50e7] st -(a7) ----------
 OPCODE(0x50E7)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2568,7 +2423,6 @@ OPCODE(0x50E7)
 
 // ---------- [51e7] sf -(a7) ----------
 OPCODE(0x51E7)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2583,7 +2437,6 @@ OPCODE(0x51E7)
 
 // ---------- [52e7] shi -(a7) ----------
 OPCODE(0x52E7)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2602,7 +2455,6 @@ OPCODE(0x52E7)
 
 // ---------- [53e7] sls -(a7) ----------
 OPCODE(0x53E7)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2621,7 +2473,6 @@ OPCODE(0x53E7)
 
 // ---------- [54e7] scc -(a7) ----------
 OPCODE(0x54E7)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2640,7 +2491,6 @@ OPCODE(0x54E7)
 
 // ---------- [55e7] scs -(a7) ----------
 OPCODE(0x55E7)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2659,7 +2509,6 @@ OPCODE(0x55E7)
 
 // ---------- [56e7] sne -(a7) ----------
 OPCODE(0x56E7)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2678,7 +2527,6 @@ OPCODE(0x56E7)
 
 // ---------- [57e7] seq -(a7) ----------
 OPCODE(0x57E7)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2697,7 +2545,6 @@ OPCODE(0x57E7)
 
 // ---------- [58e7] svc -(a7) ----------
 OPCODE(0x58E7)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2716,7 +2563,6 @@ OPCODE(0x58E7)
 
 // ---------- [59e7] svs -(a7) ----------
 OPCODE(0x59E7)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2735,7 +2581,6 @@ OPCODE(0x59E7)
 
 // ---------- [5ae7] spl -(a7) ----------
 OPCODE(0x5AE7)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2754,7 +2599,6 @@ OPCODE(0x5AE7)
 
 // ---------- [5be7] smi -(a7) ----------
 OPCODE(0x5BE7)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2773,7 +2617,6 @@ OPCODE(0x5BE7)
 
 // ---------- [5ce7] sge -(a7) ----------
 OPCODE(0x5CE7)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2792,7 +2635,6 @@ OPCODE(0x5CE7)
 
 // ---------- [5de7] slt -(a7) ----------
 OPCODE(0x5DE7)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2811,7 +2653,6 @@ OPCODE(0x5DE7)
 
 // ---------- [5ee7] sgt -(a7) ----------
 OPCODE(0x5EE7)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2830,7 +2671,6 @@ OPCODE(0x5EE7)
 
 // ---------- [5fe7] sle -(a7) ----------
 OPCODE(0x5FE7)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2854,7 +2694,6 @@ NAKED(DbraMin1) {
 
 // ---------- [50c8] dbt d0, 3335 ----------
 OPCODE(0x50C8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2864,7 +2703,6 @@ OPCODE(0x50C8)
 
 // ---------- [51c8] dbra d0, 3335 ----------
 OPCODE(0x51C8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2881,7 +2719,6 @@ OPCODE(0x51C8)
 
 // ---------- [52c8] dbhi d0, 3335 ----------
 OPCODE(0x52C8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2900,7 +2737,6 @@ OPCODE(0x52C8)
 
 // ---------- [53c8] dbls d0, 3335 ----------
 OPCODE(0x53C8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2919,7 +2755,6 @@ OPCODE(0x53C8)
 
 // ---------- [54c8] dbcc d0, 3335 ----------
 OPCODE(0x54C8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2938,7 +2773,6 @@ OPCODE(0x54C8)
 
 // ---------- [55c8] dbcs d0, 3335 ----------
 OPCODE(0x55C8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2957,7 +2791,6 @@ OPCODE(0x55C8)
 
 // ---------- [56c8] dbne d0, 3335 ----------
 OPCODE(0x56C8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2976,7 +2809,6 @@ OPCODE(0x56C8)
 
 // ---------- [57c8] dbeq d0, 3335 ----------
 OPCODE(0x57C8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -2995,7 +2827,6 @@ OPCODE(0x57C8)
 
 // ---------- [58c8] dbvc d0, 3335 ----------
 OPCODE(0x58C8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3014,7 +2845,6 @@ OPCODE(0x58C8)
 
 // ---------- [59c8] dbvs d0, 3335 ----------
 OPCODE(0x59C8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3033,7 +2863,6 @@ OPCODE(0x59C8)
 
 // ---------- [5ac8] dbpl d0, 3335 ----------
 OPCODE(0x5AC8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3052,7 +2881,6 @@ OPCODE(0x5AC8)
 
 // ---------- [5bc8] dbmi d0, 3335 ----------
 OPCODE(0x5BC8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3071,7 +2899,6 @@ OPCODE(0x5BC8)
 
 // ---------- [5cc8] dbge d0, 3335 ----------
 OPCODE(0x5CC8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3090,7 +2917,6 @@ OPCODE(0x5CC8)
 
 // ---------- [5dc8] dblt d0, 3335 ----------
 OPCODE(0x5DC8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3109,7 +2935,6 @@ OPCODE(0x5DC8)
 
 // ---------- [5ec8] dbgt d0, 3335 ----------
 OPCODE(0x5EC8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3128,7 +2953,6 @@ OPCODE(0x5EC8)
 
 // ---------- [5fc8] dble d0, 3335 ----------
 OPCODE(0x5FC8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3147,7 +2971,6 @@ OPCODE(0x5FC8)
 
 // ---------- [5000] addq.b #8, d0 ----------
 OPCODE(0x5000)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3171,7 +2994,6 @@ OPCODE(0x5000)
 
 // ---------- [5010] addq.b #8, (a0) ----------
 OPCODE(0x5010)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3198,7 +3020,6 @@ OPCODE(0x5010)
 
 // ---------- [5018] addq.b #8, (a0)+ ----------
 OPCODE(0x5018)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3226,7 +3047,6 @@ OPCODE(0x5018)
 
 // ---------- [5020] addq.b #8, -(a0) ----------
 OPCODE(0x5020)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3254,7 +3074,6 @@ OPCODE(0x5020)
 
 // ---------- [5028] addq.b #8, ($3333,a0) ----------
 OPCODE(0x5028)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3282,7 +3101,6 @@ OPCODE(0x5028)
 
 // ---------- [5030] addq.b #8, ($33,a0,d3.w*2) ----------
 OPCODE(0x5030)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3310,7 +3128,6 @@ OPCODE(0x5030)
 
 // ---------- [5038] addq.b #8, $3333.w ----------
 OPCODE(0x5038)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3337,7 +3154,6 @@ OPCODE(0x5038)
 
 // ---------- [5039] addq.b #8, $33333333.l ----------
 OPCODE(0x5039)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3364,7 +3180,6 @@ OPCODE(0x5039)
 
 // ---------- [501f] addq.b #8, (a7)+ ----------
 OPCODE(0x501F)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3392,7 +3207,6 @@ OPCODE(0x501F)
 
 // ---------- [5027] addq.b #8, -(a7) ----------
 OPCODE(0x5027)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3420,7 +3234,6 @@ OPCODE(0x5027)
 
 // ---------- [5040] addq.w #8, d0 ----------
 OPCODE(0x5040)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3444,7 +3257,6 @@ OPCODE(0x5040)
 
 // ---------- [5048] addq.w #8, a0 ----------
 OPCODE(0x5048)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3461,7 +3273,6 @@ OPCODE(0x5048)
 
 // ---------- [5050] addq.w #8, (a0) ----------
 OPCODE(0x5050)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3488,7 +3299,6 @@ OPCODE(0x5050)
 
 // ---------- [5058] addq.w #8, (a0)+ ----------
 OPCODE(0x5058)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3516,7 +3326,6 @@ OPCODE(0x5058)
 
 // ---------- [5060] addq.w #8, -(a0) ----------
 OPCODE(0x5060)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3544,7 +3353,6 @@ OPCODE(0x5060)
 
 // ---------- [5068] addq.w #8, ($3333,a0) ----------
 OPCODE(0x5068)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3572,7 +3380,6 @@ OPCODE(0x5068)
 
 // ---------- [5070] addq.w #8, ($33,a0,d3.w*2) ----------
 OPCODE(0x5070)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3600,7 +3407,6 @@ OPCODE(0x5070)
 
 // ---------- [5078] addq.w #8, $3333.w ----------
 OPCODE(0x5078)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3627,7 +3433,6 @@ OPCODE(0x5078)
 
 // ---------- [5079] addq.w #8, $33333333.l ----------
 OPCODE(0x5079)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3654,7 +3459,6 @@ OPCODE(0x5079)
 
 // ---------- [505f] addq.w #8, (a7)+ ----------
 OPCODE(0x505F)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3682,7 +3486,6 @@ OPCODE(0x505F)
 
 // ---------- [5067] addq.w #8, -(a7) ----------
 OPCODE(0x5067)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3710,7 +3513,6 @@ OPCODE(0x5067)
 
 // ---------- [5080] addq.l #8, d0 ----------
 OPCODE(0x5080)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3731,7 +3533,6 @@ OPCODE(0x5080)
 
 // ---------- [5088] addq.l #8, a0 ----------
 OPCODE(0x5088)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3748,7 +3549,6 @@ OPCODE(0x5088)
 
 // ---------- [5090] addq.l #8, (a0) ----------
 OPCODE(0x5090)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3772,7 +3572,6 @@ OPCODE(0x5090)
 
 // ---------- [5098] addq.l #8, (a0)+ ----------
 OPCODE(0x5098)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3797,7 +3596,6 @@ OPCODE(0x5098)
 
 // ---------- [50a0] addq.l #8, -(a0) ----------
 OPCODE(0x50A0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3822,7 +3620,6 @@ OPCODE(0x50A0)
 
 // ---------- [50a8] addq.l #8, ($3333,a0) ----------
 OPCODE(0x50A8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3847,7 +3644,6 @@ OPCODE(0x50A8)
 
 // ---------- [50b0] addq.l #8, ($33,a0,d3.w*2) ----------
 OPCODE(0x50B0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3872,7 +3668,6 @@ OPCODE(0x50B0)
 
 // ---------- [50b8] addq.l #8, $3333.w ----------
 OPCODE(0x50B8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3896,7 +3691,6 @@ OPCODE(0x50B8)
 
 // ---------- [50b9] addq.l #8, $33333333.l ----------
 OPCODE(0x50B9)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3920,7 +3714,6 @@ OPCODE(0x50B9)
 
 // ---------- [509f] addq.l #8, (a7)+ ----------
 OPCODE(0x509F)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3945,7 +3738,6 @@ OPCODE(0x509F)
 
 // ---------- [50a7] addq.l #8, -(a7) ----------
 OPCODE(0x50A7)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3970,7 +3762,6 @@ OPCODE(0x50A7)
 
 // ---------- [5200] addq.b #1, d0 ----------
 OPCODE(0x5200)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -3993,7 +3784,6 @@ OPCODE(0x5200)
 
 // ---------- [5210] addq.b #1, (a0) ----------
 OPCODE(0x5210)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -4019,7 +3809,6 @@ OPCODE(0x5210)
 
 // ---------- [5218] addq.b #1, (a0)+ ----------
 OPCODE(0x5218)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -4046,7 +3835,6 @@ OPCODE(0x5218)
 
 // ---------- [5220] addq.b #1, -(a0) ----------
 OPCODE(0x5220)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -4073,7 +3861,6 @@ OPCODE(0x5220)
 
 // ---------- [5228] addq.b #1, ($3333,a0) ----------
 OPCODE(0x5228)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -4100,7 +3887,6 @@ OPCODE(0x5228)
 
 // ---------- [5230] addq.b #1, ($33,a0,d3.w*2) ----------
 OPCODE(0x5230)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -4127,7 +3913,6 @@ OPCODE(0x5230)
 
 // ---------- [5238] addq.b #1, $3333.w ----------
 OPCODE(0x5238)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -4153,7 +3938,6 @@ OPCODE(0x5238)
 
 // ---------- [5239] addq.b #1, $33333333.l ----------
 OPCODE(0x5239)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -4179,7 +3963,6 @@ OPCODE(0x5239)
 
 // ---------- [521f] addq.b #1, (a7)+ ----------
 OPCODE(0x521F)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -4206,7 +3989,6 @@ OPCODE(0x521F)
 
 // ---------- [5227] addq.b #1, -(a7) ----------
 OPCODE(0x5227)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -4233,7 +4015,6 @@ OPCODE(0x5227)
 
 // ---------- [5240] addq.w #1, d0 ----------
 OPCODE(0x5240)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -4256,7 +4037,6 @@ OPCODE(0x5240)
 
 // ---------- [5248] addq.w #1, a0 ----------
 OPCODE(0x5248)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -4273,7 +4053,6 @@ OPCODE(0x5248)
 
 // ---------- [5250] addq.w #1, (a0) ----------
 OPCODE(0x5250)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -4299,7 +4078,6 @@ OPCODE(0x5250)
 
 // ---------- [5258] addq.w #1, (a0)+ ----------
 OPCODE(0x5258)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -4326,7 +4104,6 @@ OPCODE(0x5258)
 
 // ---------- [5260] addq.w #1, -(a0) ----------
 OPCODE(0x5260)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -4353,7 +4130,6 @@ OPCODE(0x5260)
 
 // ---------- [5268] addq.w #1, ($3333,a0) ----------
 OPCODE(0x5268)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -4380,7 +4156,6 @@ OPCODE(0x5268)
 
 // ---------- [5270] addq.w #1, ($33,a0,d3.w*2) ----------
 OPCODE(0x5270)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -4407,7 +4182,6 @@ OPCODE(0x5270)
 
 // ---------- [5278] addq.w #1, $3333.w ----------
 OPCODE(0x5278)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -4433,7 +4207,6 @@ OPCODE(0x5278)
 
 // ---------- [5279] addq.w #1, $33333333.l ----------
 OPCODE(0x5279)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -4459,7 +4232,6 @@ OPCODE(0x5279)
 
 // ---------- [525f] addq.w #1, (a7)+ ----------
 OPCODE(0x525F)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -4486,7 +4258,6 @@ OPCODE(0x525F)
 
 // ---------- [5267] addq.w #1, -(a7) ----------
 OPCODE(0x5267)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -4513,7 +4284,6 @@ OPCODE(0x5267)
 
 // ---------- [5280] addq.l #1, d0 ----------
 OPCODE(0x5280)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -4534,7 +4304,6 @@ OPCODE(0x5280)
 
 // ---------- [5288] addq.l #1, a0 ----------
 OPCODE(0x5288)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -4551,7 +4320,6 @@ OPCODE(0x5288)
 
 // ---------- [5290] addq.l #1, (a0) ----------
 OPCODE(0x5290)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -4575,7 +4343,6 @@ OPCODE(0x5290)
 
 // ---------- [5298] addq.l #1, (a0)+ ----------
 OPCODE(0x5298)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -4600,7 +4367,6 @@ OPCODE(0x5298)
 
 // ---------- [52a0] addq.l #1, -(a0) ----------
 OPCODE(0x52A0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -4625,7 +4391,6 @@ OPCODE(0x52A0)
 
 // ---------- [52a8] addq.l #1, ($3333,a0) ----------
 OPCODE(0x52A8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -4650,7 +4415,6 @@ OPCODE(0x52A8)
 
 // ---------- [52b0] addq.l #1, ($33,a0,d3.w*2) ----------
 OPCODE(0x52B0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -4675,7 +4439,6 @@ OPCODE(0x52B0)
 
 // ---------- [52b8] addq.l #1, $3333.w ----------
 OPCODE(0x52B8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -4699,7 +4462,6 @@ OPCODE(0x52B8)
 
 // ---------- [52b9] addq.l #1, $33333333.l ----------
 OPCODE(0x52B9)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -4723,7 +4485,6 @@ OPCODE(0x52B9)
 
 // ---------- [529f] addq.l #1, (a7)+ ----------
 OPCODE(0x529F)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -4748,7 +4509,6 @@ OPCODE(0x529F)
 
 // ---------- [52a7] addq.l #1, -(a7) ----------
 OPCODE(0x52A7)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -4773,7 +4533,6 @@ OPCODE(0x52A7)
 
 // ---------- [5100] subq.b #8, d0 ----------
 OPCODE(0x5100)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -4798,7 +4557,6 @@ OPCODE(0x5100)
 
 // ---------- [5110] subq.b #8, (a0) ----------
 OPCODE(0x5110)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -4826,7 +4584,6 @@ OPCODE(0x5110)
 
 // ---------- [5118] subq.b #8, (a0)+ ----------
 OPCODE(0x5118)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -4855,7 +4612,6 @@ OPCODE(0x5118)
 
 // ---------- [5120] subq.b #8, -(a0) ----------
 OPCODE(0x5120)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -4884,7 +4640,6 @@ OPCODE(0x5120)
 
 // ---------- [5128] subq.b #8, ($3333,a0) ----------
 OPCODE(0x5128)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -4913,7 +4668,6 @@ OPCODE(0x5128)
 
 // ---------- [5130] subq.b #8, ($33,a0,d3.w*2) ----------
 OPCODE(0x5130)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -4942,7 +4696,6 @@ OPCODE(0x5130)
 
 // ---------- [5138] subq.b #8, $3333.w ----------
 OPCODE(0x5138)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -4970,7 +4723,6 @@ OPCODE(0x5138)
 
 // ---------- [5139] subq.b #8, $33333333.l ----------
 OPCODE(0x5139)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -4998,7 +4750,6 @@ OPCODE(0x5139)
 
 // ---------- [511f] subq.b #8, (a7)+ ----------
 OPCODE(0x511F)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -5027,7 +4778,6 @@ OPCODE(0x511F)
 
 // ---------- [5127] subq.b #8, -(a7) ----------
 OPCODE(0x5127)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -5056,7 +4806,6 @@ OPCODE(0x5127)
 
 // ---------- [5140] subq.w #8, d0 ----------
 OPCODE(0x5140)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -5081,7 +4830,6 @@ OPCODE(0x5140)
 
 // ---------- [5148] subq.w #8, a0 ----------
 OPCODE(0x5148)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -5098,7 +4846,6 @@ OPCODE(0x5148)
 
 // ---------- [5150] subq.w #8, (a0) ----------
 OPCODE(0x5150)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -5126,7 +4873,6 @@ OPCODE(0x5150)
 
 // ---------- [5158] subq.w #8, (a0)+ ----------
 OPCODE(0x5158)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -5155,7 +4901,6 @@ OPCODE(0x5158)
 
 // ---------- [5160] subq.w #8, -(a0) ----------
 OPCODE(0x5160)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -5184,7 +4929,6 @@ OPCODE(0x5160)
 
 // ---------- [5168] subq.w #8, ($3333,a0) ----------
 OPCODE(0x5168)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -5213,7 +4957,6 @@ OPCODE(0x5168)
 
 // ---------- [5170] subq.w #8, ($33,a0,d3.w*2) ----------
 OPCODE(0x5170)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -5242,7 +4985,6 @@ OPCODE(0x5170)
 
 // ---------- [5178] subq.w #8, $3333.w ----------
 OPCODE(0x5178)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -5270,7 +5012,6 @@ OPCODE(0x5178)
 
 // ---------- [5179] subq.w #8, $33333333.l ----------
 OPCODE(0x5179)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -5298,7 +5039,6 @@ OPCODE(0x5179)
 
 // ---------- [515f] subq.w #8, (a7)+ ----------
 OPCODE(0x515F)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -5327,7 +5067,6 @@ OPCODE(0x515F)
 
 // ---------- [5167] subq.w #8, -(a7) ----------
 OPCODE(0x5167)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -5356,7 +5095,6 @@ OPCODE(0x5167)
 
 // ---------- [5180] subq.l #8, d0 ----------
 OPCODE(0x5180)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -5378,7 +5116,6 @@ OPCODE(0x5180)
 
 // ---------- [5188] subq.l #8, a0 ----------
 OPCODE(0x5188)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -5395,7 +5132,6 @@ OPCODE(0x5188)
 
 // ---------- [5190] subq.l #8, (a0) ----------
 OPCODE(0x5190)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -5420,7 +5156,6 @@ OPCODE(0x5190)
 
 // ---------- [5198] subq.l #8, (a0)+ ----------
 OPCODE(0x5198)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -5446,7 +5181,6 @@ OPCODE(0x5198)
 
 // ---------- [51a0] subq.l #8, -(a0) ----------
 OPCODE(0x51A0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -5472,7 +5206,6 @@ OPCODE(0x51A0)
 
 // ---------- [51a8] subq.l #8, ($3333,a0) ----------
 OPCODE(0x51A8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -5498,7 +5231,6 @@ OPCODE(0x51A8)
 
 // ---------- [51b0] subq.l #8, ($33,a0,d3.w*2) ----------
 OPCODE(0x51B0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -5524,7 +5256,6 @@ OPCODE(0x51B0)
 
 // ---------- [51b8] subq.l #8, $3333.w ----------
 OPCODE(0x51B8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -5549,7 +5280,6 @@ OPCODE(0x51B8)
 
 // ---------- [51b9] subq.l #8, $33333333.l ----------
 OPCODE(0x51B9)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -5574,7 +5304,6 @@ OPCODE(0x51B9)
 
 // ---------- [519f] subq.l #8, (a7)+ ----------
 OPCODE(0x519F)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -5600,7 +5329,6 @@ OPCODE(0x519F)
 
 // ---------- [51a7] subq.l #8, -(a7) ----------
 OPCODE(0x51A7)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -5626,7 +5354,6 @@ OPCODE(0x51A7)
 
 // ---------- [5300] subq.b #1, d0 ----------
 OPCODE(0x5300)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -5650,7 +5377,6 @@ OPCODE(0x5300)
 
 // ---------- [5310] subq.b #1, (a0) ----------
 OPCODE(0x5310)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -5677,7 +5403,6 @@ OPCODE(0x5310)
 
 // ---------- [5318] subq.b #1, (a0)+ ----------
 OPCODE(0x5318)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -5705,7 +5430,6 @@ OPCODE(0x5318)
 
 // ---------- [5320] subq.b #1, -(a0) ----------
 OPCODE(0x5320)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -5733,7 +5457,6 @@ OPCODE(0x5320)
 
 // ---------- [5328] subq.b #1, ($3333,a0) ----------
 OPCODE(0x5328)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -5761,7 +5484,6 @@ OPCODE(0x5328)
 
 // ---------- [5330] subq.b #1, ($33,a0,d3.w*2) ----------
 OPCODE(0x5330)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -5789,7 +5511,6 @@ OPCODE(0x5330)
 
 // ---------- [5338] subq.b #1, $3333.w ----------
 OPCODE(0x5338)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -5816,7 +5537,6 @@ OPCODE(0x5338)
 
 // ---------- [5339] subq.b #1, $33333333.l ----------
 OPCODE(0x5339)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -5843,7 +5563,6 @@ OPCODE(0x5339)
 
 // ---------- [531f] subq.b #1, (a7)+ ----------
 OPCODE(0x531F)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -5871,7 +5590,6 @@ OPCODE(0x531F)
 
 // ---------- [5327] subq.b #1, -(a7) ----------
 OPCODE(0x5327)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -5899,7 +5617,6 @@ OPCODE(0x5327)
 
 // ---------- [5340] subq.w #1, d0 ----------
 OPCODE(0x5340)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -5923,7 +5640,6 @@ OPCODE(0x5340)
 
 // ---------- [5348] subq.w #1, a0 ----------
 OPCODE(0x5348)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -5940,7 +5656,6 @@ OPCODE(0x5348)
 
 // ---------- [5350] subq.w #1, (a0) ----------
 OPCODE(0x5350)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -5967,7 +5682,6 @@ OPCODE(0x5350)
 
 // ---------- [5358] subq.w #1, (a0)+ ----------
 OPCODE(0x5358)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -5995,7 +5709,6 @@ OPCODE(0x5358)
 
 // ---------- [5360] subq.w #1, -(a0) ----------
 OPCODE(0x5360)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -6023,7 +5736,6 @@ OPCODE(0x5360)
 
 // ---------- [5368] subq.w #1, ($3333,a0) ----------
 OPCODE(0x5368)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -6051,7 +5763,6 @@ OPCODE(0x5368)
 
 // ---------- [5370] subq.w #1, ($33,a0,d3.w*2) ----------
 OPCODE(0x5370)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -6079,7 +5790,6 @@ OPCODE(0x5370)
 
 // ---------- [5378] subq.w #1, $3333.w ----------
 OPCODE(0x5378)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -6106,7 +5816,6 @@ OPCODE(0x5378)
 
 // ---------- [5379] subq.w #1, $33333333.l ----------
 OPCODE(0x5379)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -6133,7 +5842,6 @@ OPCODE(0x5379)
 
 // ---------- [535f] subq.w #1, (a7)+ ----------
 OPCODE(0x535F)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -6161,7 +5869,6 @@ OPCODE(0x535F)
 
 // ---------- [5367] subq.w #1, -(a7) ----------
 OPCODE(0x5367)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -6189,7 +5896,6 @@ OPCODE(0x5367)
 
 // ---------- [5380] subq.l #1, d0 ----------
 OPCODE(0x5380)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -6211,7 +5917,6 @@ OPCODE(0x5380)
 
 // ---------- [5388] subq.l #1, a0 ----------
 OPCODE(0x5388)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -6228,7 +5933,6 @@ OPCODE(0x5388)
 
 // ---------- [5390] subq.l #1, (a0) ----------
 OPCODE(0x5390)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -6253,7 +5957,6 @@ OPCODE(0x5390)
 
 // ---------- [5398] subq.l #1, (a0)+ ----------
 OPCODE(0x5398)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -6279,7 +5982,6 @@ OPCODE(0x5398)
 
 // ---------- [53a0] subq.l #1, -(a0) ----------
 OPCODE(0x53A0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -6305,7 +6007,6 @@ OPCODE(0x53A0)
 
 // ---------- [53a8] subq.l #1, ($3333,a0) ----------
 OPCODE(0x53A8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -6331,7 +6032,6 @@ OPCODE(0x53A8)
 
 // ---------- [53b0] subq.l #1, ($33,a0,d3.w*2) ----------
 OPCODE(0x53B0)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -6357,7 +6057,6 @@ OPCODE(0x53B0)
 
 // ---------- [53b8] subq.l #1, $3333.w ----------
 OPCODE(0x53B8)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -6382,7 +6081,6 @@ OPCODE(0x53B8)
 
 // ---------- [53b9] subq.l #1, $33333333.l ----------
 OPCODE(0x53B9)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -6407,7 +6105,6 @@ OPCODE(0x53B9)
 
 // ---------- [539f] subq.l #1, (a7)+ ----------
 OPCODE(0x539F)
-{
 	u32 adr, res;
 	u32 src, dst;
 
@@ -6433,7 +6130,6 @@ OPCODE(0x539F)
 
 // ---------- [53a7] subq.l #1, -(a7) ----------
 OPCODE(0x53A7)
-{
 	u32 adr, res;
 	u32 src, dst;
 

@@ -64,7 +64,7 @@ extern "C" void CIA_handler(void);
 extern "C" void blitter_handler(void);
 extern "C" void DISK_handler(void);
 
-#if 1 && defined(__arm__)
+#if 0 && defined(__arm__)
 
 #define CALL_HANDLER(FN, X) \
 	asm volatile("cmp %0, #1\n\t" \

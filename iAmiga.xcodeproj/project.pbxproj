@@ -20,6 +20,9 @@
 		050416470FCB566500F46828 /* ls-joystick_rest.png in Resources */ = {isa = PBXBuildFile; fileRef = 050416330FCB566500F46828 /* ls-joystick_rest.png */; };
 		0504166C0FCB571B00F46828 /* IK+.adf in Resources */ = {isa = PBXBuildFile; fileRef = 0542F18D0FC7E00F00126562 /* IK+.adf */; };
 		050416780FCB588E00F46828 /* Turrican II.adf in Resources */ = {isa = PBXBuildFile; fileRef = 05FE829D0FC68EED00DBFECF /* Turrican II.adf */; };
+		050C393D12C31B24000CE512 /* Disa.c in Sources */ = {isa = PBXBuildFile; fileRef = 050C393B12C31B24000CE512 /* Disa.c */; };
+		050C3A9412C33D94000CE512 /* disassembler.m in Sources */ = {isa = PBXBuildFile; fileRef = 050C3A9312C33D94000CE512 /* disassembler.m */; };
+		051B23B012C994BB000C2800 /* DisaSupport.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 051B238112C98EC8000C2800 /* DisaSupport.cpp */; };
 		051F92E6108462AE00C815BE /* Paradroid 90.adf in Resources */ = {isa = PBXBuildFile; fileRef = 051F92E5108462AE00C815BE /* Paradroid 90.adf */; };
 		051F92EC1084632400C815BE /* Nebulus.ADF in Resources */ = {isa = PBXBuildFile; fileRef = 051F92EB1084632400C815BE /* Nebulus.ADF */; };
 		051F92EF1084644D00C815BE /* Gods 1.ADF in Resources */ = {isa = PBXBuildFile; fileRef = 051F92ED1084644D00C815BE /* Gods 1.ADF */; };
@@ -90,6 +93,10 @@
 		05D6044C12AF2D620048E478 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 05D6044A12AF2D620048E478 /* Icon@2x.png */; };
 		05E65E0A117EE7F700DC1086 /* Battle Squadron.adf in Resources */ = {isa = PBXBuildFile; fileRef = 05E65E09117EE7F700DC1086 /* Battle Squadron.adf */; };
 		05E6A31D0FC3D93B0086151B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E6A31C0FC3D93B0086151B /* AudioToolbox.framework */; };
+		05E8A04612B2C884005532AF /* amiga-beige-dark-center.png in Resources */ = {isa = PBXBuildFile; fileRef = 05E8A04312B2C884005532AF /* amiga-beige-dark-center.png */; };
+		05E8A04712B2C884005532AF /* amiga-beige-dark-left.png in Resources */ = {isa = PBXBuildFile; fileRef = 05E8A04412B2C884005532AF /* amiga-beige-dark-left.png */; };
+		05E8A04812B2C884005532AF /* amiga-beige-dark-right.png in Resources */ = {isa = PBXBuildFile; fileRef = 05E8A04512B2C884005532AF /* amiga-beige-dark-right.png */; };
+		05E8A04A12B2C8E9005532AF /* amiga-beige-dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 05E8A04912B2C8E9005532AF /* amiga-beige-dark.png */; };
 		05ECEA051091A847001A71D0 /* sdl_event.mm in Sources */ = {isa = PBXBuildFile; fileRef = 05ECEA031091A847001A71D0 /* sdl_event.mm */; };
 		05ECEAA51091B97D001A71D0 /* joystick.png in Resources */ = {isa = PBXBuildFile; fileRef = 05ECEAA21091B97D001A71D0 /* joystick.png */; };
 		05ECEAA61091B97D001A71D0 /* keyboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 05ECEAA31091B97D001A71D0 /* keyboard.png */; };
@@ -131,6 +138,13 @@
 		050416310FCB566500F46828 /* ls-fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ls-fire.png"; sourceTree = "<group>"; };
 		050416320FCB566500F46828 /* ls-joystick_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ls-joystick_active.png"; sourceTree = "<group>"; };
 		050416330FCB566500F46828 /* ls-joystick_rest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ls-joystick_rest.png"; sourceTree = "<group>"; };
+		050C393B12C31B24000CE512 /* Disa.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Disa.c; sourceTree = "<group>"; };
+		050C393C12C31B24000CE512 /* Disa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Disa.h; sourceTree = "<group>"; };
+		050C3A9212C33D94000CE512 /* disassembler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = disassembler.h; sourceTree = "<group>"; };
+		050C3A9312C33D94000CE512 /* disassembler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = disassembler.m; sourceTree = "<group>"; };
+		051B237012C98B3B000C2800 /* DisaSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisaSupport.h; sourceTree = "<group>"; };
+		051B238112C98EC8000C2800 /* DisaSupport.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DisaSupport.cpp; sourceTree = "<group>"; };
+		051B266012CB0A14000C2800 /* DisaLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisaLogging.h; sourceTree = "<group>"; };
 		051F92E5108462AE00C815BE /* Paradroid 90.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Paradroid 90.adf"; sourceTree = "<group>"; };
 		051F92EB1084632400C815BE /* Nebulus.ADF */ = {isa = PBXFileReference; lastKnownFileType = file; path = Nebulus.ADF; sourceTree = "<group>"; };
 		051F92ED1084644D00C815BE /* Gods 1.ADF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gods 1.ADF"; sourceTree = "<group>"; };
@@ -310,6 +324,10 @@
 		05E65E09117EE7F700DC1086 /* Battle Squadron.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Battle Squadron.adf"; sourceTree = "<group>"; };
 		05E6A31C0FC3D93B0086151B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		05E6A3250FC3DAA90086151B /* sound_iphone.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sound_iphone.cpp; sourceTree = "<group>"; };
+		05E8A04312B2C884005532AF /* amiga-beige-dark-center.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "amiga-beige-dark-center.png"; sourceTree = "<group>"; };
+		05E8A04412B2C884005532AF /* amiga-beige-dark-left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "amiga-beige-dark-left.png"; sourceTree = "<group>"; };
+		05E8A04512B2C884005532AF /* amiga-beige-dark-right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "amiga-beige-dark-right.png"; sourceTree = "<group>"; };
+		05E8A04912B2C8E9005532AF /* amiga-beige-dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "amiga-beige-dark.png"; sourceTree = "<group>"; };
 		05ECEA021091A847001A71D0 /* sdl_event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdl_event.h; sourceTree = "<group>"; };
 		05ECEA031091A847001A71D0 /* sdl_event.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = sdl_event.mm; sourceTree = "<group>"; };
 		05ECEA041091A847001A71D0 /* sdl_internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdl_internal.h; sourceTree = "<group>"; };
@@ -418,6 +436,18 @@
 			path = landscape;
 			sourceTree = "<group>";
 		};
+		050C392712C31B0C000CE512 /* disassembler */ = {
+			isa = PBXGroup;
+			children = (
+				050C393C12C31B24000CE512 /* Disa.h */,
+				050C393B12C31B24000CE512 /* Disa.c */,
+				051B237012C98B3B000C2800 /* DisaSupport.h */,
+				051B266012CB0A14000C2800 /* DisaLogging.h */,
+				051B238112C98EC8000C2800 /* DisaSupport.cpp */,
+			);
+			path = disassembler;
+			sourceTree = "<group>";
+		};
 		051F92E3108462A700C815BE /* p */ = {
 			isa = PBXGroup;
 			children = (
@@ -447,8 +477,8 @@
 		0542F2610FC8852A00126562 /* uae-src */ = {
 			isa = PBXGroup;
 			children = (
-				054525AF106EC5550032FC41 /* combined_modules.cpp */,
 				0552BD1C0F3D797C005B30DF /* sysconfig.h */,
+				054525AF106EC5550032FC41 /* combined_modules.cpp */,
 				0552BC9C0F3D797C005B30DF /* audio.cpp */,
 				0552BC9D0F3D797C005B30DF /* autoconf.cpp */,
 				0552BC9E0F3D797C005B30DF /* blitfunc.cpp */,
@@ -465,7 +495,6 @@
 				0552BCC10F3D797C005B30DF /* gui.cpp */,
 				0552BCFA0F3D797C005B30DF /* keybuf.cpp */,
 				0552BCFB0F3D797C005B30DF /* linetoscr.h */,
-				0552BD0C0F3D797C005B30DF /* uae.cpp */,
 				0552BD0E0F3D797C005B30DF /* memory.cpp */,
 				0552BD140F3D797C005B30DF /* missing.cpp */,
 				0552BD150F3D797C005B30DF /* od-joy.cpp */,
@@ -476,6 +505,7 @@
 				0552BD1A0F3D797C005B30DF /* sound.cpp */,
 				05E6A3250FC3DAA90086151B /* sound_iphone.cpp */,
 				0552BD1B0F3D797C005B30DF /* sound_gp2x.cpp */,
+				0552BD0C0F3D797C005B30DF /* uae.cpp */,
 				0552BD210F3D797C005B30DF /* writelog.cpp */,
 				0552BD220F3D797C005B30DF /* zfile.cpp */,
 			);
@@ -605,12 +635,15 @@
 		0552BCFC0F3D797C005B30DF /* m68k */ = {
 			isa = PBXGroup;
 			children = (
+				050C392712C31B0C000CE512 /* disassembler */,
 				059E382510634D3C0056A577 /* sgc */,
 				0552BCFD0F3D797C005B30DF /* cyclone */,
 				0552BD040F3D797C005B30DF /* fame */,
 				0552BD030F3D797C005B30DF /* debug_m68k.h */,
 				0552BD0A0F3D797C005B30DF /* m68k_cmn_intrf.cpp */,
 				0552BD0B0F3D797C005B30DF /* m68k_intrf.h */,
+				050C3A9212C33D94000CE512 /* disassembler.h */,
+				050C3A9312C33D94000CE512 /* disassembler.m */,
 			);
 			path = m68k;
 			sourceTree = "<group>";
@@ -730,6 +763,7 @@
 		059A411B12697B33003B23C7 /* Resources-iPad */ = {
 			isa = PBXGroup;
 			children = (
+				05E8A03112B2C850005532AF /* keyboard */,
 				059A411C12697B33003B23C7 /* MainWindow-iPad.xib */,
 			);
 			name = "Resources-iPad";
@@ -860,6 +894,18 @@
 				05FE7F290FC3EDC800DBFECF /* RingQ.h */,
 			);
 			name = audio;
+			sourceTree = "<group>";
+		};
+		05E8A03112B2C850005532AF /* keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				05E8A04912B2C8E9005532AF /* amiga-beige-dark.png */,
+				05E8A04312B2C884005532AF /* amiga-beige-dark-center.png */,
+				05E8A04412B2C884005532AF /* amiga-beige-dark-left.png */,
+				05E8A04512B2C884005532AF /* amiga-beige-dark-right.png */,
+			);
+			name = keyboard;
+			path = "Resources-iPad/keyboard";
 			sourceTree = "<group>";
 		};
 		05ECEA9E1091B960001A71D0 /* input-mode */ = {
@@ -1094,6 +1140,10 @@
 				059A411D12697B33003B23C7 /* MainWindow-iPad.xib in Resources */,
 				05D6044B12AF2D620048E478 /* Icon.png in Resources */,
 				05D6044C12AF2D620048E478 /* Icon@2x.png in Resources */,
+				05E8A04612B2C884005532AF /* amiga-beige-dark-center.png in Resources */,
+				05E8A04712B2C884005532AF /* amiga-beige-dark-left.png in Resources */,
+				05E8A04812B2C884005532AF /* amiga-beige-dark-right.png in Resources */,
+				05E8A04A12B2C8E9005532AF /* amiga-beige-dark.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1104,6 +1154,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				051B23B012C994BB000C2800 /* DisaSupport.cpp in Sources */,
 				05D5D74C0FD5E38400B91C98 /* m68k_intrf.cpp in Sources */,
 				1D60589B0D05DD56006BFB54 /* main.mm in Sources */,
 				1D3623260D0F684500981E51 /* iAmigaAppDelegate.mm in Sources */,
@@ -1148,6 +1199,8 @@
 				0585D55F1091640900C1E4C1 /* VirtualKeyboard.m in Sources */,
 				0585D5621091653E00C1E4C1 /* KeyView.m in Sources */,
 				05ECEA051091A847001A71D0 /* sdl_event.mm in Sources */,
+				050C393D12C31B24000CE512 /* Disa.c in Sources */,
+				050C3A9412C33D94000CE512 /* disassembler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1210,7 +1263,7 @@
 				GCC_PREFIX_HEADER = iAmiga_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				PRODUCT_NAME = iAmiga;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D4B63185-B7CC-4075-A670-329626202629";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B82A9D1C-C798-4D29-9805-924844F8C153";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Distribution;

@@ -88,7 +88,7 @@ char* get_df_path(int drive) {
 	
 	static char df0Path[500];
 	if (drive == 0) {
-		bp = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"DEF1.ADF"];
+		bp = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"IK+.adf"];
 	} else if (drive == 1) {
 		bp = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"DEF2.ADF"];
 	}
@@ -163,6 +163,14 @@ void uae4all_prof_show_statistics(void) {
 		uae4all_prof_show();
 		timer = now;
 	}
+}
+
+int getDisplayIsNTSC() {
+	return mainMenu_ntsc;
+}
+
+void setDisplayIsNTSC(int isNTSC) {
+	mainMenu_ntsc = isNTSC;
 }
 
 #endif

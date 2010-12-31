@@ -1155,11 +1155,11 @@ static __inline__ void decide_draw_sprites(void) {
 			draw_sprites_punt=draw_sprites_dp_hi;
 		else
 			draw_sprites_punt=draw_sprites_sp_hi;
+	else
+		if (bpldualpf)
+			draw_sprites_punt=draw_sprites_dp_lo;
 		else
-			if (bpldualpf)
-				draw_sprites_punt=draw_sprites_dp_lo;
-			else
-				draw_sprites_punt=draw_sprites_sp_lo;
+			draw_sprites_punt=draw_sprites_sp_lo;
 }
 
 static __inline__ void draw_sprites_ecs (struct sprite_entry *_GCCRES_ e)
@@ -2189,6 +2189,12 @@ static _INLINE_ void finish_drawing_frame (void)
 #endif
     drawfinished=1;
     do_flush_screen (first_drawn_line, last_drawn_line);
+	
+	if (g_emulator.paused) {
+		while (g_emulator.paused) {
+			usleep(500);
+		}
+	}
 }
 
 
@@ -2210,7 +2216,7 @@ void vsync_handle_redraw (int long_frame, int lof_changed)
 		 */
 		
 		if (g_emulator.quit_program < 0) {
-			g_emulator.quit_program = -g_emulator.quit_program;
+			g_emulator.quit_program = (tagUAERunState)-g_emulator.quit_program;
 			set_inhibit_frame (IHF_QUIT_PROGRAM);
 			set_special (SPCFLAG_BRK);
 #ifdef USE_FAME_CORE

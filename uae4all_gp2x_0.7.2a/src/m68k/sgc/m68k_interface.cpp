@@ -116,7 +116,7 @@ void init_m68k() {
 	custom_handlers[0x04] = (unsigned)&uae_chk_handler;
 	custom_handlers[32 + 15] = (unsigned)&end_emulator;
 	
-	//m68k_init();
+	m68k_init();
 	bzero(&m68k_context, sizeof m68k_context);
 	m68k_context.checkpc = check_pc;
 	m68k_context.read8   = m68k_context.fetch8  = cyclone_read8;
