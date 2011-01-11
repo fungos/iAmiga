@@ -23,6 +23,7 @@
 @class InputControllerView;
 @class JoystickViewLandscape;
 @class VirtualKeyboard;
+@class TouchHandlerView;
 
 class uae;
 
@@ -32,11 +33,29 @@ enum tagEmulatorState {
 	EmulatorRunning
 };
 
+typedef enum {
+	/*! Sizes the display to the exact pixel size */
+	MMScreenModeActualPixel, 
+
+	/*! Sizes the display to fill the screen area, 
+	 *  honoring the correct aspect ratio */
+	MMScreenModeFillAspectFit,
+
+	/*! Sizes the display to the nearest full-pixel
+	 *  multiple.  e.g. 320x200, 640x400, 1280x800, etc */
+	MMScreenModeFullPixel,
+	
+	/*! Fills the entire screen area, regardless of aspect ratio */
+	MMScreenModeFill,
+} DisplayScreenMode;
+
 @interface EmulationViewController : UIViewController {
 	// Views: both orientations
 	DisplayView					*displayView;
 	InputControllerView			*inputController;
 	VirtualKeyboard				*vKeyboard;
+	TouchHandlerView			*touchHandler;
+	
 	UIImage						*modes[3];
 	UIButton					*inputModeView;
 	
@@ -53,6 +72,9 @@ enum tagEmulatorState {
 	
 	// Layout state information
 	UIInterfaceOrientation		layoutOrientation;		// The orientation of the current layout
+	
+	BOOL						_isExternal;
+	UIWindow					*displayViewWindow;
 }
 
 @property (nonatomic)			uae							*emulator;
@@ -60,6 +82,7 @@ enum tagEmulatorState {
 
 @property (nonatomic, retain)	DisplayView					*displayView;
 @property (nonatomic, retain)	InputControllerView			*inputController;
+@property (nonatomic, retain)	TouchHandlerView			*touchHandler;
 
 @property (nonatomic, retain)	JoystickViewLandscape		*landscapeJoystickView;
 
@@ -68,6 +91,7 @@ enum tagEmulatorState {
 - (void)runEmulator;
 - (void)pauseEmulator;
 - (void)resumeEmulator;
+- (void)setDisplayViewWindow:(UIWindow*)window isExternal:(BOOL)isExternal;
 
 @end
 

@@ -1,43 +1,16 @@
 /*
- *  sdl.h
+ *  SDL_keysym.h
  *  iAmiga
  *
- *  Created by Stuart Carnie on 5/18/09.
- *  Copyright 2009 __MyCompanyName__. All rights reserved.
+ *  Created by Stuart Carnie on 1/2/11.
+ *  Copyright 2011 Manomio LLC. All rights reserved.
  *
  */
-#ifndef _SDL_H
-#define _SDL_H
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+#ifndef _SDL_keysym_h
+#define _SDL_keysym_h
 
-	/* General keyboard/mouse state definitions */
-#define SDL_RELEASED	0
-#define SDL_PRESSED		1
-	
-/**
- * \enum SDLMod
- *
- * \brief Enumeration of valid key mods (possibly OR'd together)
- */
-typedef enum
-{
-	KMOD_NONE = 0x0000,
-	KMOD_LSHIFT = 0x0001,
-	KMOD_RSHIFT = 0x0002,
-	KMOD_LCTRL = 0x0040,
-	KMOD_RCTRL = 0x0080,
-	KMOD_LALT = 0x0100,
-	KMOD_RALT = 0x0200,
-	KMOD_LGUI = 0x0400,
-	KMOD_RGUI = 0x0800,
-	KMOD_NUM = 0x1000,
-	KMOD_CAPS = 0x2000,
-	KMOD_MODE = 0x4000,
-	KMOD_RESERVED = 0x8000
-} SDLMod;
+#include "SDL_stdinc.h"
 
 typedef enum {
 	/* The keyboard syms have been cleverly chosen to map to ASCII */
@@ -296,226 +269,32 @@ typedef enum {
 	SDLK_LAST
 } SDLKey;
 
-typedef unsigned int Uint32;
-typedef unsigned Uint8;
-
-typedef struct SDL_Color {
-	unsigned r,g,b;
-} SDL_Color;
-
-typedef struct SDL_Joystick {	
-} SDL_Joystick;
-
-typedef struct tagMotion {
-	int type;
-	int xrel, yrel;
-	int x,y;
-} tagMotion;
-
-typedef struct tagButtons {
-	int type;
-	int button;
-	int x,y;
-} tagButtons;
-
-typedef struct SDL_keysym {
-	SDLKey sym;
-	int unicode;
-	SDLMod mod;
-} SDL_keysym;
-
-typedef struct tagKeyEvent {
-	int			type;
-	SDL_keysym keysym;
-} tagKeyEvent;
-
 /**
- * \struct SDL_JoyAxisEvent
+ * \enum SDLMod
  *
- * \brief Joystick axis motion event structure (event.jaxis.*)
+ * \brief Enumeration of valid key mods (possibly OR'd together)
  */
-typedef struct SDL_JoyAxisEvent
+typedef enum
 {
-	Uint8 type;         /**< SDL_JOYAXISMOTION */
-	Uint8 which;        /**< The joystick device index */
-	Uint8 axis;         /**< The joystick axis index */
-	int value;          /**< The axis value (range: -32768 to 32767) */
-} SDL_JoyAxisEvent;
+	KMOD_NONE = 0x0000,
+	KMOD_LSHIFT = 0x0001,
+	KMOD_RSHIFT = 0x0002,
+	KMOD_LCTRL = 0x0040,
+	KMOD_RCTRL = 0x0080,
+	KMOD_LALT = 0x0100,
+	KMOD_RALT = 0x0200,
+	KMOD_LGUI = 0x0400,
+	KMOD_RGUI = 0x0800,
+	KMOD_NUM = 0x1000,
+	KMOD_CAPS = 0x2000,
+	KMOD_MODE = 0x4000,
+	KMOD_RESERVED = 0x8000
+} SDLMod;
 
-/**
- * \struct SDL_JoyBallEvent
- *
- * \brief Joystick trackball motion event structure (event.jball.*)
- */
-typedef struct SDL_JoyBallEvent
-{
-	Uint8 type;         /**< SDL_JOYBALLMOTION */
-	Uint8 which;        /**< The joystick device index */
-	Uint8 ball;         /**< The joystick trackball index */
-	int xrel;           /**< The relative motion in the X direction */
-	int yrel;           /**< The relative motion in the Y direction */
-} SDL_JoyBallEvent;
-
-/**
- * \struct SDL_JoyHatEvent
- *
- * \brief Joystick hat position change event structure (event.jhat.*)
- */
-typedef struct SDL_JoyHatEvent
-{
-	Uint8 type;         /**< SDL_JOYHATMOTION */
-	Uint8 which;        /**< The joystick device index */
-	Uint8 hat;          /**< The joystick hat index */
-	Uint8 value;        /**< The hat position value:
-						 SDL_HAT_LEFTUP   SDL_HAT_UP       SDL_HAT_RIGHTUP
-						 SDL_HAT_LEFT     SDL_HAT_CENTERED SDL_HAT_RIGHT
-						 SDL_HAT_LEFTDOWN SDL_HAT_DOWN     SDL_HAT_RIGHTDOWN
-						 Note that zero means the POV is centered.
-						 */
-} SDL_JoyHatEvent;
-
-/*
- * Get the current state of a POV hat on a joystick
- * The return value is one of the following positions:
- */
-#define SDL_HAT_CENTERED	0x00
-#define SDL_HAT_UP			0x01
-#define SDL_HAT_RIGHT		0x02
-#define SDL_HAT_DOWN		0x04
-#define SDL_HAT_LEFT		0x08
-#define SDL_HAT_RIGHTUP		(SDL_HAT_RIGHT|SDL_HAT_UP)
-#define SDL_HAT_RIGHTDOWN	(SDL_HAT_RIGHT|SDL_HAT_DOWN)
-#define SDL_HAT_LEFTUP		(SDL_HAT_LEFT|SDL_HAT_UP)
-#define SDL_HAT_LEFTDOWN	(SDL_HAT_LEFT|SDL_HAT_DOWN)
-
-/**
- * \struct SDL_JoyButtonEvent
- *
- * \brief Joystick button event structure (event.jbutton.*)
- */
-typedef struct SDL_JoyButtonEvent
-{
-	Uint8 type;         /**< SDL_JOYBUTTONDOWN or SDL_JOYBUTTONUP */
-	Uint8 which;        /**< The joystick device index */
-	Uint8 button;       /**< The joystick button index */
-	Uint8 state;        /**< SDL_PRESSED or SDL_RELEASED */
-} SDL_JoyButtonEvent;
-
-typedef union SDL_Event {
-	int type;
-	struct tagMotion motion;
-	struct tagButtons button;
-	struct tagKeyEvent key;
-	SDL_JoyAxisEvent jaxis;         /**< Joystick axis event data */
-	SDL_JoyBallEvent jball;         /**< Joystick ball event data */
-	SDL_JoyHatEvent jhat;           /**< Joystick hat event data */
-	struct SDL_JoyButtonEvent jbutton;
-} SDL_Event;
-
-typedef void (*sound_callback_t)(void *userdata, Uint8 *stream, int len);
-
-typedef struct SDL_AudioSpec {
-	int freq;
-	int format;
-	int channels;
-	int samples;
-	sound_callback_t callback;
-	void *userdata;
-} SDL_AudioSpec;
-
-typedef struct tagFormat {
-	unsigned long Rmask, Gmask, Bmask;
-	unsigned short Rshift, Gshift, Bshift;
-	unsigned BytesPerPixel;
-} tagFormat;
-
-typedef struct SDL_Surface {
-	int w,h;
-	void *pixels;
-	struct tagFormat *format;
-	unsigned pitch;
-	
-} SDL_Surface; 
-
-extern Uint32 SDL_GetTicks();
-extern void SDL_UnlockSurface(SDL_Surface*);
-extern void SDL_LockSurface(SDL_Surface*);
-extern void SDL_FreeSurface(SDL_Surface*);
-extern void SDL_FillRect(SDL_Surface*, void*, int);
-extern void SDL_UpdateRect(SDL_Surface*, int, int, int, int);
-extern void SDL_Delay(Uint32);
-extern long int SDL_MapRGB(tagFormat*, int, int, int);
-extern int SDL_PollEvent(SDL_Event*);
-extern void SDL_JoystickUpdate();
-extern void SDL_VideoQuit();
-
-extern int SDL_JoystickGetAxis(SDL_Joystick*, int);
-extern int SDL_JoystickNumButtons(SDL_Joystick*);
-extern int SDL_JoystickGetButton(SDL_Joystick*, int);
-
-extern int SDL_NumJoysticks();
-extern SDL_Joystick* SDL_JoystickOpen(int);
-extern int SDL_JoystickClose(SDL_Joystick*);
-
-extern int SDL_Init(int);
-extern SDL_Surface* SDL_SetVideoMode(int, int, int, int);
-extern char* SDL_GetError();
-extern int SDL_OpenAudio(SDL_AudioSpec*,void*);
-extern void SDL_CloseAudio();
-extern void SDL_PauseAudio(int);
-
-
-#define SDL_ENABLE 1
-#define SDL_DISABLE 0
-#define SDL_INIT_VIDEO 0
-#define SDL_HWSURFACE 1
-#define AUDIO_S16 0
-#define AUDIO_U8 0
-
-extern int SDL_ShowCursor(int);
-
-/* Event enumerations */
-enum { SDL_NOEVENT = 0,                 /* Unused (do not remove) */
-	SDL_ACTIVEEVENT,                 /* Application loses/gains visibility */
-	SDL_KEYDOWN,                     /* Keys pressed */
-	SDL_KEYUP,                       /* Keys released */
-	SDL_MOUSEMOTION,                 /* Mouse moved */
-	SDL_MOUSEBUTTONDOWN,             /* Mouse button pressed */
-	SDL_MOUSEBUTTONUP,               /* Mouse button released */
-	SDL_JOYAXISMOTION,               /* Joystick axis motion */
-	SDL_JOYBALLMOTION,               /* Joystick trackball motion */
-	SDL_JOYHATMOTION,                /* Joystick hat position change */
-	SDL_JOYBUTTONDOWN,               /* Joystick button pressed */
-	SDL_JOYBUTTONUP,                 /* Joystick button released */
-	SDL_QUIT,                        /* User-requested quit */
-	SDL_SYSWMEVENT,                  /* System specific event */
-	SDL_EVENT_RESERVEDA,             /* Reserved for future use.. */
-	SDL_EVENT_RESERVEDB,             /* Reserved for future use.. */
-	SDL_VIDEORESIZE,                 /* User resized video mode */
-	SDL_VIDEOEXPOSE,                 /* Screen needs to be redrawn */
-	SDL_EVENT_RESERVED2,             /* Reserved for future use.. */
-	SDL_EVENT_RESERVED3,             /* Reserved for future use.. */
-	SDL_EVENT_RESERVED4,             /* Reserved for future use.. */
-	SDL_EVENT_RESERVED5,             /* Reserved for future use.. */
-	SDL_EVENT_RESERVED6,             /* Reserved for future use.. */
-	SDL_EVENT_RESERVED7,             /* Reserved for future use.. */
-	/* Events SDL_USEREVENT through SDL_MAXEVENTS-1 are for your use */
-	SDL_USEREVENT = 24,
-	/* This last event is only for bounding internal arrays
-	 It is the number of bits in the event mask datatype -- Uint32
-	 */
-	SDL_NUMEVENTS = 32
-};
 
 #define KMOD_CTRL	(KMOD_LCTRL|KMOD_RCTRL)
 #define KMOD_SHIFT	(KMOD_LSHIFT|KMOD_RSHIFT)
 #define KMOD_ALT	(KMOD_LALT|KMOD_RALT)
 #define KMOD_GUI	(KMOD_LGUI|KMOD_RGUI)
-	
-#import "sdl_event.h"
-	
-#ifdef __cplusplus
-}
-#endif
 
 #endif

@@ -24,8 +24,8 @@ int SDL_EventInit() {
 
 #include "touchstick.h"
 
-extern "C" CJoyStick g_touchStick;
-extern "C" int inputMode = 0;
+extern CJoyStick g_touchStick;
+int inputMode = 0;
 
 int SDL_PollMouseEvent(SDL_Event* a) {
 	TouchStickDPadState state = g_touchStick.dPadState();
@@ -78,11 +78,11 @@ int SDL_PollMouseEvent(SDL_Event* a) {
 } 
 
 int SDL_PollEvent(SDL_Event *e) {
-	if (inputMode == 2) {
-		int res = SDL_PollMouseEvent(e);
-		if (res)
-			return res;
-	}
+	//if (inputMode == 2) {
+	//	int res = SDL_PollMouseEvent(e);
+	//	if (res)
+	//		return res;
+	//}
 									 
 	if (eventQueue->size()) {
 		memcpy(e, &(eventQueue->front()), sizeof(SDL_Event));
@@ -100,9 +100,10 @@ int SDL_PollEvent(SDL_Event *e) {
 	return 0;
 }
 
-void SDL_PushEvent(SDL_Event *e) {
+int SDL_PushEvent(SDL_Event *e) {
 	CNSRecursiveLock autolock(queueLock);	// this ensures the lock is released on function exit	
 	eventQueue->push(*e);
+	return 1;
 }
 
 void SDL_PushKeyEvent(SDLKey key) {

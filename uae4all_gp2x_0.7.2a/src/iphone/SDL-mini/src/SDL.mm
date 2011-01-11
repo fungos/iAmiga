@@ -16,14 +16,20 @@
 #import "sdl_internal.h"
 #import <sys/time.h>
 
+
+// statics
+static Uint32				time_start;
+static SDL_Surface			currentVideoSurface;
+static tagFormat			currentVideoFormat;
+
+uint						*imageBuffer;
+
 const int kBytesPerPixel			= 2;
 const int kBitsPerComponent			= 5;
 const unsigned int kFormat			= kCGBitmapByteOrder16Little | kCGImageAlphaNoneSkipFirst;
-
-static Uint32				time_start;
-BOOL						hasImageChanged;
-uint						*imageBuffer;
 CGContextRef				context;
+
+
 #define kBufferWidth		320
 #define kBufferHeight		240
 
@@ -43,7 +49,6 @@ void SDL_FreeSurface(SDL_Surface* a) {
 }
 
 void SDL_FillRect(SDL_Surface* a, void* b, int c) {
-	// UpdateScreen();
 }
 
 void SDL_UpdateRect(SDL_Surface* s, int a, int b, int c, int d) {
@@ -57,8 +62,6 @@ void SDL_Delay(Uint32 duration) {
 long int SDL_MapRGB(tagFormat* a, int b, int c, int d) {
 	return 0;
 }
-
-
 
 void SDL_JoystickUpdate() {
 }
@@ -93,10 +96,11 @@ int SDL_JoystickClose(SDL_Joystick* a) {
 	return 0;
 }
 
-int SDL_Init(int a) {
+int SDL_Init(int initFlags) {
 	timeval tv;
 	gettimeofday(&tv, NULL);
 	time_start = tv.tv_sec;
+
 	// create indexed color palette
 	CGColorSpaceRef rgbColorSpace = CGColorSpaceCreateDeviceRGB();
 	
@@ -107,30 +111,38 @@ int SDL_Init(int a) {
 	
 	CFRelease(rgbColorSpace);
 	
-	hasImageChanged = NO;
-	
 	// init event queue
 	SDL_EventInit();
 	
 	return 0;
 }
 
-SDL_Surface* SDL_SetVideoMode(int a, int b, int c, int d) {
-	static SDL_Surface s;
-	static tagFormat fmt;
-	fmt.Rshift = 10;
-	fmt.Gshift = 5;
-	fmt.Bshift = 0;
-	fmt.Rmask = 0x1f << 10;
-	fmt.Gmask = 0x1f << 5;
-	fmt.Bmask = 0x1F;
-	fmt.BytesPerPixel = 2;
-	s.format = &fmt;
-	s.w = 320;
-	s.h = 240;
-	s.pitch = 640;
-	s.pixels = imageBuffer;
-	return &s;
+SDL_Surface* SDL_SetVideoMode(int width, int height, int bitsPerPixel, int flags) {
+	SDL_Surface *s = &currentVideoSurface;
+	tagFormat *fmt = &currentVideoFormat;
+	
+	fmt->Rshift = 10;
+	fmt->Gshift = 5;
+	fmt->Bshift = 0;
+	fmt->Rmask = 0x1f << 10;
+	fmt->Gmask = 0x1f << 5;
+	fmt->Bmask = 0x1F;
+	fmt->BytesPerPixel = 2;
+	s->format = fmt;
+	s->w = kBufferWidth;
+	s->h = kBufferHeight;
+	s->pitch = 640;
+	s->pixels = imageBuffer;
+	
+	return s;
+}
+
+SDL_Surface* SDL_GetVideoSurface() {
+	return &currentVideoSurface;
+}
+
+void SDL_Flip(SDL_Surface* surface) {
+	UpdateScreen();
 }
 
 char* SDL_GetError() {
