@@ -34,39 +34,22 @@ void UpdateScreen() {
 
 @implementation DisplayView
 
-const double kFramesPerSecond = 20;
-
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
 		sharedView = [self retain];
         self.opaque = YES;
-		_framesPerSecond = kFramesPerSecond;
     }
     return self;
 }
 
-- (void)startTimer {
-	//_timer = [NSTimer scheduledTimerWithTimeInterval:(1 / _framesPerSecond) target:self selector:@selector(updateScreen) userInfo:nil repeats:YES];
-}
-
-- (void)stopTimer {
-	//[_timer invalidate];
-	//_timer = nil;
-}
-
-extern uint	*imageBuffer;
-extern BOOL hasImageChanged;
 extern CGContextRef context;
 
 - (void)updateScreen {
-	//if (hasImageChanged) {
-		CALayer *layer = self.layer;
-		CGImageRef image = CGBitmapContextCreateImage(context);
-		layer.contents = (id)image;
-		layer.contentsRect = CGRectMake(0.0, 0.0, 1.0, 1.0);
-		CFRelease(image);
-		hasImageChanged = NO;
-	//}
+	CALayer *layer = self.layer;
+	CGImageRef image = CGBitmapContextCreateImage(context);
+	layer.contents = (id)image;
+	layer.contentsRect = CGRectMake(0.0, 0.0, 1.0, 1.0);
+	CFRelease(image);
 }
 
 - (void)dealloc {

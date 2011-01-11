@@ -20,12 +20,7 @@
 #import <UIKit/UIKit.h>
 
 @interface DisplayView : UIView {
-	NSTimer			*_timer;
-	double			_framesPerSecond;
 }
-
-- (void)startTimer;
-- (void)stopTimer;
 
 void UpdateScreen();
 

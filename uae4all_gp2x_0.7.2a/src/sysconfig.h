@@ -413,6 +413,8 @@
 
 #ifdef IPHONE
 
+#define DOUBLEBUFFER
+
 // #define PROFILER_UAE4ALL
 
 #include "TargetConditionals.h"

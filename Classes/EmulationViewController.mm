@@ -26,39 +26,48 @@
 #import "CocoaUtility.h"
 #import "VirtualKeyboard.h"
 #import "sdl.h"
+#import "TouchHandlerView.h"
 
 EmulationViewController *g_emulatorViewController;
 
-@interface EmulationViewController(PrivateImplementation)
+typedef struct {
+	CGRect kDisplayFrame;
+} ViewLayoutSettings;
+
+@interface EmulationViewController()
 
 - (void)rotateToPortrait;
 - (void)rotateToLandscape;
 - (void)didRotate;
 - (void)toggleInputMode:(UIButton*)sender;
+- (void)makeTabBarHidden:(BOOL)hide;
+
+@property (nonatomic,retain) UIWindow	*displayViewWindow;
+@property (nonatomic, readonly) CGRect currentDisplayFrame;
 
 @end
 
-#define kDisplayFramePortrait					CGRectMake(0, 0, 320 * S_PSCALE, 240 * S_PSCALE)
-#define kInputFramePortrait						CGRectMake(0, 0, 320 * S_PSCALE, 480 * S_PSCALE)
+#define kDisplayWidth							320.0f
+#define kDisplayHeight							240.0f
+const float kDisplayRatio =						(kDisplayHeight / kDisplayWidth);
+
+#define kDisplayFramePortrait					CGRectMake(0, 0, kDisplayWidth * S_PSCALE, kDisplayHeight * S_PSCALE)
+#define kInputFramePortrait						CGRectMake(0, 0, 320.0f * S_PSCALE, 480.0f * S_PSCALE)
 
 // stretched version, specifically cropped for IK+
-#define kDisplayFrameLandscape					CGRectMake(0, 0, 480 * S_LSCALE, 366 * S_LSCALE)
-//#define kDisplayFrameLandscape					CGRectMake(28, 0, 424, 320)
-//#define kDisplayFrameLandscape					CGRectMake(32, 0, 416, 312)
-#define kInputFrameLandscape					CGRectMake(0, 0, 480 * S_LSCALE, 320 * S_PSCALE)
-
-// tabbar
-#define kTabBarVisible							CGRectMake(0, 0, 320 * S_PSCALE, 480 * S_LSCALE)
-#define kTabBarNotVisible						CGRectMake(0, 0, 320 * S_PSCALE, 480 * S_LSCALE + 50)
+#define kDisplayFrameLandscape					CGRectMake(0, 0, 480.0f * S_LSCALE, 480.0f * kDisplayRatio * S_LSCALE)
+#define kInputFrameLandscape					CGRectMake(0, 0, 480.0f * S_LSCALE, 320.0f * S_PSCALE)
 
 // miscellaneous constants
-const double kDefaultAnimationDuration					= 250.0 / 1000.0;
+const double kDefaultAnimationDuration			= 250.0 / 1000.0;
 
 @implementation EmulationViewController
 
 @synthesize emulator, emulatorState;
 @synthesize displayView, inputController;
 @synthesize landscapeJoystickView;
+@synthesize touchHandler;
+@synthesize displayViewWindow;
 
 CGFloat S_WIDTH, S_HEIGHT, S_HALFWIDTH, S_HALFHEIGHT, S_PSCALE, S_LSCALE;
 
@@ -86,25 +95,33 @@ CGFloat S_WIDTH, S_HEIGHT, S_HALFWIDTH, S_HALFHEIGHT, S_PSCALE, S_LSCALE;
 	
 	// create all the views, order is important to ensure active areas of the UI are layered on top
 	UIView *view = [[UIView alloc] initWithFrame:frame];
-	//view.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin;
 	view.autoresizingMask = (UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
 	view.backgroundColor = [UIColor blackColor];
 	
-	self.displayView = [[DisplayView alloc] initWithFrame:kDisplayFramePortrait];
-	[view addSubview:self.displayView];
-	
-	
+	self.displayView = [[DisplayView alloc] initWithFrame:self.currentDisplayFrame];
+	if (displayViewWindow != nil) {
+		[displayViewWindow addSubview:self.displayView];
+	} else {
+		[view addSubview:self.displayView];
+	}
+		
 	self.inputController = [[InputControllerView alloc] initWithFrame:kInputFramePortrait];
+	inputController.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	//self.inputController.delegate = self.landscapeJoystickView;
 	[view addSubview:self.inputController];
+	
+	self.touchHandler = [[TouchHandlerView alloc] initWithFrame:kInputFramePortrait];
+	self.touchHandler.hidden = YES;
+	touchHandler.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+	[view addSubview:self.touchHandler];
 	
 	//self.landscapeJoystickView = [[JoystickViewLandscape alloc] initWithFrame:kInputFrameLandscape];
 	//self.landscapeJoystickView.hidden = YES;
 	//[self.inputController addSubview:self.landscapeJoystickView];
 	
 	// virtual keyboard
-	vKeyboard = [[VirtualKeyboard alloc] initWithFrame:CGRectMake(0, 280 * S_PSCALE, 200*S_PSCALE, 40*S_PSCALE)];
-	inputModeView.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin;
+	vKeyboard = [[VirtualKeyboard alloc] initWithFrame:CGRectMake(0, 420 * S_PSCALE, 200*S_PSCALE, 40*S_PSCALE)];
+	vKeyboard.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin;
 	vKeyboard.hidden = YES;
 	[view addSubview:vKeyboard];
 	
@@ -132,17 +149,82 @@ CGFloat S_WIDTH, S_HEIGHT, S_HALFWIDTH, S_HALFHEIGHT, S_PSCALE, S_LSCALE;
 	
 }
 
-- (void)toggleInputMode:(UIButton*)sender {
-	if (inputMode == 0) {
-		vKeyboard.hidden = NO;
-		inputMode = 1;
-	} else {
-		vKeyboard.hidden = YES;
-		inputMode++;
-		if (inputMode > 2)
-			inputMode = 0;
+- (CGRect)currentDisplayFrame {	
+	if (_isExternal) {
+		return displayViewWindow.bounds;
+	} 
+	
+	if (UIInterfaceOrientationIsLandscape(layoutOrientation)) {
+		return kDisplayFrameLandscape;
 	}
 
+	return kDisplayFramePortrait;
+}
+
+- (void)makeTabBarHidden:(BOOL)hide {
+	UITabBarController *tabBarController = self.tabBarController;
+	
+	// Custom code to hide TabBar
+	if ( [tabBarController.view.subviews count] < 2 ) {
+		return;
+	}
+	
+	UIView *contentView;
+	
+	if ( [[tabBarController.view.subviews objectAtIndex:0] isKindOfClass:[UITabBar class]] ) {
+		contentView = [tabBarController.view.subviews objectAtIndex:1];
+	} else {
+		contentView = [tabBarController.view.subviews objectAtIndex:0];
+	}
+	
+	if (hide) {
+		contentView.frame = tabBarController.view.bounds;
+	}
+	else {
+		contentView.frame = CGRectMake(tabBarController.view.bounds.origin.x,
+									   tabBarController.view.bounds.origin.y,
+									   tabBarController.view.bounds.size.width,
+									   tabBarController.view.bounds.size.height - tabBarController.tabBar.frame.size.height);
+	}
+	
+	tabBarController.tabBar.hidden = hide;
+}
+
+- (void)setDisplayViewWindow:(UIWindow*)window isExternal:(BOOL)isExternal {
+	_isExternal = isExternal;
+	self.displayViewWindow = window;
+	if (displayView != nil) {
+		if (window) {
+			[window addSubview:displayView];
+		} else {
+			[self.view insertSubview:displayView atIndex:0];
+		}
+	}
+	
+	self.displayView.frame = self.currentDisplayFrame;
+}
+
+- (void)toggleInputMode:(UIButton*)sender {
+	vKeyboard.hidden = YES;
+	touchHandler.hidden = YES;
+	inputController.hidden = YES;
+	
+	if (++inputMode > 2)
+		inputMode = 0;
+	
+	switch (inputMode) {
+		case 0:
+			inputController.hidden = NO;
+			break;
+			
+		case 1:
+			vKeyboard.hidden = NO;
+			break;
+			
+		case 2:
+			touchHandler.hidden = NO;
+			break;
+	}
 	
 	[inputModeView setImage:modes[inputMode] forState:UIControlStateNormal];
 }
@@ -164,31 +246,24 @@ CGFloat S_WIDTH, S_HEIGHT, S_HALFWIDTH, S_HALFHEIGHT, S_PSCALE, S_LSCALE;
 	layoutOrientation = (UIInterfaceOrientation)orientation;
 	
 	[UIView beginAnimations:@"rotate" context:nil];
-
 	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
 	[UIView setAnimationDuration:kDefaultAnimationDuration];
 		
-	self.view.center = CGPointMake(S_HALFWIDTH, S_HALFHEIGHT);
-
 	if (UIInterfaceOrientationIsLandscape(layoutOrientation)) {
-		self.tabBarController.view.frame = kTabBarNotVisible;
+		CGFloat angle = (layoutOrientation == UIInterfaceOrientationLandscapeLeft) ? -90.0f : 90.0f;
+		self.view.transform = CGAffineTransformMakeRotation(degreesToRadian(angle));
 
-		if (layoutOrientation == UIInterfaceOrientationLandscapeLeft) {
-			self.view.transform = CGAffineTransformMakeRotation(degreesToRadian(-90));
-		} else {
-			self.view.transform = CGAffineTransformMakeRotation(degreesToRadian(90));
-		}
-		self.view.bounds = CGRectMake(0, 0, S_HEIGHT, S_WIDTH);
-		
-		[self rotateToLandscape];
+		[self makeTabBarHidden:YES];
+		//[self rotateToLandscape];
 	} else {
-		self.tabBarController.view.frame = kTabBarVisible;
 		self.view.transform = CGAffineTransformIdentity;
-		self.view.bounds = CGRectMake(0, 0, S_WIDTH, S_HEIGHT);
-		self.view.frame = CGRectMake(0, 0, S_WIDTH, S_HEIGHT);
-		
-		[self rotateToPortrait];
+
+		[self makeTabBarHidden:NO];
+		//[self rotateToPortrait];
 	}
+	
+	self.displayView.frame = self.currentDisplayFrame;
+	
 	[UIView commitAnimations];
 }
 
@@ -197,10 +272,9 @@ CGFloat S_WIDTH, S_HEIGHT, S_HALFWIDTH, S_HALFHEIGHT, S_PSCALE, S_LSCALE;
 		
 	self.displayView.frame = kDisplayFramePortrait;
 	[self.displayView setNeedsLayout];
-	inputModeView.frame = CGRectMake(290 * S_PSCALE, 5, 24, 24);
+
 	//self.landscapeJoystickView.hidden	= YES;
 	//self.inputController.delegate		= joystickView;
-	self.inputController.frame			= kInputFramePortrait;
 }
 
 - (void)rotateToLandscape {
@@ -211,7 +285,6 @@ CGFloat S_WIDTH, S_HEIGHT, S_HALFWIDTH, S_HALFHEIGHT, S_PSCALE, S_LSCALE;
 	
 	//self.landscapeJoystickView.hidden	= NO;
 	//self.inputController.delegate		= landscapeJoystickView;	
-	self.inputController.frame			= kInputFrameLandscape;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -238,7 +311,6 @@ CGFloat S_WIDTH, S_HEIGHT, S_HALFWIDTH, S_HALFHEIGHT, S_PSCALE, S_LSCALE;
 	} else if (emulatorState == EmulatorNotStarted) {
 		emulationThread = [[NSThread alloc] initWithTarget:self selector:@selector(runEmulator) object:nil];
 		[emulationThread start];
-		[self.displayView startTimer];
 		[self performSelector:@selector(enableUserInteraction) withObject:nil afterDelay:0.25];
 	}
 }
@@ -246,7 +318,6 @@ CGFloat S_WIDTH, S_HEIGHT, S_HALFWIDTH, S_HALFHEIGHT, S_PSCALE, S_LSCALE;
 - (void)stopEmulator {
 	NSAssert(emulator != NULL, @"emulator should not be NULL");
 	
-	[displayView stopTimer];	
 	[emulationThread release];
 }
 
@@ -262,7 +333,6 @@ CGFloat S_WIDTH, S_HEIGHT, S_HALFWIDTH, S_HALFHEIGHT, S_PSCALE, S_LSCALE;
 	NSAssert(emulator != NULL, @"emulator cannot be NULL");
 	DLog(@"pausing emulator");
 	
-	[displayView stopTimer];
 	emulatorState = EmulatorPaused;
 	emulator->uae_pause();
 }
@@ -274,7 +344,6 @@ CGFloat S_WIDTH, S_HEIGHT, S_HALFWIDTH, S_HALFHEIGHT, S_PSCALE, S_LSCALE;
 	
 	DLog(@"resuming emulator");
 	
-	[displayView startTimer];
 	emulatorState = EmulatorRunning;
 	emulator->uae_resume();
 }

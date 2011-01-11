@@ -27,7 +27,6 @@
 		051F92EC1084632400C815BE /* Nebulus.ADF in Resources */ = {isa = PBXBuildFile; fileRef = 051F92EB1084632400C815BE /* Nebulus.ADF */; };
 		051F92EF1084644D00C815BE /* Gods 1.ADF in Resources */ = {isa = PBXBuildFile; fileRef = 051F92ED1084644D00C815BE /* Gods 1.ADF */; };
 		051F92F01084644D00C815BE /* Gods 2.ADF in Resources */ = {isa = PBXBuildFile; fileRef = 051F92EE1084644D00C815BE /* Gods 2.ADF */; };
-		0542F40B0FC8B99100126562 /* Odyssey-1.adf in Resources */ = {isa = PBXBuildFile; fileRef = 0542F40A0FC8B99100126562 /* Odyssey-1.adf */; };
 		05434906112CD9D2009CF6CF /* ABreed-1.adf in Resources */ = {isa = PBXBuildFile; fileRef = 05434904112CD9D2009CF6CF /* ABreed-1.adf */; };
 		05434907112CD9D2009CF6CF /* ABreed-2.adf in Resources */ = {isa = PBXBuildFile; fileRef = 05434905112CD9D2009CF6CF /* ABreed-2.adf */; };
 		0545257E106EBB590032FC41 /* Events2.c in Sources */ = {isa = PBXBuildFile; fileRef = 0545257D106EBB590032FC41 /* Events2.c */; };
@@ -55,12 +54,15 @@
 		0560647E10A5FC9200E52EF6 /* Turrican III.adf in Resources */ = {isa = PBXBuildFile; fileRef = 0560647C10A5FC9200E52EF6 /* Turrican III.adf */; };
 		0560647F10A5FC9200E52EF6 /* Turrican.adf in Resources */ = {isa = PBXBuildFile; fileRef = 0560647D10A5FC9200E52EF6 /* Turrican.adf */; };
 		05743FC50FC293FD003BE251 /* iphone_main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 05743FC40FC293FD003BE251 /* iphone_main.mm */; };
-		0574402C0FC29FBE003BE251 /* SDL.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0574402B0FC29FBE003BE251 /* SDL.mm */; };
 		057440690FC2A243003BE251 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 057440680FC2A243003BE251 /* libz.1.2.3.dylib */; };
 		057440D60FC2A4A7003BE251 /* kick.rom in Resources */ = {isa = PBXBuildFile; fileRef = 057440D50FC2A4A7003BE251 /* kick.rom */; };
 		057442820FC3C25B003BE251 /* DisplayView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 057442810FC3C25B003BE251 /* DisplayView.mm */; };
 		0574432A0FC3C94F003BE251 /* kick13.rom in Resources */ = {isa = PBXBuildFile; fileRef = 057443290FC3C94F003BE251 /* kick13.rom */; };
 		057B0D4C0FD0D0ED00D549AD /* MMStopWatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 057B0D4B0FD0D0ED00D549AD /* MMStopWatch.m */; };
+		0583DCFD12D18BB1000E97CE /* SDL.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0583DCFB12D18BB1000E97CE /* SDL.mm */; };
+		0583DD2612D18FD9000E97CE /* SDL_events.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0583DD2512D18FD9000E97CE /* SDL_events.mm */; };
+		0583DE5812D1A3AC000E97CE /* TouchHandlerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0583DE5712D1A3AC000E97CE /* TouchHandlerView.m */; };
+		0583DE5C12D1A433000E97CE /* SDL_mouse_c.c in Sources */ = {isa = PBXBuildFile; fileRef = 0583DE5B12D1A433000E97CE /* SDL_mouse_c.c */; };
 		0585D55F1091640900C1E4C1 /* VirtualKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 0585D55E1091640900C1E4C1 /* VirtualKeyboard.m */; };
 		0585D5621091653E00C1E4C1 /* KeyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0585D5611091653E00C1E4C1 /* KeyView.m */; };
 		059A411D12697B33003B23C7 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 059A411C12697B33003B23C7 /* MainWindow-iPad.xib */; };
@@ -87,7 +89,6 @@
 		05BC1C0B10735AD600EABC6E /* Kid Chaos 3 of 4.adf in Resources */ = {isa = PBXBuildFile; fileRef = 05BC1C0710735AD600EABC6E /* Kid Chaos 3 of 4.adf */; };
 		05BC1C0C10735AD600EABC6E /* Kid Chaos 4 of 4.adf in Resources */ = {isa = PBXBuildFile; fileRef = 05BC1C0810735AD600EABC6E /* Kid Chaos 4 of 4.adf */; };
 		05BC1C1B10735D7400EABC6E /* Xenon 2.adf in Resources */ = {isa = PBXBuildFile; fileRef = 05BC1C1A10735D7400EABC6E /* Xenon 2.adf */; };
-		05C87680106C9E20004A8DC2 /* Ghosts 'N Goblins.adf in Resources */ = {isa = PBXBuildFile; fileRef = 05C8767F106C9E20004A8DC2 /* Ghosts 'N Goblins.adf */; };
 		05D5D74C0FD5E38400B91C98 /* m68k_intrf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD010F3D797C005B30DF /* m68k_intrf.cpp */; };
 		05D6044B12AF2D620048E478 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 05D6044912AF2D620048E478 /* Icon.png */; };
 		05D6044C12AF2D620048E478 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 05D6044A12AF2D620048E478 /* Icon@2x.png */; };
@@ -97,15 +98,12 @@
 		05E8A04712B2C884005532AF /* amiga-beige-dark-left.png in Resources */ = {isa = PBXBuildFile; fileRef = 05E8A04412B2C884005532AF /* amiga-beige-dark-left.png */; };
 		05E8A04812B2C884005532AF /* amiga-beige-dark-right.png in Resources */ = {isa = PBXBuildFile; fileRef = 05E8A04512B2C884005532AF /* amiga-beige-dark-right.png */; };
 		05E8A04A12B2C8E9005532AF /* amiga-beige-dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 05E8A04912B2C8E9005532AF /* amiga-beige-dark.png */; };
-		05ECEA051091A847001A71D0 /* sdl_event.mm in Sources */ = {isa = PBXBuildFile; fileRef = 05ECEA031091A847001A71D0 /* sdl_event.mm */; };
 		05ECEAA51091B97D001A71D0 /* joystick.png in Resources */ = {isa = PBXBuildFile; fileRef = 05ECEAA21091B97D001A71D0 /* joystick.png */; };
 		05ECEAA61091B97D001A71D0 /* keyboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 05ECEAA31091B97D001A71D0 /* keyboard.png */; };
 		05ECEAA71091B97D001A71D0 /* mouse.png in Resources */ = {isa = PBXBuildFile; fileRef = 05ECEAA41091B97D001A71D0 /* mouse.png */; };
 		05ECEBAE1091CD9A001A71D0 /* Wizball.adf in Resources */ = {isa = PBXBuildFile; fileRef = 05ECEBAD1091CD9A001A71D0 /* Wizball.adf */; };
 		05ECEBB31091CE25001A71D0 /* Lotus Esprit.adf in Resources */ = {isa = PBXBuildFile; fileRef = 05ECEBB21091CE25001A71D0 /* Lotus Esprit.adf */; };
-		05ECEBB61091CE96001A71D0 /* Silkworm.ADF in Resources */ = {isa = PBXBuildFile; fileRef = 05ECEBB41091CE96001A71D0 /* Silkworm.ADF */; };
 		05ECEBB71091CE96001A71D0 /* Speedball.adf in Resources */ = {isa = PBXBuildFile; fileRef = 05ECEBB51091CE96001A71D0 /* Speedball.adf */; };
-		05F5F1F2112A4E94001530EC /* Populous.adf in Resources */ = {isa = PBXBuildFile; fileRef = 05F5F1F1112A4E94001530EC /* Populous.adf */; };
 		05F5F203112A50FB001530EC /* It Came from the Desert-1.adf in Resources */ = {isa = PBXBuildFile; fileRef = 05F5F200112A50FB001530EC /* It Came from the Desert-1.adf */; };
 		05F5F204112A50FB001530EC /* It Came from the Desert-2.adf in Resources */ = {isa = PBXBuildFile; fileRef = 05F5F201112A50FB001530EC /* It Came from the Desert-2.adf */; };
 		05F5F205112A50FB001530EC /* It Came from the Desert-3.adf in Resources */ = {isa = PBXBuildFile; fileRef = 05F5F202112A50FB001530EC /* It Came from the Desert-3.adf */; };
@@ -150,7 +148,6 @@
 		051F92ED1084644D00C815BE /* Gods 1.ADF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gods 1.ADF"; sourceTree = "<group>"; };
 		051F92EE1084644D00C815BE /* Gods 2.ADF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gods 2.ADF"; sourceTree = "<group>"; };
 		0542F18D0FC7E00F00126562 /* IK+.adf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "IK+.adf"; path = "../IK+.adf"; sourceTree = "<group>"; };
-		0542F40A0FC8B99100126562 /* Odyssey-1.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Odyssey-1.adf"; sourceTree = "<group>"; };
 		05434904112CD9D2009CF6CF /* ABreed-1.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ABreed-1.adf"; sourceTree = "<group>"; };
 		05434905112CD9D2009CF6CF /* ABreed-2.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ABreed-2.adf"; sourceTree = "<group>"; };
 		0545257C106EBB590032FC41 /* Events2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Events2.h; sourceTree = "<group>"; };
@@ -254,11 +251,8 @@
 		0552BD220F3D797C005B30DF /* zfile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = zfile.cpp; sourceTree = "<group>"; };
 		0560647C10A5FC9200E52EF6 /* Turrican III.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Turrican III.adf"; sourceTree = "<group>"; };
 		0560647D10A5FC9200E52EF6 /* Turrican.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Turrican.adf; sourceTree = "<group>"; };
-		05743F6D0FC28C6A003BE251 /* SDL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL.h; sourceTree = "<group>"; };
 		05743FC30FC293FD003BE251 /* iphone_main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iphone_main.h; sourceTree = "<group>"; };
 		05743FC40FC293FD003BE251 /* iphone_main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = iphone_main.mm; sourceTree = "<group>"; };
-		05743FDA0FC299FE003BE251 /* SDL_endian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_endian.h; sourceTree = "<group>"; };
-		0574402B0FC29FBE003BE251 /* SDL.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SDL.mm; sourceTree = "<group>"; };
 		057440680FC2A243003BE251 /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		057440D50FC2A4A7003BE251 /* kick.rom */ = {isa = PBXFileReference; lastKnownFileType = file; path = kick.rom; sourceTree = "<group>"; };
 		057442800FC3C25B003BE251 /* DisplayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayView.h; sourceTree = "<group>"; };
@@ -268,6 +262,23 @@
 		057443560FC3CA04003BE251 /* Shadow OTB2.ADF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Shadow OTB2.ADF"; sourceTree = "<group>"; };
 		057B0D4A0FD0D0ED00D549AD /* MMStopWatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMStopWatch.h; sourceTree = "<group>"; };
 		057B0D4B0FD0D0ED00D549AD /* MMStopWatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMStopWatch.m; sourceTree = "<group>"; };
+		0583DCFB12D18BB1000E97CE /* SDL.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SDL.mm; sourceTree = "<group>"; };
+		0583DCFE12D18BBB000E97CE /* SDL_endian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_endian.h; sourceTree = "<group>"; };
+		0583DCFF12D18BBB000E97CE /* SDL_events.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_events.h; sourceTree = "<group>"; };
+		0583DD0012D18BBB000E97CE /* sdl_internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdl_internal.h; sourceTree = "<group>"; };
+		0583DD0112D18BBB000E97CE /* SDL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL.h; sourceTree = "<group>"; };
+		0583DD2512D18FD9000E97CE /* SDL_events.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SDL_events.mm; sourceTree = "<group>"; };
+		0583DE5612D1A3AC000E97CE /* TouchHandlerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchHandlerView.h; sourceTree = "<group>"; };
+		0583DE5712D1A3AC000E97CE /* TouchHandlerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchHandlerView.m; sourceTree = "<group>"; };
+		0583DE5A12D1A433000E97CE /* SDL_mouse_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_mouse_c.h; sourceTree = "<group>"; };
+		0583DE5B12D1A433000E97CE /* SDL_mouse_c.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SDL_mouse_c.c; sourceTree = "<group>"; };
+		0583DE6B12D1A510000E97CE /* SDL_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_config.h; sourceTree = "<group>"; };
+		0583DE6D12D1A533000E97CE /* SDL_sysvideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_sysvideo.h; sourceTree = "<group>"; };
+		0583DE9112D1A825000E97CE /* SDL_keysym.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_keysym.h; sourceTree = "<group>"; };
+		0583DE9712D1A850000E97CE /* SDL_keyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_keyboard.h; sourceTree = "<group>"; };
+		0583DEB112D1A95D000E97CE /* SDL_stdinc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_stdinc.h; sourceTree = "<group>"; };
+		0583DF0112D1AB75000E97CE /* SDL_video.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_video.h; sourceTree = "<group>"; };
+		0583DF6412D1AFB4000E97CE /* SDL_mouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_mouse.h; sourceTree = "<group>"; };
 		0585D55D1091640900C1E4C1 /* VirtualKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VirtualKeyboard.h; sourceTree = "<group>"; };
 		0585D55E1091640900C1E4C1 /* VirtualKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VirtualKeyboard.m; sourceTree = "<group>"; };
 		0585D5601091653E00C1E4C1 /* KeyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyView.h; sourceTree = "<group>"; };
@@ -318,7 +329,6 @@
 		05BC1C0710735AD600EABC6E /* Kid Chaos 3 of 4.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kid Chaos 3 of 4.adf"; sourceTree = "<group>"; };
 		05BC1C0810735AD600EABC6E /* Kid Chaos 4 of 4.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Kid Chaos 4 of 4.adf"; sourceTree = "<group>"; };
 		05BC1C1A10735D7400EABC6E /* Xenon 2.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Xenon 2.adf"; sourceTree = "<group>"; };
-		05C8767F106C9E20004A8DC2 /* Ghosts 'N Goblins.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ghosts 'N Goblins.adf"; sourceTree = "<group>"; };
 		05D6044912AF2D620048E478 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		05D6044A12AF2D620048E478 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		05E65E09117EE7F700DC1086 /* Battle Squadron.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Battle Squadron.adf"; sourceTree = "<group>"; };
@@ -328,18 +338,13 @@
 		05E8A04412B2C884005532AF /* amiga-beige-dark-left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "amiga-beige-dark-left.png"; sourceTree = "<group>"; };
 		05E8A04512B2C884005532AF /* amiga-beige-dark-right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "amiga-beige-dark-right.png"; sourceTree = "<group>"; };
 		05E8A04912B2C8E9005532AF /* amiga-beige-dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "amiga-beige-dark.png"; sourceTree = "<group>"; };
-		05ECEA021091A847001A71D0 /* sdl_event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdl_event.h; sourceTree = "<group>"; };
-		05ECEA031091A847001A71D0 /* sdl_event.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = sdl_event.mm; sourceTree = "<group>"; };
-		05ECEA041091A847001A71D0 /* sdl_internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sdl_internal.h; sourceTree = "<group>"; };
 		05ECEA061091A85B001A71D0 /* CNSRecursiveLock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNSRecursiveLock.h; sourceTree = "<group>"; };
 		05ECEAA21091B97D001A71D0 /* joystick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joystick.png; sourceTree = "<group>"; };
 		05ECEAA31091B97D001A71D0 /* keyboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = keyboard.png; sourceTree = "<group>"; };
 		05ECEAA41091B97D001A71D0 /* mouse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mouse.png; sourceTree = "<group>"; };
 		05ECEBAD1091CD9A001A71D0 /* Wizball.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Wizball.adf; sourceTree = "<group>"; };
 		05ECEBB21091CE25001A71D0 /* Lotus Esprit.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lotus Esprit.adf"; sourceTree = "<group>"; };
-		05ECEBB41091CE96001A71D0 /* Silkworm.ADF */ = {isa = PBXFileReference; lastKnownFileType = file; path = Silkworm.ADF; sourceTree = "<group>"; };
 		05ECEBB51091CE96001A71D0 /* Speedball.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Speedball.adf; sourceTree = "<group>"; };
-		05F5F1F1112A4E94001530EC /* Populous.adf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Populous.adf; path = p/Populous.adf; sourceTree = "<group>"; };
 		05F5F200112A50FB001530EC /* It Came from the Desert-1.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "It Came from the Desert-1.adf"; sourceTree = "<group>"; };
 		05F5F201112A50FB001530EC /* It Came from the Desert-2.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "It Came from the Desert-2.adf"; sourceTree = "<group>"; };
 		05F5F202112A50FB001530EC /* It Came from the Desert-3.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "It Came from the Desert-3.adf"; sourceTree = "<group>"; };
@@ -385,6 +390,8 @@
 				0504155B0FCB46F000F46828 /* EmulationViewController.mm */,
 				0504155D0FCB475C00F46828 /* InputControllerView.h */,
 				0504155E0FCB475C00F46828 /* InputControllerView.mm */,
+				0583DE5612D1A3AC000E97CE /* TouchHandlerView.h */,
+				0583DE5712D1A3AC000E97CE /* TouchHandlerView.m */,
 				0504155F0FCB475C00F46828 /* JoystickViewLandscape.h */,
 				050415600FCB475C00F46828 /* JoystickViewLandscape.mm */,
 				0585D55D1091640900C1E4C1 /* VirtualKeyboard.h */,
@@ -451,7 +458,6 @@
 		051F92E3108462A700C815BE /* p */ = {
 			isa = PBXGroup;
 			children = (
-				05F5F1F1112A4E94001530EC /* Populous.adf */,
 				051F92E5108462AE00C815BE /* Paradroid 90.adf */,
 			);
 			name = p;
@@ -515,7 +521,6 @@
 		0542F4090FC8B98900126562 /* o */ = {
 			isa = PBXGroup;
 			children = (
-				0542F40A0FC8B99100126562 /* Odyssey-1.adf */,
 			);
 			name = o;
 			sourceTree = "<group>";
@@ -697,14 +702,9 @@
 		05743F6C0FC28C5C003BE251 /* iphone */ = {
 			isa = PBXGroup;
 			children = (
+				0583DCD312D11E1E000E97CE /* SDL-mini */,
 				05E6A30D0FC3D8EA0086151B /* audio */,
 				05ECEA061091A85B001A71D0 /* CNSRecursiveLock.h */,
-				05743F6D0FC28C6A003BE251 /* SDL.h */,
-				0574402B0FC29FBE003BE251 /* SDL.mm */,
-				05743FDA0FC299FE003BE251 /* SDL_endian.h */,
-				05ECEA021091A847001A71D0 /* sdl_event.h */,
-				05ECEA031091A847001A71D0 /* sdl_event.mm */,
-				05ECEA041091A847001A71D0 /* sdl_internal.h */,
 				05743FC30FC293FD003BE251 /* iphone_main.h */,
 				05743FC40FC293FD003BE251 /* iphone_main.mm */,
 				050415630FCB47B200F46828 /* CGVector.h */,
@@ -751,13 +751,73 @@
 		057443540FC3CA04003BE251 /* s */ = {
 			isa = PBXGroup;
 			children = (
-				05F5F1E7112A4E58001530EC /* Sensible World of Soccer 96-97 */,
-				05ECEBB41091CE96001A71D0 /* Silkworm.ADF */,
 				05ECEBB51091CE96001A71D0 /* Speedball.adf */,
 				057443550FC3CA04003BE251 /* Shadow OTB1.ADF */,
 				057443560FC3CA04003BE251 /* Shadow OTB2.ADF */,
 			);
 			path = s;
+			sourceTree = "<group>";
+		};
+		0577BD0512D840A30040B77D /* uikit */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = uikit;
+			sourceTree = "<group>";
+		};
+		0583DCD312D11E1E000E97CE /* SDL-mini */ = {
+			isa = PBXGroup;
+			children = (
+				0583DCEC12D18B19000E97CE /* include */,
+				0583DCF612D18B24000E97CE /* src */,
+			);
+			path = "SDL-mini";
+			sourceTree = "<group>";
+		};
+		0583DCEC12D18B19000E97CE /* include */ = {
+			isa = PBXGroup;
+			children = (
+				0583DD0112D18BBB000E97CE /* SDL.h */,
+				0583DCFE12D18BBB000E97CE /* SDL_endian.h */,
+				0583DCFF12D18BBB000E97CE /* SDL_events.h */,
+				0583DD0012D18BBB000E97CE /* sdl_internal.h */,
+				0583DE6B12D1A510000E97CE /* SDL_config.h */,
+				0583DE9712D1A850000E97CE /* SDL_keyboard.h */,
+				0583DE9112D1A825000E97CE /* SDL_keysym.h */,
+				0583DF6412D1AFB4000E97CE /* SDL_mouse.h */,
+				0583DEB112D1A95D000E97CE /* SDL_stdinc.h */,
+				0583DF0112D1AB75000E97CE /* SDL_video.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		0583DCF612D18B24000E97CE /* src */ = {
+			isa = PBXGroup;
+			children = (
+				0583DE5D12D1A4D4000E97CE /* video */,
+				0583DD2012D18FAF000E97CE /* events */,
+				0583DCFB12D18BB1000E97CE /* SDL.mm */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		0583DD2012D18FAF000E97CE /* events */ = {
+			isa = PBXGroup;
+			children = (
+				0583DD2512D18FD9000E97CE /* SDL_events.mm */,
+				0583DE5A12D1A433000E97CE /* SDL_mouse_c.h */,
+				0583DE5B12D1A433000E97CE /* SDL_mouse_c.c */,
+			);
+			path = events;
+			sourceTree = "<group>";
+		};
+		0583DE5D12D1A4D4000E97CE /* video */ = {
+			isa = PBXGroup;
+			children = (
+				0577BD0512D840A30040B77D /* uikit */,
+				0583DE6D12D1A533000E97CE /* SDL_sysvideo.h */,
+			);
+			path = video;
 			sourceTree = "<group>";
 		};
 		059A411B12697B33003B23C7 /* Resources-iPad */ = {
@@ -873,7 +933,6 @@
 			children = (
 				051F92ED1084644D00C815BE /* Gods 1.ADF */,
 				051F92EE1084644D00C815BE /* Gods 2.ADF */,
-				05C8767F106C9E20004A8DC2 /* Ghosts 'N Goblins.adf */,
 			);
 			path = g;
 			sourceTree = "<group>";
@@ -932,13 +991,6 @@
 				05ECEBB21091CE25001A71D0 /* Lotus Esprit.adf */,
 			);
 			path = l;
-			sourceTree = "<group>";
-		};
-		05F5F1E7112A4E58001530EC /* Sensible World of Soccer 96-97 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Sensible World of Soccer 96-97";
 			sourceTree = "<group>";
 		};
 		05F5F1EC112A4E66001530EC /* c */ = {
@@ -1091,7 +1143,6 @@
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				057440D60FC2A4A7003BE251 /* kick.rom in Resources */,
 				0574432A0FC3C94F003BE251 /* kick13.rom in Resources */,
-				0542F40B0FC8B99100126562 /* Odyssey-1.adf in Resources */,
 				050416780FCB588E00F46828 /* Turrican II.adf in Resources */,
 				0504166C0FCB571B00F46828 /* IK+.adf in Resources */,
 				050416410FCB566500F46828 /* ls-fullscreen_bottomBtn.png in Resources */,
@@ -1102,7 +1153,6 @@
 				050416460FCB566500F46828 /* ls-joystick_active.png in Resources */,
 				050416470FCB566500F46828 /* ls-joystick_rest.png in Resources */,
 				05B7066E0FD282230081B5C3 /* Entitlements.plist in Resources */,
-				05C87680106C9E20004A8DC2 /* Ghosts 'N Goblins.adf in Resources */,
 				05BC17DB1070B74E00EABC6E /* Defender OTC1.ADF in Resources */,
 				05BC17DC1070B74E00EABC6E /* Defender OTC2.ADF in Resources */,
 				05BC1AF81073448200EABC6E /* EMUROMBrowserView.xib in Resources */,
@@ -1125,11 +1175,9 @@
 				05ECEAA71091B97D001A71D0 /* mouse.png in Resources */,
 				05ECEBAE1091CD9A001A71D0 /* Wizball.adf in Resources */,
 				05ECEBB31091CE25001A71D0 /* Lotus Esprit.adf in Resources */,
-				05ECEBB61091CE96001A71D0 /* Silkworm.ADF in Resources */,
 				05ECEBB71091CE96001A71D0 /* Speedball.adf in Resources */,
 				0560647E10A5FC9200E52EF6 /* Turrican III.adf in Resources */,
 				0560647F10A5FC9200E52EF6 /* Turrican.adf in Resources */,
-				05F5F1F2112A4E94001530EC /* Populous.adf in Resources */,
 				05F5F203112A50FB001530EC /* It Came from the Desert-1.adf in Resources */,
 				05F5F204112A50FB001530EC /* It Came from the Desert-2.adf in Resources */,
 				05F5F205112A50FB001530EC /* It Came from the Desert-3.adf in Resources */,
@@ -1179,7 +1227,6 @@
 				0552BD550F3D797C005B30DF /* writelog.cpp in Sources */,
 				0552BD560F3D797C005B30DF /* zfile.cpp in Sources */,
 				05743FC50FC293FD003BE251 /* iphone_main.mm in Sources */,
-				0574402C0FC29FBE003BE251 /* SDL.mm in Sources */,
 				057442820FC3C25B003BE251 /* DisplayView.mm in Sources */,
 				05FE7F280FC3EDBF00DBFECF /* AudioQueueManager.cpp in Sources */,
 				0504155C0FCB46F000F46828 /* EmulationViewController.mm in Sources */,
@@ -1198,9 +1245,12 @@
 				05BC1B1D10734C3B00EABC6E /* SettingsController.m in Sources */,
 				0585D55F1091640900C1E4C1 /* VirtualKeyboard.m in Sources */,
 				0585D5621091653E00C1E4C1 /* KeyView.m in Sources */,
-				05ECEA051091A847001A71D0 /* sdl_event.mm in Sources */,
 				050C393D12C31B24000CE512 /* Disa.c in Sources */,
 				050C3A9412C33D94000CE512 /* disassembler.m in Sources */,
+				0583DCFD12D18BB1000E97CE /* SDL.mm in Sources */,
+				0583DD2612D18FD9000E97CE /* SDL_events.mm in Sources */,
+				0583DE5812D1A3AC000E97CE /* TouchHandlerView.m in Sources */,
+				0583DE5C12D1A433000E97CE /* SDL_mouse_c.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1261,9 +1311,14 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iAmiga_Prefix.pch;
+				HEADER_SEARCH_PATHS = (
+					"uae4all_gp2x_0.7.2a/src/iphone/SDL-mini/include",
+					uae4all_gp2x_0.7.2a/src,
+					uae4all_gp2x_0.7.2a/src/iphone,
+				);
 				INFOPLIST_FILE = Info.plist;
 				PRODUCT_NAME = iAmiga;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B82A9D1C-C798-4D29-9805-924844F8C153";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "96D233EE-F53D-41A1-84B9-DBEAE9E914D7";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Distribution;
@@ -1277,6 +1332,11 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iAmiga_Prefix.pch;
+				HEADER_SEARCH_PATHS = (
+					"uae4all_gp2x_0.7.2a/src/iphone/SDL-mini/include",
+					uae4all_gp2x_0.7.2a/src,
+					uae4all_gp2x_0.7.2a/src/iphone,
+				);
 				INFOPLIST_FILE = Info.plist;
 				PRODUCT_NAME = iAmiga;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1290,6 +1350,11 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iAmiga_Prefix.pch;
+				HEADER_SEARCH_PATHS = (
+					"uae4all_gp2x_0.7.2a/src/iphone/SDL-mini/include",
+					uae4all_gp2x_0.7.2a/src,
+					uae4all_gp2x_0.7.2a/src/iphone,
+				);
 				INFOPLIST_FILE = Info.plist;
 				PRODUCT_NAME = iAmiga;
 				TARGETED_DEVICE_FAMILY = "1,2";

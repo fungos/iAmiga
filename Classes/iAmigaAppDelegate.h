@@ -11,9 +11,11 @@
 @class EmulationViewController;
 
 @interface iAmigaAppDelegate : NSObject <UIApplicationDelegate> {
-    UIWindow					*window;
-	EmulationViewController		*_emulationView;
-	UITabBarController			*_mainController;
+    UIWindow							*window;
+	IBOutlet EmulationViewController	*_emulationView;
+	UITabBarController					*_mainController;
+	
+	UIWindow							*externalWindow;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
