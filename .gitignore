@@ -13,3 +13,6 @@ build/*
 # osx noise
 .DS_store
 profile
+
+# iAmiga specific
+disks/*
