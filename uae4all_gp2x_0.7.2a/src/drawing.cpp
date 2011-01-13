@@ -2191,9 +2191,11 @@ static _INLINE_ void finish_drawing_frame (void)
     do_flush_screen (first_drawn_line, last_drawn_line);
 	
 	if (g_emulator.paused) {
+		pause_sound();
 		while (g_emulator.paused) {
 			usleep(500);
 		}
+		resume_sound();
 	}
 }
 
