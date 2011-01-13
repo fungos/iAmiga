@@ -61,7 +61,7 @@ void uae::default_prefs () {
     // prefs_gfx_framerate = 2;
 	prefs_gfx_framerate = -1; // auto frame skip
 
-	strcpy (prefs_df[0], get_df_path(0));
+	//strcpy (prefs_df[0], get_df_path(0));
 	//strcpy (prefs_df[1], get_df_path(1));
     //strcpy (prefs_df[0], ROM_PATH_PREFIX "df0.adf");
     //strcpy (prefs_df[1], ROM_PATH_PREFIX "df1.adf");
