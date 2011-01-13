@@ -118,3 +118,10 @@ void SDL_PushKeyEvent(SDLKey key) {
 	e.type = SDL_KEYUP;
 	eventQueue->push(e);
 }
+
+void SDL_PumpEvents(void) {
+	SInt32 result;
+	do {
+		result = CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0, TRUE);
+	} while(result == kCFRunLoopRunHandledSource);
+}
