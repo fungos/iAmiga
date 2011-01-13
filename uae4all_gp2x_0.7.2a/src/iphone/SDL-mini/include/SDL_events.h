@@ -165,6 +165,7 @@ extern int inputMode;
 extern int SDL_PollEvent(SDL_Event *e);
 extern int SDL_PushEvent(SDL_Event *e);
 extern void SDL_PushKeyEvent(SDLKey key);
+extern void SDL_PumpEvents(void);
 
 #define SDL_QUERY	-1
 #define SDL_IGNORE	 0
