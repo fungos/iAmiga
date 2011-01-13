@@ -41,6 +41,7 @@ typedef struct {
 - (void)didRotate;
 - (void)toggleInputMode:(UIButton*)sender;
 - (void)makeTabBarHidden:(BOOL)hide;
+- (void)recalculateCurrentDisplayFrame:(CGRect)contentFrame;
 
 @property (nonatomic,retain) UIWindow	*displayViewWindow;
 @property (nonatomic, readonly) CGRect currentDisplayFrame;
@@ -51,11 +52,9 @@ typedef struct {
 #define kDisplayHeight							240.0f
 const float kDisplayRatio =						(kDisplayHeight / kDisplayWidth);
 
-#define kDisplayFramePortrait					CGRectMake(0, 0, kDisplayWidth * S_PSCALE, kDisplayHeight * S_PSCALE)
 #define kInputFramePortrait						CGRectMake(0, 0, 320.0f * S_PSCALE, 480.0f * S_PSCALE)
 
 // stretched version, specifically cropped for IK+
-#define kDisplayFrameLandscape					CGRectMake(0, 0, 480.0f * S_LSCALE, 480.0f * kDisplayRatio * S_LSCALE)
 #define kInputFrameLandscape					CGRectMake(0, 0, 480.0f * S_LSCALE, 320.0f * S_PSCALE)
 
 // miscellaneous constants
@@ -74,7 +73,11 @@ CGFloat S_WIDTH, S_HEIGHT, S_HALFWIDTH, S_HALFHEIGHT, S_PSCALE, S_LSCALE;
 // Implement loadView to create a view hierarchy programmatically.
 - (void)loadView {
 
-	CGRect frame = [UIScreen mainScreen].bounds;
+	UITabBarController *tabBarController = self.tabBarController;
+	CGRect frame = CGRectMake(tabBarController.view.bounds.origin.x,
+							  tabBarController.view.bounds.origin.y,
+							  tabBarController.view.bounds.size.width,
+							  tabBarController.view.bounds.size.height - tabBarController.tabBar.frame.size.height);
 
 	S_WIDTH = frame.size.width;
 	S_HEIGHT = frame.size.height;
@@ -95,6 +98,7 @@ CGFloat S_WIDTH, S_HEIGHT, S_HALFWIDTH, S_HALFHEIGHT, S_PSCALE, S_LSCALE;
 	
 	// create all the views, order is important to ensure active areas of the UI are layered on top
 	UIView *view = [[UIView alloc] initWithFrame:frame];
+	rootView = [view retain];
 	view.autoresizingMask = (UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
 	view.backgroundColor = [UIColor blackColor];
 	
@@ -105,12 +109,12 @@ CGFloat S_WIDTH, S_HEIGHT, S_HALFWIDTH, S_HALFHEIGHT, S_PSCALE, S_LSCALE;
 		[view addSubview:self.displayView];
 	}
 		
-	self.inputController = [[InputControllerView alloc] initWithFrame:kInputFramePortrait];
+	self.inputController = [[InputControllerView alloc] initWithFrame:frame];
 	inputController.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	//self.inputController.delegate = self.landscapeJoystickView;
 	[view addSubview:self.inputController];
 	
-	self.touchHandler = [[TouchHandlerView alloc] initWithFrame:kInputFramePortrait];
+	self.touchHandler = [[TouchHandlerView alloc] initWithFrame:frame];
 	self.touchHandler.hidden = YES;
 	touchHandler.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	[view addSubview:self.touchHandler];
@@ -120,7 +124,7 @@ CGFloat S_WIDTH, S_HEIGHT, S_HALFWIDTH, S_HALFHEIGHT, S_PSCALE, S_LSCALE;
 	//[self.inputController addSubview:self.landscapeJoystickView];
 	
 	// virtual keyboard
-	vKeyboard = [[VirtualKeyboard alloc] initWithFrame:CGRectMake(0, 420 * S_PSCALE, 200*S_PSCALE, 40*S_PSCALE)];
+	vKeyboard = [[VirtualKeyboard alloc] initWithFrame:CGRectMake(0, 380 * S_PSCALE, 200*S_PSCALE, 40*S_PSCALE)];
 	vKeyboard.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin;
 	vKeyboard.hidden = YES;
 	[view addSubview:vKeyboard];
@@ -151,14 +155,24 @@ CGFloat S_WIDTH, S_HEIGHT, S_HALFWIDTH, S_HALFHEIGHT, S_PSCALE, S_LSCALE;
 
 - (CGRect)currentDisplayFrame {	
 	if (_isExternal) {
+		// assuming external display it's width > height
 		return displayViewWindow.bounds;
 	} 
 	
-	if (UIInterfaceOrientationIsLandscape(layoutOrientation)) {
-		return kDisplayFrameLandscape;
-	}
+	CGSize frameSize = rootView.frame.size;
 
-	return kDisplayFramePortrait;
+	// full-screen, landscape mode
+	if (UIInterfaceOrientationIsLandscape(layoutOrientation)) {
+		// assuming landscape width > height
+		return CGRectMake(0, 0, frameSize.height, frameSize.width);
+	}
+	
+	// aspect fill (portrait mode)
+	CGFloat xRatio = frameSize.width / kDisplayWidth;
+	CGFloat yRatio = frameSize.height / kDisplayHeight;
+	CGFloat ratio = MIN(xRatio, yRatio);
+
+	return CGRectMake(0, 0, kDisplayWidth * ratio, kDisplayHeight * ratio);
 }
 
 - (void)makeTabBarHidden:(BOOL)hide {
@@ -193,12 +207,13 @@ CGFloat S_WIDTH, S_HEIGHT, S_HALFWIDTH, S_HALFHEIGHT, S_PSCALE, S_LSCALE;
 - (void)setDisplayViewWindow:(UIWindow*)window isExternal:(BOOL)isExternal {
 	_isExternal = isExternal;
 	self.displayViewWindow = window;
-	if (displayView != nil) {
-		if (window) {
-			[window addSubview:displayView];
-		} else {
-			[self.view insertSubview:displayView atIndex:0];
-		}
+	if (displayView == nil)
+		return;
+	
+	if (window) {
+		[window addSubview:displayView];
+	} else {
+		[self.view insertSubview:displayView atIndex:0];
 	}
 	
 	self.displayView.frame = self.currentDisplayFrame;
@@ -270,7 +285,7 @@ CGFloat S_WIDTH, S_HEIGHT, S_HALFWIDTH, S_HALFHEIGHT, S_PSCALE, S_LSCALE;
 - (void)rotateToPortrait {
 	DLog(@"Rotating to portrait");
 		
-	self.displayView.frame = kDisplayFramePortrait;
+	self.displayView.frame = self.currentDisplayFrame;
 	[self.displayView setNeedsLayout];
 
 	//self.landscapeJoystickView.hidden	= YES;
@@ -280,7 +295,7 @@ CGFloat S_WIDTH, S_HEIGHT, S_HALFWIDTH, S_HALFHEIGHT, S_PSCALE, S_LSCALE;
 - (void)rotateToLandscape {
 	DLog(@"Rotating to landscape");
 
-	self.displayView.frame				= kDisplayFrameLandscape;
+	self.displayView.frame				= self.currentDisplayFrame;
 	[self.displayView setNeedsLayout];
 	
 	//self.landscapeJoystickView.hidden	= NO;
