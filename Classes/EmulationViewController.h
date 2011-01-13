@@ -51,6 +51,7 @@ typedef enum {
 
 @interface EmulationViewController : UIViewController {
 	// Views: both orientations
+	UIView						*rootView;
 	DisplayView					*displayView;
 	InputControllerView			*inputController;
 	VirtualKeyboard				*vKeyboard;
