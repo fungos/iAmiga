@@ -41,6 +41,7 @@
 		currentMode |= kMouseMove;
 		mouseTouch = touch;
 		previousMouseLocation = [touch locationInView: self];
+		didMove = NO;
 		
 		// if the user performed a double tap, then we'll also send a left click
 		if (touch.tapCount == 2) {
@@ -57,6 +58,7 @@
 			CGPoint locationInView = [mouseTouch locationInView: self];
 			SDL_SendMouseMotion(NULL, SDL_MOTIONRELATIVE, locationInView.x - previousMouseLocation.x, locationInView.y - previousMouseLocation.y);
 			previousMouseLocation = locationInView;
+			didMove = YES;
 		}
 	}
 }
@@ -75,6 +77,14 @@
 	if (currentMode & kMouseMove && [touches containsObject:mouseTouch]) {
 		mouseTouch = nil;
 		currentMode &= ~kMouseMove;
+		if (didMove == NO) {
+			SDL_SendMouseButton(NULL, SDL_PRESSED, SDL_BUTTON_LEFT);
+			// 200ms after, push up
+			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 50 * 1000000), dispatch_get_main_queue(), ^{
+				SDL_SendMouseButton(NULL, SDL_RELEASED, SDL_BUTTON_LEFT);
+			}); 
+			
+		}
 	}
 }
 

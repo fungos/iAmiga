@@ -23,6 +23,7 @@ typedef enum MouseActiveMode MouseActiveMode;
 	MouseActiveMode currentMode;
 	int				touchCount;
 	CGPoint			previousMouseLocation;
+	BOOL			didMove;
 }
 
 @end
