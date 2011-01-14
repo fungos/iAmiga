@@ -1373,3 +1373,24 @@ void restore_bram (int len, long filepos)
 {
     bogo_filepos = filepos;
 }
+
+#define MEMORY_DEBUGGER
+
+#ifdef MEMORY_DEBUGGER
+
+void find_word(uae_u16 aWord) {
+	uae_u16 *p = chipmemory_word;
+	uae_u16 *end = (uae_u16*)(chipmemory + allocated_chipmem);
+	int count = 0;
+	while (p < end) {
+		if (*p++ == aWord && count++ < 100) {
+			printf("%06x, ", (p-chipmemory_word));
+		}
+	}
+	if (count > 100) {
+		printf("and %d more...", count);
+	}
+	printf("\n");
+}
+
+#endif

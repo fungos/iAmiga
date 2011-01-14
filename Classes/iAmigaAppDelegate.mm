@@ -9,6 +9,7 @@
 #import "iAmigaAppDelegate.h"
 #import "EmulationViewController.h"
 #import <AudioToolbox/AudioServices.h>
+#import "UaeDebugger.h"
 
 @interface iAmigaAppDelegate()
 
@@ -21,6 +22,8 @@
 @implementation iAmigaAppDelegate
 
 @synthesize window, mainController=_mainController;
+
+static UaeDebugger *debugger;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
 	//_emulationView = [EmulationViewController new];
@@ -37,6 +40,9 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(screenDidConnect:) name:UIScreenDidConnectNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(screenDidDisconnect:) name:UIScreenDidDisconnectNotification object:nil];
 	[self configureScreens];
+	
+	//debugger = [[UaeDebugger alloc] init];
+	//[debugger startOnPort:2000];
 }
 
 - (void)screenDidConnect:(NSNotification*)aNotification {
