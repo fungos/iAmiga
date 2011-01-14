@@ -58,6 +58,9 @@
 		057440D60FC2A4A7003BE251 /* kick.rom in Resources */ = {isa = PBXBuildFile; fileRef = 057440D50FC2A4A7003BE251 /* kick.rom */; };
 		057442820FC3C25B003BE251 /* DisplayView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 057442810FC3C25B003BE251 /* DisplayView.mm */; };
 		0574432A0FC3C94F003BE251 /* kick13.rom in Resources */ = {isa = PBXBuildFile; fileRef = 057443290FC3C94F003BE251 /* kick13.rom */; };
+		0577C0DB12DED4A60040B77D /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 0577C0DA12DED4A60040B77D /* AsyncSocket.m */; };
+		0577C0E512DED4DF0040B77D /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0577C0E412DED4DF0040B77D /* CFNetwork.framework */; };
+		0577C0F912DED4FD0040B77D /* UaeDebugger.m in Sources */ = {isa = PBXBuildFile; fileRef = 0577C0F812DED4FD0040B77D /* UaeDebugger.m */; };
 		057B0D4C0FD0D0ED00D549AD /* MMStopWatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 057B0D4B0FD0D0ED00D549AD /* MMStopWatch.m */; };
 		0583DCFD12D18BB1000E97CE /* SDL.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0583DCFB12D18BB1000E97CE /* SDL.mm */; };
 		0583DD2612D18FD9000E97CE /* SDL_events.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0583DD2512D18FD9000E97CE /* SDL_events.mm */; };
@@ -260,6 +263,11 @@
 		057443290FC3C94F003BE251 /* kick13.rom */ = {isa = PBXFileReference; lastKnownFileType = file; path = kick13.rom; sourceTree = "<group>"; };
 		057443550FC3CA04003BE251 /* Shadow OTB1.ADF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Shadow OTB1.ADF"; sourceTree = "<group>"; };
 		057443560FC3CA04003BE251 /* Shadow OTB2.ADF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Shadow OTB2.ADF"; sourceTree = "<group>"; };
+		0577C0D912DED4A60040B77D /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncSocket.h; sourceTree = "<group>"; };
+		0577C0DA12DED4A60040B77D /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncSocket.m; sourceTree = "<group>"; };
+		0577C0E412DED4DF0040B77D /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		0577C0F712DED4FD0040B77D /* UaeDebugger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UaeDebugger.h; sourceTree = "<group>"; };
+		0577C0F812DED4FD0040B77D /* UaeDebugger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UaeDebugger.m; sourceTree = "<group>"; };
 		057B0D4A0FD0D0ED00D549AD /* MMStopWatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMStopWatch.h; sourceTree = "<group>"; };
 		057B0D4B0FD0D0ED00D549AD /* MMStopWatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMStopWatch.m; sourceTree = "<group>"; };
 		0583DCFB12D18BB1000E97CE /* SDL.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SDL.mm; sourceTree = "<group>"; };
@@ -375,6 +383,7 @@
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				057440690FC2A243003BE251 /* libz.1.2.3.dylib in Frameworks */,
 				05E6A31D0FC3D93B0086151B /* AudioToolbox.framework in Frameworks */,
+				0577C0E512DED4DF0040B77D /* CFNetwork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,6 +393,7 @@
 		050414C40FCB455500F46828 /* Emulator */ = {
 			isa = PBXGroup;
 			children = (
+				0577C0D812DED3290040B77D /* debugger */,
 				057442800FC3C25B003BE251 /* DisplayView.h */,
 				057442810FC3C25B003BE251 /* DisplayView.mm */,
 				0504155A0FCB46F000F46828 /* EmulationViewController.h */,
@@ -765,6 +775,17 @@
 			path = uikit;
 			sourceTree = "<group>";
 		};
+		0577C0D812DED3290040B77D /* debugger */ = {
+			isa = PBXGroup;
+			children = (
+				0577C0D912DED4A60040B77D /* AsyncSocket.h */,
+				0577C0DA12DED4A60040B77D /* AsyncSocket.m */,
+				0577C0F712DED4FD0040B77D /* UaeDebugger.h */,
+				0577C0F812DED4FD0040B77D /* UaeDebugger.m */,
+			);
+			path = debugger;
+			sourceTree = "<group>";
+		};
 		0583DCD312D11E1E000E97CE /* SDL-mini */ = {
 			isa = PBXGroup;
 			children = (
@@ -1088,6 +1109,7 @@
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 				057440680FC2A243003BE251 /* libz.1.2.3.dylib */,
+				0577C0E412DED4DF0040B77D /* CFNetwork.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1251,6 +1273,8 @@
 				0583DD2612D18FD9000E97CE /* SDL_events.mm in Sources */,
 				0583DE5812D1A3AC000E97CE /* TouchHandlerView.m in Sources */,
 				0583DE5C12D1A433000E97CE /* SDL_mouse_c.c in Sources */,
+				0577C0DB12DED4A60040B77D /* AsyncSocket.m in Sources */,
+				0577C0F912DED4FD0040B77D /* UaeDebugger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
