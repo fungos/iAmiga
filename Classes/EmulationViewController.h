@@ -19,11 +19,11 @@
 
 #import <UIKit/UIKit.h>
 
-@class DisplayView;
 @class InputControllerView;
 @class JoystickViewLandscape;
 @class VirtualKeyboard;
 @class TouchHandlerView;
+@protocol DisplayViewSurface;
 
 class uae;
 
@@ -52,7 +52,7 @@ typedef enum {
 @interface EmulationViewController : UIViewController {
 	// Views: both orientations
 	UIView						*rootView;
-	DisplayView					*displayView;
+	UIView<DisplayViewSurface>	*displayView;
 	InputControllerView			*inputController;
 	VirtualKeyboard				*vKeyboard;
 	TouchHandlerView			*touchHandler;
@@ -76,16 +76,19 @@ typedef enum {
 	
 	BOOL						_isExternal;
 	UIWindow					*displayViewWindow;
+	BOOL						_integralSize;
 }
 
 @property (nonatomic)			uae							*emulator;
 @property (nonatomic)			tagEmulatorState			emulatorState;
 
-@property (nonatomic, retain)	DisplayView					*displayView;
+@property (nonatomic, retain)	UIView<DisplayViewSurface>	*displayView;
 @property (nonatomic, retain)	InputControllerView			*inputController;
 @property (nonatomic, retain)	TouchHandlerView			*touchHandler;
 
 @property (nonatomic, retain)	JoystickViewLandscape		*landscapeJoystickView;
+
+@property (nonatomic)			BOOL						integralSize;
 
 
 - (void)startEmulator;

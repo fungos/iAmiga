@@ -14,15 +14,12 @@ extern "C" {
 #endif
 	
 #include "SDL_stdinc.h"
-	
+#include "SDL_error.h"
 #include "SDL_events.h"
 
 typedef struct SDL_Color {
 	unsigned r,g,b;
 } SDL_Color;
-
-typedef struct SDL_Joystick {	
-} SDL_Joystick;
 
 typedef void (*sound_callback_t)(void *userdata, Uint8 *stream, int len);
 
@@ -42,11 +39,13 @@ typedef struct tagFormat {
 } tagFormat;
 
 typedef struct SDL_Surface {
-	int w,h;
-	void *pixels;
+	Uint32 flags;
 	struct tagFormat *format;
-	unsigned pitch;
+	int w,h;
+	int pitch;
+	void *pixels;
 	
+	void *userdata;
 } SDL_Surface; 
 
 extern Uint32 SDL_GetTicks();
@@ -58,16 +57,7 @@ extern void SDL_UpdateRect(SDL_Surface*, int, int, int, int);
 extern void SDL_Delay(Uint32);
 extern long int SDL_MapRGB(tagFormat*, int, int, int);
 extern int SDL_PollEvent(SDL_Event*);
-extern void SDL_JoystickUpdate();
 extern void SDL_VideoQuit();
-
-extern int SDL_JoystickGetAxis(SDL_Joystick*, int);
-extern int SDL_JoystickNumButtons(SDL_Joystick*);
-extern int SDL_JoystickGetButton(SDL_Joystick*, int);
-
-extern int SDL_NumJoysticks();
-extern SDL_Joystick* SDL_JoystickOpen(int);
-extern int SDL_JoystickClose(SDL_Joystick*);
 
 extern int SDL_Init(int);
 extern SDL_Surface* SDL_SetVideoMode(int, int, int, int);

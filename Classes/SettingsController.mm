@@ -8,10 +8,14 @@
 
 #import "SettingsController.h"
 #import "EMUROMBrowserViewController.h"
+#import "EmulationViewController.h"
+#import "SelectEffectController.h"
 #import "EMUFileInfo.h"
 #import "sysconfig.h"
 #import "sysdeps.h"
 #import "options.h"
+#import "SDL.h"
+#import "UIKitDisplayView.h"
 
 #if DISASSEMBLER
 #import "DisaSupport.h"
@@ -22,16 +26,6 @@ extern int mainMenu_ntsc;
 
 @implementation SettingsController
 
-/*
- // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        // Custom initialization
-    }
-    return self;
-}
-*/
-
 extern int do_disa;
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -40,6 +34,7 @@ extern int do_disa;
 	
 	status.on = mainMenu_showStatus ? YES : NO;
 	displayModeNTSC.on = mainMenu_ntsc ? YES : NO;
+    [controller setTitle:@"iCADE" forState:UIControlStateNormal];
 	
 #if DISASSEMBLER
 	resetLog.hidden = NO;
@@ -54,20 +49,40 @@ extern int do_disa;
 #endif
 }
 
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
-
 - (IBAction)selectDrive:(UIButton*)sender {
 	EMUROMBrowserViewController *browser = [[EMUROMBrowserViewController alloc] initWithNibName:@"EMUROMBrowserView" bundle:nil];
 	browser.delegate = self;
 	browser.context = sender;
 	[self presentModalViewController:browser animated:YES];
 	[browser release];
+}
+
+- (IBAction)selectEffect:(id)sender {
+	SelectEffectController *ctl = [[SelectEffectController alloc] initWithNibName:@"SelectEffectController" bundle:nil];
+	[ctl setDelegate:self];
+	[self presentModalViewController:ctl animated:YES];
+	[ctl release];
+}
+
+- (void)didSelectEffect:(int)aEffect name:(NSString*)name {
+	SDL_Surface *video = SDL_GetVideoSurface();
+	id<DisplayViewSurface> display = (id<DisplayViewSurface>)video->userdata;
+	display.displayEffect = (DisplayEffect)aEffect;
+	[effect setTitle:name forState:UIControlStateNormal];
+}
+
+- (IBAction)selectController:(id)sender {
+    SelectHardware *ctl = [[SelectHardware alloc] initWithNibName:@"SelectHardware" bundle:nil];
+	[ctl setDelegate:self];
+	[self presentModalViewController:ctl animated:YES];
+	[ctl release];
+}
+
+extern void switch_joystick(int joynum);
+
+- (void)didSelectHardware:(int)joystick name:(NSString *)name {
+    [controller setTitle:name forState:UIControlStateNormal];
+    switch_joystick(joystick);
 }
 
 - (void)didSelectROM:(EMUFileInfo *)fileInfo withContext:(UIButton*)sender {
@@ -78,10 +93,14 @@ extern int do_disa;
     real_changed_df[df]=1;
 }
 
-extern void uae_reset();
+extern "C" void uae_reset();
 
 - (void)resetAmiga:(id)sender {
 	uae_reset();
+}
+
+- (IBAction)integralSize:(UISwitch*)sender {
+	g_emulatorViewController.integralSize = !sender.on;
 }
 
 - (IBAction)toggleStatus:(UISwitch*)sender {
@@ -101,7 +120,7 @@ extern void uae_reset();
 #endif
 }
 
-extern void DISK_motors_off();
+extern "C" void DISK_motors_off();
 
 - (IBAction)otherAction:(UIControl*)sender {
 	int tag = sender.tag;
@@ -122,6 +141,8 @@ extern void DISK_motors_off();
 }
 
 - (void)viewDidUnload {
+    [controller release];
+    controller = nil;
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
 	[status release];
@@ -129,6 +150,7 @@ extern void DISK_motors_off();
 
 
 - (void)dealloc {
+    [controller release];
     [super dealloc];
 }
 

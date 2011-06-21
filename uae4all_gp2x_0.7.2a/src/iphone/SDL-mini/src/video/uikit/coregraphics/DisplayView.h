@@ -17,44 +17,25 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#import "DisplayView.h"
-#import <QuartzCore/QuartzCore.h>
+#import <UIKit/UIKit.h>
+#import "UIKitDisplayView.h"
 
-static DisplayView* sharedView;
-
-void UpdateScreen() {
-	[sharedView performSelectorOnMainThread:@selector(updateScreen) withObject:nil waitUntilDone:NO];
+@interface DisplayView : UIView<DisplayViewSurface> {
+	void				*_pixels;
+	BOOL				_paused;
+	DisplayEffect		_displayEffect;
 }
 
-@interface DisplayView() 
+- (id)initWithFrame:(CGRect)frame displaySize:(CGSize)displaySize;
 
-- (void)updateScreen;
+#ifdef __cplusplus
+extern "C" 
+#endif
+void UpdateScreen();
 
 @end
 
-@implementation DisplayView
-
-- (id)initWithFrame:(CGRect)frame {
-    if (self = [super initWithFrame:frame]) {
-		sharedView = [self retain];
-        self.opaque = YES;
-    }
-    return self;
-}
-
-extern CGContextRef context;
-
-- (void)updateScreen {
-	CALayer *layer = self.layer;
-	CGImageRef image = CGBitmapContextCreateImage(context);
-	layer.contents = (id)image;
-	layer.contentsRect = CGRectMake(0.0, 0.0, 1.0, 1.0);
-	CFRelease(image);
-}
-
-- (void)dealloc {
-    [super dealloc];
-}
-
-
-@end
+#ifdef __cplusplus
+extern "C" 
+#endif
+UIView* CreateCGDisplayView(int width, int height);

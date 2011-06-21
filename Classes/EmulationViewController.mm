@@ -19,14 +19,14 @@
 
 #import "EmulationViewController.h"
 #import "debug.h"
-#import "DisplayView.h"
 #import "InputControllerView.h"
 #import "uae.h"
 #import "JoystickViewLandscape.h"
 #import "CocoaUtility.h"
 #import "VirtualKeyboard.h"
-#import "sdl.h"
 #import "TouchHandlerView.h"
+#import "SDL.h"
+#import "UIKitDisplayView.h"
 
 EmulationViewController *g_emulatorViewController;
 
@@ -41,7 +41,7 @@ typedef struct {
 - (void)didRotate;
 - (void)toggleInputMode:(UIButton*)sender;
 - (void)makeTabBarHidden:(BOOL)hide;
-- (void)recalculateCurrentDisplayFrame:(CGRect)contentFrame;
+//- (void)recalculateCurrentDisplayFrame:(CGRect)contentFrame;
 
 @property (nonatomic,retain) UIWindow	*displayViewWindow;
 @property (nonatomic, readonly) CGRect currentDisplayFrame;
@@ -67,6 +67,7 @@ const double kDefaultAnimationDuration			= 250.0 / 1000.0;
 @synthesize landscapeJoystickView;
 @synthesize touchHandler;
 @synthesize displayViewWindow;
+@synthesize integralSize=_integralSize;
 
 CGFloat S_WIDTH, S_HEIGHT, S_HALFWIDTH, S_HALFHEIGHT, S_PSCALE, S_LSCALE;
 
@@ -86,7 +87,7 @@ CGFloat S_WIDTH, S_HEIGHT, S_HALFWIDTH, S_HALFHEIGHT, S_PSCALE, S_LSCALE;
 	S_PSCALE = S_WIDTH / 320.0f;
 	S_LSCALE = S_HEIGHT / 480.0f;
 	
-	
+	_integralSize = NO;
 	g_emulatorViewController		= self;
 	self.wantsFullScreenLayout		= YES;
 		
@@ -102,7 +103,14 @@ CGFloat S_WIDTH, S_HEIGHT, S_HALFWIDTH, S_HALFHEIGHT, S_PSCALE, S_LSCALE;
 	view.autoresizingMask = (UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth);
 	view.backgroundColor = [UIColor blackColor];
 	
-	self.displayView = [[DisplayView alloc] initWithFrame:self.currentDisplayFrame];
+	SDL_Init(0);
+	SDL_Surface *surface = SDL_SetVideoMode(320, 240, 16, 0);
+	UIView<DisplayViewSurface> *surfaceView = (UIView<DisplayViewSurface>*)surface->userdata;
+	surfaceView.paused = NO;
+	surfaceView.frame = self.currentDisplayFrame;
+	
+	//self.displayView = [[DisplayView alloc] initWithFrame:self.currentDisplayFrame];
+	self.displayView = surfaceView;
 	if (displayViewWindow != nil) {
 		[displayViewWindow addSubview:self.displayView];
 	} else {
@@ -153,14 +161,51 @@ CGFloat S_WIDTH, S_HEIGHT, S_HALFWIDTH, S_HALFHEIGHT, S_PSCALE, S_LSCALE;
 	
 }
 
+- (void)setIntegralSize:(BOOL)value {
+	_integralSize = value;
+	self.displayView.frame = self.currentDisplayFrame;
+}
+
+CGRect CreateIntegralScaledView(CGRect aFrame, BOOL top) {
+	CGSize frameSize = aFrame.size;
+	CGFloat scale = frameSize.width < frameSize.height ? floorf(frameSize.width / kDisplayWidth) : floorf(frameSize.height / kDisplayHeight);
+	int width = kDisplayWidth * scale, height = kDisplayHeight * scale;
+	CGFloat y = top ? 0 : (frameSize.height - height) / 2;
+	return CGRectMake((frameSize.width - width) / 2, y, width, height);
+}
+
 - (CGRect)currentDisplayFrame {	
 	if (_isExternal) {
+		if (_integralSize) {
+			return CreateIntegralScaledView(displayViewWindow.bounds, NO);
+		}
 		// assuming external display it's width > height
 		return displayViewWindow.bounds;
 	} 
-	
-	CGSize frameSize = rootView.frame.size;
 
+	CGSize frameSize = rootView.frame.size;
+	
+	if (_integralSize) {
+		CGRect aFrame;
+		CGFloat scale;
+		CGFloat frameWidth;
+		if (UIInterfaceOrientationIsLandscape(layoutOrientation)) {
+			aFrame = CGRectMake(0, 0, frameSize.height, frameSize.width);
+			// width is larger than height
+			//scale = frameSize.width / kDisplayHeight;
+			//frameWidth = frameSize.height;
+		} else {
+			aFrame = rootView.frame;
+			// height is larger than width
+			//scale = frameSize.width / kDisplayWidth;
+			//frameWidth = frameSize.width;
+		}
+		//scale = floorf(scale);
+		//int width = kDisplayWidth * scale, height = kDisplayHeight * scale;
+		//return CGRectMake((frameWidth - width) / 2, 0, width, height);
+		return CreateIntegralScaledView(aFrame, YES);
+	}
+	
 	// full-screen, landscape mode
 	if (UIInterfaceOrientationIsLandscape(layoutOrientation)) {
 		// assuming landscape width > height
@@ -350,6 +395,7 @@ CGFloat S_WIDTH, S_HEIGHT, S_HALFWIDTH, S_HALFHEIGHT, S_PSCALE, S_LSCALE;
 	
 	emulatorState = EmulatorPaused;
 	emulator->uae_pause();
+	displayView.paused = YES;
 }
 
 - (void)resumeEmulator {
@@ -361,6 +407,7 @@ CGFloat S_WIDTH, S_HEIGHT, S_HALFWIDTH, S_HALFHEIGHT, S_PSCALE, S_LSCALE;
 	
 	emulatorState = EmulatorRunning;
 	emulator->uae_resume();
+	displayView.paused = NO;
 }
 
 - (void)dealloc {

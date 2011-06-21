@@ -10,6 +10,7 @@
 #import "SDL.h"
 #import <queue>
 #import "CNSRecursiveLock.h"
+#include "../joystick/SDL_joystick_c.h"
 
 using std::queue;
 
@@ -22,10 +23,25 @@ int SDL_EventInit() {
 	return 0;
 }
 
+extern "C" void SDL_Lock_EventThread(void) {
+}
+
+extern "C" void SDL_Unlock_EventThread(void) {
+}
+
+static __inline__ SDL_bool
+SDL_ShouldPollJoystick()
+{
+    return SDL_TRUE;
+}
+
+int inputMode = 0;
+
+#if 0
+
 #include "touchstick.h"
 
 extern CJoyStick g_touchStick;
-int inputMode = 0;
 
 int SDL_PollMouseEvent(SDL_Event* a) {
 	TouchStickDPadState state = g_touchStick.dPadState();
@@ -76,6 +92,7 @@ int SDL_PollMouseEvent(SDL_Event* a) {
 	}
 	return 0;
 } 
+#endif
 
 int SDL_PollEvent(SDL_Event *e) {
 	//if (inputMode == 2) {
@@ -83,6 +100,11 @@ int SDL_PollEvent(SDL_Event *e) {
 	//	if (res)
 	//		return res;
 	//}
+    
+    /* Check for joystick state change */
+    if (SDL_ShouldPollJoystick()) {
+        SDL_JoystickUpdate();
+    }
 									 
 	if (eventQueue->size()) {
 		memcpy(e, &(eventQueue->front()), sizeof(SDL_Event));
@@ -124,4 +146,9 @@ void SDL_PumpEvents(void) {
 	do {
 		result = CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0, TRUE);
 	} while(result == kCFRunLoopRunHandledSource);
+    
+    /* Check for joystick state change */
+    if (SDL_ShouldPollJoystick()) {
+        SDL_JoystickUpdate();
+    }
 }
