@@ -27,10 +27,12 @@ void read_joystick(int nr, unsigned int *dir, int *button)
 {
 #ifndef MAX_AUTOEVENTS
     int left = 0, right = 0, top = 0, bot = 0;
-	
+    int i, num;
+	SDL_Joystick *joy = nr == 0 ? uae4all_joy0 : uae4all_joy0;
+    
     *dir = 0;
     *button = 0;
-	
+    
     nr = (~nr)&0x1;
 	
     switch (g_touchStick.dPadState()) {
@@ -61,60 +63,44 @@ void read_joystick(int nr, unsigned int *dir, int *button)
 	}
 	
 	*button = g_touchStick.buttonOneState();
-	/*
+    
+    // now read current "SDL" joystick
     num = SDL_JoystickNumButtons (joy);
-    if (num > 16)
-		num = 16;
+    
+    // NOTE: should really only map one button, but this code maps any button press as a fire
     for (i = 0; i < num; i++)
-		*button |= (SDL_JoystickGetButton (joy, i) & 1) << i;
-	 */
-    //if (left) top = !top;
-    //if (right) bot = !bot;
-    //*dir = bot | (right << 1) | (top << 8) | (left << 9);
-	
-	if (vkbd_mode && nr)
-	{
-		// move around the virtual keyboard instead
-		if (left)
-			vkbd_move |= VKBD_LEFT;
-		else
-		{
-			vkbd_move &= ~VKBD_LEFT;
-			if (right)
-				vkbd_move |= VKBD_RIGHT;
-			else
-				vkbd_move &= ~VKBD_RIGHT;
-		}
-		if (top)
-			vkbd_move |= VKBD_UP;
-		else
-		{
-			vkbd_move &= ~VKBD_UP;
-			if (bot)
-				vkbd_move |= VKBD_DOWN;
-			else
-				vkbd_move &= ~VKBD_DOWN;
-		}
-		if (*button)
-		{
-			vkbd_move=VKBD_BUTTON;
-			*button=0;
-		}
-		// TODO: add vkbd_button2 mapped to button2
-	}
-	else
-	{
-		// normal joystick movement
-	    if (left) top = !top;
-		if (right) bot = !bot;
-		*dir = bot | (right << 1) | (top << 8) | (left << 9);
-	}
+		//*button |= (SDL_JoystickGetButton (joy, i) & 1) << i;
+        *button |= (SDL_JoystickGetButton (joy, i) & 1);
+    
+    int hat = SDL_JoystickGetHat(joy, 0);
+    if (hat & SDL_HAT_LEFT)
+        left = 1;
+    else if (hat & SDL_HAT_RIGHT)
+        right = 1;
+    if (hat & SDL_HAT_UP) 
+        top = 1;
+    else if (hat & SDL_HAT_DOWN)
+        bot = 1;
+    
+    // normal joystick movement
+    if (left) top = !top;
+    if (right) bot = !bot;
+    *dir = bot | (right << 1) | (top << 8) | (left << 9);
 #endif
 }
 
 void init_joystick(void) {
     nr_joysticks = 1;
+    uae4all_joy0 = SDL_JoystickOpen(3);  // iCADE by default
 }
 
 void close_joystick(void) {
+    SDL_JoystickClose(uae4all_joy0);
+}
+
+void switch_joystick(int joynum) {
+    SDL_Joystick *newJoystick = SDL_JoystickOpen(joynum);
+    SDL_Joystick *oldJoystick = uae4all_joy0;
+    uae4all_joy0 = newJoystick;
+    SDL_JoystickClose(oldJoystick);
 }

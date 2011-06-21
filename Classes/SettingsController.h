@@ -8,13 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "EMUROMBrowserViewController.h"
+#import "SelectEffectController.h"
+#import "SelectHardware.h"
 
-@interface SettingsController : UIViewController<SelectRomDelegate> {
+@interface SettingsController : UIViewController<SelectRomDelegate, SelectEffectDelegate, SelectHardwareDelegate> {
 	IBOutlet UISwitch		*status;
 	IBOutlet UISwitch		*displayModeNTSC;
 	IBOutlet UIButton		*resetLog;
 	IBOutlet UISwitch		*logging;
 	IBOutlet UILabel		*loggingLabel;
+	IBOutlet UIButton		*effect;
+    IBOutlet UIButton       *controller;
 }
 
 - (IBAction)selectDrive:(UIButton*)sender;
@@ -24,5 +28,8 @@
 - (IBAction)toggleNTSC:(id)sender;
 - (IBAction)resetLog:(id)sender;
 - (IBAction)toggleLogging:(id)sender;
+- (IBAction)selectEffect:(id)sender;
+- (IBAction)integralSize:(id)sender;
+- (IBAction)selectController:(id)sender;
 
 @end

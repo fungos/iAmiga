@@ -10,6 +10,8 @@
 #import "EmulationViewController.h"
 #import <AudioToolbox/AudioServices.h>
 #import "UaeDebugger.h"
+#import "SDL.h"
+#import "UIKitDisplayView.h"
 
 @interface iAmigaAppDelegate()
 
@@ -32,6 +34,11 @@ static UaeDebugger *debugger;
     // Override point for customization after application launch
     [window makeKeyAndVisible];
 	
+	SDL_Init(0);
+	SDL_Surface *surface = SDL_SetVideoMode(320, 240, 16, 0);
+	id<DisplayViewSurface> surfaceView = (id<DisplayViewSurface>)surface->userdata;
+	surfaceView.paused = YES;
+		
 	OSStatus res = AudioSessionInitialize(NULL, NULL, NULL, NULL);
 	UInt32 sessionCategory = kAudioSessionCategory_AmbientSound;
 	res = AudioSessionSetProperty(kAudioSessionProperty_AudioCategory, sizeof(sessionCategory), &sessionCategory);
@@ -41,6 +48,8 @@ static UaeDebugger *debugger;
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(screenDidDisconnect:) name:UIScreenDidDisconnectNotification object:nil];
 	[self configureScreens];
 	
+	self.mainController.selectedIndex = 1;
+
 	//debugger = [[UaeDebugger alloc] init];
 	//[debugger startOnPort:2000];
 }
@@ -77,6 +86,7 @@ static UaeDebugger *debugger;
 		secondary.currentMode = bestMode;
 		if (!externalWindow) {
 			externalWindow = [[UIWindow alloc] initWithFrame:secondary.bounds];
+			externalWindow.backgroundColor = [UIColor blackColor];
 		} else {
 			externalWindow.frame = secondary.bounds;
 		}
