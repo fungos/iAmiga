@@ -33,6 +33,86 @@
 		051F92EC1084632400C815BE /* Nebulus.ADF in Resources */ = {isa = PBXBuildFile; fileRef = 051F92EB1084632400C815BE /* Nebulus.ADF */; };
 		051F92EF1084644D00C815BE /* Gods 1.ADF in Resources */ = {isa = PBXBuildFile; fileRef = 051F92ED1084644D00C815BE /* Gods 1.ADF */; };
 		051F92F01084644D00C815BE /* Gods 2.ADF in Resources */ = {isa = PBXBuildFile; fileRef = 051F92EE1084644D00C815BE /* Gods 2.ADF */; };
+		053368C513B1DEE90012D55A /* kick.rom in Resources */ = {isa = PBXBuildFile; fileRef = 057440D50FC2A4A7003BE251 /* kick.rom */; };
+		053368C613B1DEE90012D55A /* kick13.rom in Resources */ = {isa = PBXBuildFile; fileRef = 057443290FC3C94F003BE251 /* kick13.rom */; };
+		053368D013B1DEE90012D55A /* Defender OTC1.ADF in Resources */ = {isa = PBXBuildFile; fileRef = 05BC17D91070B74E00EABC6E /* Defender OTC1.ADF */; };
+		053368D113B1DEE90012D55A /* Defender OTC2.ADF in Resources */ = {isa = PBXBuildFile; fileRef = 05BC17DA1070B74E00EABC6E /* Defender OTC2.ADF */; };
+		053368EC13B1DEE90012D55A /* kick31.rom in Resources */ = {isa = PBXBuildFile; fileRef = 05F5F217112A54F1001530EC /* kick31.rom */; };
+		053368F713B1DEE90012D55A /* Scanlines (50%).png in Resources */ = {isa = PBXBuildFile; fileRef = 0577C34712E1723F0040B77D /* Scanlines (50%).png */; };
+		053368F813B1DEE90012D55A /* Scanlines (100%).png in Resources */ = {isa = PBXBuildFile; fileRef = 0577C34812E1723F0040B77D /* Scanlines (100%).png */; };
+		053368F913B1DEE90012D55A /* Aperture (1x2 RB).png in Resources */ = {isa = PBXBuildFile; fileRef = 0577C34912E1723F0040B77D /* Aperture (1x2 RB).png */; };
+		053368FA13B1DEE90012D55A /* Aperture (1x3 RB).png in Resources */ = {isa = PBXBuildFile; fileRef = 0577C34A12E1723F0040B77D /* Aperture (1x3 RB).png */; };
+		053368FB13B1DEE90012D55A /* Aperture (2x4 BG).png in Resources */ = {isa = PBXBuildFile; fileRef = 0577C34B12E1723F0040B77D /* Aperture (2x4 BG).png */; };
+		053368FC13B1DEE90012D55A /* Aperture (2x4 RB).png in Resources */ = {isa = PBXBuildFile; fileRef = 0577C34C12E1723F0040B77D /* Aperture (2x4 RB).png */; };
+		053368FD13B1DEE90012D55A /* Aperture (4x6).png in Resources */ = {isa = PBXBuildFile; fileRef = 0577C34D12E1723F0040B77D /* Aperture (4x6).png */; };
+		0533690113B1DEE90012D55A /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 05789FB813B1436200A72F5F /* Entitlements.plist */; };
+		0533690313B1DEE90012D55A /* ImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 0577C28B12E15AB30040B77D /* ImageUtils.m */; };
+		0533690413B1DEE90012D55A /* OGLDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 0577C28D12E15AB30040B77D /* OGLDisplay.m */; };
+		0533690513B1DEE90012D55A /* DisaSupport.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 051B238112C98EC8000C2800 /* DisaSupport.cpp */; };
+		0533690613B1DEE90012D55A /* m68k_intrf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD010F3D797C005B30DF /* m68k_intrf.cpp */; };
+		0533690713B1DEE90012D55A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		0533690913B1DEE90012D55A /* autoconf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BC9D0F3D797C005B30DF /* autoconf.cpp */; };
+		0533690A13B1DEE90012D55A /* blitfunc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BC9E0F3D797C005B30DF /* blitfunc.cpp */; };
+		0533690B13B1DEE90012D55A /* blittable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BC9F0F3D797C005B30DF /* blittable.cpp */; };
+		0533690C13B1DEE90012D55A /* blitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BCA00F3D797C005B30DF /* blitter.cpp */; };
+		0533690D13B1DEE90012D55A /* cia.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BCA10F3D797C005B30DF /* cia.cpp */; };
+		0533690E13B1DEE90012D55A /* ersatz.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BCA70F3D797C005B30DF /* ersatz.cpp */; };
+		0533690F13B1DEE90012D55A /* gfxutil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BCA80F3D797C005B30DF /* gfxutil.cpp */; };
+		0533691013B1DEE90012D55A /* keybuf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BCFA0F3D797C005B30DF /* keybuf.cpp */; };
+		0533691113B1DEE90012D55A /* famec.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD060F3D797C005B30DF /* famec.cpp */; settings = {COMPILER_FLAGS = "-Wno-unused"; }; };
+		0533691213B1DEE90012D55A /* m68k_intrf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD090F3D797C005B30DF /* m68k_intrf.cpp */; };
+		0533691313B1DEE90012D55A /* uae.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD0C0F3D797C005B30DF /* uae.cpp */; };
+		0533691413B1DEE90012D55A /* memory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD0E0F3D797C005B30DF /* memory.cpp */; };
+		0533691513B1DEE90012D55A /* fade.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD100F3D797C005B30DF /* fade.cpp */; };
+		0533691613B1DEE90012D55A /* missing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD140F3D797C005B30DF /* missing.cpp */; };
+		0533691713B1DEE90012D55A /* od-joy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD150F3D797C005B30DF /* od-joy.cpp */; };
+		0533691813B1DEE90012D55A /* savedisk.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD170F3D797C005B30DF /* savedisk.cpp */; };
+		0533691913B1DEE90012D55A /* sdlgfx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD190F3D797C005B30DF /* sdlgfx.cpp */; };
+		0533691A13B1DEE90012D55A /* vkbd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD1F0F3D797C005B30DF /* vkbd.cpp */; };
+		0533691B13B1DEE90012D55A /* writelog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD210F3D797C005B30DF /* writelog.cpp */; };
+		0533691C13B1DEE90012D55A /* zfile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD220F3D797C005B30DF /* zfile.cpp */; };
+		0533691D13B1DEE90012D55A /* iphone_main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 05743FC40FC293FD003BE251 /* iphone_main.mm */; };
+		0533691E13B1DEE90012D55A /* AudioQueueManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05FE7F270FC3EDBF00DBFECF /* AudioQueueManager.cpp */; };
+		0533692213B1DEE90012D55A /* CocoaUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 0504156A0FCB4BD400F46828 /* CocoaUtility.m */; };
+		0533692313B1DEE90012D55A /* MMStopWatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 057B0D4B0FD0D0ED00D549AD /* MMStopWatch.m */; };
+		0533692413B1DEE90012D55A /* fame_arm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A2410636CBA0056A577 /* fame_arm.cpp */; settings = {COMPILER_FLAGS = "-frename-registers -Wno-unused"; }; };
+		0533692513B1DEE90012D55A /* m68k_interface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A2610636CBA0056A577 /* m68k_interface.cpp */; };
+		0533692613B1DEE90012D55A /* Events2.c in Sources */ = {isa = PBXBuildFile; fileRef = 0545257D106EBB590032FC41 /* Events2.c */; };
+		0533692713B1DEE90012D55A /* combined_modules.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 054525AF106EC5550032FC41 /* combined_modules.cpp */; };
+		0533692F13B1DEE90012D55A /* Disa.c in Sources */ = {isa = PBXBuildFile; fileRef = 050C393B12C31B24000CE512 /* Disa.c */; };
+		0533693013B1DEE90012D55A /* disassembler.m in Sources */ = {isa = PBXBuildFile; fileRef = 050C3A9312C33D94000CE512 /* disassembler.m */; };
+		0533693113B1DEE90012D55A /* SDL.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0583DCFB12D18BB1000E97CE /* SDL.mm */; };
+		0533693213B1DEE90012D55A /* SDL_events.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0583DD2512D18FD9000E97CE /* SDL_events.mm */; };
+		0533693313B1DEE90012D55A /* TouchHandlerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0583DE5712D1A3AC000E97CE /* TouchHandlerView.m */; };
+		0533693413B1DEE90012D55A /* SDL_mouse_c.c in Sources */ = {isa = PBXBuildFile; fileRef = 0583DE5B12D1A433000E97CE /* SDL_mouse_c.c */; };
+		0533693713B1DEE90012D55A /* DisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0577C29512E15B590040B77D /* DisplayView.m */; };
+		0533693813B1DEE90012D55A /* OGLShaderProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 055E446512E56235003119A8 /* OGLShaderProgram.m */; };
+		0533693913B1DEE90012D55A /* NoEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 055E44B012E56DA5003119A8 /* NoEffect.m */; };
+		0533693A13B1DEE90012D55A /* TexturedCRTEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = 05D51FB312E7DA86007912AE /* TexturedCRTEffect.m */; };
+		0533693C13B1DEE90012D55A /* SDL_joystick.c in Sources */ = {isa = PBXBuildFile; fileRef = 050B1744139C7D1E005C7736 /* SDL_joystick.c */; };
+		0533693D13B1DEE90012D55A /* SDL_sysjoystick.m in Sources */ = {isa = PBXBuildFile; fileRef = 050B1748139C83A8005C7736 /* SDL_sysjoystick.m */; };
+		0533693E13B1DEE90012D55A /* SDL_error.c in Sources */ = {isa = PBXBuildFile; fileRef = 050B174C139C84F2005C7736 /* SDL_error.c */; };
+		0533693F13B1DEE90012D55A /* SDLUIAccelerationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 050B1751139CACBB005C7736 /* SDLUIAccelerationDelegate.m */; };
+		0533694013B1DEE90012D55A /* ButtonStates.m in Sources */ = {isa = PBXBuildFile; fileRef = 050B1758139CB444005C7736 /* ButtonStates.m */; };
+		0533694113B1DEE90012D55A /* iControlPadReaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 050B175A139CB444005C7736 /* iControlPadReaderView.m */; };
+		0533694213B1DEE90012D55A /* iCadeReaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05650B1813AC8799003CC181 /* iCadeReaderView.m */; };
+		0533694513B1DEE90012D55A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		0533694613B1DEE90012D55A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		0533694713B1DEE90012D55A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		0533694813B1DEE90012D55A /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 057440680FC2A243003BE251 /* libz.1.2.3.dylib */; };
+		0533694913B1DEE90012D55A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E6A31C0FC3D93B0086151B /* AudioToolbox.framework */; };
+		0533694A13B1DEE90012D55A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0577C0E412DED4DF0040B77D /* CFNetwork.framework */; };
+		0533694B13B1DEE90012D55A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0577C1C412DFF3610040B77D /* OpenGLES.framework */; };
+		0533694C13B1DEE90012D55A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0577C1D712DFF3910040B77D /* QuartzCore.framework */; };
+		0533695313B1DF500012D55A /* MainWindow-Single.xib in Resources */ = {isa = PBXBuildFile; fileRef = 053368BA13B1D75E0012D55A /* MainWindow-Single.xib */; };
+		0533695413B1DF580012D55A /* MainWindow-Single-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 053368B313B1BF910012D55A /* MainWindow-Single-iPad.xib */; };
+		0533695513B1DF5C0012D55A /* SingleWindowAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 053368B113B1BDD60012D55A /* SingleWindowAppDelegate.mm */; };
+		0533695613B1DF5F0012D55A /* BaseEmulationViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 053368B613B1CC980012D55A /* BaseEmulationViewController.mm */; };
+		0533695713B1DF650012D55A /* Icon-DotC-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 053D8B3213B1B9E20002802F /* Icon-DotC-72.png */; };
+		0533695813B1DF650012D55A /* Icon-DotC.png in Resources */ = {isa = PBXBuildFile; fileRef = 053D8B3313B1B9E20002802F /* Icon-DotC.png */; };
+		0533695913B1DF650012D55A /* Icon-DotC@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 053D8B3413B1B9E20002802F /* Icon-DotC@2x.png */; };
+		0533695C13B1DFC00012D55A /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 0533695A13B1DFC00012D55A /* Default-Landscape~ipad.png */; };
+		0533695D13B1DFC00012D55A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0533695B13B1DFC00012D55A /* Default.png */; };
 		05434906112CD9D2009CF6CF /* ABreed-1.adf in Resources */ = {isa = PBXBuildFile; fileRef = 05434904112CD9D2009CF6CF /* ABreed-1.adf */; };
 		05434907112CD9D2009CF6CF /* ABreed-2.adf in Resources */ = {isa = PBXBuildFile; fileRef = 05434905112CD9D2009CF6CF /* ABreed-2.adf */; };
 		0545257E106EBB590032FC41 /* Events2.c in Sources */ = {isa = PBXBuildFile; fileRef = 0545257D106EBB590032FC41 /* Events2.c */; };
@@ -139,7 +219,7 @@
 		05F5F218112A54F1001530EC /* kick31.rom in Resources */ = {isa = PBXBuildFile; fileRef = 05F5F217112A54F1001530EC /* kick31.rom */; };
 		05FE7F280FC3EDBF00DBFECF /* AudioQueueManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05FE7F270FC3EDBF00DBFECF /* AudioQueueManager.cpp */; };
 		1D3623260D0F684500981E51 /* iAmigaAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* iAmigaAppDelegate.mm */; };
-		1D60589B0D05DD56006BFB54 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.mm */; };
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
@@ -195,6 +275,19 @@
 		051F92EB1084632400C815BE /* Nebulus.ADF */ = {isa = PBXFileReference; lastKnownFileType = file; path = Nebulus.ADF; sourceTree = "<group>"; };
 		051F92ED1084644D00C815BE /* Gods 1.ADF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gods 1.ADF"; sourceTree = "<group>"; };
 		051F92EE1084644D00C815BE /* Gods 2.ADF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gods 2.ADF"; sourceTree = "<group>"; };
+		053368B013B1BDD60012D55A /* SingleWindowAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleWindowAppDelegate.h; sourceTree = "<group>"; };
+		053368B113B1BDD60012D55A /* SingleWindowAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SingleWindowAppDelegate.mm; sourceTree = "<group>"; };
+		053368B313B1BF910012D55A /* MainWindow-Single-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MainWindow-Single-iPad.xib"; sourceTree = "<group>"; };
+		053368B513B1CC980012D55A /* BaseEmulationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseEmulationViewController.h; sourceTree = "<group>"; };
+		053368B613B1CC980012D55A /* BaseEmulationViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BaseEmulationViewController.mm; sourceTree = "<group>"; };
+		053368BA13B1D75E0012D55A /* MainWindow-Single.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MainWindow-Single.xib"; sourceTree = "<group>"; };
+		0533695113B1DEE90012D55A /* iAmiga copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "iAmiga copy.app"; path = DotC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0533695A13B1DFC00012D55A /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
+		0533695B13B1DFC00012D55A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		053D8B3013B1B3490002802F /* Info-DotC.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-DotC.plist"; sourceTree = "<group>"; };
+		053D8B3213B1B9E20002802F /* Icon-DotC-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-DotC-72.png"; sourceTree = "<group>"; };
+		053D8B3313B1B9E20002802F /* Icon-DotC.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-DotC.png"; sourceTree = "<group>"; };
+		053D8B3413B1B9E20002802F /* Icon-DotC@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-DotC@2x.png"; sourceTree = "<group>"; };
 		0542F18D0FC7E00F00126562 /* IK+.adf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "IK+.adf"; path = "../IK+.adf"; sourceTree = "<group>"; };
 		05434904112CD9D2009CF6CF /* ABreed-1.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ABreed-1.adf"; sourceTree = "<group>"; };
 		05434905112CD9D2009CF6CF /* ABreed-2.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ABreed-2.adf"; sourceTree = "<group>"; };
@@ -447,12 +540,27 @@
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
-		29B97316FDCFA39411CA2CEA /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* iAmiga_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iAmiga_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0533694413B1DEE90012D55A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0533694513B1DEE90012D55A /* Foundation.framework in Frameworks */,
+				0533694613B1DEE90012D55A /* UIKit.framework in Frameworks */,
+				0533694713B1DEE90012D55A /* CoreGraphics.framework in Frameworks */,
+				0533694813B1DEE90012D55A /* libz.1.2.3.dylib in Frameworks */,
+				0533694913B1DEE90012D55A /* AudioToolbox.framework in Frameworks */,
+				0533694A13B1DEE90012D55A /* CFNetwork.framework in Frameworks */,
+				0533694B13B1DEE90012D55A /* OpenGLES.framework in Frameworks */,
+				0533694C13B1DEE90012D55A /* QuartzCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -586,6 +694,73 @@
 				051F92EB1084632400C815BE /* Nebulus.ADF */,
 			);
 			name = n;
+			sourceTree = "<group>";
+		};
+		053368AA13B1BD120012D55A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0533695A13B1DFC00012D55A /* Default-Landscape~ipad.png */,
+				0533695B13B1DFC00012D55A /* Default.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		053368AD13B1BD740012D55A /* SingleView */ = {
+			isa = PBXGroup;
+			children = (
+				053368B913B1D7400012D55A /* Resources-iPhone */,
+				053368AF13B1BDA40012D55A /* Resources-iPad */,
+				053368AE13B1BD950012D55A /* Resources */,
+				053368B013B1BDD60012D55A /* SingleWindowAppDelegate.h */,
+				053368B113B1BDD60012D55A /* SingleWindowAppDelegate.mm */,
+				053368B513B1CC980012D55A /* BaseEmulationViewController.h */,
+				053368B613B1CC980012D55A /* BaseEmulationViewController.mm */,
+			);
+			path = SingleView;
+			sourceTree = "<group>";
+		};
+		053368AE13B1BD950012D55A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		053368AF13B1BDA40012D55A /* Resources-iPad */ = {
+			isa = PBXGroup;
+			children = (
+				053368B313B1BF910012D55A /* MainWindow-Single-iPad.xib */,
+			);
+			name = "Resources-iPad";
+			sourceTree = "<group>";
+		};
+		053368B913B1D7400012D55A /* Resources-iPhone */ = {
+			isa = PBXGroup;
+			children = (
+				053368BA13B1D75E0012D55A /* MainWindow-Single.xib */,
+			);
+			name = "Resources-iPhone";
+			sourceTree = "<group>";
+		};
+		053D8B2E13B1B2C30002802F /* TargetSpecific */ = {
+			isa = PBXGroup;
+			children = (
+				053368AD13B1BD740012D55A /* SingleView */,
+				053D8B2F13B1B3060002802F /* DotC */,
+			);
+			path = TargetSpecific;
+			sourceTree = "<group>";
+		};
+		053D8B2F13B1B3060002802F /* DotC */ = {
+			isa = PBXGroup;
+			children = (
+				053368AA13B1BD120012D55A /* Resources */,
+				053D8B3213B1B9E20002802F /* Icon-DotC-72.png */,
+				053D8B3313B1B9E20002802F /* Icon-DotC.png */,
+				053D8B3413B1B9E20002802F /* Icon-DotC@2x.png */,
+				053D8B3013B1B3490002802F /* Info-DotC.plist */,
+			);
+			path = DotC;
 			sourceTree = "<group>";
 		};
 		0542F18F0FC7E01A00126562 /* i */ = {
@@ -1231,6 +1406,7 @@
 			isa = PBXGroup;
 			children = (
 				1D6058910D05DD3D006BFB54 /* iAmiga.app */,
+				0533695113B1DEE90012D55A /* iAmiga copy.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1238,6 +1414,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				053D8B2E13B1B2C30002802F /* TargetSpecific */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -1253,7 +1430,7 @@
 			children = (
 				0552BC9A0F3D7968005B30DF /* uae */,
 				32CA4F630368D1EE00C91783 /* iAmiga_Prefix.pch */,
-				29B97316FDCFA39411CA2CEA /* main.mm */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -1291,6 +1468,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		053368C013B1DEE90012D55A /* DotC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0533694D13B1DEE90012D55A /* Build configuration list for PBXNativeTarget "DotC" */;
+			buildPhases = (
+				053368C113B1DEE90012D55A /* Resources */,
+				0533690213B1DEE90012D55A /* Sources */,
+				0533694413B1DEE90012D55A /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DotC;
+			productName = iAmiga;
+			productReference = 0533695113B1DEE90012D55A /* iAmiga copy.app */;
+			productType = "com.apple.product-type.application";
+		};
 		1D6058900D05DD3D006BFB54 /* iAmiga */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "iAmiga" */;
@@ -1325,11 +1519,39 @@
 			projectRoot = "";
 			targets = (
 				1D6058900D05DD3D006BFB54 /* iAmiga */,
+				053368C013B1DEE90012D55A /* DotC */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		053368C113B1DEE90012D55A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				053368C513B1DEE90012D55A /* kick.rom in Resources */,
+				053368C613B1DEE90012D55A /* kick13.rom in Resources */,
+				053368D013B1DEE90012D55A /* Defender OTC1.ADF in Resources */,
+				053368D113B1DEE90012D55A /* Defender OTC2.ADF in Resources */,
+				053368EC13B1DEE90012D55A /* kick31.rom in Resources */,
+				053368F713B1DEE90012D55A /* Scanlines (50%).png in Resources */,
+				053368F813B1DEE90012D55A /* Scanlines (100%).png in Resources */,
+				053368F913B1DEE90012D55A /* Aperture (1x2 RB).png in Resources */,
+				053368FA13B1DEE90012D55A /* Aperture (1x3 RB).png in Resources */,
+				053368FB13B1DEE90012D55A /* Aperture (2x4 BG).png in Resources */,
+				053368FC13B1DEE90012D55A /* Aperture (2x4 RB).png in Resources */,
+				053368FD13B1DEE90012D55A /* Aperture (4x6).png in Resources */,
+				0533690113B1DEE90012D55A /* Entitlements.plist in Resources */,
+				0533695313B1DF500012D55A /* MainWindow-Single.xib in Resources */,
+				0533695413B1DF580012D55A /* MainWindow-Single-iPad.xib in Resources */,
+				0533695713B1DF650012D55A /* Icon-DotC-72.png in Resources */,
+				0533695813B1DF650012D55A /* Icon-DotC.png in Resources */,
+				0533695913B1DF650012D55A /* Icon-DotC@2x.png in Resources */,
+				0533695C13B1DFC00012D55A /* Default-Landscape~ipad.png in Resources */,
+				0533695D13B1DFC00012D55A /* Default.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1D60588D0D05DD3D006BFB54 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1404,6 +1626,65 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0533690213B1DEE90012D55A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0533690313B1DEE90012D55A /* ImageUtils.m in Sources */,
+				0533690413B1DEE90012D55A /* OGLDisplay.m in Sources */,
+				0533690513B1DEE90012D55A /* DisaSupport.cpp in Sources */,
+				0533690613B1DEE90012D55A /* m68k_intrf.cpp in Sources */,
+				0533690713B1DEE90012D55A /* main.m in Sources */,
+				0533690913B1DEE90012D55A /* autoconf.cpp in Sources */,
+				0533690A13B1DEE90012D55A /* blitfunc.cpp in Sources */,
+				0533690B13B1DEE90012D55A /* blittable.cpp in Sources */,
+				0533690C13B1DEE90012D55A /* blitter.cpp in Sources */,
+				0533690D13B1DEE90012D55A /* cia.cpp in Sources */,
+				0533690E13B1DEE90012D55A /* ersatz.cpp in Sources */,
+				0533690F13B1DEE90012D55A /* gfxutil.cpp in Sources */,
+				0533691013B1DEE90012D55A /* keybuf.cpp in Sources */,
+				0533691113B1DEE90012D55A /* famec.cpp in Sources */,
+				0533691213B1DEE90012D55A /* m68k_intrf.cpp in Sources */,
+				0533691313B1DEE90012D55A /* uae.cpp in Sources */,
+				0533691413B1DEE90012D55A /* memory.cpp in Sources */,
+				0533691513B1DEE90012D55A /* fade.cpp in Sources */,
+				0533691613B1DEE90012D55A /* missing.cpp in Sources */,
+				0533691713B1DEE90012D55A /* od-joy.cpp in Sources */,
+				0533691813B1DEE90012D55A /* savedisk.cpp in Sources */,
+				0533691913B1DEE90012D55A /* sdlgfx.cpp in Sources */,
+				0533691A13B1DEE90012D55A /* vkbd.cpp in Sources */,
+				0533691B13B1DEE90012D55A /* writelog.cpp in Sources */,
+				0533691C13B1DEE90012D55A /* zfile.cpp in Sources */,
+				0533691D13B1DEE90012D55A /* iphone_main.mm in Sources */,
+				0533691E13B1DEE90012D55A /* AudioQueueManager.cpp in Sources */,
+				0533692213B1DEE90012D55A /* CocoaUtility.m in Sources */,
+				0533692313B1DEE90012D55A /* MMStopWatch.m in Sources */,
+				0533692413B1DEE90012D55A /* fame_arm.cpp in Sources */,
+				0533692513B1DEE90012D55A /* m68k_interface.cpp in Sources */,
+				0533692613B1DEE90012D55A /* Events2.c in Sources */,
+				0533692713B1DEE90012D55A /* combined_modules.cpp in Sources */,
+				0533692F13B1DEE90012D55A /* Disa.c in Sources */,
+				0533693013B1DEE90012D55A /* disassembler.m in Sources */,
+				0533693113B1DEE90012D55A /* SDL.mm in Sources */,
+				0533693213B1DEE90012D55A /* SDL_events.mm in Sources */,
+				0533693313B1DEE90012D55A /* TouchHandlerView.m in Sources */,
+				0533693413B1DEE90012D55A /* SDL_mouse_c.c in Sources */,
+				0533693713B1DEE90012D55A /* DisplayView.m in Sources */,
+				0533693813B1DEE90012D55A /* OGLShaderProgram.m in Sources */,
+				0533693913B1DEE90012D55A /* NoEffect.m in Sources */,
+				0533693A13B1DEE90012D55A /* TexturedCRTEffect.m in Sources */,
+				0533693C13B1DEE90012D55A /* SDL_joystick.c in Sources */,
+				0533693D13B1DEE90012D55A /* SDL_sysjoystick.m in Sources */,
+				0533693E13B1DEE90012D55A /* SDL_error.c in Sources */,
+				0533693F13B1DEE90012D55A /* SDLUIAccelerationDelegate.m in Sources */,
+				0533694013B1DEE90012D55A /* ButtonStates.m in Sources */,
+				0533694113B1DEE90012D55A /* iControlPadReaderView.m in Sources */,
+				0533694213B1DEE90012D55A /* iCadeReaderView.m in Sources */,
+				0533695513B1DF5C0012D55A /* SingleWindowAppDelegate.mm in Sources */,
+				0533695613B1DF5F0012D55A /* BaseEmulationViewController.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1D60588E0D05DD3D006BFB54 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1412,7 +1693,7 @@
 				0577C2F912E170370040B77D /* OGLDisplay.m in Sources */,
 				051B23B012C994BB000C2800 /* DisaSupport.cpp in Sources */,
 				05D5D74C0FD5E38400B91C98 /* m68k_intrf.cpp in Sources */,
-				1D60589B0D05DD56006BFB54 /* main.mm in Sources */,
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* iAmigaAppDelegate.mm in Sources */,
 				0552BD240F3D797C005B30DF /* autoconf.cpp in Sources */,
 				0552BD250F3D797C005B30DF /* blitfunc.cpp in Sources */,
@@ -1479,6 +1760,64 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		0533694E13B1DEE90012D55A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = iAmiga_Prefix.pch;
+				HEADER_SEARCH_PATHS = (
+					"uae4all_gp2x_0.7.2a/src/iphone/SDL-mini/include",
+					uae4all_gp2x_0.7.2a/src,
+					uae4all_gp2x_0.7.2a/src/iphone,
+				);
+				INFOPLIST_FILE = "TargetSpecific/DotC/Info-DotC.plist";
+				PRODUCT_NAME = DotC;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0533694F13B1DEE90012D55A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = iAmiga_Prefix.pch;
+				HEADER_SEARCH_PATHS = (
+					"uae4all_gp2x_0.7.2a/src/iphone/SDL-mini/include",
+					uae4all_gp2x_0.7.2a/src,
+					uae4all_gp2x_0.7.2a/src/iphone,
+				);
+				INFOPLIST_FILE = "TargetSpecific/DotC/Info-DotC.plist";
+				PRODUCT_NAME = DotC;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		0533695013B1DEE90012D55A /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Manomio LLC";
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = iAmiga_Prefix.pch;
+				HEADER_SEARCH_PATHS = (
+					"uae4all_gp2x_0.7.2a/src/iphone/SDL-mini/include",
+					uae4all_gp2x_0.7.2a/src,
+					uae4all_gp2x_0.7.2a/src/iphone,
+				);
+				INFOPLIST_FILE = "TargetSpecific/DotC/Info-DotC.plist";
+				PRODUCT_NAME = DotC;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4FA5606A-142A-4166-8A9C-1A5F675856CF";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = "Ad Hoc";
+		};
 		05789FBA13B143A700A72F5F /* Ad Hoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1671,6 +2010,16 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0533694D13B1DEE90012D55A /* Build configuration list for PBXNativeTarget "DotC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0533694E13B1DEE90012D55A /* Debug */,
+				0533694F13B1DEE90012D55A /* Release */,
+				0533695013B1DEE90012D55A /* Ad Hoc */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "iAmiga" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
