@@ -83,7 +83,9 @@
 		0577C35212E1723F0040B77D /* Aperture (2x4 BG).png in Resources */ = {isa = PBXBuildFile; fileRef = 0577C34B12E1723F0040B77D /* Aperture (2x4 BG).png */; };
 		0577C35312E1723F0040B77D /* Aperture (2x4 RB).png in Resources */ = {isa = PBXBuildFile; fileRef = 0577C34C12E1723F0040B77D /* Aperture (2x4 RB).png */; };
 		0577C35412E1723F0040B77D /* Aperture (4x6).png in Resources */ = {isa = PBXBuildFile; fileRef = 0577C34D12E1723F0040B77D /* Aperture (4x6).png */; };
+		05789FB913B1436200A72F5F /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 05789FB813B1436200A72F5F /* Entitlements.plist */; };
 		057B0D4C0FD0D0ED00D549AD /* MMStopWatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 057B0D4B0FD0D0ED00D549AD /* MMStopWatch.m */; };
+		058063D013B06DD800E00B04 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 058063CF13B06DD800E00B04 /* Icon-72.png */; };
 		0583DCFD12D18BB1000E97CE /* SDL.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0583DCFB12D18BB1000E97CE /* SDL.mm */; };
 		0583DD2612D18FD9000E97CE /* SDL_events.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0583DD2512D18FD9000E97CE /* SDL_events.mm */; };
 		0583DE5812D1A3AC000E97CE /* TouchHandlerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0583DE5712D1A3AC000E97CE /* TouchHandlerView.m */; };
@@ -93,7 +95,6 @@
 		059A411D12697B33003B23C7 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 059A411C12697B33003B23C7 /* MainWindow-iPad.xib */; };
 		059E3A2710636CBA0056A577 /* fame_arm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A2410636CBA0056A577 /* fame_arm.cpp */; settings = {COMPILER_FLAGS = "-frename-registers -Wno-unused"; }; };
 		059E3A2810636CBA0056A577 /* m68k_interface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A2610636CBA0056A577 /* m68k_interface.cpp */; };
-		05B7066E0FD282230081B5C3 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 05B7066D0FD282230081B5C3 /* Entitlements.plist */; };
 		05BC17DB1070B74E00EABC6E /* Defender OTC1.ADF in Resources */ = {isa = PBXBuildFile; fileRef = 05BC17D91070B74E00EABC6E /* Defender OTC1.ADF */; };
 		05BC17DC1070B74E00EABC6E /* Defender OTC2.ADF in Resources */ = {isa = PBXBuildFile; fileRef = 05BC17DA1070B74E00EABC6E /* Defender OTC2.ADF */; };
 		05BC1AF51073448200EABC6E /* EMUBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 05BC1AED1073448200EABC6E /* EMUBrowser.m */; };
@@ -338,8 +339,10 @@
 		0577C34B12E1723F0040B77D /* Aperture (2x4 BG).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Aperture (2x4 BG).png"; sourceTree = "<group>"; };
 		0577C34C12E1723F0040B77D /* Aperture (2x4 RB).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Aperture (2x4 RB).png"; sourceTree = "<group>"; };
 		0577C34D12E1723F0040B77D /* Aperture (4x6).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Aperture (4x6).png"; sourceTree = "<group>"; };
+		05789FB813B1436200A72F5F /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		057B0D4A0FD0D0ED00D549AD /* MMStopWatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMStopWatch.h; sourceTree = "<group>"; };
 		057B0D4B0FD0D0ED00D549AD /* MMStopWatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMStopWatch.m; sourceTree = "<group>"; };
+		058063CF13B06DD800E00B04 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		0583DCFB12D18BB1000E97CE /* SDL.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SDL.mm; sourceTree = "<group>"; };
 		0583DCFE12D18BBB000E97CE /* SDL_endian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_endian.h; sourceTree = "<group>"; };
 		0583DCFF12D18BBB000E97CE /* SDL_events.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_events.h; sourceTree = "<group>"; };
@@ -383,7 +386,6 @@
 		059E3A3F10636CC60056A577 /* c68k_opD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = c68k_opD.h; sourceTree = "<group>"; };
 		059E3A4010636CC60056A577 /* c68k_opE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = c68k_opE.h; sourceTree = "<group>"; };
 		059E3A4110636CC60056A577 /* c68k_opF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = c68k_opF.h; sourceTree = "<group>"; };
-		05B7066D0FD282230081B5C3 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		05BC17D91070B74E00EABC6E /* Defender OTC1.ADF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Defender OTC1.ADF"; sourceTree = "<group>"; };
 		05BC17DA1070B74E00EABC6E /* Defender OTC2.ADF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Defender OTC2.ADF"; sourceTree = "<group>"; };
 		05BC1AEC1073448200EABC6E /* EMUBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMUBrowser.h; sourceTree = "<group>"; };
@@ -1007,6 +1009,7 @@
 		059A411B12697B33003B23C7 /* Resources-iPad */ = {
 			isa = PBXGroup;
 			children = (
+				058063CF13B06DD800E00B04 /* Icon-72.png */,
 				05E8A03112B2C850005532AF /* keyboard */,
 				059A411C12697B33003B23C7 /* MainWindow-iPad.xib */,
 			);
@@ -1265,7 +1268,7 @@
 				0504161C0FCB566500F46828 /* images */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* Info.plist */,
-				05B7066D0FD282230081B5C3 /* Entitlements.plist */,
+				05789FB813B1436200A72F5F /* Entitlements.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1345,7 +1348,6 @@
 				050416450FCB566500F46828 /* ls-fire.png in Resources */,
 				050416460FCB566500F46828 /* ls-joystick_active.png in Resources */,
 				050416470FCB566500F46828 /* ls-joystick_rest.png in Resources */,
-				05B7066E0FD282230081B5C3 /* Entitlements.plist in Resources */,
 				05BC17DB1070B74E00EABC6E /* Defender OTC1.ADF in Resources */,
 				05BC17DC1070B74E00EABC6E /* Defender OTC2.ADF in Resources */,
 				05BC1AF81073448200EABC6E /* EMUROMBrowserView.xib in Resources */,
@@ -1394,6 +1396,8 @@
 				0577C35412E1723F0040B77D /* Aperture (4x6).png in Resources */,
 				05D5233812E8030E007912AE /* SelectEffectController.xib in Resources */,
 				05619EDC13ADE1AA00341DB0 /* SelectHardware.xib in Resources */,
+				058063D013B06DD800E00B04 /* Icon-72.png in Resources */,
+				05789FB913B1436200A72F5F /* Entitlements.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1475,24 +1479,27 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		05B706690FD282000081B5C3 /* Distribution */ = {
+		05789FBA13B143A700A72F5F /* Ad Hoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Manomio LLC";
 				GCC_CHAR_IS_UNSIGNED_CHAR = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_DYNAMIC_NO_PIC = YES;
 				GCC_FAST_MATH = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					IPHONE,
 					NDEBUG,
 				);
+				GCC_STRICT_ALIASING = YES;
 				GCC_THREADSAFE_STATICS = NO;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_UNROLL_LOOPS = YES;
+				GCC_VERSION = 4.2;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
@@ -1506,8 +1513,6 @@
 				OTHER_CFLAGS = (
 					"-finline-functions",
 					"-fno-PIE",
-					"-fomit-frame-pointer",
-					"-mstructure-size-boundary=32",
 					"-fexpensive-optimizations",
 					"-fweb",
 					"-falign-functions=32",
@@ -1516,16 +1521,17 @@
 					"-falign-jumps",
 				);
 				PREBINDING = NO;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F0E30DFE-DB6C-4D01-B921-F08BE93FB066";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
-			name = Distribution;
+			name = "Ad Hoc";
 		};
-		05B7066A0FD282000081B5C3 /* Distribution */ = {
+		05789FBB13B143A700A72F5F /* Ad Hoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Manomio LLC";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iAmiga_Prefix.pch;
@@ -1536,10 +1542,9 @@
 				);
 				INFOPLIST_FILE = Info.plist;
 				PRODUCT_NAME = iAmiga;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E88E8026-AB07-4DDD-A048-4F1B7CF281CA";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
-			name = Distribution;
+			name = "Ad Hoc";
 		};
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1583,6 +1588,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_CHAR_IS_UNSIGNED_CHAR = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -1595,6 +1601,7 @@
 				GCC_THREADSAFE_STATICS = NO;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_UNROLL_LOOPS = NO;
+				GCC_VERSION = 4.2;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
@@ -1607,6 +1614,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
 				PREBINDING = NO;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1616,6 +1624,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_CHAR_IS_UNSIGNED_CHAR = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
@@ -1630,6 +1639,7 @@
 				GCC_THREADSAFE_STATICS = NO;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_UNROLL_LOOPS = YES;
+				GCC_VERSION = 4.2;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
@@ -1651,6 +1661,7 @@
 					"-falign-jumps",
 				);
 				PREBINDING = NO;
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1665,7 +1676,7 @@
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
 				1D6058950D05DD3E006BFB54 /* Release */,
-				05B7066A0FD282000081B5C3 /* Distribution */,
+				05789FBB13B143A700A72F5F /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1675,7 +1686,7 @@
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
 				C01FCF5008A954540054247B /* Release */,
-				05B706690FD282000081B5C3 /* Distribution */,
+				05789FBA13B143A700A72F5F /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
