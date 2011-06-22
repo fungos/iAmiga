@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>DotC.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>iAmiga.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -12,6 +17,16 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>053368C013B1DEE90012D55A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>053D8A9B13B1B1060002802F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>1D6058900D05DD3D006BFB54</key>
 		<dict>
 			<key>primary</key>

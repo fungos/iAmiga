@@ -74,11 +74,17 @@ CGFloat S_WIDTH, S_HEIGHT, S_HALFWIDTH, S_HALFHEIGHT, S_PSCALE, S_LSCALE;
 // Implement loadView to create a view hierarchy programmatically.
 - (void)loadView {
 
+    CGRect frame = CGRectZero;
+
 	UITabBarController *tabBarController = self.tabBarController;
-	CGRect frame = CGRectMake(tabBarController.view.bounds.origin.x,
-							  tabBarController.view.bounds.origin.y,
-							  tabBarController.view.bounds.size.width,
-							  tabBarController.view.bounds.size.height - tabBarController.tabBar.frame.size.height);
+    if (tabBarController) {
+        frame = CGRectMake(tabBarController.view.bounds.origin.x,
+                           tabBarController.view.bounds.origin.y,
+                           tabBarController.view.bounds.size.width,
+                           tabBarController.view.bounds.size.height - tabBarController.tabBar.frame.size.height);
+    } else {
+        frame = [[UIScreen mainScreen] bounds];
+    }
 
 	S_WIDTH = frame.size.width;
 	S_HEIGHT = frame.size.height;
@@ -166,7 +172,7 @@ CGFloat S_WIDTH, S_HEIGHT, S_HALFWIDTH, S_HALFHEIGHT, S_PSCALE, S_LSCALE;
 	self.displayView.frame = self.currentDisplayFrame;
 }
 
-CGRect CreateIntegralScaledView(CGRect aFrame, BOOL top) {
+static CGRect CreateIntegralScaledView(CGRect aFrame, BOOL top) {
 	CGSize frameSize = aFrame.size;
 	CGFloat scale = frameSize.width < frameSize.height ? floorf(frameSize.width / kDisplayWidth) : floorf(frameSize.height / kDisplayHeight);
 	int width = kDisplayWidth * scale, height = kDisplayHeight * scale;
@@ -184,13 +190,18 @@ CGRect CreateIntegralScaledView(CGRect aFrame, BOOL top) {
 	} 
 
 	CGSize frameSize = rootView.frame.size;
+    //if (self.tabBarController) {
+        CGSize tmp = frameSize;
+        frameSize.width = tmp.height;
+        frameSize.height = tmp.width;
+    //}
 	
 	if (_integralSize) {
 		CGRect aFrame;
 		CGFloat scale;
 		CGFloat frameWidth;
 		if (UIInterfaceOrientationIsLandscape(layoutOrientation)) {
-			aFrame = CGRectMake(0, 0, frameSize.height, frameSize.width);
+			aFrame = CGRectMake(0, 0, frameSize.width, frameSize.height);
 			// width is larger than height
 			//scale = frameSize.width / kDisplayHeight;
 			//frameWidth = frameSize.height;
@@ -209,7 +220,7 @@ CGRect CreateIntegralScaledView(CGRect aFrame, BOOL top) {
 	// full-screen, landscape mode
 	if (UIInterfaceOrientationIsLandscape(layoutOrientation)) {
 		// assuming landscape width > height
-		return CGRectMake(0, 0, frameSize.height, frameSize.width);
+		return CGRectMake(0, 0, frameSize.width, frameSize.height);
 	}
 	
 	// aspect fill (portrait mode)
@@ -222,6 +233,7 @@ CGRect CreateIntegralScaledView(CGRect aFrame, BOOL top) {
 
 - (void)makeTabBarHidden:(BOOL)hide {
 	UITabBarController *tabBarController = self.tabBarController;
+    if (!tabBarController) return;
 	
 	// Custom code to hide TabBar
 	if ( [tabBarController.view.subviews count] < 2 ) {
@@ -294,7 +306,7 @@ CGRect CreateIntegralScaledView(CGRect aFrame, BOOL top) {
 #define degreesToRadian(x) (M_PI  * x / 180.0)
 
 - (void)didRotate {
-	if (self.tabBarController.selectedViewController != self)
+	if (self.tabBarController && self.tabBarController.selectedViewController != self)
 		return;
 	
 	UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
