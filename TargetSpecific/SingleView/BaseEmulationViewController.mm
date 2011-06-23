@@ -9,12 +9,13 @@
 #import "BaseEmulationViewController.h"
 #import "uae.h"
 #import "CocoaUtility.h"
-#import "SDL.h"
 #import "UIKitDisplayView.h"
 #import "TouchHandlerView.h"
+#import "NSObject+Blocks.h"
 
 #define kDisplayWidth							320.0f
 #define kDisplayHeight							240.0f
+#define kDisplayTopOffset                       7.0f
 
 
 @interface BaseEmulationViewController()
@@ -30,11 +31,6 @@
 @synthesize displayView, displayViewWindow;
 @synthesize integralSize=_integralSize;
 
-- (void)dealloc
-{
-    [super dealloc];
-}
-
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad {
@@ -45,18 +41,11 @@
     UIView *view = self.view;
     
     SDL_Init(0);
-	SDL_Surface *surface = SDL_SetVideoMode(320, 240, 16, 0);
+	SDL_Surface *surface = SDL_SetVideoMode(kDisplayWidth, kDisplayHeight, 16, 0);
 	UIView<DisplayViewSurface> *surfaceView = (UIView<DisplayViewSurface>*)surface->userdata;
-	surfaceView.paused = NO;
+	surfaceView.paused = YES;
 	surfaceView.frame = self.currentDisplayFrame;
-    
-    // TODO: Remove, as this is Defender of the Crown specific
-    UIView *touchHandler = [[TouchHandlerView alloc] initWithFrame:self.view.frame];
-	touchHandler.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	[view addSubview:touchHandler];
-    [touchHandler release];
-
-	
+    	
 	self.displayView = surfaceView;
 	if (displayViewWindow != nil) {
 		[displayViewWindow addSubview:self.displayView];
@@ -65,15 +54,19 @@
 	}
 }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return UIInterfaceOrientationIsLandscape(interfaceOrientation);
+- (void)sendKeys:(SDLKey*)keys count:(size_t)count keyState:(SDL_EventType)keyState afterDelay:(NSTimeInterval)delayInSeconds {
+    SDLKey *keyCopy = (SDLKey *)malloc(sizeof(SDLKey) * count);
+    memcpy(keyCopy, keys, sizeof(SDLKey) * count);
+    
+    [self performBlock:^(void) {
+        for (int i=0; i < count; i++) {
+            SDL_Event evt;
+            evt.type = keyState;
+            evt.key.keysym.sym = keyCopy[i];
+            SDL_PushEvent(&evt);
+        }
+        free(keyCopy);
+    } afterDelay:delayInSeconds];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -107,11 +100,9 @@ static CGRect CreateIntegralScaledView(CGRect aFrame, BOOL top) {
 	} 
     
 	CGSize frameSize = self.view.frame.size;
-    //if (self.tabBarController) {
     CGSize tmp = frameSize;
     frameSize.width = tmp.height;
     frameSize.height = tmp.width;
-    //}
 	
 	if (_integralSize) {
 		CGRect aFrame;
@@ -126,7 +117,7 @@ static CGRect CreateIntegralScaledView(CGRect aFrame, BOOL top) {
 	// full-screen, landscape mode
 	if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
 		// assuming landscape width > height
-		return CGRectMake(0, 0, frameSize.width, frameSize.height);
+		return CGRectMake(0, kDisplayTopOffset, frameSize.width, frameSize.height);
 	}
 	
 	// aspect fill (portrait mode)
@@ -165,6 +156,7 @@ static CGRect CreateIntegralScaledView(CGRect aFrame, BOOL top) {
 		emulationThread = [[NSThread alloc] initWithTarget:self selector:@selector(runEmulator) object:nil];
 		[emulationThread start];
 		[self performSelector:@selector(enableUserInteraction) withObject:nil afterDelay:0.25];
+        displayView.paused = NO;
 	}
 }
 

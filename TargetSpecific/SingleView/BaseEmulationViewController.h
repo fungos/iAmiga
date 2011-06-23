@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SDL.h"
 
 @protocol DisplayViewSurface;
 
@@ -36,5 +37,6 @@ enum tagEmulatorState {
 - (void)pauseEmulator;
 - (void)resumeEmulator;
 - (void)setDisplayViewWindow:(UIWindow*)window isExternal:(BOOL)isExternal;
+- (void)sendKeys:(SDLKey*)keys count:(size_t)count keyState:(SDL_EventType)keyState afterDelay:(NSTimeInterval)delayInSeconds;
 
 @end
