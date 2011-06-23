@@ -29,11 +29,6 @@
 @synthesize window, mainController;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
-    //SDL_Init(0);
-	//SDL_Surface *surface = SDL_SetVideoMode(320, 240, 16, 0);
-	//id<DisplayViewSurface> surfaceView = (id<DisplayViewSurface>)surface->userdata;
-	//surfaceView.paused = YES;
-
     // load disks into df0: and df1:
     NSString *path = [[NSBundle mainBundle] pathForResource:@"Defender OTC1" ofType:@"ADF"];
     [path getCString:prefs_df[0] maxLength:256 encoding:[NSString defaultCStringEncoding]];

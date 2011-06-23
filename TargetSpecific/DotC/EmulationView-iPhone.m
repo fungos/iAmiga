@@ -19,10 +19,6 @@
 
 @implementation EmulationViewiPhone
 
-- (void)dealloc {
-    [super dealloc];
-}
-
 #pragma mark - View lifecycle
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
