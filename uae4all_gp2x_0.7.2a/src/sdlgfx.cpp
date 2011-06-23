@@ -791,7 +791,7 @@ void handle_events (void)
 				dbg("Event: key down");
 #endif
 #if !defined (DREAMCAST) && !defined (GP2X)
-				if ((rEvent.key.keysym.sym!=SDLK_F11)&&(rEvent.key.keysym.sym!=SDLK_F12)&&(rEvent.key.keysym.sym!=SDLK_PAGEUP))
+				if ((rEvent.key.keysym.sym!=SDLK_F11)&&(rEvent.key.keysym.sym!=SDLK_F12)/*&&(rEvent.key.keysym.sym!=SDLK_PAGEUP)*/)
 #endif
 				{
 					iAmigaKeyCode = keycode2amiga(&(rEvent.key.keysym));
@@ -898,7 +898,7 @@ void handle_events (void)
 				dbg("Event: key up");
 #endif
 #if !defined (DREAMCAST) && !defined (GP2X)
-				if ((rEvent.key.keysym.sym!=SDLK_F11)&&(rEvent.key.keysym.sym!=SDLK_F12)&&(rEvent.key.keysym.sym!=SDLK_PAGEUP))
+				if ((rEvent.key.keysym.sym!=SDLK_F11)&&(rEvent.key.keysym.sym!=SDLK_F12) /*&&(rEvent.key.keysym.sym!=SDLK_PAGEUP)*/)
 #endif
 				{
 					iAmigaKeyCode = keycode2amiga(&(rEvent.key.keysym));

@@ -55,7 +55,7 @@ typedef enum {
 } SDL_EventType;
 
 typedef struct SDL_MouseMotionEvent {
-	int type;
+	Uint32 type;
 	Uint8 state;        /**< The current button state */
 	Uint8 padding1;        /**< The current button state */
 	Uint8 padding2;        /**< The current button state */
@@ -66,17 +66,17 @@ typedef struct SDL_MouseMotionEvent {
 } SDL_MouseMotionEvent;
 
 typedef struct SDL_MouseButtonEvent {
-	int type;
+	Uint32 type;
 	Uint8 button;
 	Uint8 state;
 	
 	int x,y;
 } SDL_MouseButtonEvent;
 
-typedef struct tagKeyEvent {
-	int			type;
-	SDL_keysym keysym;
-} tagKeyEvent;
+typedef struct SDL_KeyboardEvent {
+	Uint32			type;
+	SDL_keysym      keysym;
+} SDL_KeyboardEvent;
 
 /**
  * \struct SDL_JoyAxisEvent
@@ -85,7 +85,7 @@ typedef struct tagKeyEvent {
  */
 typedef struct SDL_JoyAxisEvent
 {
-	Uint8 type;         /**< SDL_JOYAXISMOTION */
+	Uint32 type;         /**< SDL_JOYAXISMOTION */
 	Uint8 which;        /**< The joystick device index */
 	Uint8 axis;         /**< The joystick axis index */
 	int value;          /**< The axis value (range: -32768 to 32767) */
@@ -98,7 +98,7 @@ typedef struct SDL_JoyAxisEvent
  */
 typedef struct SDL_JoyBallEvent
 {
-	Uint8 type;         /**< SDL_JOYBALLMOTION */
+	Uint32 type;         /**< SDL_JOYBALLMOTION */
 	Uint8 which;        /**< The joystick device index */
 	Uint8 ball;         /**< The joystick trackball index */
 	int xrel;           /**< The relative motion in the X direction */
@@ -112,7 +112,7 @@ typedef struct SDL_JoyBallEvent
  */
 typedef struct SDL_JoyHatEvent
 {
-	Uint8 type;         /**< SDL_JOYHATMOTION */
+	Uint32 type;         /**< SDL_JOYHATMOTION */
 	Uint8 which;        /**< The joystick device index */
 	Uint8 hat;          /**< The joystick hat index */
 	Uint8 value;        /**< The hat position value:
@@ -130,17 +130,17 @@ typedef struct SDL_JoyHatEvent
  */
 typedef struct SDL_JoyButtonEvent
 {
-	Uint8 type;         /**< SDL_JOYBUTTONDOWN or SDL_JOYBUTTONUP */
+	Uint32 type;         /**< SDL_JOYBUTTONDOWN or SDL_JOYBUTTONUP */
 	Uint8 which;        /**< The joystick device index */
 	Uint8 button;       /**< The joystick button index */
 	Uint8 state;        /**< SDL_PRESSED or SDL_RELEASED */
 } SDL_JoyButtonEvent;
 
 typedef union SDL_Event {
-	int type;
+	Uint32 type;
 	SDL_MouseMotionEvent motion;
 	SDL_MouseButtonEvent button;
-	tagKeyEvent key;
+	SDL_KeyboardEvent key;
 	SDL_JoyAxisEvent jaxis;         /**< Joystick axis event data */
 	SDL_JoyBallEvent jball;         /**< Joystick ball event data */
 	SDL_JoyHatEvent jhat;           /**< Joystick hat event data */
