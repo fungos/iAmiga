@@ -155,6 +155,10 @@
 		055FD7EB13B3F39800BB3F8B /* EmulationView-iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 055FD7EA13B3F39800BB3F8B /* EmulationView-iPhone.m */; };
 		055FD7EF13B3FB0900BB3F8B /* EmulationView-iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 055FD7ED13B3FB0900BB3F8B /* EmulationView-iPad.m */; };
 		055FD7F013B3FB0900BB3F8B /* EmulationView-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 055FD7EE13B3FB0900BB3F8B /* EmulationView-iPad.xib */; };
+		055FD7F313B4029900BB3F8B /* bg_web.png in Resources */ = {isa = PBXBuildFile; fileRef = 055FD7F113B4029900BB3F8B /* bg_web.png */; };
+		055FD7F413B4029900BB3F8B /* bg_web@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 055FD7F213B4029900BB3F8B /* bg_web@2x.png */; };
+		055FD7F613B4073900BB3F8B /* UserGuide.html in Resources */ = {isa = PBXBuildFile; fileRef = 055FD7F513B4073900BB3F8B /* UserGuide.html */; };
+		055FD7F913B45AAA00BB3F8B /* AnimatedImageSequenceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 055FD7F813B45AAA00BB3F8B /* AnimatedImageSequenceView.m */; };
 		0560647E10A5FC9200E52EF6 /* Turrican III.adf in Resources */ = {isa = PBXBuildFile; fileRef = 0560647C10A5FC9200E52EF6 /* Turrican III.adf */; };
 		0560647F10A5FC9200E52EF6 /* Turrican.adf in Resources */ = {isa = PBXBuildFile; fileRef = 0560647D10A5FC9200E52EF6 /* Turrican.adf */; };
 		05619EDB13ADE1AA00341DB0 /* SelectHardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 05619ED913ADE1AA00341DB0 /* SelectHardware.m */; };
@@ -435,6 +439,11 @@
 		055FD7EC13B3FB0900BB3F8B /* EmulationView-iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EmulationView-iPad.h"; sourceTree = "<group>"; };
 		055FD7ED13B3FB0900BB3F8B /* EmulationView-iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EmulationView-iPad.m"; sourceTree = "<group>"; };
 		055FD7EE13B3FB0900BB3F8B /* EmulationView-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "EmulationView-iPad.xib"; sourceTree = "<group>"; };
+		055FD7F113B4029900BB3F8B /* bg_web.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_web.png; sourceTree = "<group>"; };
+		055FD7F213B4029900BB3F8B /* bg_web@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_web@2x.png"; sourceTree = "<group>"; };
+		055FD7F513B4073900BB3F8B /* UserGuide.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = UserGuide.html; sourceTree = "<group>"; };
+		055FD7F713B45AAA00BB3F8B /* AnimatedImageSequenceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedImageSequenceView.h; sourceTree = "<group>"; };
+		055FD7F813B45AAA00BB3F8B /* AnimatedImageSequenceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedImageSequenceView.m; sourceTree = "<group>"; };
 		0560647C10A5FC9200E52EF6 /* Turrican III.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Turrican III.adf"; sourceTree = "<group>"; };
 		0560647D10A5FC9200E52EF6 /* Turrican.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Turrican.adf; sourceTree = "<group>"; };
 		05619ED813ADE1AA00341DB0 /* SelectHardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectHardware.h; sourceTree = "<group>"; };
@@ -750,6 +759,7 @@
 				055FD7E813B3E8E600BB3F8B /* Chrome */,
 				0533695A13B1DFC00012D55A /* Default-Landscape~ipad.png */,
 				0533695B13B1DFC00012D55A /* Default.png */,
+				055FD7F513B4073900BB3F8B /* UserGuide.html */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -764,6 +774,8 @@
 				053368B113B1BDD60012D55A /* SingleWindowAppDelegate.mm */,
 				053368B513B1CC980012D55A /* BaseEmulationViewController.h */,
 				053368B613B1CC980012D55A /* BaseEmulationViewController.mm */,
+				055FD7F713B45AAA00BB3F8B /* AnimatedImageSequenceView.h */,
+				055FD7F813B45AAA00BB3F8B /* AnimatedImageSequenceView.m */,
 			);
 			path = SingleView;
 			sourceTree = "<group>";
@@ -1049,6 +1061,8 @@
 		055FD7E813B3E8E600BB3F8B /* Chrome */ = {
 			isa = PBXGroup;
 			children = (
+				055FD7F113B4029900BB3F8B /* bg_web.png */,
+				055FD7F213B4029900BB3F8B /* bg_web@2x.png */,
 				055FD7D013B3E8D200BB3F8B /* btn_close.png */,
 				055FD7D113B3E8D200BB3F8B /* btn_close@2x.png */,
 				055FD7D213B3E8D200BB3F8B /* btn_menu.png */,
@@ -1262,8 +1276,8 @@
 		059A411B12697B33003B23C7 /* Resources-iPad */ = {
 			isa = PBXGroup;
 			children = (
-				058063CF13B06DD800E00B04 /* Icon-72.png */,
 				05E8A03112B2C850005532AF /* keyboard */,
+				058063CF13B06DD800E00B04 /* Icon-72.png */,
 				059A411C12697B33003B23C7 /* MainWindow-iPad.xib */,
 			);
 			name = "Resources-iPad";
@@ -1645,6 +1659,9 @@
 				055FD7E613B3E8D200BB3F8B /* intro_3.png in Resources */,
 				055FD7E713B3E8D200BB3F8B /* intro_3@2x.png in Resources */,
 				055FD7F013B3FB0900BB3F8B /* EmulationView-iPad.xib in Resources */,
+				055FD7F313B4029900BB3F8B /* bg_web.png in Resources */,
+				055FD7F413B4029900BB3F8B /* bg_web@2x.png in Resources */,
+				055FD7F613B4073900BB3F8B /* UserGuide.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1781,6 +1798,7 @@
 				057B26B613B326A0006BB230 /* NSObject+Blocks.m in Sources */,
 				055FD7EB13B3F39800BB3F8B /* EmulationView-iPhone.m in Sources */,
 				055FD7EF13B3FB0900BB3F8B /* EmulationView-iPad.m in Sources */,
+				055FD7F913B45AAA00BB3F8B /* AnimatedImageSequenceView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
