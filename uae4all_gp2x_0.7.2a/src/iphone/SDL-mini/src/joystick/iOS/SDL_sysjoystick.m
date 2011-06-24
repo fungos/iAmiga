@@ -14,6 +14,7 @@
 #import "iControlPadReaderView.h"
 #import "iCadeReaderView.h"
 #import "ButtonStates.h"
+#import "NSObject+Blocks.h"
 
 extern UIView *GetSharedOGLDisplayView();
 
@@ -75,8 +76,12 @@ SDL_SYS_JoystickOpen(SDL_Joystick * joystick)
         joystick->hwdata = (joystick_hwdata *)SDL_malloc(sizeof(joystick_hwdata));
         UIView *view = [[iControlPadReaderView alloc] initWithFrame:CGRectMake(0, 0, 1, 1)];
         UIView *display = GetSharedOGLDisplayView();
-        [display addSubview:view];
-        [view becomeFirstResponder];
+        [display performBlock:^(void) {
+            // main thread
+            [display addSubview:view];
+            [view becomeFirstResponder];
+
+        } afterDelay:0.0f];
         joystick->hwdata->view = view;
     } else if (joystick->index == kiCade) {
         joystick->naxes = 0;
@@ -87,8 +92,11 @@ SDL_SYS_JoystickOpen(SDL_Joystick * joystick)
         joystick->hwdata = (joystick_hwdata *)SDL_malloc(sizeof(joystick_hwdata));
         UIView *view = [[iCadeReaderView alloc] initWithFrame:CGRectMake(0, 0, 1, 1)];
         UIView *display = GetSharedOGLDisplayView();
-        [display addSubview:view];
-        [view becomeFirstResponder];
+        [display performBlock:^(void) {
+            // main thread
+            [display addSubview:view];
+            [view becomeFirstResponder];
+        } afterDelay:0.0f];
         joystick->hwdata->view = view;
     } else if (joystick->index == kAccelerometer) {
 		joystick->naxes = 3;
