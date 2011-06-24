@@ -9,11 +9,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "uae4all_gp2x_0.7.2a/src/iphone/SDL-mini/src/joystick/iOS/SDL_sysjoystick.m"
-         timestampString = "330077089.096297"
+         timestampString = "330565076.490591"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "150"
-         endingLineNumber = "150"
+         startingLineNumber = "158"
+         endingLineNumber = "158"
          landmarkName = "SDL_SYS_JoystickUpdate()"
          landmarkType = "7">
       </FileBreakpoint>
@@ -100,6 +100,20 @@
          endingLineNumber = "493"
          landmarkName = "kc_decode (SDL_keysym *prKeySym)"
          landmarkType = "7">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Classes/TouchHandlerView.m"
+         timestampString = "330632775.896882"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "21"
+         endingLineNumber = "21"
+         landmarkName = "-initWithFrame:"
+         landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
    <SymbolicBreakpoints>
