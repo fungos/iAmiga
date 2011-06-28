@@ -23,6 +23,16 @@
     return self;
 }
 
+- (void)awakeFromNib {
+    self.multipleTouchEnabled = YES;
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    x_ratio = self.frame.size.width / 320.0f;
+    y_ratio = self.frame.size.height / 240.0f;
+}
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 	UITouch *touch = (UITouch*)[touches anyObject];
 	int count = [touches count];
@@ -56,9 +66,21 @@
 	if (currentMode & kMouseMove) {
 		if ([touches containsObject:mouseTouch]) {			
 			CGPoint locationInView = [mouseTouch locationInView: self];
-			SDL_SendMouseMotion(NULL, SDL_MOTIONRELATIVE, locationInView.x - previousMouseLocation.x, locationInView.y - previousMouseLocation.y);
-			previousMouseLocation = locationInView;
-			didMove = YES;
+            CGFloat relx = (locationInView.x - previousMouseLocation.x) / x_ratio;
+            CGFloat rely = (locationInView.y - previousMouseLocation.y) / y_ratio;
+            if (fabsf(relx) < 1.0f)
+                relx = 0.f;
+            if (fabsf(rely) < 1.0f)
+                rely = 0.f;
+            
+            if (relx != 0.0f || rely != 0.0f) {
+                SDL_SendMouseMotion(NULL, SDL_MOTIONRELATIVE, relx, rely);
+                if (relx != 0.0f)
+                    previousMouseLocation.x = locationInView.x;
+                if (rely != 0.0f)
+                    previousMouseLocation.y = locationInView.y;
+                didMove = YES;                
+            }
 		}
 	}
 }
@@ -79,7 +101,7 @@
 		currentMode &= ~kMouseMove;
 		if (didMove == NO) {
 			SDL_SendMouseButton(NULL, SDL_PRESSED, SDL_BUTTON_LEFT);
-			// 200ms after, push up
+			// 50ms after, push up
 			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 50 * 1000000), dispatch_get_main_queue(), ^{
 				SDL_SendMouseButton(NULL, SDL_RELEASED, SDL_BUTTON_LEFT);
 			}); 

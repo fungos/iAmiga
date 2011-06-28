@@ -24,6 +24,7 @@ typedef enum MouseActiveMode MouseActiveMode;
 	int				touchCount;
 	CGPoint			previousMouseLocation;
 	BOOL			didMove;
+    CGFloat         x_ratio, y_ratio;
 }
 
 @end
