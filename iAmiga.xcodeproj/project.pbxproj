@@ -199,6 +199,12 @@
 		0585D55F1091640900C1E4C1 /* VirtualKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 0585D55E1091640900C1E4C1 /* VirtualKeyboard.m */; };
 		0585D5621091653E00C1E4C1 /* KeyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0585D5611091653E00C1E4C1 /* KeyView.m */; };
 		059A411D12697B33003B23C7 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 059A411C12697B33003B23C7 /* MainWindow-iPad.xib */; };
+		059C0E2913B99DEE00E89B35 /* bg_web~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 059C0E2313B99DEE00E89B35 /* bg_web~ipad.png */; };
+		059C0E2A13B99DEE00E89B35 /* btn_close~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 059C0E2413B99DEE00E89B35 /* btn_close~ipad.png */; };
+		059C0E2B13B99DEE00E89B35 /* btn_menu~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 059C0E2513B99DEE00E89B35 /* btn_menu~ipad.png */; };
+		059C0E2C13B99DEE00E89B35 /* btn_restart~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 059C0E2613B99DEE00E89B35 /* btn_restart~ipad.png */; };
+		059C0E2D13B99DEE00E89B35 /* chrome-bottom~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 059C0E2713B99DEE00E89B35 /* chrome-bottom~ipad.png */; };
+		059C0E2E13B99DEE00E89B35 /* chrome-top~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 059C0E2813B99DEE00E89B35 /* chrome-top~ipad.png */; };
 		059E3A2710636CBA0056A577 /* fame_arm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A2410636CBA0056A577 /* fame_arm.cpp */; settings = {COMPILER_FLAGS = "-frename-registers -Wno-unused"; }; };
 		059E3A2810636CBA0056A577 /* m68k_interface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 059E3A2610636CBA0056A577 /* m68k_interface.cpp */; };
 		05BC17DB1070B74E00EABC6E /* Defender OTC1.ADF in Resources */ = {isa = PBXBuildFile; fileRef = 05BC17D91070B74E00EABC6E /* Defender OTC1.ADF */; };
@@ -513,6 +519,12 @@
 		0585D5601091653E00C1E4C1 /* KeyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyView.h; sourceTree = "<group>"; };
 		0585D5611091653E00C1E4C1 /* KeyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyView.m; sourceTree = "<group>"; };
 		059A411C12697B33003B23C7 /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainWindow-iPad.xib"; path = "Resources-iPad/MainWindow-iPad.xib"; sourceTree = "<group>"; };
+		059C0E2313B99DEE00E89B35 /* bg_web~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_web~ipad.png"; sourceTree = "<group>"; };
+		059C0E2413B99DEE00E89B35 /* btn_close~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_close~ipad.png"; sourceTree = "<group>"; };
+		059C0E2513B99DEE00E89B35 /* btn_menu~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_menu~ipad.png"; sourceTree = "<group>"; };
+		059C0E2613B99DEE00E89B35 /* btn_restart~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_restart~ipad.png"; sourceTree = "<group>"; };
+		059C0E2713B99DEE00E89B35 /* chrome-bottom~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chrome-bottom~ipad.png"; sourceTree = "<group>"; };
+		059C0E2813B99DEE00E89B35 /* chrome-top~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chrome-top~ipad.png"; sourceTree = "<group>"; };
 		059E3A2410636CBA0056A577 /* fame_arm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fame_arm.cpp; sourceTree = "<group>"; };
 		059E3A2510636CBA0056A577 /* fame_arm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fame_arm.h; sourceTree = "<group>"; };
 		059E3A2610636CBA0056A577 /* m68k_interface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = m68k_interface.cpp; sourceTree = "<group>"; };
@@ -1061,6 +1073,12 @@
 		055FD7E813B3E8E600BB3F8B /* Chrome */ = {
 			isa = PBXGroup;
 			children = (
+				059C0E2313B99DEE00E89B35 /* bg_web~ipad.png */,
+				059C0E2413B99DEE00E89B35 /* btn_close~ipad.png */,
+				059C0E2513B99DEE00E89B35 /* btn_menu~ipad.png */,
+				059C0E2613B99DEE00E89B35 /* btn_restart~ipad.png */,
+				059C0E2713B99DEE00E89B35 /* chrome-bottom~ipad.png */,
+				059C0E2813B99DEE00E89B35 /* chrome-top~ipad.png */,
 				055FD7F113B4029900BB3F8B /* bg_web.png */,
 				055FD7F213B4029900BB3F8B /* bg_web@2x.png */,
 				055FD7D013B3E8D200BB3F8B /* btn_close.png */,
@@ -1662,6 +1680,12 @@
 				055FD7F313B4029900BB3F8B /* bg_web.png in Resources */,
 				055FD7F413B4029900BB3F8B /* bg_web@2x.png in Resources */,
 				055FD7F613B4073900BB3F8B /* UserGuide.html in Resources */,
+				059C0E2913B99DEE00E89B35 /* bg_web~ipad.png in Resources */,
+				059C0E2A13B99DEE00E89B35 /* btn_close~ipad.png in Resources */,
+				059C0E2B13B99DEE00E89B35 /* btn_menu~ipad.png in Resources */,
+				059C0E2C13B99DEE00E89B35 /* btn_restart~ipad.png in Resources */,
+				059C0E2D13B99DEE00E89B35 /* chrome-bottom~ipad.png in Resources */,
+				059C0E2E13B99DEE00E89B35 /* chrome-top~ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1931,7 +1955,7 @@
 				);
 				INFOPLIST_FILE = "TargetSpecific/DotC/Info-DotC.plist";
 				PRODUCT_NAME = DotC;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C3240CAA-2CC1-44C1-A800-A4ADAE0B8380";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "12E0983F-64D7-47C9-99C2-C2A50C76013A";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = "Ad Hoc";
