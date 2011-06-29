@@ -31,6 +31,7 @@ enum tagEmulatorState {
 }
 
 @property (nonatomic)			BOOL						integralSize;
+@property (nonatomic, readonly) CGFloat                     displayTop;
 
 - (void)startEmulator;
 - (void)runEmulator;

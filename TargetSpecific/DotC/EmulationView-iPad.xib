@@ -12,6 +12,7 @@
 		</object>
 		<object class="NSArray" key="IBDocument.IntegratedClassDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
+			<string>IBUIWebView</string>
 			<string>IBUIButton</string>
 			<string>IBUIImageView</string>
 			<string>IBUIView</string>
@@ -69,7 +70,7 @@
 								<string key="NSFrameSize">{989, 580}</string>
 								<reference key="NSSuperview" ref="892949701"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="126879553"/>
+								<reference key="NSNextKeyView" ref="444064388"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">4</int>
@@ -79,6 +80,18 @@
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">bg_web~ipad.png</string>
 								</object>
+							</object>
+							<object class="IBUIWebView" id="444064388">
+								<reference key="NSNextResponder" ref="892949701"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{24, 0}, {940, 540}}</string>
+								<reference key="NSSuperview" ref="892949701"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="126879553"/>
+								<reference key="IBUIBackgroundColor" ref="755518856"/>
+								<bool key="IBUIOpaque">NO</bool>
+								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
+								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 							</object>
 						</object>
 						<string key="NSFrame">{{18, -580}, {989, 580}}</string>
@@ -92,10 +105,11 @@
 					<object class="IBUIImageView" id="434560495">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">256</int>
-						<string key="NSFrameSize">{1024, 80}</string>
+						<string key="NSFrameSize">{1024, 75}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="876023997"/>
+						<reference key="IBUIBackgroundColor" ref="755518856"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">4</int>
@@ -190,7 +204,7 @@
 					<object class="IBUIImageView" id="286184855">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">266</int>
-						<string key="NSFrame">{{0, 628}, {1024, 140}}</string>
+						<string key="NSFrame">{{0, 684}, {1024, 84}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView"/>
@@ -285,6 +299,14 @@
 					</object>
 					<int key="connectionID">19</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">webView</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="444064388"/>
+					</object>
+					<int key="connectionID">21</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -364,6 +386,7 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="105274868"/>
+							<reference ref="444064388"/>
 						</object>
 						<reference key="parent" ref="766721923"/>
 						<string key="objectName">Web handler</string>
@@ -371,6 +394,11 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">17</int>
 						<reference key="object" ref="105274868"/>
+						<reference key="parent" ref="892949701"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">20</int>
+						<reference key="object" ref="444064388"/>
 						<reference key="parent" ref="892949701"/>
 					</object>
 				</object>
@@ -386,6 +414,7 @@
 					<string>2.IBEditorWindowLastContentRect</string>
 					<string>2.IBPluginDependency</string>
 					<string>2.IBUserGuides</string>
+					<string>20.IBPluginDependency</string>
 					<string>4.CustomClassName</string>
 					<string>4.IBPluginDependency</string>
 					<string>8.IBPluginDependency</string>
@@ -399,9 +428,20 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>{{353, 156}, {1024, 768}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<object class="NSMutableArray">
+					<object class="NSArray">
 						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="IBUserGuide">
+							<reference key="view" ref="766721923"/>
+							<double key="location">60</double>
+							<int key="affinity">1</int>
+						</object>
+						<object class="IBUserGuide">
+							<reference key="view" ref="766721923"/>
+							<double key="location">700</double>
+							<int key="affinity">1</int>
+						</object>
 					</object>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>TouchHandlerView</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -420,7 +460,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">19</int>
+			<int key="maxID">21</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -476,6 +516,7 @@
 							<string>menuButton</string>
 							<string>menuView</string>
 							<string>mouseHandler</string>
+							<string>webView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -483,6 +524,7 @@
 							<string>UIButton</string>
 							<string>UIView</string>
 							<string>UIView</string>
+							<string>UIWebView</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -493,6 +535,7 @@
 							<string>menuButton</string>
 							<string>menuView</string>
 							<string>mouseHandler</string>
+							<string>webView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -511,6 +554,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">mouseHandler</string>
 								<string key="candidateClassName">UIView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">webView</string>
+								<string key="candidateClassName">UIWebView</string>
 							</object>
 						</object>
 					</object>
@@ -554,8 +601,8 @@
 				<string>{46, 47}</string>
 				<string>{45, 47}</string>
 				<string>{45, 47}</string>
-				<string>{1024, 140}</string>
-				<string>{1024, 80}</string>
+				<string>{1024, 84}</string>
+				<string>{1024, 75}</string>
 			</object>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">301</string>

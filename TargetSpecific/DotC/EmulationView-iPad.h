@@ -15,10 +15,12 @@
     UIButton *closeButton;
     UIView *mouseHandler;
     UIView *menuView;
+    UIWebView *webView;
 }
 - (IBAction)hideMenu:(id)sender;
 - (IBAction)showMenu:(id)sender;
 @property (nonatomic, retain) IBOutlet UIView *menuView;
+@property (nonatomic, retain) IBOutlet UIWebView *webView;
 @property (nonatomic, retain) IBOutlet UIButton *menuButton;
 @property (nonatomic, retain) IBOutlet UIButton *closeButton;
 @property (nonatomic, retain) IBOutlet UIView *mouseHandler;
