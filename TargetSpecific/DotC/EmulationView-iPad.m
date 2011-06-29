@@ -11,11 +11,18 @@
 
 @implementation EmulationViewiPad
 @synthesize menuView;
+@synthesize webView;
 @synthesize menuButton;
 @synthesize closeButton;
 @synthesize mouseHandler;
 
 #pragma mark - View lifecycle
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [webView setBackgroundColor:[UIColor clearColor]];
+    [webView setOpaque:NO];
+}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return UIInterfaceOrientationIsLandscape(interfaceOrientation);
@@ -26,6 +33,7 @@
     [closeButton release];
     [menuView release];
     [mouseHandler release];
+    [webView release];
     [super dealloc];
 }
 - (void)viewDidUnload {
@@ -33,8 +41,10 @@
     [self setCloseButton:nil];
     [self setMenuView:nil];
     [self setMouseHandler:nil];
+    [self setWebView:nil];
     [super viewDidUnload];
 }
+
 - (IBAction)hideMenu:(id)sender {
     menuButton.hidden = NO;
     closeButton.hidden = YES;
@@ -63,12 +73,17 @@
     }
     
     NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL fileURLWithPath:userGuidePath]];
-	//[webView loadRequest:req];
+	[webView loadRequest:req];
     
     [UIView animateWithDuration:0.500f animations:^(void) {
         CGRect frame = menuView.frame;
-        frame.origin.y = 0;
+        frame.origin.y = 0 + self.displayTop - 2;
         menuView.frame = frame;
     }];
 }
+
+- (CGFloat)displayTop {
+    return 59.0f;
+}
+
 @end
