@@ -8,7 +8,6 @@
 
 #import "EmulationView-iPad.h"
 
-
 @implementation EmulationViewiPad
 @synthesize menuView;
 @synthesize webView;
@@ -24,10 +23,6 @@
     [webView setOpaque:NO];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return UIInterfaceOrientationIsLandscape(interfaceOrientation);
-}
-
 - (void)dealloc {
     [menuButton release];
     [closeButton release];
@@ -36,6 +31,7 @@
     [webView release];
     [super dealloc];
 }
+
 - (void)viewDidUnload {
     [self setMenuButton:nil];
     [self setCloseButton:nil];
@@ -67,9 +63,9 @@
     menuView.hidden = NO;
     mouseHandler.userInteractionEnabled = NO;
     
-    NSString *userGuidePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/UserGuide.html"];
+    NSString *userGuidePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/UserGuide~ipad.html"];
     if (![[NSFileManager defaultManager] fileExistsAtPath:userGuidePath]) {
-        userGuidePath = [[NSBundle mainBundle] pathForResource:@"UserGuide" ofType:@"html"];
+        userGuidePath = [[NSBundle mainBundle] pathForResource:@"UserGuide~ipad" ofType:@"html"];
     }
     
     NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL fileURLWithPath:userGuidePath]];

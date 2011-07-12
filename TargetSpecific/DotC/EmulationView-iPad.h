@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BaseEmulationViewController.h"
+#import "DOTCEmulationViewController.h"
 
-@interface EmulationViewiPad : BaseEmulationViewController {
+@interface EmulationViewiPad : DOTCEmulationViewController {
     
     UIButton *menuButton;
     UIButton *closeButton;
@@ -19,6 +19,7 @@
 }
 - (IBAction)hideMenu:(id)sender;
 - (IBAction)showMenu:(id)sender;
+
 @property (nonatomic, retain) IBOutlet UIView *menuView;
 @property (nonatomic, retain) IBOutlet UIWebView *webView;
 @property (nonatomic, retain) IBOutlet UIButton *menuButton;
