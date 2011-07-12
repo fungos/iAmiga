@@ -10,7 +10,7 @@
 
 @implementation FadeAction
 
-@synthesize fadeInTime=_fadeInTime, holdTime=_holdTime, imageName=_imageName, fadeOutTime=_fadeOutTime;
+@synthesize fadeInTime=_fadeInTime, holdTime=_holdTime, imageName=_imageName, fadeOutTime=_fadeOutTime, backgroundColor=_backgroundColor;
 
 + (FadeAction *)actionWithFadeIn:(NSTimeInterval)fadeIn holdTime:(NSTimeInterval)holdTime fadeOut:(NSTimeInterval)fadeOut forImageNamed:(NSString *)imageName {
     return [[[FadeAction alloc] initWithFadeIn:fadeIn holdTime:holdTime fadeOut:fadeOut forImageNamed:imageName] autorelease];
@@ -23,9 +23,16 @@
     _fadeInTime = fadeIn;
     _holdTime = holdTime;
     _fadeOutTime = fadeOut;
+    self.backgroundColor = [UIColor blackColor];
     self.imageName = imageName;
     
     return self;
+}
+
+- (void)dealloc {
+    self.imageName = nil;
+    self.backgroundColor = nil;
+    [super dealloc];
 }
 
 @end
@@ -50,14 +57,26 @@
     
     UIImageView *view = [[[UIImageView alloc] initWithFrame:frame] autorelease];
     view.opaque = NO;
+    view.contentMode = UIViewContentModeCenter;
     view.backgroundColor = [UIColor clearColor];
-    view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    view.autoresizingMask = UIViewAutoresizingFlexibleWidth |
+                            UIViewAutoresizingFlexibleHeight |
+                            UIViewAutoresizingFlexibleLeftMargin |
+                            UIViewAutoresizingFlexibleRightMargin |
+                            UIViewAutoresizingFlexibleTopMargin |
+                            UIViewAutoresizingFlexibleBottomMargin;
     [self addSubview:view];
     
     view = [[[UIImageView alloc] initWithFrame:frame] autorelease];
     view.opaque = NO;
+    view.contentMode = UIViewContentModeCenter;
     view.backgroundColor = [UIColor clearColor];
-    view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    view.autoresizingMask = UIViewAutoresizingFlexibleWidth |
+                            UIViewAutoresizingFlexibleHeight |
+                            UIViewAutoresizingFlexibleLeftMargin |
+                            UIViewAutoresizingFlexibleRightMargin |
+                            UIViewAutoresizingFlexibleTopMargin |
+                            UIViewAutoresizingFlexibleBottomMargin;
     [self addSubview:view];
     
     return self;
@@ -80,6 +99,7 @@
     
     UIImageView *bottom = [self.subviews objectAtIndex:0];
     bottom.alpha = 0.0f;
+    bottom.backgroundColor = next.backgroundColor;
     bottom.image = [UIImage imageNamed:next.imageName];
     [_sequence removeObjectAtIndex:0];    
     

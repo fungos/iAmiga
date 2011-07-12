@@ -7,11 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BaseEmulationViewController.h"
+#import "DOTCEmulationViewController.h"
 
-@protocol AnimatedImageSequenceDelegate;
-
-@interface EmulationViewiPhone : BaseEmulationViewController<AnimatedImageSequenceDelegate> {
+@interface EmulationViewiPhone : DOTCEmulationViewController {
     
     UIView *menuView;
     UIWebView *webView;

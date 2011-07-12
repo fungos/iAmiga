@@ -13,12 +13,14 @@
     NSTimeInterval _holdTime;
     NSString *_imageName;
     NSTimeInterval _fadeOutTime;
+    UIColor *_backgroundColor;
 }
 
 @property (nonatomic, assign) NSTimeInterval fadeInTime;
 @property (nonatomic, assign) NSTimeInterval holdTime;
 @property (nonatomic, retain) NSString *imageName;
 @property (nonatomic, assign) NSTimeInterval fadeOutTime;
+@property (nonatomic, retain) UIColor *backgroundColor;
 
 + (FadeAction *)actionWithFadeIn:(NSTimeInterval)fadeIn holdTime:(NSTimeInterval)holdTime fadeOut:(NSTimeInterval)fadeOut forImageNamed:(NSString *)imageName;
 - (id)initWithFadeIn:(NSTimeInterval)fadeIn holdTime:(NSTimeInterval)holdTime fadeOut:(NSTimeInterval)fadeOut forImageNamed:(NSString *)imageName;
