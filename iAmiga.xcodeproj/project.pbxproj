@@ -189,6 +189,12 @@
 		057B26A813B30CB4006BB230 /* chrome-top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 057B26A413B30CB4006BB230 /* chrome-top@2x.png */; };
 		057B26B513B325AB006BB230 /* NSObject+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 057B26B413B325AB006BB230 /* NSObject+Blocks.m */; };
 		057B26B613B326A0006BB230 /* NSObject+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 057B26B413B325AB006BB230 /* NSObject+Blocks.m */; };
+		057B977113CEC7D60065278D /* intro_1~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 057B976B13CEC7D60065278D /* intro_1~ipad.png */; };
+		057B977213CEC7D60065278D /* intro_2~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 057B976C13CEC7D60065278D /* intro_2~ipad.png */; };
+		057B977313CEC7D60065278D /* intro_3~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 057B976D13CEC7D60065278D /* intro_3~ipad.png */; };
+		057B977413CEC7D60065278D /* intro_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 057B976E13CEC7D60065278D /* intro_4.png */; };
+		057B977513CEC7D60065278D /* intro_4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 057B976F13CEC7D60065278D /* intro_4@2x.png */; };
+		057B977613CEC7D60065278D /* intro_4~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 057B977013CEC7D60065278D /* intro_4~ipad.png */; };
 		058063D013B06DD800E00B04 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 058063CF13B06DD800E00B04 /* Icon-72.png */; };
 		0583DCFD12D18BB1000E97CE /* SDL.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0583DCFB12D18BB1000E97CE /* SDL.mm */; };
 		0583DD2612D18FD9000E97CE /* SDL_events.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0583DD2512D18FD9000E97CE /* SDL_events.mm */; };
@@ -516,6 +522,12 @@
 		057B26A413B30CB4006BB230 /* chrome-top@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chrome-top@2x.png"; sourceTree = "<group>"; };
 		057B26B313B325AB006BB230 /* NSObject+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Blocks.h"; sourceTree = "<group>"; };
 		057B26B413B325AB006BB230 /* NSObject+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Blocks.m"; sourceTree = "<group>"; };
+		057B976B13CEC7D60065278D /* intro_1~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "intro_1~ipad.png"; sourceTree = "<group>"; };
+		057B976C13CEC7D60065278D /* intro_2~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "intro_2~ipad.png"; sourceTree = "<group>"; };
+		057B976D13CEC7D60065278D /* intro_3~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "intro_3~ipad.png"; sourceTree = "<group>"; };
+		057B976E13CEC7D60065278D /* intro_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = intro_4.png; sourceTree = "<group>"; };
+		057B976F13CEC7D60065278D /* intro_4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "intro_4@2x.png"; sourceTree = "<group>"; };
+		057B977013CEC7D60065278D /* intro_4~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "intro_4~ipad.png"; sourceTree = "<group>"; };
 		058063CF13B06DD800E00B04 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		0583DCFB12D18BB1000E97CE /* SDL.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SDL.mm; sourceTree = "<group>"; };
 		0583DCFE12D18BBB000E97CE /* SDL_endian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_endian.h; sourceTree = "<group>"; };
@@ -1117,6 +1129,7 @@
 		055FD7E813B3E8E600BB3F8B /* Chrome */ = {
 			isa = PBXGroup;
 			children = (
+				057B976A13CEC7B30065278D /* intro */,
 				059C0E2313B99DEE00E89B35 /* bg_web~ipad.png */,
 				059C0E2413B99DEE00E89B35 /* btn_close~ipad.png */,
 				059C0E2513B99DEE00E89B35 /* btn_menu~ipad.png */,
@@ -1131,12 +1144,6 @@
 				055FD7D313B3E8D200BB3F8B /* btn_menu@2x.png */,
 				055FD7D413B3E8D200BB3F8B /* btn_restart.png */,
 				055FD7D513B3E8D200BB3F8B /* btn_restart@2x.png */,
-				055FD7D613B3E8D200BB3F8B /* intro_1.png */,
-				055FD7D713B3E8D200BB3F8B /* intro_1@2x.png */,
-				055FD7D813B3E8D200BB3F8B /* intro_2.png */,
-				055FD7D913B3E8D200BB3F8B /* intro_2@2x.png */,
-				055FD7DA13B3E8D200BB3F8B /* intro_3.png */,
-				055FD7DB13B3E8D200BB3F8B /* intro_3@2x.png */,
 				057B26A113B30CB4006BB230 /* chrome-bottom.png */,
 				057B26A213B30CB4006BB230 /* chrome-bottom@2x.png */,
 				057B26A313B30CB4006BB230 /* chrome-top.png */,
@@ -1268,6 +1275,25 @@
 				0577C29512E15B590040B77D /* DisplayView.m */,
 			);
 			path = coregraphics;
+			sourceTree = "<group>";
+		};
+		057B976A13CEC7B30065278D /* intro */ = {
+			isa = PBXGroup;
+			children = (
+				057B976B13CEC7D60065278D /* intro_1~ipad.png */,
+				057B976C13CEC7D60065278D /* intro_2~ipad.png */,
+				057B976D13CEC7D60065278D /* intro_3~ipad.png */,
+				057B977013CEC7D60065278D /* intro_4~ipad.png */,
+				055FD7D613B3E8D200BB3F8B /* intro_1.png */,
+				055FD7D813B3E8D200BB3F8B /* intro_2.png */,
+				055FD7DA13B3E8D200BB3F8B /* intro_3.png */,
+				057B976E13CEC7D60065278D /* intro_4.png */,
+				055FD7D713B3E8D200BB3F8B /* intro_1@2x.png */,
+				055FD7D913B3E8D200BB3F8B /* intro_2@2x.png */,
+				055FD7DB13B3E8D200BB3F8B /* intro_3@2x.png */,
+				057B976F13CEC7D60065278D /* intro_4@2x.png */,
+			);
+			name = intro;
 			sourceTree = "<group>";
 		};
 		0583DCD312D11E1E000E97CE /* SDL-mini */ = {
@@ -1790,6 +1816,12 @@
 				05A435DE13CAC54C00E5024F /* instruction-handdrag@2x.png in Resources */,
 				05A435DF13CAC54C00E5024F /* instruction-menuclick.png in Resources */,
 				05A435E013CAC54C00E5024F /* instruction-menuclick@2x.png in Resources */,
+				057B977113CEC7D60065278D /* intro_1~ipad.png in Resources */,
+				057B977213CEC7D60065278D /* intro_2~ipad.png in Resources */,
+				057B977313CEC7D60065278D /* intro_3~ipad.png in Resources */,
+				057B977413CEC7D60065278D /* intro_4.png in Resources */,
+				057B977513CEC7D60065278D /* intro_4@2x.png in Resources */,
+				057B977613CEC7D60065278D /* intro_4~ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
