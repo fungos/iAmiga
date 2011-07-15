@@ -15,6 +15,7 @@
 @synthesize mouseHandler;
 @synthesize closeButton;
 @synthesize menuButton;
+@synthesize restartButton;
 
 #pragma mark - View lifecycle
 
@@ -31,6 +32,7 @@
     [mouseHandler release];
     [closeButton release];
     [menuButton release];
+    [restartButton release];
     [super dealloc];
 }
 
@@ -41,6 +43,7 @@
     [self setMouseHandler:nil];
     [self setCloseButton:nil];
     [self setMenuButton:nil];
+    [self setRestartButton:nil];
     [super viewDidUnload];
 }
 
@@ -60,11 +63,13 @@
                      } completion:^(BOOL finished) {
                          [self resumeEmulator];
                          mouseHandler.userInteractionEnabled = YES;
+                         restartButton.enabled = YES;
                      }];
 }
 
 - (IBAction)showMenu:(UIView *)sender {
     [self pauseEmulator];
+    restartButton.enabled = NO;
     menuButton.hidden = YES;
     closeButton.hidden = NO;
     menuView.hidden = NO;

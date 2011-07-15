@@ -17,6 +17,7 @@
     UIView *mouseHandler;
     UIButton *closeButton;
     UIButton *menuButton;
+    UIButton *restartButton;
     CGFloat _menuViewStartY;
     CGFloat _bottomBarStartY;
 }
@@ -29,5 +30,6 @@
 @property (nonatomic, retain) IBOutlet UIView *mouseHandler;
 @property (nonatomic, retain) IBOutlet UIButton *closeButton;
 @property (nonatomic, retain) IBOutlet UIButton *menuButton;
+@property (nonatomic, retain) IBOutlet UIButton *restartButton;
 
 @end
