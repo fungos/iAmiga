@@ -50,7 +50,8 @@ extern void uae_reset();
     NSMutableArray *sequence = [NSMutableArray arrayWithObjects:
                                 [FadeAction actionWithFadeIn:1.0f holdTime:4.0f fadeOut:1.0f forImageNamed:@"intro_1"],
                                 [FadeAction actionWithFadeIn:1.0f holdTime:2.0f fadeOut:1.0f forImageNamed:@"intro_2"],
-                                [FadeAction actionWithFadeIn:1.0f holdTime:5.0f fadeOut:1.0f forImageNamed:@"intro_3"],
+                                [FadeAction actionWithFadeIn:1.0f holdTime:4.0f fadeOut:1.0f forImageNamed:@"intro_3"],
+                                [FadeAction actionWithFadeIn:1.0f holdTime:2.5f fadeOut:1.0f forImageNamed:@"intro_4"],
                                 nil
                                 ];
     view.delegate = self;
