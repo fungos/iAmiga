@@ -22,6 +22,7 @@
 		050416780FCB588E00F46828 /* Turrican II.adf in Resources */ = {isa = PBXBuildFile; fileRef = 05FE829D0FC68EED00DBFECF /* Turrican II.adf */; };
 		0506D73913CA7BF700559637 /* OldLondon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0506D73713CA7BF700559637 /* OldLondon.ttf */; };
 		0506D73A13CA7BF700559637 /* gpl.html in Resources */ = {isa = PBXBuildFile; fileRef = 0506D73813CA7BF700559637 /* gpl.html */; };
+		05084E4A13D7FE7B0004617A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 05084E4913D7FE7B0004617A /* libz.dylib */; };
 		050B1746139C7D1E005C7736 /* SDL_joystick.c in Sources */ = {isa = PBXBuildFile; fileRef = 050B1744139C7D1E005C7736 /* SDL_joystick.c */; };
 		050B174A139C83A8005C7736 /* SDL_sysjoystick.m in Sources */ = {isa = PBXBuildFile; fileRef = 050B1748139C83A8005C7736 /* SDL_sysjoystick.m */; };
 		050B174E139C84F4005C7736 /* SDL_error.c in Sources */ = {isa = PBXBuildFile; fileRef = 050B174C139C84F2005C7736 /* SDL_error.c */; };
@@ -255,7 +256,6 @@
 		05D5D74C0FD5E38400B91C98 /* m68k_intrf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD010F3D797C005B30DF /* m68k_intrf.cpp */; };
 		05D6044B12AF2D620048E478 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 05D6044912AF2D620048E478 /* Icon.png */; };
 		05D6044C12AF2D620048E478 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 05D6044A12AF2D620048E478 /* Icon@2x.png */; };
-		05E5C35413C8F11B00591265 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E5C35313C8F11B00591265 /* libz.1.2.5.dylib */; };
 		05E5C35513C8F14700591265 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E5C35313C8F11B00591265 /* libz.1.2.5.dylib */; };
 		05E65E0A117EE7F700DC1086 /* Battle Squadron.adf in Resources */ = {isa = PBXBuildFile; fileRef = 05E65E09117EE7F700DC1086 /* Battle Squadron.adf */; };
 		05E6A31D0FC3D93B0086151B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E6A31C0FC3D93B0086151B /* AudioToolbox.framework */; };
@@ -303,6 +303,7 @@
 		050416330FCB566500F46828 /* ls-joystick_rest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ls-joystick_rest.png"; sourceTree = "<group>"; };
 		0506D73713CA7BF700559637 /* OldLondon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = OldLondon.ttf; path = html/OldLondon.ttf; sourceTree = "<group>"; };
 		0506D73813CA7BF700559637 /* gpl.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = gpl.html; path = html/gpl.html; sourceTree = "<group>"; };
+		05084E4913D7FE7B0004617A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		050B1742139C7A5D005C7736 /* SDL_joystick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_joystick.h; sourceTree = "<group>"; };
 		050B1744139C7D1E005C7736 /* SDL_joystick.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SDL_joystick.c; sourceTree = "<group>"; };
 		050B1745139C7D1E005C7736 /* SDL_joystick_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_joystick_c.h; sourceTree = "<group>"; };
@@ -670,7 +671,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05E5C35413C8F11B00591265 /* libz.1.2.5.dylib in Frameworks */,
+				05084E4A13D7FE7B0004617A /* libz.dylib in Frameworks */,
 				0533694513B1DEE90012D55A /* Foundation.framework in Frameworks */,
 				0533694613B1DEE90012D55A /* UIKit.framework in Frameworks */,
 				0533694713B1DEE90012D55A /* CoreGraphics.framework in Frameworks */,
@@ -1637,6 +1638,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				05084E4913D7FE7B0004617A /* libz.dylib */,
 				053D8B2E13B1B2C30002802F /* TargetSpecific */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
