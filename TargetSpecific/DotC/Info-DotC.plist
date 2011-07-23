@@ -38,10 +38,9 @@
 	<key>UIPrerenderedIcon</key>
 	<true/>
 	<key>UIRequiredDeviceCapabilities</key>
-	<dict>
-		<key>armv7</key>
-		<true/>
-	</dict>
+	<array>
+		<string>armv7</string>
+	</array>
 	<key>UIStatusBarHidden</key>
 	<true/>
 	<key>UISupportedInterfaceOrientations</key>
