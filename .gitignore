@@ -6,7 +6,8 @@ build/*
 *~.nib/ 
 *.perspective 
 *.perspectivev3
-**/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/*
+*.xcodeproj/xcuserdata/*
 
 # old school
 .svn
