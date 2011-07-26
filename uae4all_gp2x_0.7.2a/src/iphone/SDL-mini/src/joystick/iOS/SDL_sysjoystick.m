@@ -14,7 +14,7 @@
 #import "iControlPadReaderView.h"
 #import "iCadeReaderView.h"
 #import "ButtonStates.h"
-#import "NSObject+Blocks.h"
+#import "SDL_NSObject+Blocks.h"
 
 extern UIView *GetSharedOGLDisplayView();
 

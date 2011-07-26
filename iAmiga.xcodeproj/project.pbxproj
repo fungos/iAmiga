@@ -36,6 +36,7 @@
 		051F92EC1084632400C815BE /* Nebulus.ADF in Resources */ = {isa = PBXBuildFile; fileRef = 051F92EB1084632400C815BE /* Nebulus.ADF */; };
 		051F92EF1084644D00C815BE /* Gods 1.ADF in Resources */ = {isa = PBXBuildFile; fileRef = 051F92ED1084644D00C815BE /* Gods 1.ADF */; };
 		051F92F01084644D00C815BE /* Gods 2.ADF in Resources */ = {isa = PBXBuildFile; fileRef = 051F92EE1084644D00C815BE /* Gods 2.ADF */; };
+		052DE54C13DA909600CCCB01 /* SDL_NSObject+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 052DE54B13DA909600CCCB01 /* SDL_NSObject+Blocks.m */; };
 		053368C513B1DEE90012D55A /* kick.rom in Resources */ = {isa = PBXBuildFile; fileRef = 057440D50FC2A4A7003BE251 /* kick.rom */; };
 		053368C613B1DEE90012D55A /* kick13.rom in Resources */ = {isa = PBXBuildFile; fileRef = 057443290FC3C94F003BE251 /* kick13.rom */; };
 		053368D013B1DEE90012D55A /* Defender OTC1.ADF in Resources */ = {isa = PBXBuildFile; fileRef = 05BC17D91070B74E00EABC6E /* Defender OTC1.ADF */; };
@@ -334,6 +335,8 @@
 		051F92EB1084632400C815BE /* Nebulus.ADF */ = {isa = PBXFileReference; lastKnownFileType = file; path = Nebulus.ADF; sourceTree = "<group>"; };
 		051F92ED1084644D00C815BE /* Gods 1.ADF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gods 1.ADF"; sourceTree = "<group>"; };
 		051F92EE1084644D00C815BE /* Gods 2.ADF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gods 2.ADF"; sourceTree = "<group>"; };
+		052DE54A13DA909600CCCB01 /* SDL_NSObject+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SDL_NSObject+Blocks.h"; sourceTree = "<group>"; };
+		052DE54B13DA909600CCCB01 /* SDL_NSObject+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SDL_NSObject+Blocks.m"; sourceTree = "<group>"; };
 		053368B013B1BDD60012D55A /* SingleWindowAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleWindowAppDelegate.h; sourceTree = "<group>"; };
 		053368B113B1BDD60012D55A /* SingleWindowAppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SingleWindowAppDelegate.mm; sourceTree = "<group>"; };
 		053368B313B1BF910012D55A /* MainWindow-Single-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MainWindow-Single-iPad.xib"; sourceTree = "<group>"; };
@@ -1338,6 +1341,8 @@
 				0583DCFB12D18BB1000E97CE /* SDL.mm */,
 				050B174C139C84F2005C7736 /* SDL_error.c */,
 				050B174D139C84F3005C7736 /* SDL_error_c.h */,
+				052DE54A13DA909600CCCB01 /* SDL_NSObject+Blocks.h */,
+				052DE54B13DA909600CCCB01 /* SDL_NSObject+Blocks.m */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -2036,6 +2041,7 @@
 				05650B1A13AC879A003CC181 /* iCadeReaderView.m in Sources */,
 				05619EDB13ADE1AA00341DB0 /* SelectHardware.m in Sources */,
 				057B26B513B325AB006BB230 /* NSObject+Blocks.m in Sources */,
+				052DE54C13DA909600CCCB01 /* SDL_NSObject+Blocks.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
