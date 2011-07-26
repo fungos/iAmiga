@@ -6,6 +6,7 @@ build/*
 *~.nib/ 
 *.perspective 
 *.perspectivev3
+**/xcuserdata/
 
 # old school
 .svn
