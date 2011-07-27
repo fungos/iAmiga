@@ -22,6 +22,7 @@
     [super viewDidLoad];
     [webView setBackgroundColor:[UIColor clearColor]];
     [webView setOpaque:NO];
+    webView.delegate = self;
 }
 
 - (void)dealloc {

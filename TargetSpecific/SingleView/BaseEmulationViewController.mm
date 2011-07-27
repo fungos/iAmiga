@@ -30,6 +30,7 @@
 
 @synthesize displayView, displayViewWindow;
 @synthesize integralSize=_integralSize;
+@dynamic bundleVersion;
 
 #pragma mark - View lifecycle
 
@@ -67,6 +68,11 @@
         }
         free(keyCopy);
     } afterDelay:delayInSeconds];
+}
+
+- (NSString *)bundleVersion {
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+    return version;
 }
 
 - (void)viewDidAppear:(BOOL)animated {

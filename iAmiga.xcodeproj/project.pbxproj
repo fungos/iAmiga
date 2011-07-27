@@ -257,7 +257,6 @@
 		05D5D74C0FD5E38400B91C98 /* m68k_intrf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0552BD010F3D797C005B30DF /* m68k_intrf.cpp */; };
 		05D6044B12AF2D620048E478 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 05D6044912AF2D620048E478 /* Icon.png */; };
 		05D6044C12AF2D620048E478 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 05D6044A12AF2D620048E478 /* Icon@2x.png */; };
-		05E5C35513C8F14700591265 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E5C35313C8F11B00591265 /* libz.1.2.5.dylib */; };
 		05E65E0A117EE7F700DC1086 /* Battle Squadron.adf in Resources */ = {isa = PBXBuildFile; fileRef = 05E65E09117EE7F700DC1086 /* Battle Squadron.adf */; };
 		05E6A31D0FC3D93B0086151B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05E6A31C0FC3D93B0086151B /* AudioToolbox.framework */; };
 		05E8A04612B2C884005532AF /* amiga-beige-dark-center.png in Resources */ = {isa = PBXBuildFile; fileRef = 05E8A04312B2C884005532AF /* amiga-beige-dark-center.png */; };
@@ -490,7 +489,6 @@
 		05650B1913AC8799003CC181 /* iCadeState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCadeState.h; sourceTree = "<group>"; };
 		05743FC30FC293FD003BE251 /* iphone_main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iphone_main.h; sourceTree = "<group>"; };
 		05743FC40FC293FD003BE251 /* iphone_main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = iphone_main.mm; sourceTree = "<group>"; };
-		057440680FC2A243003BE251 /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		057440D50FC2A4A7003BE251 /* kick.rom */ = {isa = PBXFileReference; lastKnownFileType = file; path = kick.rom; sourceTree = "<group>"; };
 		057443290FC3C94F003BE251 /* kick13.rom */ = {isa = PBXFileReference; lastKnownFileType = file; path = kick13.rom; sourceTree = "<group>"; };
 		057443550FC3CA04003BE251 /* Shadow OTB1.ADF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Shadow OTB1.ADF"; sourceTree = "<group>"; };
@@ -634,7 +632,6 @@
 		05D5233612E8030E007912AE /* SelectEffectController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectEffectController.xib; sourceTree = "<group>"; };
 		05D6044912AF2D620048E478 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		05D6044A12AF2D620048E478 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
-		05E5C35313C8F11B00591265 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		05E65E09117EE7F700DC1086 /* Battle Squadron.adf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Battle Squadron.adf"; sourceTree = "<group>"; };
 		05E6A31C0FC3D93B0086151B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		05E6A3250FC3DAA90086151B /* sound_iphone.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sound_iphone.cpp; sourceTree = "<group>"; };
@@ -689,7 +686,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05E5C35513C8F14700591265 /* libz.1.2.5.dylib in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
@@ -1643,7 +1639,6 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				05084E4913D7FE7B0004617A /* libz.dylib */,
 				053D8B2E13B1B2C30002802F /* TargetSpecific */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -1683,12 +1678,11 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				05E5C35313C8F11B00591265 /* libz.1.2.5.dylib */,
+				05084E4913D7FE7B0004617A /* libz.dylib */,
 				05E6A31C0FC3D93B0086151B /* AudioToolbox.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
-				057440680FC2A243003BE251 /* libz.1.2.3.dylib */,
 				0577C0E412DED4DF0040B77D /* CFNetwork.framework */,
 				0577C1C412DFF3610040B77D /* OpenGLES.framework */,
 				0577C1D712DFF3910040B77D /* QuartzCore.framework */,

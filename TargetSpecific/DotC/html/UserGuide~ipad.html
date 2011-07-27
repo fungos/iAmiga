@@ -22,6 +22,11 @@ var from = "help";
 var tabbar = false;
 
 document.addEventListener('DOMContentLoaded', loaded, false);
+    
+var bundleVersion = '';
+function setVersion(ver) {
+    bundleVersion = ver;
+}
 
 function loaded() {
 
@@ -50,10 +55,13 @@ function loaded() {
 	});
 	
 	$('#aboutbtn').click(function() {
-	  loadpage('about','FADE');
-	document.getElementById('aboutbtnimg').src='images/icon_about_over.png';
-	document.getElementById('helpbtnimg').src='images/icon_help.png';
-	document.getElementById('gamesbtnimg').src='images/icon_games.png';
+        loadpage('about','FADE', null, function afterLoad() {
+            $('#version').html(bundleVersion);      
+        });
+        document.getElementById('aboutbtnimg').src='images/icon_about_over.png';
+        document.getElementById('helpbtnimg').src='images/icon_help.png';
+        document.getElementById('gamesbtnimg').src='images/icon_games.png';
+        
 	});
 	
 	$('#gamesbtn').click(function() {

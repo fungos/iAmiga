@@ -32,6 +32,7 @@ enum tagEmulatorState {
 
 @property (nonatomic)			BOOL						integralSize;
 @property (nonatomic, readonly) CGFloat                     displayTop;
+@property (nonatomic, readonly) NSString                    *bundleVersion;
 
 - (void)startEmulator;
 - (void)runEmulator;

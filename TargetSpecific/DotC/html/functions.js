@@ -14,7 +14,7 @@ function loadslidedown(page) {
 
 var number = 0;
 
-function loadpage(to, transition, externalpath) {
+function loadpage(to, transition, externalpath, afterLoad) {
 	
 if(to!=from) {
 	if (transition == undefined)
@@ -36,65 +36,71 @@ if(to!=from) {
 		if(externalpath) {
 			$.get(externalpath+to+'.html', function(data) {
 	  			$('#left').append(data);
-					doTransition();
-					$('#spinner').fadeOut('slow');
-				});	
+                doTransition();
+                $('#spinner').fadeOut('slow');
+                if (afterLoad) {
+                    afterLoad();
+                }
+            });	
 		} else {	
-		$.get(to+'.html', function(data) {
-  			$('#left').append(data);
-				doTransition();
+            $.get(to+'.html', function(data) {
+                $('#left').append(data);
+                doTransition();
 				$('#spinner').fadeOut('slow');
+                if (afterLoad) {
+                    afterLoad();
+                }
 			});
 		}
-		} else {
-			doTransition();
-		}
+    } else {
+        doTransition();
+    }
 
-		function doTransition() {
-			$('#'+from).attr("class", "");
-			$('#'+to).attr("class", "");
-	
-			if(trSlideLeft)
-			{
-				$('#'+from).attr("active", "false").addClass("transthis slide out");
-        		$('#'+to).attr("active", "true").show().addClass("transthis slide in");
-				number = number+1;
-				backtransition = "SLIDE_RIGHT";
-			} else if(trSlideRight) {
-				$('#'+from).attr("active", "false").addClass("transthis slide out reverse");
-        		$('#'+to).attr("active", "true").show().addClass("transthis slide in reverse");
-			} else if(trSlideUp) {
-				$('#'+from).attr("active", "false").addClass("transthis slideup out");
-       			$('#'+to).attr("active", "true").show().addClass("transthis slideup in");
-				number = number+1;
-			} else if(trSlideDown) {
-				$('#'+from).attr("active", "false").addClass("transthis slidedown out");
-       			$('#'+to).attr("active", "true").show().addClass("transthis slidedown in");
-				number = number+1;
-			} else if(trSlideDownBack) {
-				$('#'+from).attr("active", "false").addClass("transthis slidedown out reverse");
-       			$('#'+to).attr("active", "true").show().addClass("transthis slidedown in reverse");
-			} else if (trFlipLeft || trFlipRight) 	{
-        		var reverse = trFlipLeft ? " reverse" : "";
-       			$('#'+from).attr("active", "false").addClass("transthis flip out" + reverse);
-       			$('#'+to).attr("active", "true").show().addClass("transthis flip in" + reverse);
-        		// this.doAfterTransition(from, function () {
-       			//      from.hide();
-       			//      from.attr("class", "");
-       			// });
-			} else if (trFade) 	{
-				$('#'+from).attr("active", "false").addClass("transthis fade out");
-       			$('#'+to).attr("active", "true").show().addClass("transthis fade in");
-				number = number+1;
-       		} else {
-        		// just switch
-				$('#'+from).attr("class", "transthis");
-				$('#'+to).attr("class", "transthis");
-				$('#'+to).attr("active", "true").show()
-				$('#'+from).attr("active", "false").hide()
-   			}
-				// set new current view
-				from = to;
-			}
-		}
+    function doTransition() {
+        $('#'+from).attr("class", "");
+        $('#'+to).attr("class", "");
+
+        if(trSlideLeft)
+        {
+            $('#'+from).attr("active", "false").addClass("transthis slide out");
+            $('#'+to).attr("active", "true").show().addClass("transthis slide in");
+            number = number+1;
+            backtransition = "SLIDE_RIGHT";
+        } else if(trSlideRight) {
+            $('#'+from).attr("active", "false").addClass("transthis slide out reverse");
+            $('#'+to).attr("active", "true").show().addClass("transthis slide in reverse");
+        } else if(trSlideUp) {
+            $('#'+from).attr("active", "false").addClass("transthis slideup out");
+            $('#'+to).attr("active", "true").show().addClass("transthis slideup in");
+            number = number+1;
+        } else if(trSlideDown) {
+            $('#'+from).attr("active", "false").addClass("transthis slidedown out");
+            $('#'+to).attr("active", "true").show().addClass("transthis slidedown in");
+            number = number+1;
+        } else if(trSlideDownBack) {
+            $('#'+from).attr("active", "false").addClass("transthis slidedown out reverse");
+            $('#'+to).attr("active", "true").show().addClass("transthis slidedown in reverse");
+        } else if (trFlipLeft || trFlipRight) 	{
+            var reverse = trFlipLeft ? " reverse" : "";
+            $('#'+from).attr("active", "false").addClass("transthis flip out" + reverse);
+            $('#'+to).attr("active", "true").show().addClass("transthis flip in" + reverse);
+            // this.doAfterTransition(from, function () {
+            //      from.hide();
+            //      from.attr("class", "");
+            // });
+        } else if (trFade) 	{
+            $('#'+from).attr("active", "false").addClass("transthis fade out");
+            $('#'+to).attr("active", "true").show().addClass("transthis fade in");
+            number = number+1;
+        } else {
+            // just switch
+            $('#'+from).attr("class", "transthis");
+            $('#'+to).attr("class", "transthis");
+            $('#'+to).attr("active", "true").show()
+            $('#'+from).attr("active", "false").hide()
+        }
+            // set new current view
+            from = to;
+        }
+    }
 }

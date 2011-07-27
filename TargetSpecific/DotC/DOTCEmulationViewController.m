@@ -67,4 +67,9 @@ extern void uae_reset();
     }];
 }
 
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    NSString *fn = [NSString stringWithFormat:@"setVersion('%@');", self.bundleVersion];
+    NSString *result = [webView stringByEvaluatingJavaScriptFromString:fn];
+}
+
 @end
