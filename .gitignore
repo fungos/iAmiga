@@ -23,3 +23,5 @@ disks/*
 *.swp
 
 rgetSpecific/DotC/Info-DotC.plist
+
+libraries/sdl-mini
