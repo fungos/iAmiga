@@ -226,8 +226,6 @@
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		976877761534B2D20077B654 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 976877751534B2D20077B654 /* AudioToolbox.framework */; };
 		978550C4153A3F2E00580B91 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 97855061153A3F2E00580B91 /* .gitignore */; };
-		978550C5153A3F2E00580B91 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 97855061153A3F2E00580B91 /* .gitignore */; };
-		978550C6153A3F2E00580B91 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 97855061153A3F2E00580B91 /* .gitignore */; };
 		978550C7153A3F2E00580B91 /* SDL_events.c in Sources */ = {isa = PBXBuildFile; fileRef = 9785507D153A3F2E00580B91 /* SDL_events.c */; };
 		978550C8153A3F2E00580B91 /* SDL_events.c in Sources */ = {isa = PBXBuildFile; fileRef = 9785507D153A3F2E00580B91 /* SDL_events.c */; };
 		978550C9153A3F2E00580B91 /* SDL_events.c in Sources */ = {isa = PBXBuildFile; fileRef = 9785507D153A3F2E00580B91 /* SDL_events.c */; };
@@ -2327,7 +2325,6 @@
 				057B977613CEC7D60065278D /* intro_4~ipad.png in Resources */,
 				97A932091538B207001064D7 /* DISK1.ADF in Resources */,
 				97A9320A1538B207001064D7 /* DISK2.ADF in Resources */,
-				978550C5153A3F2E00580B91 /* .gitignore in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2458,7 +2455,6 @@
 				97A931F81538AFDC001064D7 /* UserGuide~ipad.html in Resources */,
 				97A931FA1538AFE9001064D7 /* css in Resources */,
 				97A931FC1538AFEF001064D7 /* images in Resources */,
-				978550C6153A3F2E00580B91 /* .gitignore in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
