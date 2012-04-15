@@ -11,32 +11,33 @@
  *
  */
 
-#import <stdio.h>
+#include <stdio.h>
 
-#import "sysconfig.h"
-#import "sysdeps.h"
+#include "sysconfig.h"
+#include "sysdeps.h"
 
-#import "config.h"
-#import "uae.h"
-#import "options.h"
-#import "thread.h"
-#import "memory.h"
-#import "debug_uae4all.h"
-#import "events.h"
-#import "custom.h"
-#import "ersatz.h"
-#import "disk.h"
-#import "gui.h"
-#import "zfile.h"
-#import "autoconf.h"
-#import "m68k/m68k_intrf.h"
-#import "xwin.h"
-#import "execlib.h"
+#include "config.h"
+#include "uae.h"
+#include "options.h"
+#include "thread.h"
+#include "memory.h"
+#include "debug_uae4all.h"
+#include "events.h"
+#include "custom.h"
+#include "ersatz.h"
+#include "disk.h"
+#include "gui.h"
+#include "zfile.h"
+#include "autoconf.h"
+#include "m68k/m68k_intrf.h"
+#include "xwin.h"
+#include "execlib.h"
+#include "savestate.h"
 
 
 char prefs_df[NUM_DRIVES][256];
 char changed_df[NUM_DRIVES][256];
-char romfile[64];
+char romfile[256];
 int real_changed_df[NUM_DRIVES]={0};
 
 /* writable track length with normal 2us bitcell/300RPM motor */
@@ -1499,6 +1500,9 @@ void DISK_reset (void)
 #endif
     int i;
 	
+    if (savestate_state)
+	    return;
+
     disk_hpos = 0;
     disk_data_used = 0;
     disabled = 0;
@@ -1517,18 +1521,6 @@ void DISK_reset (void)
 	    drv->mfmpos = 0;
     }
 }
-
-// performance HACKing code
-
-extern "C" void DISK_motors_off() {
-	for (int dr=0; dr<NUM_DRIVES; dr++) {
-		drive_motor(&floppy[dr], 1);
-		floppy[dr].state = (!(selected & (1 << dr))) | !floppy[dr].motoroff;
-		update_drive_gui (dr);
-	}
-}
-
-#if 0
 
 void dumpdisk (void)
 {
@@ -1567,4 +1559,125 @@ void DISK_restore_custom (uae_u32 pdskpt, uae_u16 pdsklength, uae_u16 pdskdatr, 
     dsklength = pdsklength;
     dskbytr_tab[0] = pdskbytr;
 }
-#endif
+
+uae_u8 *restore_disk(int num,uae_u8 *src)
+{
+    drive *drv;
+    uae_u32 drive_id, mfmpos;
+    int state;
+    uae_u8 cyl, dskready, drive_id_scnt;
+    
+    drive_id=restore_u32 ();
+    state=restore_u8 ();
+    cyl=restore_u8 ();
+    dskready=restore_u8 ();
+    drive_id_scnt=restore_u8 ();
+    mfmpos = restore_u32 ();
+    restore_u32 ();
+    
+    if (num<NUM_DRIVES)
+    {
+    	drv = &floppy[num];
+    	disabled &= ~(1 << num);
+        drv->drive_id = drive_id;
+    	if (state & 2)
+       		disabled |= 1 << num;
+    	else
+       		drv->motoroff = (state & 1) ? 0 : 1;
+    	drv->cyl = cyl;
+    	drv->dskready = dskready;
+    	drv->drive_id_scnt = drive_id_scnt;
+    	drv->mfmpos = mfmpos;
+    	strncpy(changed_df[num],(char *)src,127);
+    	changed_df[num][127] = 0;
+        {
+            FILE *f=fopen(changed_df[num],"rb");
+            if (f)
+            {
+                fclose(f);
+                if (strcmp(prefs_df[num],changed_df[num]))
+                {
+                    strcpy(prefs_df[num],changed_df[num]);
+                    real_changed_df[num] = 1;
+                }
+            }
+        }
+    }
+    else
+    {
+	    m68k_speed=mfmpos;
+	    check_prefs_changed_cpu();
+    }
+    
+    src = (uae_u8 *)(((unsigned)src)+strlen((char *)src) + 1);
+    
+    return src;
+}
+
+uae_u8 *save_disk(int num,int *len)
+{
+    uae_u8 *dstbak,*dst;
+    drive *drv;
+    
+    dstbak = dst = (uae_u8 *)malloc (2+1+1+1+1+4+4+256);
+    if (num<NUM_DRIVES)
+    {
+    	drv = &floppy[num];
+    	save_u32 (drv->drive_id);	    /* drive type ID */
+    	save_u8 ((drv->motoroff ? 0:1) | ((disabled & (1 << num)) ? 2 : 0));  /* state */
+    	save_u8 (drv->cyl);		    /* cylinder */
+    	save_u8 (drv->dskready);	    /* dskready */
+    	save_u8 (drv->drive_id_scnt);   /* id mode position */
+    	save_u32 (drv->mfmpos);	    /* disk position */
+    	save_u32 (0);		    /* CRC of disk image */
+    	strcpy ((char *)dst, prefs_df[num]);/* image name */
+    }
+    else
+    {
+        save_u32 (DRIVE_ID_NONE);	/* drive type ID */
+        save_u8 (((disabled & (1 << num)) ? 2 : 0)); /* state */
+        save_u8 (0);	/* cylinder */
+        save_u8 (0);	/* dskready */
+        save_u8 (0);	/* id mode position */
+        save_u32 (m68k_speed);	/* disk position */
+        save_u32 (0);	/* CRC of disk image */
+        dst[0]=dst[1]=0;
+    }
+    
+    dst = (uae_u8 *)(((unsigned)dst)+strlen((char *)dst) + 1);
+    *len = dst - dstbak;
+    return dstbak;
+}
+
+/* internal floppy controller variables */
+
+uae_u8 *restore_floppy(uae_u8 *src)
+{
+    word = restore_u16();
+    bitoffset = restore_u8();
+    dma_enable = restore_u8();
+    disk_hpos = restore_u8();
+    dskdmaen = restore_u8();
+    word |= restore_u16() << 16;
+
+    return src;
+}
+
+uae_u8 *save_floppy(int *len)
+{
+    uae_u8 *dstbak, *dst;
+
+    /* flush dma buffer before saving */
+    dodmafetch();
+
+    dstbak = dst = (uae_u8 *)malloc(2+1+1+1+1+2);
+    save_u16 (word);		/* current fifo (low word) */
+    save_u8 (bitoffset);	/* dma bit offset */
+    save_u8 (dma_enable);	/* disk sync found */
+    save_u8 (disk_hpos);	/* next bit read position */
+    save_u8 (dskdmaen);		/* dma status */
+    save_u16 (word >> 16);	/* current fifo (high word) */
+
+    *len = dst - dstbak;
+    return dstbak;
+}

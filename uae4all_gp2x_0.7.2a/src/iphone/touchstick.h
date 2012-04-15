@@ -17,22 +17,7 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-enum TouchStickDPadState {
-	DPadCenter,
-	DPadUp,
-	DPadUpRight,
-	DPadRight,
-	DPadDownRight,
-	DPadDown,
-	DPadDownLeft,
-	DPadLeft,
-	DPadUpLeft
-};
-
-enum FireButtonState {
-	FireButtonUp,
-	FireButtonDown
-};
+#include "touchstick-types.h"
 
 class CJoyStick  {
 public:

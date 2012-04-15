@@ -19,6 +19,9 @@
 #include "events.h"
 #include "m68k/m68k_intrf.h"
 #include "autoconf.h"
+#include "savestate.h"
+
+int bReloadKickstart = 0;
 
 #include "zfile.h"
 
@@ -32,8 +35,8 @@ unsigned prefs_chipmem_size;
 void clear_fame_mem_dummy(void);
 #endif
 
-#ifdef SPECIAL_MEM_FLAGS
 /* Set by each memory handler that does not simply access real memory.  */
+#ifdef USE_SPECIAL_MEM
 int special_mem;
 #endif
 
@@ -49,6 +52,9 @@ uae_u32 allocated_a3000mem;
 static long chip_filepos;
 static long bogo_filepos;
 static long rom_filepos;
+
+#include <zlib.h>
+static long compressed_size;
 
 addrbank *mem_banks[65536];
 
@@ -1078,6 +1084,7 @@ static void init_mem_banks (void)
     for (i = 0; i < 65536; i++)
 		put_mem_bank (i << 16, &dummy_bank, 0);
 #ifdef USE_FAME_CORE
+    if (!savestate_state)
     init_memmaps(&dummy_bank);
 #endif
 }
@@ -1092,7 +1099,7 @@ static void allocate_memory (void)
 		allocated_chipmem = prefs_chipmem_size;
 		chipmem_mask = allocated_chipmem - 1;
 		
-		chipmemory = mapped_malloc (allocated_chipmem, "chip");
+		chipmemory = (uae_u8 *)mapped_malloc (allocated_chipmem, "chip");
 		
 		if (chipmemory == 0) {
 			write_log ("Fatal error: out of memory for chipmem.\n");
@@ -1101,6 +1108,31 @@ static void allocate_memory (void)
 			do_put_mem_long ((uae_u32 *)(chipmemory + 4), swab_l(0));
     }
 	
+    if (savestate_state == STATE_RESTORE)
+    {
+	    fseek (savestate_file, chip_filepos, SEEK_SET);
+
+	    void *tmp=malloc(compressed_size);
+	    int outSize=allocated_chipmem;
+	    int inSize=compressed_size;
+	    int res;
+	    fread (tmp, 1, compressed_size, savestate_file);
+	    res=uncompress((Bytef *)chipmemory, (uLongf *)&outSize, (const Bytef *)tmp, (uLong) inSize);
+	    free(tmp);
+	    if(res != Z_OK)
+	    {
+	        // decompression failed - treat data literaly
+		    allocated_chipmem=compressed_size;
+		    fseek (savestate_file, chip_filepos, SEEK_SET);
+		    fread (chipmemory, 1, allocated_chipmem, savestate_file);
+	    }
+	    if (allocated_bogomem > 0)
+	    {
+		    fseek (savestate_file, bogo_filepos, SEEK_SET);
+		    fread (bogomemory, 1, allocated_bogomem, savestate_file);
+	    }
+    }
+
     chipmem_bank.baseaddr = chipmemory;
     bogomem_bank.baseaddr = bogomemory;
     chipmemory_word=(uae_u16 *)chipmemory;
@@ -1221,8 +1253,9 @@ void memory_reset (void)
 				map_banks (&kickmem_bank, 0xE0, 8, 0);
 			}
     }
-    if (kickmem_checksum!=get_kickmem_checksum())
+    if (kickmem_checksum!=get_kickmem_checksum() | bReloadKickstart)
     {
+		bReloadKickstart=0;
 		unsigned chksum=kickmem_checksum;
 		reload_kickstart();
 		if (chksum!=kickmem_checksum)
@@ -1367,11 +1400,110 @@ uae_u8 *save_bram (int *len)
 void restore_cram (int len, long filepos)
 {
     chip_filepos = filepos;
+    compressed_size=len;
 }
 
 void restore_bram (int len, long filepos)
 {
     bogo_filepos = filepos;
+}
+
+uae_u8 *restore_rom (uae_u8 *src)
+{
+    restore_u32 ();
+    restore_u32 ();
+    restore_u32 ();
+    restore_u32 ();
+    restore_u32 ();
+
+    return src;
+}
+
+uae_u8 *save_rom (int first, int *len)
+{
+    static int count;
+    uae_u8 *dst, *dstbak;
+    uae_u8 *mem_real_start;
+    int mem_start, mem_size, mem_type, i, saverom;
+
+    saverom = 0;
+    if (first)
+	count = 0;
+    for (;;) {
+	mem_type = count;
+	switch (count) {
+	case 0:		/* Kickstart ROM */
+	    mem_start = 0xf80000;
+	    mem_real_start = kickmemory;
+	    mem_size = kickmem_size;
+	    /* 256KB or 512KB ROM? */
+	    for (i = 0; i < mem_size / 2 - 4; i++) {
+		if (longget (i + mem_start) != longget (i + mem_start + mem_size / 2))
+		    break;
+	    }
+	    if (i == mem_size / 2 - 4) {
+		mem_size /= 2;
+		mem_start += 262144;
+	    }
+	    mem_type = 0;
+	    break;
+	default:
+	    return 0;
+	}
+	count++;
+	if (mem_size)
+	    break;
+    }
+    dstbak = dst = (uae_u8 *)malloc (4 + 4 + 4 + 4 + 4 + mem_size);
+    save_u32 (mem_start);
+    save_u32 (mem_size);
+    save_u32 (mem_type);
+    save_u32 (longget (mem_start + 12));	/* version+revision */
+    save_u32 (0);
+    sprintf ((char *)dst, "Kickstart %d.%d", wordget (mem_start + 12), wordget (mem_start + 14));
+    dst += strlen ((char *)dst) + 1;
+    if (saverom) {
+	for (i = 0; i < mem_size; i++)
+	    *dst++ = byteget (mem_start + i);
+    }
+    *len = dst - dstbak;
+    return dstbak;
+}
+
+uae_u8 *save_fram (int *len)
+{
+    *len = 0; //allocated_fastmem;
+    return NULL;
+}
+
+uae_u8 *save_zram (int *len)
+{
+    *len = 0; //allocated_z3fastmem;
+    return NULL;
+}
+
+void restore_fram (int len, long filepos)
+{
+}
+
+void restore_zram (int len, long filepos)
+{
+}
+
+uae_u8 *save_expansion (int *len)
+{
+    static uae_u8 t[20], *dst = t;
+    save_u32 (0);
+    save_u32 (0);
+    *len = 8;
+    return dst;
+}
+
+uae_u8 *restore_expansion (uae_u8 *src)
+{
+    restore_u32 ();
+    restore_u32 ();
+    return src;
 }
 
 #define MEMORY_DEBUGGER

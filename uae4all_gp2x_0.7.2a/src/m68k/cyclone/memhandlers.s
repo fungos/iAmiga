@@ -1,8 +1,4 @@
-//#if 0
-.set device, 0
-.set device, __arm__
-
-.if device
+#if __arm__
 
 @ vim:filetype=armasm
 @ memory handlers for uae4all and Cyclone
@@ -97,5 +93,4 @@ L_baseaddr$non_lazy_ptr:
 	.long	0
 	.subsections_via_symbols
 
-.endif
-//#endif
+#endif

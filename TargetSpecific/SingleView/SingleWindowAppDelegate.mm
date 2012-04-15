@@ -30,9 +30,9 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
     // load disks into df0: and df1:
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"Defender OTC1" ofType:@"ADF"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"DISK1" ofType:@"ADF"];
     [path getCString:prefs_df[0] maxLength:256 encoding:[NSString defaultCStringEncoding]];
-    path = [[NSBundle mainBundle] pathForResource:@"Defender OTC2" ofType:@"ADF"];
+    path = [[NSBundle mainBundle] pathForResource:@"DISK2" ofType:@"ADF"];
     [path getCString:prefs_df[1] maxLength:256 encoding:[NSString defaultCStringEncoding]];
 
     [window addSubview:self.mainController.view];

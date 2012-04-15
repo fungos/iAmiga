@@ -154,6 +154,7 @@ void CAudioQueueManager::HandleOutputBuffer (void *aqData, AudioQueueRef inAQ, A
 void CAudioQueueManager::_HandleOutputBuffer(AudioQueueBufferRef outBuffer) {
 	if (!_isRunning || _soundQBuffer.SoundCount() == 0) {
 		outBuffer->mAudioDataByteSize = outBuffer->mAudioDataBytesCapacity;
+        bzero(outBuffer->mAudioData, outBuffer->mAudioDataBytesCapacity);
 	} else {
 		
 		int neededFrames = _framesPerBuffer;
@@ -174,7 +175,7 @@ void CAudioQueueManager::_HandleOutputBuffer(AudioQueueBufferRef outBuffer) {
 		if (outBuffer->mAudioDataByteSize == 0)
 			printf("audio buffer underrun.");
 		else if (outBuffer->mAudioDataByteSize < outBuffer->mAudioDataBytesCapacity) 
-			printf("audio buffer less than capacity %d < %d.", outBuffer->mAudioDataByteSize, outBuffer->mAudioDataBytesCapacity);
+			printf("audio buffer less than capacity %u < %u.", (unsigned int)outBuffer->mAudioDataByteSize, (unsigned int)outBuffer->mAudioDataBytesCapacity);
 #endif
 	}
 	

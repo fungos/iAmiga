@@ -780,7 +780,11 @@ static M68K_INTERNAL_DATA DataWW[M68K_DATABANK];
 #endif
 
 /* Custom function handler */
+#ifdef FAMEC_NO_GOTOS
 typedef void (*opcode_func)(void);
+#else
+typedef const void* opcode_func;
+#endif
 
 static opcode_func JumpTable[0x10000];
 

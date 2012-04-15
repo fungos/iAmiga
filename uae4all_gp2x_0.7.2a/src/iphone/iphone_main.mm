@@ -55,15 +55,23 @@ int gui_init() {
 	 uae4all_prof_add("22");		// 22
 	 */
 #endif
+    
+    NSString *documents = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    [documents getCString:launchDir maxLength:sizeof(launchDir) encoding:[NSString defaultCStringEncoding]];
+    [[NSFileManager defaultManager] createDirectoryAtPath:[documents stringByAppendingPathComponent:@"saves"] withIntermediateDirectories:YES attributes:nil error:NULL];
 	
 	return 0;
 }
 
-void gui_update() {
+int gui_update() {
+    return 0;
 }
 
 void gui_handle_events() {
 }
+
+void gui_set_message(const char *msg, int t) {}
+void gui_show_window_bar(int per, int max, int case_title) {}
 
 #if defined(NO_SOUND)
 void sound_default_evtime(void) {

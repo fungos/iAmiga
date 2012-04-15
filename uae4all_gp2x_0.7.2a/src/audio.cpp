@@ -25,6 +25,7 @@
 #import "m68k/m68k_intrf.h"
 #import "debug_uae4all.h"
 #import "autoconf.h"
+#include "savestate.h"
 #import "gensound.h"
 #import "sound.h"
 #import "events.h"
@@ -612,6 +613,19 @@ void audio_channel_disable_dma(int n_channel)
 
 void audio_reset (void)
 {
+    int i;
+
+    if (savestate_state != STATE_RESTORE)
+    {
+	memset (audio_channel, 0, 4 * sizeof *audio_channel);
+	audio_channel[0].per = PERIOD_MAX;
+	audio_channel[1].per = PERIOD_MAX;
+	audio_channel[2].per = PERIOD_MAX;
+	audio_channel[3].per = PERIOD_MAX;
+    }
+    else
+	    for (i = 0; i < 4; i++)
+		    audio_channel[i].dmaen = (dmacon & 0x200) && (dmacon & (1 << i));
     memset (audio_channel, 0, 4 * sizeof *audio_channel);
     audio_channel[0].per = PERIOD_MAX;
     audio_channel[1].per = PERIOD_MAX;
@@ -1148,39 +1162,53 @@ void update_adkmasks (void)
     audio_channel_adk_mask[3] = (((t >> 3) & 1) - 1);
 }
 
-#if defined SAVESTATE || defined DEBUGGER
-
-uae_u8 *save_audio (unsigned int channel, uae_u32 *len, uae_u8 *dstptr)
+uae_u8 *restore_audio (uae_u8 *src, int i)
 {
-#ifdef PROFILING	
-	PROFILINGBEGIN
-#endif	
-    const struct audio_channel_data *acd = &audio_channel[channel];
-    uae_u8 *dst, *dstbak;
+    struct audio_channel_data *acd;
+    uae_u16 p,backper;
+
+    acd = audio_channel + i;
+    audio_channel_state[i]=restore_u8 ();
+    audio_channel_vol[i]=restore_u8 ();
+    acd->intreq2 = restore_u8 ();
+    acd->data_written = restore_u8 ();
+    acd->len = restore_u16 ();
+    acd->wlen = restore_u16 ();
+    backper = restore_u16 ();
+    p = restore_u16 ();
+    acd->wper = p ? p * CYCLE_UNIT : PERIOD_MAX;
+    acd->lc = restore_u32 ();
+    acd->pt = restore_u32 ();
+    audio_channel_evtime[i] = restore_u32 ();
+    AUDxPER(i,backper ? backper * CYCLE_UNIT : PERIOD_MAX);
+    audio_channel[i].dmaen = (dmacon & 0x200) && (dmacon & (1 << i));
+    AUDxDAT(i,0);
+
+    return src;
+}
+
+
+uae_u8 *save_audio (int *len, int i)
+{
+    struct audio_channel_data *acd;
+    uae_u8 *dst = (uae_u8 *)malloc (100);
+    uae_u8 *dstbak = dst;
     uae_u16 p;
 
-    if (dstptr)
-	dstbak = dst = dstptr;
-    else
-	dstbak = dst = malloc (100);
-
-    save_u8 ((uae_u8)acd->state);
-    save_u8 (acd->vol);
+    acd = audio_channel + i;
+    save_u8 (audio_channel_state[i]);
+    save_u8 (audio_channel_vol[i]);
     save_u8 (acd->intreq2);
-    save_u8 (acd->request_word);
+    save_u8 (acd->data_written);
     save_u16 (acd->len);
     save_u16 (acd->wlen);
     p = acd->per == PERIOD_MAX ? 0 : acd->per / CYCLE_UNIT;
     save_u16 (p);
-    save_u16 (acd->dat2);
+    p = acd->per == PERIOD_MAX ? 0 : acd->wper / CYCLE_UNIT;
+    save_u16 (p);
     save_u32 (acd->lc);
     save_u32 (acd->pt);
-    save_u32 (acd->evtime);
+    save_u32 (audio_channel_evtime[i]);
     *len = dst - dstbak;
-#ifdef PROFILING	
-	PROFILINGEND(PROFILINGINDEX+40)
-#endif	
     return dstbak;
 }
-
-#endif /* SAVESTATE || DEBUGGER */

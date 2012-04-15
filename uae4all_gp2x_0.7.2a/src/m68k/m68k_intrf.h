@@ -1,4 +1,5 @@
-
+#ifndef _M68K_INTRF
+#define _M68K_INTRF
 
 //#if defined(USE_FAME_CORE)
 
@@ -74,6 +75,7 @@ static __inline__ void unset_special (uae_u32 x)
     _68k_spcflags &= ~x;
 }
 
+/*
 static __inline__ uae_u8 *restore_cpu (uae_u8 *src)
 {
 	return src;
@@ -82,7 +84,7 @@ static __inline__ uae_u8 *restore_cpu (uae_u8 *src)
 static __inline__ uae_u8 *save_cpu (int *len)
 {
 	return (uae_u8 *)len;
-}
+}*/
 
 #elif defined(USE_CYCLONE_CORE)
 
@@ -116,13 +118,14 @@ extern M68KCONTEXT_t M68KCONTEXT;
 	M68KCONTEXT.cycles_counter += (cycles) - 1 - m68k_context.cycles; \
 }
 
+/*
 #define m68k_irq_update(end_timeslice) \
 	if ((end_timeslice) && m68k_context.cycles > 0) { \
 		M68KCONTEXT.cycles_counter += 24 - m68k_context.cycles; \
 		m68k_context.cycles = 24; \
 	}
-	
-/*
+*/
+
 #define m68k_irq_update(end_timeslice) \
 { \
 	int level, ints = M68KCONTEXT.interrupts[0]; \
@@ -135,7 +138,6 @@ extern M68KCONTEXT_t M68KCONTEXT;
 		m68k_context.cycles = 24 - 1; \
 	} \
 }
-*/
 
 #define IO_CYCLE        m68k_context.cycles
 
@@ -161,6 +163,43 @@ static __inline__ void _68k_setpc(unsigned mipc)
 	m68k_context.membase = 0;
 	m68k_context.pc = m68k_context.checkpc(mipc);
 }
+
+static __inline__ void _68k_set_flags(unsigned short val) {
+	m68k_context.flags = (val & 0x0c); // NZ
+	m68k_context.flags |= ((val & 0x01) << 1);	// C
+	m68k_context.flags |= ((val & 0x02) >> 1);	// V
+	m68k_context.xc = (val & 0x10) << 25; // X
+}
+
+static __inline__ unsigned short _68k_get_flags() {
+	unsigned short flags  = m68k_context.flags;
+	unsigned short result = (flags & 0x0c); // NZ
+	result |= ((flags & 0x02) >> 1); // C
+	result |= ((flags & 0x01) << 1); // V
+	result |= (m68k_context.xc & 0x20000000) ? 0x10 : 0x00;  // X
+	return result;
+}
+
+
+static __inline__ unsigned short _68k_get_sr() {
+	return _68k_get_flags() | m68k_context.srh << 8;
+}
+
+static __inline__ void _68k_set_sr(unsigned short val) {
+	_68k_set_flags((unsigned short)val);
+	m68k_context.srh = val >> 8;
+}
+
+/*
+static __inline__ uae_u8 *restore_cpu (uae_u8 *src)
+{
+	return src;
+}
+
+static __inline__ uae_u8 *save_cpu (int *len)
+{
+	return (uae_u8 *)len;
+} */
 
 #elif defined(USE_FAME_CORE_ARM2)
 
@@ -306,5 +345,7 @@ static __inline__ void _68k_set_sr(unsigned short val) {
 
 #include "custom.h"
 #include "m68k/uae/newcpu.h"
+
+#endif
 
 #endif

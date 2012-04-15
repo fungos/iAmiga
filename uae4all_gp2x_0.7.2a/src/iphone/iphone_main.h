@@ -13,3 +13,6 @@ extern "C" char* get_rom_path();
 extern "C" char* get_df_path(int drive);
 extern "C" int getDisplayIsNTSC();
 extern "C" void setDisplayIsNTSC(int isNTSC);
+
+#import "sysdeps.h"
+#import "gui.h"

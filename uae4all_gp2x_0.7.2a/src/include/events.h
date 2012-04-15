@@ -1,3 +1,6 @@
+#ifndef _EVENTS_H
+#define _EVENTS_H
+
  /*
   * UAE - The Un*x Amiga Emulator
   *
@@ -199,3 +202,4 @@ extern void init_eventtab (void);
 #define do_cycles do_cycles_slow
 
 
+#endif

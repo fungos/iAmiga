@@ -41,8 +41,9 @@
 uae g_emulator;
 
 uae::uae() {
-	quit_program = RunStateNormal;
+	quit_program = RunStateNotStarted;
 	paused = false;
+    running = false;
 }
 
 int cloanto_rom = 0;

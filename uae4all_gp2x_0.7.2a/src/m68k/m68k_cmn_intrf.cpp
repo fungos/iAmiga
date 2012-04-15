@@ -20,7 +20,7 @@
 #include "autoconf.h"
 #include "ersatz.h"
 #include "gui.h"
-//#include "savestate.h"
+#include "savestate.h"
 #include "blitter.h"
 #include "events.h"
 #include "sound.h"
@@ -241,7 +241,7 @@ static void uae4all_reset(void)
 
 static void m68k_run (void)
 {
-	uae4all_reset ();
+	// uae4all_reset ();
 	unsigned cycles, cycles_actual=M68KCONTEXT.cycles_counter;
 	for (;;) {
 #ifdef DEBUG_M68K
@@ -355,17 +355,34 @@ void m68k_go (int may_quit)
                 break;
 			
 			g_emulator.quit_program = RunStateNormal;
+            bool restoring = false;
+            if (savestate_state == STATE_RESTORE)
+            {
+                restore_state (savestate_filename);
+                mispcflags = 0;
+                restoring = true;
+                // _m68k_setpc(M68KCONTEXT.pc);
+            }
 			g_emulator.reset_all_systems ();
 			customreset ();
-			check_prefs_changed_cpu ();
-			sound_default_evtime ();
+            
+            if (!restoring) {
+                check_prefs_changed_cpu ();
+                sound_default_evtime ();
+            }
 			/* We may have been restoring state, but we're done now.  */
 			handle_active_events ();
 			if (mispcflags)
 				do_specialties (0);
         }
 		
+        if (!savestate_state)
+            uae4all_reset ();
+        savestate_restore_finish ();
+
+        g_emulator.running = true;
         m68k_run();
+        g_emulator.running = false;
     }
 #if !defined(DREAMCAST) || defined(DEBUG_UAE4ALL)
     in_m68k_go--;

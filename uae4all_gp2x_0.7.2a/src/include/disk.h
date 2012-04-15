@@ -1,3 +1,6 @@
+#ifndef _DISK_H
+#define _DISK_H
+
  /*
   * UAE - The Un*x Amiga Emulator
   *
@@ -26,31 +29,4 @@ extern void DSKSYNC (uae_u16);
 extern void DSKPTL (uae_u16);
 extern void DSKPTH (uae_u16);
 
-class DiskDrives {
-public:
-	void init (void);
-	void select (uae_u8 data);
-	uae_u8 status (void);
-	void disk_eject (int num);
-	int disk_empty (int num);
-	void disk_insert (int num, const char *name);
-	void check_change (void);
-	FILE *DISK_validate_filename (const char *, int, int *);
-	
-	void handler (void);
-	
-	void update (void);
-	void reset (void);
-	
-	void DSKLEN (uae_u16 v, int hpos);
-	uae_u16 DSKDATR (int hpos);
-	uae_u16 DSKBYTR (int hpos);
-	void DSKDAT (uae_u16);
-	void DSKSYNC (uae_u16);
-	void DSKPTL (uae_u16);
-	void DSKPTH (uae_u16);
-	
-	
-private:
-	
-};
+#endif

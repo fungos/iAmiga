@@ -9,6 +9,7 @@
 #include "uae.h"
 #include "ersatz.h"
 #include "m68k/m68k_intrf.h"
+#include "savestate.h"
 
 #include <stdio.h>
 
@@ -35,7 +36,7 @@ printf("%05i|%03i: %06x: %s: " f "\n",M68KCONTEXT.cycles_counter,m68k_context.cy
 #endif
 
 // for easier sync with FAMEC
-#define SPLIT_32_2_16
+//#define SPLIT_32_2_16
 
 struct Cyclone m68k_context;
 M68KCONTEXT_t M68KCONTEXT;
@@ -420,6 +421,84 @@ void map_zone(unsigned addr, addrbank* banco, unsigned realstart)
 
 void clear_fame_mem_dummy(void)
 {
+}
+
+/*
+uae_u8 *restore_cpu (uae_u8 *src)
+{
+	CycloneUnpack(&m68k_context, src);
+	return src;
+}
+
+uae_u8 *save_cpu (int *len)
+{
+	*len = 128;
+	void *save_buffer = malloc(128);
+	CyclonePack(&m68k_context, save_buffer);
+	return (uae_u8*)save_buffer;
+}
+*/
+/* CPU save/restore code */
+
+#define CPUTYPE_EC 1
+#define CPUMODE_HALT 1
+
+uae_u8 *restore_cpu (uae_u8 *src)
+{
+    int i,model,flags;
+    uae_u32 l;
+    
+    model = restore_u32();
+    flags = restore_u32();
+    for (i = 0; i < 8; i++)
+	    _68k_dreg(i)=restore_u32 ();
+    for (i = 0; i < 8; i++)
+	    _68k_areg(i)=restore_u32 ();
+    _68k_setpc(restore_u32 ());
+    /* We don't actually use this - we deliberately set prefetch_pc to a
+     zero so that prefetch isn't used for the first insn after a state
+     restore.  */
+    /* uae_regs.prefetch = */ restore_u32 ();
+    /* uae_regs.prefetch_pc =  uae_regs.pc + 128; */
+    _68k_mspreg = restore_u32 ();
+    /* uae_regs.isp = */ restore_u32 ();
+    _68k_set_sr(restore_u16 ());
+    l = restore_u32();
+    if (l & CPUMODE_HALT) {
+        M68KCONTEXT.execinfo|=0x0080;
+        mispcflags=SPCFLAG_STOP;
+    } else {
+        M68KCONTEXT.execinfo&=~0x0080;
+        mispcflags=0;
+    }
+    write_log ("CPU %d%s%03d, PC=%08.8X\n",
+               model/1000, flags & 1 ? "EC" : "", model % 1000, _68k_getpc());
+    
+    return src;
+}
+
+
+uae_u8 *save_cpu (int *len)
+{
+    uae_u8 *dstbak,*dst;
+    int model,i;
+    
+    dstbak = dst = (uae_u8 *)malloc(4+4+15*4+4+4+4+4+2+4+4+4+4+4+4+4);
+    model = 68000;
+    save_u32 (model);					/* MODEL */
+    save_u32 (1); //currprefs.address_space_24 ? 1 : 0);	/* FLAGS */
+    for(i = 0;i < 8; i++)
+	    save_u32 (_68k_dreg(i));
+    for(i = 0;i < 8; i++)
+	    save_u32 (_68k_areg(i));
+    save_u32 (_68k_getpc ());				/* PC */
+    save_u32 (0); //uae_regs.prefetch);				/* prefetch */
+    save_u32 (_68k_mspreg);
+    save_u32 (_68k_areg(7));
+    save_u16 (_68k_get_sr());				/* SR/CCR */
+    save_u32 (M68KCONTEXT.execinfo&0x0080 ? CPUMODE_HALT : 0);	/* flags */
+    *len = dst - dstbak;
+    return dstbak;
 }
 
 #endif

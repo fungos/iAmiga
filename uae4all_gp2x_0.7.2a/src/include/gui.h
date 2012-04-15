@@ -1,3 +1,10 @@
+#ifndef _GUI_H
+#define _GUI_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
  /*
   * UAE - The Un*x Amiga Emulator
   *
@@ -17,6 +24,8 @@ extern void gui_fps (int fps);
 extern void gui_changesettings (void);
 extern void gui_lock (void);
 extern void gui_unlock (void);
+extern void gui_set_message(const char *msg, int t);
+extern void gui_show_window_bar(int per, int max, int case_title);
 
 extern unsigned int gui_ledstate;
 
@@ -34,3 +43,9 @@ extern struct gui_info gui_data;
 extern void gui_update_gfx (void);
 extern void uae4all_update_time(void);
 extern void uae4all_show_time(void);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif

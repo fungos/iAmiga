@@ -1,7 +1,4 @@
-.set device, 0
-.set device, __arm__
-
-.if device
+#if __arm__
 
 ;@ Dave's Cyclone 68000 Emulator v0.088 - Assembler Output
 
@@ -64261,7 +64258,7 @@ WrongPrivilegeMode:
 
 ;@ -------------------------- Jump Table --------------------------
   .data
-  .align 2
+  .align 4
 
 CycloneJumpTab:
   .fill 0xA000, 4, 0x00
@@ -65562,6 +65559,6 @@ CycloneJumpTab:
   //.endr
   //.fill 0xf78,4,0
 
-.endif
 ;@ vim:filetype=armasm
 
+#endif

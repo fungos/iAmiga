@@ -426,7 +426,8 @@
 #define USE_FAME_CORE
 
 #if TARGET_CPU_ARM
-#define USE_FAME_CORE_ARM2
+#define USE_CYCLONE_CORE
+//#define USE_FAME_CORE_ARM2
 //#define USE_FAME_CORE_C
 #else
 #define USE_FAME_CORE_C

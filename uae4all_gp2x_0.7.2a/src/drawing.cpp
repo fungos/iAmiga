@@ -30,28 +30,29 @@
  To prevent extremely bad things (think pixels cut in half by window borders) from
  happening, all ports should restrict window widths to be multiples of 16 pixels.  */
 
-#import "sysconfig.h"
-#import "sysdeps.h"
+#include "sysconfig.h"
+#include "sysdeps.h"
 
-#import <ctype.h>
-#import <assert.h>
+#include <ctype.h>
+#include <assert.h>
 
-#import "config.h"
-#import "uae.h"
-#import "options.h"
-#import "thread.h"
-#import "memory.h"
-#import "custom.h"
-#import "m68k/m68k_intrf.h"
-#import "xwin.h"
-#import "autoconf.h"
-#import "gui.h"
-#import "drawing.h"
-#import "sound.h"
-#import "debug_uae4all.h"
+#include "config.h"
+#include "uae.h"
+#include "options.h"
+#include "thread.h"
+#include "memory.h"
+#include "custom.h"
+#include "m68k/m68k_intrf.h"
+#include "xwin.h"
+#include "autoconf.h"
+#include "gui.h"
+#include "drawing.h"
+#include "savestate.h"
+#include "sound.h"
+#include "debug_uae4all.h"
 
-#import <sys/time.h>
-#import <time.h>
+#include <sys/time.h>
+#include <time.h>
 static int fps_counter = 0, fps_counter_changed = 0;
 
 #ifdef USE_DRAWING_EXTRA_INLINE
@@ -2217,6 +2218,24 @@ void vsync_handle_redraw (int long_frame, int lof_changed)
 		 * done at other times.
 		 */
 		
+        if (savestate_state == STATE_DOSAVE)
+        {
+            custom_prepare_savestate ();
+            savestate_state = STATE_SAVE;
+            pause_sound();
+            save_state (savestate_filename, "Description!");
+            resume_sound();
+                gui_set_message("Saved", 50);
+            savestate_state = 0;
+        }
+        else
+            if (savestate_state == STATE_DORESTORE)
+            {
+                pause_sound();
+                savestate_state = STATE_RESTORE;
+                uae_reset ();
+            }
+
 		if (g_emulator.quit_program < 0) {
 			g_emulator.quit_program = (tagUAERunState)-g_emulator.quit_program;
 			set_inhibit_frame (IHF_QUIT_PROGRAM);

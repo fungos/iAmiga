@@ -21,3 +21,5 @@ disks/*
 
 # vim
 *.swp
+
+rgetSpecific/DotC/Info-DotC.plist

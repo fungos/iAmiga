@@ -1,3 +1,5 @@
+#ifndef _XWIN_H
+#define _XWIN_H
  /*
   * UAE - The Un*x Amiga Emulator
   *
@@ -39,3 +41,5 @@ extern unsigned gfx_rowbytes;
 class host {
 	
 };
+
+#endif

@@ -1,3 +1,6 @@
+#ifndef _DRAWING_H
+#define _DRAWING_H
+
 /*
  * Data used for communication between custom.c and drawing.c.
  * 
@@ -226,3 +229,5 @@ extern int inhibit_frame;
 void reset_frameskip(void);
 void check_all_prefs(void);
 void delay_frameskip(unsigned);
+
+#endif

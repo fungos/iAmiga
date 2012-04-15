@@ -1,3 +1,6 @@
+#ifndef _OPTIONS_H
+#define _OPTIONS_H
+
  /*
   * UAE - The Un*x Amiga Emulator
   *
@@ -7,11 +10,17 @@
   * Copyright 1995-2001 Bernd Schmidt
   */
 
+#if defined (AMIGA_OPTIONS)
+#include "app-options.h"
+#endif
+
 #define UAEMAJOR 0
 #define UAEMINOR 8
 #define UAESUBREV 22
 
+#ifndef NUM_DRIVES
 #define NUM_DRIVES 2
+#endif
 
 typedef enum { KBD_LANG_US, KBD_LANG_DK, KBD_LANG_DE, KBD_LANG_SE, KBD_LANG_FR, KBD_LANG_IT, KBD_LANG_ES } KbdLang;
 
@@ -23,7 +32,7 @@ extern int changed_produce_sound;
 extern char prefs_df[NUM_DRIVES][256];
 extern char changed_df[NUM_DRIVES][256];
 extern int real_changed_df[NUM_DRIVES];
-extern char romfile[64];
+extern char romfile[256];
 extern unsigned prefs_chipmem_size;
 extern int prefs_gfx_framerate, changed_gfx_framerate;
 extern int m68k_speed;
@@ -124,4 +133,6 @@ static __inline__ void fuzzy_memset_le32_1 (void *p, uae_u32 c, int offset, int 
 
 #if defined(AMIGA) && defined(__GNUC__)
 #include "od-amiga/amiga-kludges.h"
+#endif
+
 #endif

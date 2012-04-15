@@ -1,3 +1,6 @@
+#ifndef _SYSDEPS_H
+#define _SYSDEPS_H
+
  /*
   * UAE - The Un*x Amiga Emulator
   *
@@ -446,4 +449,6 @@ extern int console_get (char *, int);
 #define PRELOAD(ADDR)	asm volatile("pld [%0]":: "r" ((ADDR)))
 #else
 #define PRELOAD(ADDR)
+#endif
+
 #endif

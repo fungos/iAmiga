@@ -32,6 +32,11 @@ void read_joystick(int nr, unsigned int *dir, int *button)
     
     *dir = 0;
     *button = 0;
+#if defined (SWAP_JOYSTICK)
+    if (nr == 0) return;
+#else
+    if (nr == 1) return;
+#endif
     
     nr = (~nr)&0x1;
 	

@@ -1,4 +1,7 @@
- /*
+#ifndef _UAE_H
+#define _UAE_H
+
+/*
   * UAE - The Un*x Amiga Emulator
   *
   * Prototypes for main.c
@@ -7,6 +10,7 @@
   */
 
 enum tagUAERunState {
+    RunStateNotStarted = -2,
 	RunStateSpecialQuit = -1,
 	RunStateNormal = 0,
 	RunStateExit = 1,
@@ -28,6 +32,7 @@ public:
 	// state
 	tagUAERunState quit_program;
 	bool paused;
+    bool running;
 	
 private:
 	void do_start_program (void);
@@ -41,3 +46,5 @@ private:
 extern uae g_emulator;
 
 extern "C" void uae_reset();
+
+#endif
