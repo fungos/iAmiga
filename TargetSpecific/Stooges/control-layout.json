@@ -1,7 +1,7 @@
 {
     "iphone" : {
         "options" : {
-            
+            "preferredStick": "fixed"
         },
         "actions" : [
             { "action": "clear" },
@@ -13,13 +13,13 @@
     },
     "ipad" : {
         "options" : {
-            
+            "preferredStick": "fixed"
         },
         "actions" : [
             { "action": "clear" },
             { 
                 "action": "add", "type": "JoyButton", 
-                "options": { "image": "firebutton-red", "center": "{60, 484}", "alpha": 0.50 } 
+                "options": { "image": "firebutton-red", "center": "{60, 630}", "alpha": 0.50 } 
             }
         ]
     }

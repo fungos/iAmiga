@@ -76,9 +76,9 @@ const int kButtonWidth = 200;
 - (UIView*)fixedJoystick {
     CGRect rect;
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-        rect = CGRectMake(864, 404, 160, 160);
+        rect = CGRectMake(864, 530, 160, 160);
     else
-        rect = CGRectMake(330, 170, 160, 160);
+        rect = CGRectMake(330, 130, 160, 160);
     
 	UIView *r = [[MMFixedStickController alloc] initWithFrame:rect];
 	r.alpha = 0.5f;
@@ -91,7 +91,7 @@ const int kButtonWidth = 200;
 }
 
 - (void)setCurrentStick {
-	_currentStickClass = _defaultIsFixed || _isFixedOverride ? [MMFixedStickController class] : [LandscapeJoystick class];
+	_currentStickClass = /*_defaultIsFixed ||*/ _isFixedOverride ? [MMFixedStickController class] : [LandscapeJoystick class];
 }
 
 - (void)createJoystick {
