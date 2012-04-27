@@ -6,16 +6,16 @@
 //  Copyright 2011 Manomio LLC. All rights reserved.
 //
 
-#import "DOTCEmulationViewController.h"
+#import "StoogesEmulationViewController.h"
 #import "LambdaAlert.h"
 
-@interface DOTCEmulationViewController()
+@interface StoogesEmulationViewController()
 
 - (void)startIntroSequence;
 
 @end
 
-@implementation DOTCEmulationViewController
+@implementation StoogesEmulationViewController
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return UIInterfaceOrientationIsLandscape(interfaceOrientation);
@@ -49,9 +49,9 @@ extern void uae_reset();
     
     NSMutableArray *sequence = [NSMutableArray arrayWithObjects:
                                 [FadeAction actionWithFadeIn:1.0f holdTime:4.0f fadeOut:1.0f forImageNamed:@"intro_1"],
-                                [FadeAction actionWithFadeIn:1.0f holdTime:2.0f fadeOut:1.0f forImageNamed:@"intro_2"],
+                                [FadeAction actionWithFadeIn:1.0f holdTime:4.0f fadeOut:1.0f forImageNamed:@"intro_2"],
                                 [FadeAction actionWithFadeIn:1.0f holdTime:4.0f fadeOut:1.0f forImageNamed:@"intro_3"],
-                                [FadeAction actionWithFadeIn:1.0f holdTime:2.5f fadeOut:1.0f forImageNamed:@"intro_4"],
+                                [FadeAction actionWithFadeIn:1.0f holdTime:3.0f fadeOut:1.0f forImageNamed:@"intro_4"],
                                 nil
                                 ];
     view.delegate = self;

@@ -11,13 +11,6 @@
 		050415610FCB475C00F46828 /* InputControllerView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0504155E0FCB475C00F46828 /* InputControllerView.mm */; };
 		050415620FCB475C00F46828 /* JoystickViewLandscape.mm in Sources */ = {isa = PBXBuildFile; fileRef = 050415600FCB475C00F46828 /* JoystickViewLandscape.mm */; };
 		0504156B0FCB4BD400F46828 /* CocoaUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 0504156A0FCB4BD400F46828 /* CocoaUtility.m */; };
-		050416410FCB566500F46828 /* ls-fullscreen_bottomBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 0504162D0FCB566500F46828 /* ls-fullscreen_bottomBtn.png */; };
-		050416420FCB566500F46828 /* ls-instructions_overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 0504162E0FCB566500F46828 /* ls-instructions_overlay.png */; };
-		050416430FCB566500F46828 /* ls-overlay-skin.png in Resources */ = {isa = PBXBuildFile; fileRef = 0504162F0FCB566500F46828 /* ls-overlay-skin.png */; };
-		050416440FCB566500F46828 /* ls-bgimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 050416300FCB566500F46828 /* ls-bgimage.png */; };
-		050416450FCB566500F46828 /* ls-fire.png in Resources */ = {isa = PBXBuildFile; fileRef = 050416310FCB566500F46828 /* ls-fire.png */; };
-		050416460FCB566500F46828 /* ls-joystick_active.png in Resources */ = {isa = PBXBuildFile; fileRef = 050416320FCB566500F46828 /* ls-joystick_active.png */; };
-		050416470FCB566500F46828 /* ls-joystick_rest.png in Resources */ = {isa = PBXBuildFile; fileRef = 050416330FCB566500F46828 /* ls-joystick_rest.png */; };
 		0506D73913CA7BF700559637 /* OldLondon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0506D73713CA7BF700559637 /* OldLondon.ttf */; };
 		0506D73A13CA7BF700559637 /* gpl.html in Resources */ = {isa = PBXBuildFile; fileRef = 0506D73813CA7BF700559637 /* gpl.html */; };
 		05084E4A13D7FE7B0004617A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 05084E4913D7FE7B0004617A /* libz.dylib */; };
@@ -213,9 +206,6 @@
 		05E8A04712B2C884005532AF /* amiga-beige-dark-left.png in Resources */ = {isa = PBXBuildFile; fileRef = 05E8A04412B2C884005532AF /* amiga-beige-dark-left.png */; };
 		05E8A04812B2C884005532AF /* amiga-beige-dark-right.png in Resources */ = {isa = PBXBuildFile; fileRef = 05E8A04512B2C884005532AF /* amiga-beige-dark-right.png */; };
 		05E8A04A12B2C8E9005532AF /* amiga-beige-dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 05E8A04912B2C8E9005532AF /* amiga-beige-dark.png */; };
-		05ECEAA51091B97D001A71D0 /* joystick.png in Resources */ = {isa = PBXBuildFile; fileRef = 05ECEAA21091B97D001A71D0 /* joystick.png */; };
-		05ECEAA61091B97D001A71D0 /* keyboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 05ECEAA31091B97D001A71D0 /* keyboard.png */; };
-		05ECEAA71091B97D001A71D0 /* mouse.png in Resources */ = {isa = PBXBuildFile; fileRef = 05ECEAA41091B97D001A71D0 /* mouse.png */; };
 		05F5F218112A54F1001530EC /* kick31.rom in Resources */ = {isa = PBXBuildFile; fileRef = 05F5F217112A54F1001530EC /* kick31.rom */; };
 		05FE7F280FC3EDBF00DBFECF /* AudioQueueManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05FE7F270FC3EDBF00DBFECF /* AudioQueueManager.cpp */; };
 		1D3623260D0F684500981E51 /* iAmigaAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* iAmigaAppDelegate.mm */; };
@@ -397,6 +387,72 @@
 		97A932051538B14B001064D7 /* jquery-1.4.4.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 97A932001538B14B001064D7 /* jquery-1.4.4.min.js */; };
 		97A932091538B207001064D7 /* DISK1.ADF in Resources */ = {isa = PBXBuildFile; fileRef = 97A932071538B207001064D7 /* DISK1.ADF */; };
 		97A9320A1538B207001064D7 /* DISK2.ADF in Resources */ = {isa = PBXBuildFile; fileRef = 97A932081538B207001064D7 /* DISK2.ADF */; };
+		97BE2AA115486FE600BF66CF /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BE2A9615486FE600BF66CF /* NSObject+SBJSON.m */; };
+		97BE2AA215486FE600BF66CF /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BE2A9815486FE600BF66CF /* NSString+SBJSON.m */; };
+		97BE2AA315486FE600BF66CF /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BE2A9A15486FE600BF66CF /* SBJSON.m */; };
+		97BE2AA415486FE600BF66CF /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BE2A9C15486FE600BF66CF /* SBJsonBase.m */; };
+		97BE2AA515486FE600BF66CF /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BE2A9E15486FE600BF66CF /* SBJsonParser.m */; };
+		97BE2AA615486FE600BF66CF /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BE2AA015486FE600BF66CF /* SBJsonWriter.m */; };
+		97BE2AC21548702100BF66CF /* BaseControlsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BE2AA91548702100BF66CF /* BaseControlsView.m */; };
+		97BE2AC31548702100BF66CF /* BaseLeftRightAwareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BE2AAB1548702100BF66CF /* BaseLeftRightAwareView.m */; };
+		97BE2AC41548702100BF66CF /* ButtonJoyButton.mm in Sources */ = {isa = PBXBuildFile; fileRef = 97BE2AAD1548702100BF66CF /* ButtonJoyButton.mm */; };
+		97BE2AC51548702100BF66CF /* ControlDefaultConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BE2AAF1548702100BF66CF /* ControlDefaultConstants.m */; };
+		97BE2AC61548702100BF66CF /* ImageJoyButton.mm in Sources */ = {isa = PBXBuildFile; fileRef = 97BE2AB11548702100BF66CF /* ImageJoyButton.mm */; };
+		97BE2AC71548702100BF66CF /* JoyButtonBase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 97BE2AB31548702100BF66CF /* JoyButtonBase.mm */; };
+		97BE2AC81548702100BF66CF /* DynamicLandscapeControls.mm in Sources */ = {isa = PBXBuildFile; fileRef = 97BE2AB71548702100BF66CF /* DynamicLandscapeControls.mm */; };
+		97BE2AC91548702100BF66CF /* LandscapeJoystick.mm in Sources */ = {isa = PBXBuildFile; fileRef = 97BE2AB91548702100BF66CF /* LandscapeJoystick.mm */; };
+		97BE2ACA1548702100BF66CF /* MMFixedStickController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 97BE2ABB1548702100BF66CF /* MMFixedStickController.mm */; };
+		97BE2ACB1548702100BF66CF /* StaticImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 97BE2ABD1548702100BF66CF /* StaticImage.m */; };
+		97BE2ACC1548702100BF66CF /* StickControllerBase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 97BE2ABF1548702100BF66CF /* StickControllerBase.mm */; };
+		97BE2AE115489E6600BF66CF /* firebutton-red-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2ACF15489E6600BF66CF /* firebutton-red-active.png */; };
+		97BE2AE215489E6600BF66CF /* firebutton-red-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2ACF15489E6600BF66CF /* firebutton-red-active.png */; };
+		97BE2AE315489E6600BF66CF /* firebutton-red-active.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2ACF15489E6600BF66CF /* firebutton-red-active.png */; };
+		97BE2AE415489E6600BF66CF /* firebutton-red-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2AD015489E6600BF66CF /* firebutton-red-active@2x.png */; };
+		97BE2AE515489E6600BF66CF /* firebutton-red-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2AD015489E6600BF66CF /* firebutton-red-active@2x.png */; };
+		97BE2AE615489E6600BF66CF /* firebutton-red-active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2AD015489E6600BF66CF /* firebutton-red-active@2x.png */; };
+		97BE2AE715489E6600BF66CF /* firebutton-red-active~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2AD115489E6600BF66CF /* firebutton-red-active~ipad.png */; };
+		97BE2AE815489E6600BF66CF /* firebutton-red-active~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2AD115489E6600BF66CF /* firebutton-red-active~ipad.png */; };
+		97BE2AE915489E6600BF66CF /* firebutton-red-active~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2AD115489E6600BF66CF /* firebutton-red-active~ipad.png */; };
+		97BE2AEA15489E6600BF66CF /* firebutton-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2AD215489E6600BF66CF /* firebutton-red.png */; };
+		97BE2AEB15489E6600BF66CF /* firebutton-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2AD215489E6600BF66CF /* firebutton-red.png */; };
+		97BE2AEC15489E6600BF66CF /* firebutton-red.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2AD215489E6600BF66CF /* firebutton-red.png */; };
+		97BE2AED15489E6600BF66CF /* firebutton-red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2AD315489E6600BF66CF /* firebutton-red@2x.png */; };
+		97BE2AEE15489E6600BF66CF /* firebutton-red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2AD315489E6600BF66CF /* firebutton-red@2x.png */; };
+		97BE2AEF15489E6600BF66CF /* firebutton-red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2AD315489E6600BF66CF /* firebutton-red@2x.png */; };
+		97BE2AF015489E6600BF66CF /* firebutton-red~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2AD415489E6600BF66CF /* firebutton-red~ipad.png */; };
+		97BE2AF115489E6600BF66CF /* firebutton-red~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2AD415489E6600BF66CF /* firebutton-red~ipad.png */; };
+		97BE2AF215489E6600BF66CF /* firebutton-red~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2AD415489E6600BF66CF /* firebutton-red~ipad.png */; };
+		97BE2AF315489E6600BF66CF /* joystick.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2AD615489E6600BF66CF /* joystick.png */; };
+		97BE2AF415489E6600BF66CF /* joystick.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2AD615489E6600BF66CF /* joystick.png */; };
+		97BE2AF515489E6600BF66CF /* joystick.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2AD615489E6600BF66CF /* joystick.png */; };
+		97BE2AF615489E6600BF66CF /* keyboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2AD715489E6600BF66CF /* keyboard.png */; };
+		97BE2AF715489E6600BF66CF /* keyboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2AD715489E6600BF66CF /* keyboard.png */; };
+		97BE2AF815489E6600BF66CF /* keyboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2AD715489E6600BF66CF /* keyboard.png */; };
+		97BE2AF915489E6600BF66CF /* mouse.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2AD815489E6600BF66CF /* mouse.png */; };
+		97BE2AFA15489E6600BF66CF /* mouse.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2AD815489E6600BF66CF /* mouse.png */; };
+		97BE2AFB15489E6600BF66CF /* mouse.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2AD815489E6600BF66CF /* mouse.png */; };
+		97BE2AFC15489E6600BF66CF /* ls-fullscreen_bottomBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2ADA15489E6600BF66CF /* ls-fullscreen_bottomBtn.png */; };
+		97BE2AFD15489E6600BF66CF /* ls-fullscreen_bottomBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2ADA15489E6600BF66CF /* ls-fullscreen_bottomBtn.png */; };
+		97BE2AFE15489E6600BF66CF /* ls-fullscreen_bottomBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2ADA15489E6600BF66CF /* ls-fullscreen_bottomBtn.png */; };
+		97BE2AFF15489E6600BF66CF /* ls-instructions_overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2ADB15489E6600BF66CF /* ls-instructions_overlay.png */; };
+		97BE2B0015489E6600BF66CF /* ls-instructions_overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2ADB15489E6600BF66CF /* ls-instructions_overlay.png */; };
+		97BE2B0115489E6600BF66CF /* ls-instructions_overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2ADB15489E6600BF66CF /* ls-instructions_overlay.png */; };
+		97BE2B0215489E6600BF66CF /* ls-overlay-skin.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2ADC15489E6600BF66CF /* ls-overlay-skin.png */; };
+		97BE2B0315489E6600BF66CF /* ls-overlay-skin.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2ADC15489E6600BF66CF /* ls-overlay-skin.png */; };
+		97BE2B0415489E6600BF66CF /* ls-overlay-skin.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2ADC15489E6600BF66CF /* ls-overlay-skin.png */; };
+		97BE2B0515489E6600BF66CF /* ls-bgimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2ADD15489E6600BF66CF /* ls-bgimage.png */; };
+		97BE2B0615489E6600BF66CF /* ls-bgimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2ADD15489E6600BF66CF /* ls-bgimage.png */; };
+		97BE2B0715489E6600BF66CF /* ls-bgimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2ADD15489E6600BF66CF /* ls-bgimage.png */; };
+		97BE2B0815489E6600BF66CF /* ls-fire.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2ADE15489E6600BF66CF /* ls-fire.png */; };
+		97BE2B0915489E6600BF66CF /* ls-fire.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2ADE15489E6600BF66CF /* ls-fire.png */; };
+		97BE2B0A15489E6600BF66CF /* ls-fire.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2ADE15489E6600BF66CF /* ls-fire.png */; };
+		97BE2B0B15489E6600BF66CF /* ls-joystick_active.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2ADF15489E6600BF66CF /* ls-joystick_active.png */; };
+		97BE2B0C15489E6600BF66CF /* ls-joystick_active.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2ADF15489E6600BF66CF /* ls-joystick_active.png */; };
+		97BE2B0D15489E6600BF66CF /* ls-joystick_active.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2ADF15489E6600BF66CF /* ls-joystick_active.png */; };
+		97BE2B0E15489E6600BF66CF /* ls-joystick_rest.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2AE015489E6600BF66CF /* ls-joystick_rest.png */; };
+		97BE2B0F15489E6600BF66CF /* ls-joystick_rest.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2AE015489E6600BF66CF /* ls-joystick_rest.png */; };
+		97BE2B1015489E6600BF66CF /* ls-joystick_rest.png in Resources */ = {isa = PBXBuildFile; fileRef = 97BE2AE015489E6600BF66CF /* ls-joystick_rest.png */; };
+		97DC9BBA1549CDAD003CDFFF /* control-layout.json in Resources */ = {isa = PBXBuildFile; fileRef = 97DC9BB91549CDAD003CDFFF /* control-layout.json */; };
 		97EE41621538A83B0072514D /* DISK1.ADF in Resources */ = {isa = PBXBuildFile; fileRef = 97EE415B1538A83B0072514D /* DISK1.ADF */; };
 		97EE41631538A83B0072514D /* DISK2.ADF in Resources */ = {isa = PBXBuildFile; fileRef = 97EE415C1538A83B0072514D /* DISK2.ADF */; };
 		97EF9576153876CA001C01E6 /* kick.rom in Resources */ = {isa = PBXBuildFile; fileRef = 057440D50FC2A4A7003BE251 /* kick.rom */; };
@@ -473,13 +529,6 @@
 		050415690FCB4BD400F46828 /* CocoaUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoaUtility.h; sourceTree = "<group>"; };
 		0504156A0FCB4BD400F46828 /* CocoaUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocoaUtility.m; sourceTree = "<group>"; };
 		0504156C0FCB4BE600F46828 /* debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = debug.h; sourceTree = "<group>"; };
-		0504162D0FCB566500F46828 /* ls-fullscreen_bottomBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ls-fullscreen_bottomBtn.png"; sourceTree = "<group>"; };
-		0504162E0FCB566500F46828 /* ls-instructions_overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ls-instructions_overlay.png"; sourceTree = "<group>"; };
-		0504162F0FCB566500F46828 /* ls-overlay-skin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ls-overlay-skin.png"; sourceTree = "<group>"; };
-		050416300FCB566500F46828 /* ls-bgimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ls-bgimage.png"; sourceTree = "<group>"; };
-		050416310FCB566500F46828 /* ls-fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ls-fire.png"; sourceTree = "<group>"; };
-		050416320FCB566500F46828 /* ls-joystick_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ls-joystick_active.png"; sourceTree = "<group>"; };
-		050416330FCB566500F46828 /* ls-joystick_rest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ls-joystick_rest.png"; sourceTree = "<group>"; };
 		0506D73713CA7BF700559637 /* OldLondon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = OldLondon.ttf; path = html/OldLondon.ttf; sourceTree = "<group>"; };
 		0506D73813CA7BF700559637 /* gpl.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = gpl.html; path = html/gpl.html; sourceTree = "<group>"; };
 		05084E4913D7FE7B0004617A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -795,9 +844,6 @@
 		05E8A04512B2C884005532AF /* amiga-beige-dark-right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "amiga-beige-dark-right.png"; sourceTree = "<group>"; };
 		05E8A04912B2C8E9005532AF /* amiga-beige-dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "amiga-beige-dark.png"; sourceTree = "<group>"; };
 		05ECEA061091A85B001A71D0 /* CNSRecursiveLock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNSRecursiveLock.h; sourceTree = "<group>"; };
-		05ECEAA21091B97D001A71D0 /* joystick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joystick.png; sourceTree = "<group>"; };
-		05ECEAA31091B97D001A71D0 /* keyboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = keyboard.png; sourceTree = "<group>"; };
-		05ECEAA41091B97D001A71D0 /* mouse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mouse.png; sourceTree = "<group>"; };
 		05F5F217112A54F1001530EC /* kick31.rom */ = {isa = PBXFileReference; lastKnownFileType = file; path = kick31.rom; sourceTree = "<group>"; };
 		05FE7F260FC3EDBF00DBFECF /* AudioQueueManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioQueueManager.h; sourceTree = "<group>"; };
 		05FE7F270FC3EDBF00DBFECF /* AudioQueueManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AudioQueueManager.cpp; sourceTree = "<group>"; };
@@ -964,9 +1010,65 @@
 		97A932071538B207001064D7 /* DISK1.ADF */ = {isa = PBXFileReference; lastKnownFileType = file; path = DISK1.ADF; sourceTree = "<group>"; };
 		97A932081538B207001064D7 /* DISK2.ADF */ = {isa = PBXFileReference; lastKnownFileType = file; path = DISK2.ADF; sourceTree = "<group>"; };
 		97AFC8521538A4CB00227317 /* info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
+		97BE2A9415486FE600BF66CF /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		97BE2A9515486FE600BF66CF /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		97BE2A9615486FE600BF66CF /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		97BE2A9715486FE600BF66CF /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		97BE2A9815486FE600BF66CF /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
+		97BE2A9915486FE600BF66CF /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		97BE2A9A15486FE600BF66CF /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
+		97BE2A9B15486FE600BF66CF /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		97BE2A9C15486FE600BF66CF /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
+		97BE2A9D15486FE600BF66CF /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		97BE2A9E15486FE600BF66CF /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		97BE2A9F15486FE600BF66CF /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		97BE2AA015486FE600BF66CF /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		97BE2AA81548702100BF66CF /* BaseControlsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseControlsView.h; sourceTree = "<group>"; };
+		97BE2AA91548702100BF66CF /* BaseControlsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseControlsView.m; sourceTree = "<group>"; };
+		97BE2AAA1548702100BF66CF /* BaseLeftRightAwareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseLeftRightAwareView.h; sourceTree = "<group>"; };
+		97BE2AAB1548702100BF66CF /* BaseLeftRightAwareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseLeftRightAwareView.m; sourceTree = "<group>"; };
+		97BE2AAC1548702100BF66CF /* ButtonJoyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonJoyButton.h; sourceTree = "<group>"; };
+		97BE2AAD1548702100BF66CF /* ButtonJoyButton.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ButtonJoyButton.mm; sourceTree = "<group>"; };
+		97BE2AAE1548702100BF66CF /* ControlDefaultConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlDefaultConstants.h; sourceTree = "<group>"; };
+		97BE2AAF1548702100BF66CF /* ControlDefaultConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlDefaultConstants.m; sourceTree = "<group>"; };
+		97BE2AB01548702100BF66CF /* ImageJoyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageJoyButton.h; sourceTree = "<group>"; };
+		97BE2AB11548702100BF66CF /* ImageJoyButton.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ImageJoyButton.mm; sourceTree = "<group>"; };
+		97BE2AB21548702100BF66CF /* JoyButtonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoyButtonBase.h; sourceTree = "<group>"; };
+		97BE2AB31548702100BF66CF /* JoyButtonBase.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = JoyButtonBase.mm; sourceTree = "<group>"; };
+		97BE2AB41548702100BF66CF /* JoystickDirMaps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoystickDirMaps.h; sourceTree = "<group>"; };
+		97BE2AB61548702100BF66CF /* DynamicLandscapeControls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicLandscapeControls.h; sourceTree = "<group>"; };
+		97BE2AB71548702100BF66CF /* DynamicLandscapeControls.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DynamicLandscapeControls.mm; sourceTree = "<group>"; };
+		97BE2AB81548702100BF66CF /* LandscapeJoystick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandscapeJoystick.h; sourceTree = "<group>"; };
+		97BE2AB91548702100BF66CF /* LandscapeJoystick.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LandscapeJoystick.mm; sourceTree = "<group>"; };
+		97BE2ABA1548702100BF66CF /* MMFixedStickController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMFixedStickController.h; sourceTree = "<group>"; };
+		97BE2ABB1548702100BF66CF /* MMFixedStickController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MMFixedStickController.mm; sourceTree = "<group>"; };
+		97BE2ABC1548702100BF66CF /* StaticImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticImage.h; sourceTree = "<group>"; };
+		97BE2ABD1548702100BF66CF /* StaticImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaticImage.m; sourceTree = "<group>"; };
+		97BE2ABE1548702100BF66CF /* StickControllerBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StickControllerBase.h; sourceTree = "<group>"; };
+		97BE2ABF1548702100BF66CF /* StickControllerBase.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StickControllerBase.mm; sourceTree = "<group>"; };
+		97BE2AC01548702100BF66CF /* StickControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StickControllerDelegate.h; sourceTree = "<group>"; };
+		97BE2AC11548702100BF66CF /* SupportsLeftRightLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupportsLeftRightLayout.h; sourceTree = "<group>"; };
+		97BE2ACD1548753800BF66CF /* app-options.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "app-options.h"; path = "TargetSpecific/Stooges/app-options.h"; sourceTree = SOURCE_ROOT; };
+		97BE2ACF15489E6600BF66CF /* firebutton-red-active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "firebutton-red-active.png"; sourceTree = "<group>"; };
+		97BE2AD015489E6600BF66CF /* firebutton-red-active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "firebutton-red-active@2x.png"; sourceTree = "<group>"; };
+		97BE2AD115489E6600BF66CF /* firebutton-red-active~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "firebutton-red-active~ipad.png"; sourceTree = "<group>"; };
+		97BE2AD215489E6600BF66CF /* firebutton-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "firebutton-red.png"; sourceTree = "<group>"; };
+		97BE2AD315489E6600BF66CF /* firebutton-red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "firebutton-red@2x.png"; sourceTree = "<group>"; };
+		97BE2AD415489E6600BF66CF /* firebutton-red~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "firebutton-red~ipad.png"; sourceTree = "<group>"; };
+		97BE2AD615489E6600BF66CF /* joystick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = joystick.png; sourceTree = "<group>"; };
+		97BE2AD715489E6600BF66CF /* keyboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = keyboard.png; sourceTree = "<group>"; };
+		97BE2AD815489E6600BF66CF /* mouse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mouse.png; sourceTree = "<group>"; };
+		97BE2ADA15489E6600BF66CF /* ls-fullscreen_bottomBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ls-fullscreen_bottomBtn.png"; sourceTree = "<group>"; };
+		97BE2ADB15489E6600BF66CF /* ls-instructions_overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ls-instructions_overlay.png"; sourceTree = "<group>"; };
+		97BE2ADC15489E6600BF66CF /* ls-overlay-skin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ls-overlay-skin.png"; sourceTree = "<group>"; };
+		97BE2ADD15489E6600BF66CF /* ls-bgimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ls-bgimage.png"; sourceTree = "<group>"; };
+		97BE2ADE15489E6600BF66CF /* ls-fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ls-fire.png"; sourceTree = "<group>"; };
+		97BE2ADF15489E6600BF66CF /* ls-joystick_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ls-joystick_active.png"; sourceTree = "<group>"; };
+		97BE2AE015489E6600BF66CF /* ls-joystick_rest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ls-joystick_rest.png"; sourceTree = "<group>"; };
+		97DC9BB91549CDAD003CDFFF /* control-layout.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = "control-layout.json"; path = "../control-layout.json"; sourceTree = "<group>"; };
 		97EE415B1538A83B0072514D /* DISK1.ADF */ = {isa = PBXFileReference; lastKnownFileType = file; path = DISK1.ADF; sourceTree = "<group>"; };
 		97EE415C1538A83B0072514D /* DISK2.ADF */ = {isa = PBXFileReference; lastKnownFileType = file; path = DISK2.ADF; sourceTree = "<group>"; };
-		97EF9600153876CA001C01E6 /* Stooges.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stooges.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		97EF9600153876CA001C01E6 /* stooges.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = stooges.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97EF96191538771F001C01E6 /* EmulationView-iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EmulationView-iPad.h"; sourceTree = "<group>"; };
 		97EF961A1538771F001C01E6 /* EmulationView-iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EmulationView-iPad.m"; sourceTree = "<group>"; };
 		97EF961B1538771F001C01E6 /* EmulationView-iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "EmulationView-iPad.xib"; sourceTree = "<group>"; };
@@ -1062,32 +1164,9 @@
 		0504161C0FCB566500F46828 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				0504161D0FCB566500F46828 /* emulator */,
+				97BE2ACE15489E6600BF66CF /* emulator */,
 			);
 			path = images;
-			sourceTree = "<group>";
-		};
-		0504161D0FCB566500F46828 /* emulator */ = {
-			isa = PBXGroup;
-			children = (
-				05ECEA9E1091B960001A71D0 /* input-mode */,
-				0504162B0FCB566500F46828 /* landscape */,
-				050416300FCB566500F46828 /* ls-bgimage.png */,
-				050416310FCB566500F46828 /* ls-fire.png */,
-				050416320FCB566500F46828 /* ls-joystick_active.png */,
-				050416330FCB566500F46828 /* ls-joystick_rest.png */,
-			);
-			path = emulator;
-			sourceTree = "<group>";
-		};
-		0504162B0FCB566500F46828 /* landscape */ = {
-			isa = PBXGroup;
-			children = (
-				0504162D0FCB566500F46828 /* ls-fullscreen_bottomBtn.png */,
-				0504162E0FCB566500F46828 /* ls-instructions_overlay.png */,
-				0504162F0FCB566500F46828 /* ls-overlay-skin.png */,
-			);
-			path = landscape;
 			sourceTree = "<group>";
 		};
 		050B1741139C79E8005C7736 /* joystick */ = {
@@ -1764,19 +1843,11 @@
 			path = "Resources-iPad/keyboard";
 			sourceTree = "<group>";
 		};
-		05ECEA9E1091B960001A71D0 /* input-mode */ = {
-			isa = PBXGroup;
-			children = (
-				05ECEAA21091B97D001A71D0 /* joystick.png */,
-				05ECEAA31091B97D001A71D0 /* keyboard.png */,
-				05ECEAA41091B97D001A71D0 /* mouse.png */,
-			);
-			path = "input-mode";
-			sourceTree = "<group>";
-		};
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				97BE2AA71548702100BF66CF /* Controls */,
+				97BE2A9315486FE600BF66CF /* json */,
 				05BB086213CC233F00278699 /* lambda-alert */,
 				05BC1AEB1073448200EABC6E /* File Browser */,
 				050414C40FCB455500F46828 /* Emulator */,
@@ -1793,7 +1864,7 @@
 			children = (
 				1D6058910D05DD3D006BFB54 /* iAmiga.app */,
 				0533695113B1DEE90012D55A /* DotC.app */,
-				97EF9600153876CA001C01E6 /* Stooges.app */,
+				97EF9600153876CA001C01E6 /* stooges.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2139,6 +2210,8 @@
 		97AFC8541538A4D600227317 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				97BE2ACD1548753800BF66CF /* app-options.h */,
+				97DC9BB91549CDAD003CDFFF /* control-layout.json */,
 				97A931C01538AFDC001064D7 /* html */,
 				97A931761538AD8A001064D7 /* instructions */,
 				97A931381538AD1B001064D7 /* Chrome */,
@@ -2146,6 +2219,105 @@
 				97EE415C1538A83B0072514D /* DISK2.ADF */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		97BE2A9315486FE600BF66CF /* json */ = {
+			isa = PBXGroup;
+			children = (
+				97BE2A9415486FE600BF66CF /* JSON.h */,
+				97BE2A9515486FE600BF66CF /* NSObject+SBJSON.h */,
+				97BE2A9615486FE600BF66CF /* NSObject+SBJSON.m */,
+				97BE2A9715486FE600BF66CF /* NSString+SBJSON.h */,
+				97BE2A9815486FE600BF66CF /* NSString+SBJSON.m */,
+				97BE2A9915486FE600BF66CF /* SBJSON.h */,
+				97BE2A9A15486FE600BF66CF /* SBJSON.m */,
+				97BE2A9B15486FE600BF66CF /* SBJsonBase.h */,
+				97BE2A9C15486FE600BF66CF /* SBJsonBase.m */,
+				97BE2A9D15486FE600BF66CF /* SBJsonParser.h */,
+				97BE2A9E15486FE600BF66CF /* SBJsonParser.m */,
+				97BE2A9F15486FE600BF66CF /* SBJsonWriter.h */,
+				97BE2AA015486FE600BF66CF /* SBJsonWriter.m */,
+			);
+			path = json;
+			sourceTree = "<group>";
+		};
+		97BE2AA71548702100BF66CF /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				97BE2AB51548702100BF66CF /* Landscape */,
+				97BE2AA81548702100BF66CF /* BaseControlsView.h */,
+				97BE2AA91548702100BF66CF /* BaseControlsView.m */,
+				97BE2AAA1548702100BF66CF /* BaseLeftRightAwareView.h */,
+				97BE2AAB1548702100BF66CF /* BaseLeftRightAwareView.m */,
+				97BE2AAC1548702100BF66CF /* ButtonJoyButton.h */,
+				97BE2AAD1548702100BF66CF /* ButtonJoyButton.mm */,
+				97BE2AAE1548702100BF66CF /* ControlDefaultConstants.h */,
+				97BE2AAF1548702100BF66CF /* ControlDefaultConstants.m */,
+				97BE2AB01548702100BF66CF /* ImageJoyButton.h */,
+				97BE2AB11548702100BF66CF /* ImageJoyButton.mm */,
+				97BE2AB21548702100BF66CF /* JoyButtonBase.h */,
+				97BE2AB31548702100BF66CF /* JoyButtonBase.mm */,
+				97BE2AB41548702100BF66CF /* JoystickDirMaps.h */,
+				97BE2ABA1548702100BF66CF /* MMFixedStickController.h */,
+				97BE2ABB1548702100BF66CF /* MMFixedStickController.mm */,
+				97BE2ABC1548702100BF66CF /* StaticImage.h */,
+				97BE2ABD1548702100BF66CF /* StaticImage.m */,
+				97BE2ABE1548702100BF66CF /* StickControllerBase.h */,
+				97BE2ABF1548702100BF66CF /* StickControllerBase.mm */,
+				97BE2AC01548702100BF66CF /* StickControllerDelegate.h */,
+				97BE2AC11548702100BF66CF /* SupportsLeftRightLayout.h */,
+			);
+			path = Controls;
+			sourceTree = "<group>";
+		};
+		97BE2AB51548702100BF66CF /* Landscape */ = {
+			isa = PBXGroup;
+			children = (
+				97BE2AB61548702100BF66CF /* DynamicLandscapeControls.h */,
+				97BE2AB71548702100BF66CF /* DynamicLandscapeControls.mm */,
+				97BE2AB81548702100BF66CF /* LandscapeJoystick.h */,
+				97BE2AB91548702100BF66CF /* LandscapeJoystick.mm */,
+			);
+			path = Landscape;
+			sourceTree = "<group>";
+		};
+		97BE2ACE15489E6600BF66CF /* emulator */ = {
+			isa = PBXGroup;
+			children = (
+				97BE2ACF15489E6600BF66CF /* firebutton-red-active.png */,
+				97BE2AD015489E6600BF66CF /* firebutton-red-active@2x.png */,
+				97BE2AD115489E6600BF66CF /* firebutton-red-active~ipad.png */,
+				97BE2AD215489E6600BF66CF /* firebutton-red.png */,
+				97BE2AD315489E6600BF66CF /* firebutton-red@2x.png */,
+				97BE2AD415489E6600BF66CF /* firebutton-red~ipad.png */,
+				97BE2AD515489E6600BF66CF /* input-mode */,
+				97BE2AD915489E6600BF66CF /* landscape */,
+				97BE2ADD15489E6600BF66CF /* ls-bgimage.png */,
+				97BE2ADE15489E6600BF66CF /* ls-fire.png */,
+				97BE2ADF15489E6600BF66CF /* ls-joystick_active.png */,
+				97BE2AE015489E6600BF66CF /* ls-joystick_rest.png */,
+			);
+			path = emulator;
+			sourceTree = "<group>";
+		};
+		97BE2AD515489E6600BF66CF /* input-mode */ = {
+			isa = PBXGroup;
+			children = (
+				97BE2AD615489E6600BF66CF /* joystick.png */,
+				97BE2AD715489E6600BF66CF /* keyboard.png */,
+				97BE2AD815489E6600BF66CF /* mouse.png */,
+			);
+			path = "input-mode";
+			sourceTree = "<group>";
+		};
+		97BE2AD915489E6600BF66CF /* landscape */ = {
+			isa = PBXGroup;
+			children = (
+				97BE2ADA15489E6600BF66CF /* ls-fullscreen_bottomBtn.png */,
+				97BE2ADB15489E6600BF66CF /* ls-instructions_overlay.png */,
+				97BE2ADC15489E6600BF66CF /* ls-overlay-skin.png */,
+			);
+			path = landscape;
 			sourceTree = "<group>";
 		};
 		97EF96041538771F001C01E6 /* Stooges */ = {
@@ -2205,9 +2377,9 @@
 			productReference = 1D6058910D05DD3D006BFB54 /* iAmiga.app */;
 			productType = "com.apple.product-type.application";
 		};
-		97EF9571153876CA001C01E6 /* Stooges */ = {
+		97EF9571153876CA001C01E6 /* stooges */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 97EF95FC153876CA001C01E6 /* Build configuration list for PBXNativeTarget "Stooges" */;
+			buildConfigurationList = 97EF95FC153876CA001C01E6 /* Build configuration list for PBXNativeTarget "stooges" */;
 			buildPhases = (
 				97EF9572153876CA001C01E6 /* Resources */,
 				97EF95B8153876CA001C01E6 /* Sources */,
@@ -2217,9 +2389,9 @@
 			);
 			dependencies = (
 			);
-			name = Stooges;
+			name = stooges;
 			productName = iAmiga;
-			productReference = 97EF9600153876CA001C01E6 /* Stooges.app */;
+			productReference = 97EF9600153876CA001C01E6 /* stooges.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -2243,7 +2415,7 @@
 			targets = (
 				1D6058900D05DD3D006BFB54 /* iAmiga */,
 				053368C013B1DEE90012D55A /* DotC */,
-				97EF9571153876CA001C01E6 /* Stooges */,
+				97EF9571153876CA001C01E6 /* stooges */,
 			);
 		};
 /* End PBXProject section */
@@ -2325,6 +2497,22 @@
 				057B977613CEC7D60065278D /* intro_4~ipad.png in Resources */,
 				97A932091538B207001064D7 /* DISK1.ADF in Resources */,
 				97A9320A1538B207001064D7 /* DISK2.ADF in Resources */,
+				97BE2AE215489E6600BF66CF /* firebutton-red-active.png in Resources */,
+				97BE2AE515489E6600BF66CF /* firebutton-red-active@2x.png in Resources */,
+				97BE2AE815489E6600BF66CF /* firebutton-red-active~ipad.png in Resources */,
+				97BE2AEB15489E6600BF66CF /* firebutton-red.png in Resources */,
+				97BE2AEE15489E6600BF66CF /* firebutton-red@2x.png in Resources */,
+				97BE2AF115489E6600BF66CF /* firebutton-red~ipad.png in Resources */,
+				97BE2AF415489E6600BF66CF /* joystick.png in Resources */,
+				97BE2AF715489E6600BF66CF /* keyboard.png in Resources */,
+				97BE2AFA15489E6600BF66CF /* mouse.png in Resources */,
+				97BE2AFD15489E6600BF66CF /* ls-fullscreen_bottomBtn.png in Resources */,
+				97BE2B0015489E6600BF66CF /* ls-instructions_overlay.png in Resources */,
+				97BE2B0315489E6600BF66CF /* ls-overlay-skin.png in Resources */,
+				97BE2B0615489E6600BF66CF /* ls-bgimage.png in Resources */,
+				97BE2B0915489E6600BF66CF /* ls-fire.png in Resources */,
+				97BE2B0C15489E6600BF66CF /* ls-joystick_active.png in Resources */,
+				97BE2B0F15489E6600BF66CF /* ls-joystick_rest.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2335,20 +2523,10 @@
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				057440D60FC2A4A7003BE251 /* kick.rom in Resources */,
 				0574432A0FC3C94F003BE251 /* kick13.rom in Resources */,
-				050416410FCB566500F46828 /* ls-fullscreen_bottomBtn.png in Resources */,
-				050416420FCB566500F46828 /* ls-instructions_overlay.png in Resources */,
-				050416430FCB566500F46828 /* ls-overlay-skin.png in Resources */,
-				050416440FCB566500F46828 /* ls-bgimage.png in Resources */,
-				050416450FCB566500F46828 /* ls-fire.png in Resources */,
-				050416460FCB566500F46828 /* ls-joystick_active.png in Resources */,
-				050416470FCB566500F46828 /* ls-joystick_rest.png in Resources */,
 				05BC1AF81073448200EABC6E /* EMUROMBrowserView.xib in Resources */,
 				05BC1B17107348E500EABC6E /* keys.png in Resources */,
 				05BC1B18107348E500EABC6E /* VKBD.PNG in Resources */,
 				05BC1B1E10734C3B00EABC6E /* SettingsController.xib in Resources */,
-				05ECEAA51091B97D001A71D0 /* joystick.png in Resources */,
-				05ECEAA61091B97D001A71D0 /* keyboard.png in Resources */,
-				05ECEAA71091B97D001A71D0 /* mouse.png in Resources */,
 				05F5F218112A54F1001530EC /* kick31.rom in Resources */,
 				059A411D12697B33003B23C7 /* MainWindow-iPad.xib in Resources */,
 				05D6044B12AF2D620048E478 /* Icon.png in Resources */,
@@ -2376,6 +2554,22 @@
 				97855115153A3F2E00580B91 /* Aperture (4x6).png in Resources */,
 				9785511B153A3F2E00580B91 /* Scanlines (100%).png in Resources */,
 				9785511E153A3F2E00580B91 /* Scanlines (50%).png in Resources */,
+				97BE2AE115489E6600BF66CF /* firebutton-red-active.png in Resources */,
+				97BE2AE415489E6600BF66CF /* firebutton-red-active@2x.png in Resources */,
+				97BE2AE715489E6600BF66CF /* firebutton-red-active~ipad.png in Resources */,
+				97BE2AEA15489E6600BF66CF /* firebutton-red.png in Resources */,
+				97BE2AED15489E6600BF66CF /* firebutton-red@2x.png in Resources */,
+				97BE2AF015489E6600BF66CF /* firebutton-red~ipad.png in Resources */,
+				97BE2AF315489E6600BF66CF /* joystick.png in Resources */,
+				97BE2AF615489E6600BF66CF /* keyboard.png in Resources */,
+				97BE2AF915489E6600BF66CF /* mouse.png in Resources */,
+				97BE2AFC15489E6600BF66CF /* ls-fullscreen_bottomBtn.png in Resources */,
+				97BE2AFF15489E6600BF66CF /* ls-instructions_overlay.png in Resources */,
+				97BE2B0215489E6600BF66CF /* ls-overlay-skin.png in Resources */,
+				97BE2B0515489E6600BF66CF /* ls-bgimage.png in Resources */,
+				97BE2B0815489E6600BF66CF /* ls-fire.png in Resources */,
+				97BE2B0B15489E6600BF66CF /* ls-joystick_active.png in Resources */,
+				97BE2B0E15489E6600BF66CF /* ls-joystick_rest.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2383,6 +2577,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97DC9BBA1549CDAD003CDFFF /* control-layout.json in Resources */,
 				97A932041538B14B001064D7 /* iscroll4.js in Resources */,
 				97A932021538B14B001064D7 /* functions.js in Resources */,
 				97A932051538B14B001064D7 /* jquery-1.4.4.min.js in Resources */,
@@ -2455,6 +2650,22 @@
 				97A931F81538AFDC001064D7 /* UserGuide~ipad.html in Resources */,
 				97A931FA1538AFE9001064D7 /* css in Resources */,
 				97A931FC1538AFEF001064D7 /* images in Resources */,
+				97BE2AE315489E6600BF66CF /* firebutton-red-active.png in Resources */,
+				97BE2AE615489E6600BF66CF /* firebutton-red-active@2x.png in Resources */,
+				97BE2AE915489E6600BF66CF /* firebutton-red-active~ipad.png in Resources */,
+				97BE2AEC15489E6600BF66CF /* firebutton-red.png in Resources */,
+				97BE2AEF15489E6600BF66CF /* firebutton-red@2x.png in Resources */,
+				97BE2AF215489E6600BF66CF /* firebutton-red~ipad.png in Resources */,
+				97BE2AF515489E6600BF66CF /* joystick.png in Resources */,
+				97BE2AF815489E6600BF66CF /* keyboard.png in Resources */,
+				97BE2AFB15489E6600BF66CF /* mouse.png in Resources */,
+				97BE2AFE15489E6600BF66CF /* ls-fullscreen_bottomBtn.png in Resources */,
+				97BE2B0115489E6600BF66CF /* ls-instructions_overlay.png in Resources */,
+				97BE2B0415489E6600BF66CF /* ls-overlay-skin.png in Resources */,
+				97BE2B0715489E6600BF66CF /* ls-bgimage.png in Resources */,
+				97BE2B0A15489E6600BF66CF /* ls-fire.png in Resources */,
+				97BE2B0D15489E6600BF66CF /* ls-joystick_active.png in Resources */,
+				97BE2B1015489E6600BF66CF /* ls-joystick_rest.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2721,6 +2932,23 @@
 				9785514F153A471000580B91 /* savestate.cpp in Sources */,
 				97855150153A472C00580B91 /* cyclone.s in Sources */,
 				97855151153A472C00580B91 /* memhandlers.s in Sources */,
+				97BE2AA115486FE600BF66CF /* NSObject+SBJSON.m in Sources */,
+				97BE2AA215486FE600BF66CF /* NSString+SBJSON.m in Sources */,
+				97BE2AA315486FE600BF66CF /* SBJSON.m in Sources */,
+				97BE2AA415486FE600BF66CF /* SBJsonBase.m in Sources */,
+				97BE2AA515486FE600BF66CF /* SBJsonParser.m in Sources */,
+				97BE2AA615486FE600BF66CF /* SBJsonWriter.m in Sources */,
+				97BE2AC21548702100BF66CF /* BaseControlsView.m in Sources */,
+				97BE2AC31548702100BF66CF /* BaseLeftRightAwareView.m in Sources */,
+				97BE2AC41548702100BF66CF /* ButtonJoyButton.mm in Sources */,
+				97BE2AC51548702100BF66CF /* ControlDefaultConstants.m in Sources */,
+				97BE2AC61548702100BF66CF /* ImageJoyButton.mm in Sources */,
+				97BE2AC71548702100BF66CF /* JoyButtonBase.mm in Sources */,
+				97BE2AC81548702100BF66CF /* DynamicLandscapeControls.mm in Sources */,
+				97BE2AC91548702100BF66CF /* LandscapeJoystick.mm in Sources */,
+				97BE2ACA1548702100BF66CF /* MMFixedStickController.mm in Sources */,
+				97BE2ACB1548702100BF66CF /* StaticImage.m in Sources */,
+				97BE2ACC1548702100BF66CF /* StickControllerBase.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2869,8 +3097,9 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					IPHONE,
 					DEBUG,
+					AMIGA_OPTIONS,
 				);
-				PRODUCT_NAME = Stooges;
+				PRODUCT_NAME = stooges;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -2885,8 +3114,9 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					IPHONE,
 					NDEBUG,
+					AMIGA_OPTIONS,
 				);
-				PRODUCT_NAME = Stooges;
+				PRODUCT_NAME = stooges;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -2895,12 +3125,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Manomio LLC";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: fungos bauux (9HTJRE2XX5)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iAmiga_Prefix.pch;
-				PRODUCT_NAME = Stooges;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "10A5AE46-6887-4FCD-9F60-1E8933A66B0E";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					IPHONE,
+					NDEBUG,
+					AMIGA_OPTIONS,
+				);
+				PRODUCT_NAME = stooges;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5A85F81E-D268-4418-8FE8-7CDDB7FBCA73";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = "Ad Hoc";
@@ -3023,7 +3258,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		97EF95FC153876CA001C01E6 /* Build configuration list for PBXNativeTarget "Stooges" */ = {
+		97EF95FC153876CA001C01E6 /* Build configuration list for PBXNativeTarget "stooges" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				97EF95FD153876CA001C01E6 /* Debug */,

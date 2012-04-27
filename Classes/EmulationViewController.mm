@@ -276,6 +276,8 @@ static CGRect CreateIntegralScaledView(CGRect aFrame, BOOL top) {
 	self.displayView.frame = self.currentDisplayFrame;
 }
 
+int inputMode = 0;
+
 - (void)toggleInputMode:(UIButton*)sender {
 	vKeyboard.hidden = YES;
 	touchHandler.hidden = YES;

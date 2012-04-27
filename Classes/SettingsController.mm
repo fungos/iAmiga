@@ -16,6 +16,7 @@
 #import "options.h"
 #import "SDL.h"
 #import "UIKitDisplayView.h"
+#import "savestate.h"
 
 #if DISASSEMBLER
 #import "DisaSupport.h"
@@ -120,13 +121,28 @@ extern "C" void uae_reset();
 #endif
 }
 
-extern "C" void DISK_motors_off();
-
 - (IBAction)otherAction:(UIControl*)sender {
 	int tag = sender.tag;
-	if (tag == 1) {
-		DISK_motors_off();
-	}
+    
+    static char statefile[1024];
+    NSString *stateFileString = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"savestate.asf"];
+    [stateFileString getCString:statefile maxLength:sizeof(statefile) encoding:[NSString defaultCStringEncoding]];
+
+    
+    switch (tag) {
+        case 1000:  // save
+            savestate_filename = statefile;
+            savestate_state = STATE_DOSAVE;
+            break;
+            
+        case 1001:  // restore
+            savestate_filename = statefile;
+            savestate_state = STATE_DORESTORE;            
+            break;
+            
+        default:
+            break;
+    }
 }
 
 - (IBAction)toggleNTSC:(UISwitch*)sender {

@@ -16,7 +16,7 @@
 		<string>icon-72.png</string>
 	</array>
 	<key>CFBundleIdentifier</key>
-	<string>com.manomio.iAmiga.${PRODUCT_NAME:identifier}</string>
+	<string>com.cinemaware.${PRODUCT_NAME:identifier}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>

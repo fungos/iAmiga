@@ -67,22 +67,20 @@
 	while (len--) {
 		*dst-- = *src++;
 	}
-	return [NSString stringWithCString:buf length:[self length]];
+	return [NSString stringWithCString:buf encoding:[NSString defaultCStringEncoding]];
 }
 
 @end
 
 @implementation UIButton(ButtonHelpers)
 
-+ (UIButton*)newButtonWithImage:(NSString*)imageName andSelectedImage:(NSString*)selectedImageName {
-	UIButton *view = [UIButton buttonWithType:UIButtonTypeCustom];
-	UIImage *image = [UIImage imageFromResource:imageName];
++ (UIButton*)buttonWithImage:(UIImage*)image andSelectedImage:(UIImage*)selectedImage {
+    UIButton *view = [UIButton buttonWithType:UIButtonTypeCustom];
 	view.frame = CGRectMake(0, 0, image.size.width, image.size.height);
 	[view setImage:image forState:UIControlStateNormal];
-	if (selectedImageName)
-		[view setImage:[UIImage imageFromResource:selectedImageName] forState:UIControlStateSelected];
+	if (selectedImage)
+		[view setImage:selectedImage forState:UIControlStateHighlighted];
 	return view;
 }
-
 
 @end

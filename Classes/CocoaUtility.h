@@ -31,9 +31,7 @@
 
 @interface UIButton(ButtonHelpers)
 
-//! Creates a new UIButton with the specified imageName and selectedImageName.  If selectedImageName is
-//  nil, it is not used.
-+ (UIButton*)newButtonWithImage:(NSString*)imageName andSelectedImage:(NSString*)selectedImageName;
++ (UIButton*)buttonWithImage:(UIImage*)image andSelectedImage:(UIImage*)selectedImage;
 
 @end
 

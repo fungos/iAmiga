@@ -11,7 +11,7 @@
 #import "AnimatedImageSequenceView.h"
 
 
-@interface DOTCEmulationViewController : BaseEmulationViewController<AnimatedImageSequenceDelegate, UIWebViewDelegate> {
+@interface StoogesEmulationViewController : BaseEmulationViewController<AnimatedImageSequenceDelegate, UIWebViewDelegate> {
     BOOL _introSequenceRunning;
 }
 

@@ -103,25 +103,38 @@ extern CJoyStick g_touchStick;
 
 @end
 
+@interface InputControllerView()
+- (void)configure;
+@end
+
 @implementation InputControllerView
 
-const int kButtonWidthPortrait			= 110;
-const int kButtonWidthLandscape			= 200;
+const CGFloat kButtonWidthPortraitPct			= 0.25;
+const CGFloat kButtonWidthLandscapePct			= 0.25;
 
 @synthesize delegate;
 
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        // Initialization code
-		button = [[FireButtonView alloc] initWithFrame:CGRectMake(0, 0, kButtonWidthPortrait, frame.size.height)];
-		[self addSubview:button];
-		_deadZone = 20.0f;	// radius, in pixels of the dead zone.
-		_trackingStick = NO;
-		_stickVector = new CGVector2D();
-		sharedInstance = self;
-		TheJoyStick = &g_touchStick;
+        [self configure];
     }
     return self;
+}
+
+- (void)awakeFromNib {
+	[self configure];
+}
+
+- (void)configure {
+    // Initialization code
+    button = [[FireButtonView alloc] initWithFrame:CGRectZero];
+    button.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
+    [self addSubview:button];
+    _deadZone = 20.0f;	// radius, in pixels of the dead zone.
+    _trackingStick = NO;
+    _stickVector = new CGVector2D();
+    sharedInstance = self;
+    TheJoyStick = &g_touchStick;    
 }
 
 - (void)setDelegate:(id<InputControllerChangedDelegate>)theDelegate {
@@ -130,14 +143,14 @@ const int kButtonWidthLandscape			= 200;
 }
 
 - (void)layoutSubviews {
-	CGPoint origin = self.frame.origin;
 	CGSize size = self.frame.size;
-	UIInterfaceOrientation current = (UIInterfaceOrientation)[[UIDevice currentDevice] orientation];
-	if (UIInterfaceOrientationIsLandscape(current)) {
-		button.frame = CGRectMake(0, 0, kButtonWidthLandscape, size.height);
+
+    BOOL isLandscape = UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation]);
+	if (isLandscape) {
+		button.frame = CGRectMake(0, 0, size.width * kButtonWidthLandscapePct, size.height);
 		//button.showImage = YES;
 	} else {
-		button.frame = CGRectMake(0, 0, kButtonWidthPortrait, size.height);
+		button.frame = CGRectMake(0, 0, size.width * kButtonWidthPortraitPct, size.height);
 		//button.showImage = NO;
 	}
 }

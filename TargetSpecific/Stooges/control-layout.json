@@ -1,0 +1,26 @@
+{
+    "iphone" : {
+        "options" : {
+            
+        },
+        "actions" : [
+            { "action": "clear" },
+            { 
+                "action": "add", "type": "JoyButton", 
+                "options": { "image": "firebutton-red", "center": "{35, 240}", "alpha": 0.50 } 
+            }            
+        ]
+    },
+    "ipad" : {
+        "options" : {
+            
+        },
+        "actions" : [
+            { "action": "clear" },
+            { 
+                "action": "add", "type": "JoyButton", 
+                "options": { "image": "firebutton-red", "center": "{60, 484}", "alpha": 0.50 } 
+            }
+        ]
+    }
+}

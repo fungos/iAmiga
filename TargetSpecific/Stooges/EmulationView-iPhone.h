@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DOTCEmulationViewController.h"
+#import "StoogesEmulationViewController.h"
 
-@interface EmulationViewiPhone : DOTCEmulationViewController {
+@class DynamicLandscapeControls;
+
+@interface EmulationViewiPhone : StoogesEmulationViewController {
     
     UIView *menuView;
     UIWebView *webView;
@@ -20,6 +22,7 @@
     UIButton *restartButton;
     CGFloat _menuViewStartY;
     CGFloat _bottomBarStartY;
+    DynamicLandscapeControls *inputController;
 }
 - (IBAction)hideMenu:(id)sender;
 - (IBAction)showMenu:(id)sender;
@@ -31,5 +34,7 @@
 @property (nonatomic, retain) IBOutlet UIButton *closeButton;
 @property (nonatomic, retain) IBOutlet UIButton *menuButton;
 @property (nonatomic, retain) IBOutlet UIButton *restartButton;
+@property (nonatomic, retain) IBOutlet DynamicLandscapeControls *inputController;
 
+- (IBAction)loadState:(id)sender;
 @end

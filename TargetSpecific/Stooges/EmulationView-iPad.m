@@ -7,6 +7,12 @@
 //
 
 #import "EmulationView-iPad.h"
+#import "sysconfig.h"
+#import "sysdeps.h"
+#import "options.h"
+#import "DynamicLandscapeControls.h"
+#import "JSON.h"
+//#import "UIKeyboardController.h"
 
 @implementation EmulationViewiPad
 @synthesize menuView;
@@ -15,6 +21,7 @@
 @synthesize closeButton;
 @synthesize mouseHandler;
 @synthesize restartButton;
+@synthesize inputController;
 
 #pragma mark - View lifecycle
 
@@ -23,6 +30,26 @@
     [webView setBackgroundColor:[UIColor clearColor]];
     [webView setOpaque:NO];
     webView.delegate = self;
+#ifdef USE_JOYSTICK
+    mouseHandler.hidden = YES;
+    
+    NSString *controlLayout = [[NSBundle mainBundle] pathForResource:@"control-layout" ofType:@"json"];
+    inputController.layoutName = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) ? @"iphone" : @"ipad";
+    [inputController updateLayout:[[NSString stringWithContentsOfFile:controlLayout usedEncoding:NULL error:NULL] JSONValue]];
+    
+    // iCADE mode
+    //SDL_JoystickOpen(3);
+    
+//    keyboardController = [[UIKeyboardController alloc] initWithNibName:@"UIKeyboardController" bundle:nil];
+//    [self.view addSubview:keyboardController.view];
+//    CGRect keyboardFrame = keyboardController.view.frame;
+//    keyboardFrame.origin.y = 768.0f;
+//    keyboardController.view.frame = keyboardFrame;
+//    keyboardController.view.alpha = 0.5;
+    
+#else
+    inputController.hidden = YES;
+#endif
 }
 
 - (void)dealloc {
@@ -32,6 +59,8 @@
     [mouseHandler release];
     [webView release];
     [restartButton release];
+    [inputController release];
+    //[keyboardController release];
     [super dealloc];
 }
 
@@ -42,6 +71,7 @@
     [self setMouseHandler:nil];
     [self setWebView:nil];
     [self setRestartButton:nil];
+    [self setInputController:nil];
     [super viewDidUnload];
 }
 
@@ -84,6 +114,21 @@
         menuView.frame = frame;
     }];
 }
+
+//- (IBAction)toggleKeyboard:(id)sender {
+//    static BOOL isVisible = NO;
+//    CGRect frame = keyboardController.view.frame;
+//    if (isVisible) {
+//        frame.origin.y = 768.0f;
+//    } else {
+//        frame.origin.y = 768.0f - frame.size.height;        
+//    }
+//    
+//    [UIView animateWithDuration:0.500f animations:^(void) {
+//        keyboardController.view.frame = frame;
+//        isVisible = !isVisible;
+//    }];    
+//}
 
 - (CGFloat)displayTop {
     return 59.0f;
