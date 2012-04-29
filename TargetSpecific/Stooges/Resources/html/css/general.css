@@ -10,8 +10,8 @@ body,ul,li {
 }
 
 @font-face {
-	font-family: oldlondon;
-	src: url('../OldLondon.ttf');
+	font-family: bazooka;
+	src: url('../Bazooka.ttf');
 }
 
 body {
@@ -137,7 +137,7 @@ h1 {
 }
 
 .notebox h2 {
-    font-family: oldlondon;
+    font-family: bazooka;
 }
 
 .notebox img {
@@ -276,6 +276,12 @@ background:#fff;
 	margin:0;
 	
 }
+
+
+
+
+
+
 
 
 

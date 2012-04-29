@@ -15,14 +15,14 @@
 
 
 
-<title>TheThreeStooges - iAmiga</title>
+<title>The Three Stooges - iAmiga</title>
 
 <script type="text/javascript">
 var from = "help";
 var tabbar = false;
 
 document.addEventListener('DOMContentLoaded', loaded, false);
-    
+
 var bundleVersion = '';
 function setVersion(ver) {
     bundleVersion = ver;
@@ -31,39 +31,39 @@ function setVersion(ver) {
 function loaded() {
 
 	document.addEventListener('touchmove', function(e){ e.preventDefault(); e.stopPropagation(); });
-	
+
 	$.get(from+'.html', function(data) {
 		$('#left').html(data);
 		$('#spinner').fadeOut('slow');
 	});
-	
+
 	if(tabbar == true) {
 		$.get('tabbar.html', function(data) {
 			$('#tabbarContainer').html(data);
 		});
 	}
-	
+
 	$('#gamesbtn2').click(function() {
 	  alert('You´re not connected to the internet!');
 	});
-	
+
 	$('#helpbtn').click(function() {
         loadpage('help','FADE');
         document.getElementById('aboutbtnimg').src='images/icon_about.png';
         document.getElementById('helpbtnimg').src='images/icon_help_over.png';
         document.getElementById('gamesbtnimg').src='images/icon_games.png';
 	});
-	
+
 	$('#aboutbtn').click(function() {
         loadpage('about','FADE', null, function afterLoad() {
-            $('#version').html(bundleVersion);                      
+            $('#version').html(bundleVersion);
         });
         document.getElementById('aboutbtnimg').src='images/icon_about_over.png';
         document.getElementById('helpbtnimg').src='images/icon_help.png';
         document.getElementById('gamesbtnimg').src='images/icon_games.png';
         $('#version').html(bundleVersion);
 	});
-	
+
 	$('#gamesbtn').click(function() {
 	//	loadpage('crosspromo','FADE');
 	  loadpage('crosspromo','FADE','http://www.manomio.com/dotc/');
@@ -71,7 +71,7 @@ function loaded() {
 	document.getElementById('helpbtnimg').src='images/icon_help.png';
 	document.getElementById('gamesbtnimg').src='images/icon_games_over.png';
 	});
-	
+
 	var img = document.createElement('img');
 	img.src = "http://www.manomio.com/images/bullet.gif";
 	var isConnection = false;
@@ -99,6 +99,11 @@ function loaded() {
 
 <div id="tabbarContainer"></div>
 <div id="spinner"><img src="images/loading_spinner.gif"/></div>
+
+
+
+</body>
+</html>gif"/></div>
 
 
 
