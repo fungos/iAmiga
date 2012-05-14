@@ -7,7 +7,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>Lords Of The Rising Sun</string>
 	<key>CFBundleExecutable</key>
-	<string>${EXECUTABLE_NAME}</string>
+	<string>lrs</string>
 	<key>CFBundleIconFiles</key>
 	<array>
 		<string>icon</string>

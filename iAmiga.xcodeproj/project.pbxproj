@@ -355,7 +355,6 @@
 		9706D79A1561827300073678 /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 9706D74C1561827300073678 /* icon-72.png */; };
 		9706D79B1561827300073678 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9706D74D1561827300073678 /* icon.png */; };
 		9706D79C1561827300073678 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9706D74E1561827300073678 /* icon@2x.png */; };
-		9706D79D1561827300073678 /* info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9706D74F1561827300073678 /* info.plist */; };
 		9706D79E1561827300073678 /* instruction-dotc-cursor.png in Resources */ = {isa = PBXBuildFile; fileRef = 9706D7511561827300073678 /* instruction-dotc-cursor.png */; };
 		9706D79F1561827300073678 /* instruction-dotc-cursor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9706D7521561827300073678 /* instruction-dotc-cursor@2x.png */; };
 		9706D7A01561827300073678 /* instruction-handclick.png in Resources */ = {isa = PBXBuildFile; fileRef = 9706D7531561827300073678 /* instruction-handclick.png */; };
@@ -535,7 +534,6 @@
 		97242D65156178CC00B6D03C /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 97242D16156178CC00B6D03C /* icon-72.png */; };
 		97242D66156178CC00B6D03C /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 97242D17156178CC00B6D03C /* icon.png */; };
 		97242D67156178CC00B6D03C /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97242D18156178CC00B6D03C /* icon@2x.png */; };
-		97242D68156178CC00B6D03C /* info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 97242D19156178CC00B6D03C /* info.plist */; };
 		97242D69156178CC00B6D03C /* instruction-dotc-cursor.png in Resources */ = {isa = PBXBuildFile; fileRef = 97242D1B156178CC00B6D03C /* instruction-dotc-cursor.png */; };
 		97242D6A156178CC00B6D03C /* instruction-dotc-cursor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97242D1C156178CC00B6D03C /* instruction-dotc-cursor@2x.png */; };
 		97242D6B156178CC00B6D03C /* instruction-handclick.png in Resources */ = {isa = PBXBuildFile; fileRef = 97242D1D156178CC00B6D03C /* instruction-handclick.png */; };
@@ -842,7 +840,6 @@
 		9787FB49156188EE00458A4A /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 9787FAFA156188ED00458A4A /* icon-72.png */; };
 		9787FB4A156188EE00458A4A /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9787FAFB156188ED00458A4A /* icon.png */; };
 		9787FB4B156188EE00458A4A /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9787FAFC156188ED00458A4A /* icon@2x.png */; };
-		9787FB4C156188EE00458A4A /* info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9787FAFD156188ED00458A4A /* info.plist */; };
 		9787FB4D156188EE00458A4A /* instruction-dotc-cursor.png in Resources */ = {isa = PBXBuildFile; fileRef = 9787FAFF156188ED00458A4A /* instruction-dotc-cursor.png */; };
 		9787FB4E156188EE00458A4A /* instruction-dotc-cursor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9787FB00156188ED00458A4A /* instruction-dotc-cursor@2x.png */; };
 		9787FB4F156188EE00458A4A /* instruction-handclick.png in Resources */ = {isa = PBXBuildFile; fileRef = 9787FB01156188ED00458A4A /* instruction-handclick.png */; };
@@ -1027,7 +1024,6 @@
 		9787FCB015618ADB00458A4A /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 9787FC6115618ADB00458A4A /* icon-72.png */; };
 		9787FCB115618ADB00458A4A /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 9787FC6215618ADB00458A4A /* icon.png */; };
 		9787FCB215618ADB00458A4A /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9787FC6315618ADB00458A4A /* icon@2x.png */; };
-		9787FCB315618ADB00458A4A /* info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9787FC6415618ADB00458A4A /* info.plist */; };
 		9787FCB415618ADB00458A4A /* instruction-dotc-cursor.png in Resources */ = {isa = PBXBuildFile; fileRef = 9787FC6615618ADB00458A4A /* instruction-dotc-cursor.png */; };
 		9787FCB515618ADB00458A4A /* instruction-dotc-cursor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9787FC6715618ADB00458A4A /* instruction-dotc-cursor@2x.png */; };
 		9787FCB615618ADB00458A4A /* instruction-handclick.png in Resources */ = {isa = PBXBuildFile; fileRef = 9787FC6815618ADB00458A4A /* instruction-handclick.png */; };
@@ -4324,7 +4320,6 @@
 				9706D79A1561827300073678 /* icon-72.png in Resources */,
 				9706D79B1561827300073678 /* icon.png in Resources */,
 				9706D79C1561827300073678 /* icon@2x.png in Resources */,
-				9706D79D1561827300073678 /* info.plist in Resources */,
 				9706D79E1561827300073678 /* instruction-dotc-cursor.png in Resources */,
 				9706D79F1561827300073678 /* instruction-dotc-cursor@2x.png in Resources */,
 				9706D7A01561827300073678 /* instruction-handclick.png in Resources */,
@@ -4433,7 +4428,6 @@
 				97242D65156178CC00B6D03C /* icon-72.png in Resources */,
 				97242D66156178CC00B6D03C /* icon.png in Resources */,
 				97242D67156178CC00B6D03C /* icon@2x.png in Resources */,
-				97242D68156178CC00B6D03C /* info.plist in Resources */,
 				97242D69156178CC00B6D03C /* instruction-dotc-cursor.png in Resources */,
 				97242D6A156178CC00B6D03C /* instruction-dotc-cursor@2x.png in Resources */,
 				97242D6B156178CC00B6D03C /* instruction-handclick.png in Resources */,
@@ -4542,7 +4536,6 @@
 				9787FB49156188EE00458A4A /* icon-72.png in Resources */,
 				9787FB4A156188EE00458A4A /* icon.png in Resources */,
 				9787FB4B156188EE00458A4A /* icon@2x.png in Resources */,
-				9787FB4C156188EE00458A4A /* info.plist in Resources */,
 				9787FB4D156188EE00458A4A /* instruction-dotc-cursor.png in Resources */,
 				9787FB4E156188EE00458A4A /* instruction-dotc-cursor@2x.png in Resources */,
 				9787FB4F156188EE00458A4A /* instruction-handclick.png in Resources */,
@@ -4651,7 +4644,6 @@
 				9787FCB015618ADB00458A4A /* icon-72.png in Resources */,
 				9787FCB115618ADB00458A4A /* icon.png in Resources */,
 				9787FCB215618ADB00458A4A /* icon@2x.png in Resources */,
-				9787FCB315618ADB00458A4A /* info.plist in Resources */,
 				9787FCB415618ADB00458A4A /* instruction-dotc-cursor.png in Resources */,
 				9787FCB515618ADB00458A4A /* instruction-dotc-cursor@2x.png in Resources */,
 				9787FCB615618ADB00458A4A /* instruction-handclick.png in Resources */,
@@ -5521,12 +5513,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Manomio LLC";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: fungos bauux (9HTJRE2XX5)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iAmiga_Prefix.pch;
 				PRODUCT_NAME = sdi;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "10A5AE46-6887-4FCD-9F60-1E8933A66B0E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "00DC73DB-FB57-47B5-B382-2B6CC3367226";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = "Ad Hoc";
@@ -5561,12 +5553,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Manomio LLC";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: fungos bauux (9HTJRE2XX5)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iAmiga_Prefix.pch;
 				PRODUCT_NAME = lrs;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "10A5AE46-6887-4FCD-9F60-1E8933A66B0E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "00DC73DB-FB57-47B5-B382-2B6CC3367226";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = "Ad Hoc";
@@ -5601,12 +5593,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Manomio LLC";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: fungos bauux (9HTJRE2XX5)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iAmiga_Prefix.pch;
 				PRODUCT_NAME = koc;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "10A5AE46-6887-4FCD-9F60-1E8933A66B0E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "00DC73DB-FB57-47B5-B382-2B6CC3367226";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = "Ad Hoc";
@@ -5641,12 +5633,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Manomio LLC";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: fungos bauux (9HTJRE2XX5)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iAmiga_Prefix.pch;
 				PRODUCT_NAME = sinbad;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "10A5AE46-6887-4FCD-9F60-1E8933A66B0E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "00DC73DB-FB57-47B5-B382-2B6CC3367226";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = "Ad Hoc";
