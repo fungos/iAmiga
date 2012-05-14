@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+
+<link rel="stylesheet" media="all" href="css/general.css">
+<link rel="stylesheet" media="all" href="css/transitions.css">
+
+<script type="text/javascript" src="jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="iscroll4.js"></script>
+<script type="text/javascript" src="functions.js"></script>
+
+
+
+<title>DefenderOfTheCrown - iAmiga</title>
+
+<script type="text/javascript">
+var from = "help";
+var tabbar = false;
+
+document.addEventListener('DOMContentLoaded', loaded, false);
+    
+var bundleVersion = '';
+function setVersion(ver) {
+    bundleVersion = ver;
+}
+
+function loaded() {
+
+	document.addEventListener('touchmove', function(e){ e.preventDefault(); e.stopPropagation(); });
+	
+	$.get(from+'.html', function(data) {
+		$('#left').html(data);
+		$('#spinner').fadeOut('slow');
+	});
+	
+	if(tabbar == true) {
+		$.get('tabbar.html', function(data) {
+			$('#tabbarContainer').html(data);
+		});
+	}
+	
+	$('#gamesbtn2').click(function() {
+	  alert('You´re not connected to the internet!');
+	});
+	
+	$('#helpbtn').click(function() {
+        loadpage('help','FADE');
+        document.getElementById('aboutbtnimg').src='images/icon_about.png';
+        document.getElementById('helpbtnimg').src='images/icon_help_over.png';
+        document.getElementById('gamesbtnimg').src='images/icon_games.png';
+	});
+	
+	$('#aboutbtn').click(function() {
+        loadpage('about','FADE', null, function afterLoad() {
+            $('#version').html(bundleVersion);                      
+        });
+        document.getElementById('aboutbtnimg').src='images/icon_about_over.png';
+        document.getElementById('helpbtnimg').src='images/icon_help.png';
+        document.getElementById('gamesbtnimg').src='images/icon_games.png';
+        $('#version').html(bundleVersion);
+	});
+	
+	$('#gamesbtn').click(function() {
+	//	loadpage('crosspromo','FADE');
+	  loadpage('crosspromo','FADE','http://www.manomio.com/dotc/');
+	document.getElementById('aboutbtnimg').src='images/icon_about.png';
+	document.getElementById('helpbtnimg').src='images/icon_help.png';
+	document.getElementById('gamesbtnimg').src='images/icon_games_over.png';
+	});
+	
+	var img = document.createElement('img');
+	img.src = "http://www.manomio.com/images/bullet.gif";
+	var isConnection = false;
+	img.onload = function() { isConnection = true; }
+	setTimeout(function() {
+		if(isConnection==true) {
+			$('#gamesbtn2').fadeOut('fast');
+			$('#gamesbtn').fadeIn('slow');
+		} else {
+			$('#gamesbtn').fadeOut('slow');
+		}
+	}, 3000);
+}
+
+</script>
+
+</head>
+<body id="body">
+<div id="helpbtn" style="position:absolute;top:140px;right:40px;zoom:50%;z-index:99999;"><img  id="helpbtnimg" src="images/icon_help_over.png"/></div>
+<div id="aboutbtn" style="position:absolute;top:480px;right:40px;zoom:50%;z-index:99999;"><img id="aboutbtnimg" src="images/icon_about.png"/></div>
+<div id="gamesbtn2" style="display:block;position:absolute;top:310px;right:40px;zoom:50%;opacity:0.3;z-index:99999;"><img onclick="noInterNet();" src="images/icon_games.png"/></div>
+
+<div id="gamesbtn"  onclick="noInterNet();" style="display:none;position:absolute;top:310px;right:40px;zoom:50%;opacity:1;z-index:99999;"><img id="gamesbtnimg" onTouchStart="this.src='images/icon_games_over.png';" src="images/icon_games.png"/></div>
+<div id="left"></div>
+
+<div id="tabbarContainer"></div>
+<div id="spinner"><img src="images/loading_spinner.gif"/></div>
+
+
+
+</body>
+</html>

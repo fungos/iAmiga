@@ -1,5 +1,5 @@
 //
-//  DOTCEmulationViewController.m
+//  EmulationViewController.m
 //  iAmiga
 //
 //  Created by Stuart Carnie on 7/11/11.

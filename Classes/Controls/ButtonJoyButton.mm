@@ -9,6 +9,7 @@
 #import "ButtonJoyButton.h"
 #import "touchstick.h"
 #import "CocoaUtility.h"
+//#import "keybuf.h"
 
 extern CJoyStick g_touchStick;
 
@@ -18,6 +19,7 @@ extern CJoyStick g_touchStick;
 
 - (void)touchDown:(id)sender {
 	g_touchStick.setButtonOneState(FireButtonDown);
+    //record_key(27);
 }
 
 - (void)touchUp:(id)sender {
