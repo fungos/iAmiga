@@ -10,8 +10,8 @@ body,ul,li {
 }
 
 @font-face {
-	font-family: oldlondon;
-	src: url('../OldLondon.ttf');
+	font-family: limelight;
+	src: url('../Limelight.ttf');
 }
 
 body {
@@ -137,7 +137,7 @@ h1 {
 }
 
 .notebox h2 {
-    font-family: oldlondon;
+    font-family: limelight;
 }
 
 .notebox p {margin-bottom:50px;}
