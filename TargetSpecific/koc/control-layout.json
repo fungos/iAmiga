@@ -1,0 +1,26 @@
+{
+    "iphone" : {
+        "options" : {
+            "preferredStick": "fixed"
+        },
+        "actions" : [
+            { "action": "clear" },
+            { 
+                "action": "add", "type": "JoyButton", 
+                "options": { "image": "firebutton-red", "center": "{35, 240}", "alpha": 0.50 } 
+            }            
+        ]
+    },
+    "ipad" : {
+        "options" : {
+            "preferredStick": "fixed"
+        },
+        "actions" : [
+            { "action": "clear" },
+            { 
+                "action": "add", "type": "JoyButton", 
+                "options": { "image": "firebutton-red", "center": "{60, 630}", "alpha": 0.50 } 
+            }
+        ]
+    }
+}
