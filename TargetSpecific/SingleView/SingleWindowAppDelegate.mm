@@ -32,6 +32,7 @@
     // load disks into df0: and df1:
     NSString *path = [[NSBundle mainBundle] pathForResource:@"DISK1" ofType:@"ADF"];
     [path getCString:prefs_df[0] maxLength:256 encoding:[NSString defaultCStringEncoding]];
+    fprintf(stdout, ">>>>>>> %s\n", prefs_df[0]);
     path = [[NSBundle mainBundle] pathForResource:@"DISK2" ofType:@"ADF"];
     [path getCString:prefs_df[1] maxLength:256 encoding:[NSString defaultCStringEncoding]];
 
