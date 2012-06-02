@@ -29,8 +29,8 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    x_ratio = self.frame.size.width / 320.0f;
-    y_ratio = self.frame.size.height / 240.0f;
+    x_ratio = self.frame.size.width / 320.0f / 2.0f; /* King of Chicago */
+    y_ratio = self.frame.size.height / 240.0f / 2.0f; /* King of Chicago */
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
