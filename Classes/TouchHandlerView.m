@@ -33,84 +33,97 @@
     y_ratio = self.frame.size.height / 240.0f / 2.0f; /* King of Chicago */
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-	UITouch *touch = (UITouch*)[touches anyObject];
-	int count = [touches count];
-	
-	// this generates a left click when tapping with two fingers or 
-	// with a second finger whilst dragging the first as the mouse
-	if ((count == 2 && currentMode == kMouseNone) ||
-		(count == 1 && currentMode == kMouseMove)) {
-		currentMode |= kMouseClickLeft;
-		clickTouch = touch;
-		SDL_SendMouseButton(NULL, SDL_PRESSED, SDL_BUTTON_LEFT);
-	}
-	
-	// this starts dragging action
-	if (count == 1 && currentMode == kMouseNone) {
-		currentMode |= kMouseMove;
-		mouseTouch = touch;
-		previousMouseLocation = [touch locationInView: self];
-		didMove = NO;
-		
-		// if the user performed a double tap, then we'll also send a left click
-		if (touch.tapCount == 2) {
-			currentMode |= kMouseClickLeft;
-			clickTouch = touch;
-			SDL_SendMouseButton(NULL, SDL_PRESSED, SDL_BUTTON_LEFT);
-		}
-	}
-}
-
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {	
-	if (currentMode & kMouseMove) {
-		if ([touches containsObject:mouseTouch]) {			
-			CGPoint locationInView = [mouseTouch locationInView: self];
-            CGFloat relx = (locationInView.x - previousMouseLocation.x) / x_ratio;
-            CGFloat rely = (locationInView.y - previousMouseLocation.y) / y_ratio;
-            if (fabsf(relx) < 1.0f)
-                relx = 0.f;
-            if (fabsf(rely) < 1.0f)
-                rely = 0.f;
-            
-            if (relx != 0.0f || rely != 0.0f) {
-                SDL_SendMouseMotion(NULL, SDL_MOTIONRELATIVE, relx, rely);
-                if (relx != 0.0f)
-                    previousMouseLocation.x = locationInView.x;
-                if (rely != 0.0f)
-                    previousMouseLocation.y = locationInView.y;
-                didMove = YES;                
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    for (UITouch *touch in touches)
+    {
+        if (touch.phase == UITouchPhaseBegan)
+        {
+            if (!leadTouch)
+            {
+                leadTouch = touch;
+                previousMouseLocation = [touch locationInView: self];
+                didMove = NO;
+                //printf("Move begin\n");
             }
-		}
-	}
+            else if(!rightTouch)
+            {
+                rightTouch = touch;
+                SDL_SendMouseButton(NULL, SDL_PRESSED, SDL_BUTTON_RIGHT);
+                //printf("Right press\n");
+            }
+        }
+    }
 }
 
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    if (leadTouch)
+    {
+        CGPoint locationInView = [leadTouch locationInView:self];
+        CGFloat relx = (locationInView.x - previousMouseLocation.x) / x_ratio;
+        CGFloat rely = (locationInView.y - previousMouseLocation.y) / y_ratio;
+
+        if (fabsf(relx) < 1.0f)
+            relx = 0.f;
+        if (fabsf(rely) < 1.0f)
+            rely = 0.f;
+
+        if (relx != 0.0f || rely != 0.0f)
+        {
+            SDL_SendMouseMotion(NULL, SDL_MOTIONRELATIVE, relx, rely);
+
+            if (relx != 0.0f)
+                previousMouseLocation.x = locationInView.x;
+
+			if (rely != 0.0f)
+                previousMouseLocation.y = locationInView.y;
+
+            didMove = YES;
+        }
+    }
+}
+
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
 	[self touchesEnded:touches withEvent:event];
 }
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-	if (currentMode & kMouseClickLeft && [touches containsObject:clickTouch]) {
-		SDL_SendMouseButton(NULL, SDL_RELEASED, SDL_BUTTON_LEFT);
-		clickTouch = nil;
-		currentMode &= ~kMouseClickLeft;
-	}
-	
-	if (currentMode & kMouseMove && [touches containsObject:mouseTouch]) {
-		mouseTouch = nil;
-		currentMode &= ~kMouseMove;
-		if (didMove == NO) {
-			SDL_SendMouseButton(NULL, SDL_PRESSED, SDL_BUTTON_LEFT);
-			// 50ms after, push up
-			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 50 * 1000000), dispatch_get_main_queue(), ^{
-				SDL_SendMouseButton(NULL, SDL_RELEASED, SDL_BUTTON_LEFT);
-			}); 
-			
-		}
-	}
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    for (UITouch *touch in touches)
+    {
+        if (touch.phase == UITouchPhaseEnded)
+        {
+            if (touch == leadTouch)
+            {
+                leadTouch = Nil;
+                //printf("Move End\n");
+
+                if (didMove == NO)
+                {
+                    SDL_SendMouseButton(NULL, SDL_PRESSED, SDL_BUTTON_LEFT);
+                    //printf("Left press\n");
+
+                    // 50ms after, push up
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 50 * 1000000), dispatch_get_main_queue(), ^{
+                        SDL_SendMouseButton(NULL, SDL_RELEASED, SDL_BUTTON_LEFT);
+                        //printf("Left release\n");
+                    });
+                }
+            }
+            else if (touch == rightTouch)
+            {
+                rightTouch = Nil;
+                SDL_SendMouseButton(NULL, SDL_RELEASED, SDL_BUTTON_RIGHT);
+                //printf("Right release\n");
+            }
+        }
+    }
 }
 
-- (void)dealloc {
+- (void)dealloc
+{
     [super dealloc];
 }
 

@@ -8,23 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-enum MouseActiveMode {
-	kMouseNone,
-	kMouseMove			= 0x0001,
-	kMouseClickLeft		= 0x0002,
-	kMouseClickRight	= 0x0004
-};
-
-typedef enum MouseActiveMode MouseActiveMode;
-
 @interface TouchHandlerView : UIView {
-	UITouch			*mouseTouch;
-	UITouch			*clickTouch;
-	MouseActiveMode currentMode;
-	int				touchCount;
+	UITouch			*leadTouch;
+	UITouch			*rightTouch;
 	CGPoint			previousMouseLocation;
 	BOOL			didMove;
-    CGFloat         x_ratio, y_ratio;
+	CGFloat			x_ratio, y_ratio;
 }
 
 @end
