@@ -329,6 +329,7 @@
 		97EF968C1538771F001C01E6 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 97EF963E1538771F001C01E6 /* icon.png */; };
 		97EF968D1538771F001C01E6 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97EF963F1538771F001C01E6 /* icon@2x.png */; };
 		97EF96A31538771F001C01E6 /* EmulationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97EF96571538771F001C01E6 /* EmulationViewController.m */; };
+		E1AE349A1590EF5B00B988AC /* icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1AE34991590EF5B00B988AC /* icon-72@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -828,9 +829,7 @@
 		97EF963F1538771F001C01E6 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		97EF96561538771F001C01E6 /* EmulationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmulationViewController.h; sourceTree = "<group>"; };
 		97EF96571538771F001C01E6 /* EmulationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmulationViewController.m; sourceTree = "<group>"; };
-		E18F65E8154CB6950073642F /* intro_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = intro_5.png; sourceTree = "<group>"; };
-		E18F65E9154CB6950073642F /* intro_5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "intro_5@2x.png"; sourceTree = "<group>"; };
-		E18F65EA154CB6950073642F /* intro_5~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "intro_5~ipad.png"; sourceTree = "<group>"; };
+		E1AE34991590EF5B00B988AC /* icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1774,9 +1773,6 @@
 		97A9314B1538AD1B001064D7 /* intro */ = {
 			isa = PBXGroup;
 			children = (
-				E18F65E8154CB6950073642F /* intro_5.png */,
-				E18F65E9154CB6950073642F /* intro_5@2x.png */,
-				E18F65EA154CB6950073642F /* intro_5~ipad.png */,
 				97A9314C1538AD1B001064D7 /* intro_1.png */,
 				97A9314D1538AD1B001064D7 /* intro_1@2x.png */,
 				97A9314E1538AD1B001064D7 /* intro_1~ipad.png */,
@@ -1950,6 +1946,7 @@
 			children = (
 				97AFC8541538A4D600227317 /* Resources */,
 				97EF963D1538771F001C01E6 /* icon-72.png */,
+				E1AE34991590EF5B00B988AC /* icon-72@2x.png */,
 				97EF963E1538771F001C01E6 /* icon.png */,
 				97EF963F1538771F001C01E6 /* icon@2x.png */,
 				97AFC8521538A4CB00227317 /* info.plist */,
@@ -2178,6 +2175,7 @@
 				97BE2B0D15489E6600BF66CF /* ls-joystick_active.png in Resources */,
 				97A642231575516A00AD7B87 /* Limelight.ttf in Resources */,
 				97BE2B1015489E6600BF66CF /* ls-joystick_rest.png in Resources */,
+				E1AE349A1590EF5B00B988AC /* icon-72@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

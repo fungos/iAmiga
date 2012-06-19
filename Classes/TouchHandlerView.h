@@ -10,10 +10,10 @@
 
 @interface TouchHandlerView : UIView {
 	UITouch			*leadTouch;
-	UITouch			*rightTouch;
+    UITouch         *rightTouch;
 	CGPoint			previousMouseLocation;
 	BOOL			didMove;
-	CGFloat			x_ratio, y_ratio;
+    CGFloat         x_ratio, y_ratio;
 }
 
 @end
