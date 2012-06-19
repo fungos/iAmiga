@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "EmulationViewController.h"
 
+@class DynamicLandscapeControls;
+
 @interface EmulationViewiPad : EmulationViewController {
     
     UIButton *menuButton;
@@ -17,6 +19,7 @@
     UIButton *restartButton;
     UIView *menuView;
     UIWebView *webView;
+    DynamicLandscapeControls *inputController;
 }
 - (IBAction)hideMenu:(id)sender;
 - (IBAction)showMenu:(id)sender;
@@ -27,5 +30,6 @@
 @property (nonatomic, retain) IBOutlet UIButton *closeButton;
 @property (nonatomic, retain) IBOutlet UIView *mouseHandler;
 @property (nonatomic, retain) IBOutlet UIButton *restartButton;
+@property (nonatomic, retain) IBOutlet DynamicLandscapeControls *inputController;
 
 @end

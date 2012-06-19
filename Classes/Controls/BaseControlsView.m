@@ -14,6 +14,8 @@
 #import "ImageJoyButton.h"
 #import "StaticImage.h"
 #import "ButtonJoyButton.h"
+#import "ButtonMouseButtonRight.h"
+#import "ButtonMouseButtonLeft.h"
 
 @interface BaseControlsView()
 - (void)generateLayout;
@@ -189,6 +191,12 @@
         if ([type isEqualToString:@"JoyButton"]) {
 			ButtonJoyButton *btn = [ButtonJoyButton buttonWithImage:primaryImage selectedImage:activeImage frame:r];
 			v = btn;
+        } else if ([type isEqualToString:@"MouseButtonRight"]) {
+            ButtonMouseButtonRight *btn = [ButtonMouseButtonRight buttonWithImage:primaryImage selectedImage:activeImage frame:r];
+                v = btn;
+        } else if ([type isEqualToString:@"MouseButtonLeft"]) {
+            ButtonMouseButtonLeft *btn = [ButtonMouseButtonLeft buttonWithImage:primaryImage selectedImage:activeImage frame:r];
+            v = btn;
 		} else if ([type isEqualToString:@"StaticImage"]) {
 			StaticImage *img = [[StaticImage alloc] initWithImage:primaryImage andFrame:r];
 			[img autorelease];

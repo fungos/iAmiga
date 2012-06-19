@@ -1,25 +1,25 @@
 {
     "iphone" : {
         "options" : {
-            "preferredStick": "fixed"
+            "preferredStick": "disabled"
         },
         "actions" : [
             { "action": "clear" },
             { 
-                "action": "add", "type": "JoyButton", 
-                "options": { "image": "firebutton-red", "center": "{35, 240}", "alpha": 0.50 } 
+                "action": "add", "type": "MouseButtonLeft", 
+                "options": { "image": "firebutton-red", "center": "{30, 30}", "alpha": 0.50 } 
             }            
         ]
     },
     "ipad" : {
         "options" : {
-            "preferredStick": "fixed"
+            "preferredStick": "disabled"
         },
         "actions" : [
             { "action": "clear" },
             { 
-                "action": "add", "type": "JoyButton", 
-                "options": { "image": "firebutton-red", "center": "{60, 630}", "alpha": 0.50 } 
+                "action": "add", "type": "MouseButtonLeft", 
+                "options": { "image": "firebutton-red", "center": "{50, 50}", "alpha": 0.50 } 
             }
         ]
     }

@@ -329,7 +329,9 @@
 		97EF968C1538771F001C01E6 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 97EF963E1538771F001C01E6 /* icon.png */; };
 		97EF968D1538771F001C01E6 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 97EF963F1538771F001C01E6 /* icon@2x.png */; };
 		97EF96A31538771F001C01E6 /* EmulationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97EF96571538771F001C01E6 /* EmulationViewController.m */; };
+		E17530441590F22400DDB8E2 /* ButtonMouseButtonRight.m in Sources */ = {isa = PBXBuildFile; fileRef = E17530431590F22400DDB8E2 /* ButtonMouseButtonRight.m */; };
 		E1AE349A1590EF5B00B988AC /* icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E1AE34991590EF5B00B988AC /* icon-72@2x.png */; };
+		E1F42F521590FC7600C8280B /* ButtonMouseButtonLeft.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F42F511590FC7600C8280B /* ButtonMouseButtonLeft.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -829,7 +831,11 @@
 		97EF963F1538771F001C01E6 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		97EF96561538771F001C01E6 /* EmulationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmulationViewController.h; sourceTree = "<group>"; };
 		97EF96571538771F001C01E6 /* EmulationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmulationViewController.m; sourceTree = "<group>"; };
+		E17530421590F22400DDB8E2 /* ButtonMouseButtonRight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonMouseButtonRight.h; sourceTree = "<group>"; };
+		E17530431590F22400DDB8E2 /* ButtonMouseButtonRight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonMouseButtonRight.m; sourceTree = "<group>"; };
 		E1AE34991590EF5B00B988AC /* icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72@2x.png"; sourceTree = "<group>"; };
+		E1F42F501590FC7600C8280B /* ButtonMouseButtonLeft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonMouseButtonLeft.h; sourceTree = "<group>"; };
+		E1F42F511590FC7600C8280B /* ButtonMouseButtonLeft.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonMouseButtonLeft.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1872,6 +1878,10 @@
 				97BE2AAB1548702100BF66CF /* BaseLeftRightAwareView.m */,
 				97BE2AAC1548702100BF66CF /* ButtonJoyButton.h */,
 				97BE2AAD1548702100BF66CF /* ButtonJoyButton.mm */,
+				E17530421590F22400DDB8E2 /* ButtonMouseButtonRight.h */,
+				E17530431590F22400DDB8E2 /* ButtonMouseButtonRight.m */,
+				E1F42F501590FC7600C8280B /* ButtonMouseButtonLeft.h */,
+				E1F42F511590FC7600C8280B /* ButtonMouseButtonLeft.m */,
 				97BE2AAE1548702100BF66CF /* ControlDefaultConstants.h */,
 				97BE2AAF1548702100BF66CF /* ControlDefaultConstants.m */,
 				97BE2AB01548702100BF66CF /* ImageJoyButton.h */,
@@ -2362,6 +2372,8 @@
 				97BE2ACA1548702100BF66CF /* MMFixedStickController.mm in Sources */,
 				97BE2ACB1548702100BF66CF /* StaticImage.m in Sources */,
 				97BE2ACC1548702100BF66CF /* StickControllerBase.mm in Sources */,
+				E17530441590F22400DDB8E2 /* ButtonMouseButtonRight.m in Sources */,
+				E1F42F521590FC7600C8280B /* ButtonMouseButtonLeft.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
