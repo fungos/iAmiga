@@ -92,12 +92,12 @@ void uae::default_prefs () {
 	// 1 = 75%
 	// 2 = 50%
 	// 3 = 25%
-	timeslice_mode = 2;
+	timeslice_mode = 1;
 	
 	// 0 = 100%
 	// 2 = 83%
 	// 4 = 75%
-	m68k_speed = 0;
+	m68k_speed = 2;
 }
 
 void uae::uae_reset (void) {
