@@ -128,9 +128,9 @@ h1 {
 
 
 .notebox {
-	text-shadow: rgba(0, 0, 0, 1) -1px -1px 0;
+	text-shadow: rgba(0, 0, 0, 1) 1px 1px 0;
 	font-size:18px;
-	color:#999;
+	color:#fff;
 	padding:40px;
 	line-height:30px;
     
@@ -172,10 +172,10 @@ text-align:center;
 }
 
 .normaltext {
-	text-shadow: rgba(0, 0, 0, 1) 0px -1px 0;
+	text-shadow: rgba(0, 0, 0, 1) 0px 1px 0;
 	font-size:18px;
 	
-	color:#999;
+	color:#fff;
 	padding:20px;
 	line-height:26px;
 }
@@ -185,7 +185,7 @@ text-align:center;
 	font-size:25px;
 	margin:20px 0px 20px 0px;
 	font-weight:bold;
-	color:#999;
+	color:#fff;
 	text-align:left;
 	display:block;
 }
@@ -276,6 +276,11 @@ background:#fff;
 	margin:0;
 	
 }
+
+
+
+
+
 
 
 

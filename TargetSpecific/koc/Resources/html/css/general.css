@@ -128,9 +128,9 @@ h1 {
 
 
 .notebox {
-	text-shadow: rgba(0, 0, 0, 1) -1px -1px 0;
+	text-shadow: rgba(0, 0, 0, 1) 1px 1px 0;
 	font-size:12px;	
-	color:#999;
+	color:#fff;
 	padding:20px;
 	line-height:18px;
     
@@ -168,9 +168,9 @@ h1 {
 }
 
 .normaltext {
-	text-shadow: rgba(0, 0, 0, 1) -1px -1px 0;
+	text-shadow: rgba(0, 0, 0, 1) 1px 1px 0;
 	font-size:12px;
-	color:#999;
+	color:#fff;
 	padding:20px;
 	line-height:18px;
 }
@@ -276,6 +276,16 @@ background:#fff;
 	margin:0;
 	
 }
+
+
+
+
+
+
+
+
+
+
 
 
 
