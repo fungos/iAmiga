@@ -89,6 +89,8 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		970FD28C15D1D31D00AB02CB /* LambdaAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 970FD28B15D1D31D00AB02CB /* LambdaAlert.m */; };
+		970FD28D15D1D31D00AB02CB /* LambdaAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 970FD28B15D1D31D00AB02CB /* LambdaAlert.m */; };
 		978550C4153A3F2E00580B91 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 97855061153A3F2E00580B91 /* .gitignore */; };
 		978550C7153A3F2E00580B91 /* SDL_events.c in Sources */ = {isa = PBXBuildFile; fileRef = 9785507D153A3F2E00580B91 /* SDL_events.c */; };
 		978550C9153A3F2E00580B91 /* SDL_events.c in Sources */ = {isa = PBXBuildFile; fileRef = 9785507D153A3F2E00580B91 /* SDL_events.c */; };
@@ -160,8 +162,6 @@
 		97855134153A3FBE00580B91 /* CRT.frag in Resources */ = {isa = PBXBuildFile; fileRef = 978550B8153A3F2E00580B91 /* CRT.frag */; };
 		97855135153A3FBE00580B91 /* Simple.frag in Resources */ = {isa = PBXBuildFile; fileRef = 978550BB153A3F2E00580B91 /* Simple.frag */; };
 		97855136153A3FBE00580B91 /* Simple.vert in Resources */ = {isa = PBXBuildFile; fileRef = 978550BC153A3F2E00580B91 /* Simple.vert */; };
-		97855140153A402A00580B91 /* LambdaAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 9785513F153A402A00580B91 /* LambdaAlert.m */; };
-		9785514C153A46D400580B91 /* LambdaAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 9785513F153A402A00580B91 /* LambdaAlert.m */; };
 		9785514F153A471000580B91 /* savestate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 97855145153A454100580B91 /* savestate.cpp */; };
 		97855150153A472C00580B91 /* cyclone.s in Sources */ = {isa = PBXBuildFile; fileRef = 97855147153A455C00580B91 /* cyclone.s */; };
 		97855151153A472C00580B91 /* memhandlers.s in Sources */ = {isa = PBXBuildFile; fileRef = 97855148153A455C00580B91 /* memhandlers.s */; };
@@ -611,6 +611,8 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* iAmiga_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iAmiga_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		970FD28A15D1D31D00AB02CB /* LambdaAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LambdaAlert.h; path = "lambda-alert/LambdaAlert.h"; sourceTree = "<group>"; };
+		970FD28B15D1D31D00AB02CB /* LambdaAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LambdaAlert.m; path = "lambda-alert/LambdaAlert.m"; sourceTree = "<group>"; };
 		976877751534B2D20077B654 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		97855061153A3F2E00580B91 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		97855063153A3F2E00580B91 /* begin_code.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = begin_code.h; sourceTree = "<group>"; };
@@ -699,8 +701,6 @@
 		978550C1153A3F2E00580B91 /* SDL_UIKitVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL_UIKitVideo.h; sourceTree = "<group>"; };
 		978550C2153A3F2E00580B91 /* SDL_UIKitVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDL_UIKitVideo.m; sourceTree = "<group>"; };
 		978550C3153A3F2E00580B91 /* UIKitDisplayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIKitDisplayView.h; sourceTree = "<group>"; };
-		9785513E153A402A00580B91 /* LambdaAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LambdaAlert.h; path = "lambda-alert/Sources/LambdaAlert.h"; sourceTree = "<group>"; };
-		9785513F153A402A00580B91 /* LambdaAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LambdaAlert.m; path = "lambda-alert/Sources/LambdaAlert.m"; sourceTree = "<group>"; };
 		97855145153A454100580B91 /* savestate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = savestate.cpp; sourceTree = "<group>"; };
 		97855147153A455C00580B91 /* cyclone.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = cyclone.s; sourceTree = "<group>"; };
 		97855148153A455C00580B91 /* memhandlers.s */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm; path = memhandlers.s; sourceTree = "<group>"; };
@@ -1411,8 +1411,8 @@
 		05BB086213CC233F00278699 /* lambda-alert */ = {
 			isa = PBXGroup;
 			children = (
-				9785513E153A402A00580B91 /* LambdaAlert.h */,
-				9785513F153A402A00580B91 /* LambdaAlert.m */,
+				970FD28A15D1D31D00AB02CB /* LambdaAlert.h */,
+				970FD28B15D1D31D00AB02CB /* LambdaAlert.m */,
 			);
 			name = "lambda-alert";
 			sourceTree = "<group>";
@@ -2274,7 +2274,7 @@
 				97855127153A3F2E00580B91 /* TexturedCRTEffect.m in Sources */,
 				9785512A153A3F2E00580B91 /* SDL_UIKitEvents.m in Sources */,
 				9785512D153A3F2E00580B91 /* SDL_UIKitVideo.m in Sources */,
-				97855140153A402A00580B91 /* LambdaAlert.m in Sources */,
+				970FD28C15D1D31D00AB02CB /* LambdaAlert.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2351,7 +2351,6 @@
 				97855129153A3F2E00580B91 /* TexturedCRTEffect.m in Sources */,
 				9785512C153A3F2E00580B91 /* SDL_UIKitEvents.m in Sources */,
 				9785512F153A3F2E00580B91 /* SDL_UIKitVideo.m in Sources */,
-				9785514C153A46D400580B91 /* LambdaAlert.m in Sources */,
 				9785514F153A471000580B91 /* savestate.cpp in Sources */,
 				97855150153A472C00580B91 /* cyclone.s in Sources */,
 				97855151153A472C00580B91 /* memhandlers.s in Sources */,
@@ -2374,6 +2373,7 @@
 				97BE2ACC1548702100BF66CF /* StickControllerBase.mm in Sources */,
 				E17530441590F22400DDB8E2 /* ButtonMouseButtonRight.m in Sources */,
 				E1F42F521590FC7600C8280B /* ButtonMouseButtonLeft.m in Sources */,
+				970FD28D15D1D31D00AB02CB /* LambdaAlert.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
