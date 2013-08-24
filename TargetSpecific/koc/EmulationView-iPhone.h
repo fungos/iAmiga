@@ -11,7 +11,7 @@
 
 @class DynamicLandscapeControls;
 
-@interface EmulationViewiPhone : EmulationViewController {
+@interface EmulationViewiPhone : EmulationViewController <UIWebViewDelegate> {
     
     UIView *menuView;
     UIWebView *webView;

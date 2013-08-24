@@ -36,7 +36,9 @@
     path = [[NSBundle mainBundle] pathForResource:@"DISK2" ofType:@"ADF"];
     [path getCString:prefs_df[1] maxLength:256 encoding:[NSString defaultCStringEncoding]];
 
-    [window addSubview:self.mainController.view];
+    [window setRootViewController:self.mainController];
+    
+    //[window addSubview:self.mainController.view];
 	
     // Override point for customization after application launch
     [window makeKeyAndVisible];
@@ -92,6 +94,11 @@
 		[self.mainController setDisplayViewWindow:externalWindow isExternal:YES];
 		externalWindow.hidden = NO;
 	}
+}
+
+- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
+{
+    return UIInterfaceOrientationMaskLandscape;
 }
 
 - (void)dealloc {

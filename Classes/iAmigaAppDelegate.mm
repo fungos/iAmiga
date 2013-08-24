@@ -97,6 +97,11 @@ static UaeDebugger *debugger;
 	}
 }
 
+- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
+{
+    NSUInteger orientations = UIInterfaceOrientationMaskLandscape;
+}
+
 - (void)dealloc {
     [window release];
     [super dealloc];

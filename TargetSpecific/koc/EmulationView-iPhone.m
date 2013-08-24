@@ -96,6 +96,7 @@
     
     NSURLRequest *req = [NSURLRequest requestWithURL:[NSURL fileURLWithPath:userGuidePath]];
 	[webView loadRequest:req];
+    [webView setDelegate:self];
     
     [UIView animateWithDuration:0.500f animations:^(void) {
         CGRect frame = menuView.frame;
@@ -106,6 +107,18 @@
         frame.origin.y = -10;
         bottomBar.frame = frame;
     }];
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+    static NSString *regexp = @"^(([a-zA-Z]|[a-zA-Z][a-zA-Z0-9-]*[a-zA-Z0-9])[.])+([A-Za-z]|[A-Za-z][A-Za-z0-9-]*[A-Za-z0-9])$";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regexp];
+    
+    if ([predicate evaluateWithObject:request.URL.host]) {
+        [[UIApplication sharedApplication] openURL:request.URL];
+        return NO;
+    } else {
+        return YES;
+    }
 }
 
 @end

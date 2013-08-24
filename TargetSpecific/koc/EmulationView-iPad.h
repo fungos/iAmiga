@@ -11,7 +11,7 @@
 
 @class DynamicLandscapeControls;
 
-@interface EmulationViewiPad : EmulationViewController {
+@interface EmulationViewiPad : EmulationViewController <UIWebViewDelegate> {
     
     UIButton *menuButton;
     UIButton *closeButton;

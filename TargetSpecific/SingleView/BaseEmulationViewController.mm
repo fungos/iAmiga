@@ -198,5 +198,9 @@ static CGRect CreateIntegralScaledView(CGRect aFrame, BOOL top) {
 	displayView.paused = NO;
 }
 
+-(NSInteger)supportedInterfaceOrientations{
+    
+    return UIInterfaceOrientationMaskLandscape;
+}
 
 @end
